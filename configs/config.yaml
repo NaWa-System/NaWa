@@ -1,0 +1,39 @@
+# ─────────────────────────────────────────────
+# Agentic Hybrid RAG — Configuration
+# ─────────────────────────────────────────────
+
+# LLM (via Ollama)
+model: 'qwen3.5:9b' # local SLM for routing + generation
+model_alt: 'qwen3:8b' # second SLM for comparison runs
+gpt4_model: 'gpt-4o' # cloud upper-bound reference
+
+# Embedding model (sentence-transformers, runs locally)
+embedding_model: 'all-MiniLM-L6-v2'
+
+# Few-shot retrieval
+k_few_shot: 3 # number of examples retrieved per query
+similarity_threshold: 0.0 # minimum cosine similarity (0.0 = no filter)
+
+# Document retrieval
+top_k_docs: 5 # number of PDF chunks retrieved per query
+chunk_size: 512 # tokens per chunk
+chunk_overlap: 50 # overlap between chunks
+
+# Self-correction loop
+max_retries: 3 # maximum correction attempts per query
+
+# Evaluation
+eval_sample_size: 200 # number of dev questions to evaluate (random sample)
+eval_random_seed: 42 # fixed seed for reproducibility
+
+# Ollama
+ollama_base_url: 'http://localhost:11434'
+ollama_timeout: 120 # seconds
+
+# Paths
+spider_dir: 'data/spider'
+nawa_dir: 'data/nawa'
+documents_dir: 'data/documents'
+few_shot_store: 'vector_stores/few_shot_bank'
+document_store: 'vector_stores/document_store'
+results_dir: 'results'

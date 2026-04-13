@@ -1,0 +1,8 @@
+/data/spider
+/data/spider.zip
+/data/nawa
+/results
+/vector_stores
+
+**/__pycache__/
+**/*.pyc
