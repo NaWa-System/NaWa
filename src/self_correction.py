@@ -24,6 +24,7 @@ What this does:
 """
 
 import logging
+from pathlib import Path
 from src.llm import call_llm
 from src.utils import execute_sql, extract_sql
 
@@ -62,9 +63,10 @@ def generate_and_correct(
     model       = config["model"]
     base_url    = config["ollama_base_url"]
     max_retries = config.get("max_retries", 3)
+    company_name = _extract_company_name(db_path)
 
     # ── First attempt ──────────────────────────────────────────────────────────
-    prompt    = _build_generation_prompt(question, schema, few_shot_prompt)
+    prompt    = _build_generation_prompt(question, schema, few_shot_prompt, company_name=company_name)
     raw_sql   = _call_and_extract(prompt, model, base_url)
     success, result = execute_sql(db_path, raw_sql)
 
@@ -82,7 +84,7 @@ def generate_and_correct(
         log.info(f"Correction attempt {attempt}...")
 
         correction_prompt = _build_correction_prompt(
-            question, schema, current_sql, current_error
+            question, schema, current_sql, current_error, company_name=company_name
         )
         corrected_sql           = _call_and_extract(correction_prompt, model, base_url)
         success, result         = execute_sql(db_path, corrected_sql)
@@ -113,7 +115,50 @@ def generate_and_correct(
     }
 
 
-def _build_generation_prompt(question: str, schema: str, few_shot_prompt: str) -> str:
+def _extract_company_name(db_path: str) -> str:
+    """
+    Derive company/database context from the DB path.
+
+    NAWA paths usually look like: .../databases/<company>/<company>.db
+    Spider paths usually look like: .../database/<db_id>/<db_id>.sqlite
+    """
+    if not db_path:
+        return ""
+
+    p = Path(db_path)
+    if p.parent and p.parent.name:
+        return p.parent.name
+    return p.stem
+
+
+def _build_company_context(company_name: str) -> list[str]:
+    if company_name and ("/" in company_name or "\\" in company_name):
+        company_name = _extract_company_name(company_name)
+
+    if not company_name:
+        return []
+
+    return [
+        "=== Company Context ===",
+        f"Question context/company: {company_name}",
+        (
+            "Important: this company name is contextual metadata for the question source. "
+            "Do NOT automatically add a WHERE filter on company name just because it appears in the question."
+        ),
+        (
+            "Only apply a company-name filter if the user explicitly asks to restrict results to a company "
+            "and the schema has a matching column/table for that filter."
+        ),
+        "",
+    ]
+
+
+def _build_generation_prompt(
+    question: str,
+    schema: str,
+    few_shot_prompt: str,
+    company_name: str = "",
+) -> str:
     """
     Assembles the initial SQL generation prompt.
 
@@ -138,6 +183,8 @@ def _build_generation_prompt(question: str, schema: str, few_shot_prompt: str) -
         "",
     ]
 
+    parts += _build_company_context(company_name)
+
     if few_shot_prompt:
         parts += [
             "=== Examples ===",
@@ -158,13 +205,25 @@ def _build_correction_prompt(
     schema: str,
     failed_sql: str,
     error_message: str,
+    company_name: str = "",
 ) -> str:
     """
     Builds the correction prompt: original question + broken SQL + error.
     This is what gives the model the feedback it needs to fix its mistake.
     """
+    company_context = ""
+    if company_name:
+        company_context = (
+            "=== Company Context ===\n"
+            f"Question context/company: {company_name}\n"
+            "Important: this may be metadata context and is not always a SQL filter.\n"
+            "Only use company-name filtering when explicitly requested and supported by schema.\n\n"
+        )
+
     return f"""=== Database Schema ===
 {schema}
+
+{company_context}
 
 === Question ===
 {question}

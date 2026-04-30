@@ -1,8 +1,12 @@
 /data/spider
 /data/spider.zip
 /data/nawa
+/data/documents
 /results
 /vector_stores
+/models
 
 **/__pycache__/
 **/*.pyc
+
+DOCUMENTATION.md

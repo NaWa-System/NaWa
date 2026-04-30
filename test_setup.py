@@ -11,7 +11,8 @@ Tests:
   4. Embedding model loads
   5. ChromaDB can be created and queried
   6. Document PDF can be read
-  7. Document store retrieval works (if indexed)
+  7. Router gives sensible labels on 3 test questions
+  8. Document store retrieval works (if indexed)
 """
 
 import sys
@@ -132,6 +133,20 @@ def test_ollama(config):
     print(f"  {OK} Model '{config['model']}' is available")
     return True
 
+def test_router(config):
+    from src.router import route, ROUTE_SQL, ROUTE_VECTOR, ROUTE_HYBRID
+
+    test_cases = [
+        ("How many employees work in the Sales department?",        ROUTE_SQL),
+        ("Why did sales decline in Q3?",                            ROUTE_VECTOR),
+        ("What was the total revenue in Q3 and why did it change?", ROUTE_HYBRID),
+    ]
+
+    for question, expected in test_cases:
+        result = route(question, config)
+        icon   = OK if result == expected else f"≈ (got {result}, expected {expected})"
+        print(f"  {icon}  '{question[:55]}...' → {result}")
+
 def test_few_shot_bank(config):
     import chromadb
     store_path = config.get("few_shot_store", "vector_stores/few_shot_bank")
@@ -143,6 +158,19 @@ def test_few_shot_bank(config):
     count      = collection.count()
     print(f"  {OK} Few-shot bank exists — {count} examples indexed")
 
+def test_document_store(config):
+    import chromadb
+    store_path = config.get("document_store", "vector_stores/document_store")
+    if not os.path.exists(store_path):
+        print(f"  {SKIP} Document store not built yet. Run: python indexing/index_documents.py")
+        return
+    client     = chromadb.PersistentClient(path=store_path)
+    try:
+        collection = client.get_collection("document_store")
+        print(f"  {OK} Document store exists — {collection.count()} chunks indexed")
+    except Exception:
+        print(f"  {SKIP} Document store collection not found. Run: python indexing/index_documents.py")
+        
 # ─────────────────────────────────────────────
 # Run all tests
 # ─────────────────────────────────────────────
@@ -169,8 +197,13 @@ if __name__ == "__main__":
     print("\n6. Ollama + model (requires Ollama running)")
     ollama_ok = test_ollama(config)
 
-    print("\n7. Vector stores (optional — built separately)")
+    if ollama_ok:
+        print("\n7. Router (requires Ollama)")
+        test_router(config)
+
+    print("\n8. Vector stores (optional — built separately)")
     test_few_shot_bank(config)
+    test_document_store(config)
 
     print("\n=== Done ===\n")
     print("If all tests pass (or are marked ○ for optional), you're ready to run:")

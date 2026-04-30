@@ -9,6 +9,9 @@ gpt4_model: 'gpt-4o' # cloud upper-bound reference
 
 # Embedding model (sentence-transformers, runs locally)
 embedding_model: 'all-MiniLM-L6-v2'
+embedding_local_path: 'models/all-MiniLM-L6-v2' # one-time downloaded model folder
+embedding_local_only: true # never download at runtime; fail if local model is missing
+embedding_quiet: true # suppress embedding progress bars in runtime
 
 # Few-shot retrieval
 k_few_shot: 3 # number of examples retrieved per query

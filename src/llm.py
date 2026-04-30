@@ -58,7 +58,7 @@ def call_llm(
             "num_predict": 1024,
         }
     }).encode("utf-8")
-    print(payload)
+    # print(payload)
     req = urllib.request.Request(
         url,
         data=payload,

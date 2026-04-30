@@ -23,19 +23,9 @@ What this does:
 import re
 import logging
 import chromadb
-from sentence_transformers import SentenceTransformer
+from src.embeddings import load_embedding_model
 
 log = logging.getLogger(__name__)
-
-# The embedding model is loaded once and reused for all queries
-_embedding_model = None
-
-def _get_embedding_model(model_name: str) -> SentenceTransformer:
-    global _embedding_model
-    if _embedding_model is None:
-        log.info(f"Loading embedding model: {model_name}")
-        _embedding_model = SentenceTransformer(model_name)
-    return _embedding_model
 
 
 def mask_question(question: str, schema: str) -> str:
@@ -85,7 +75,6 @@ def retrieve(
     These are injected into the generation prompt as examples.
     """
     k          = config.get("k_few_shot", 3)
-    model_name = config.get("embedding_model", "all-MiniLM-L6-v2")
     store_path = store_path or config.get("few_shot_store", "vector_stores/few_shot_bank")
 
     # Connect to ChromaDB
@@ -104,8 +93,8 @@ def retrieve(
     log.debug(f"Masked question: {masked_question}")
 
     # Embed and search
-    model     = _get_embedding_model(model_name)
-    embedding = model.encode(masked_question).tolist()
+    model = load_embedding_model(config)
+    embedding = model.encode(masked_question, show_progress_bar=False).tolist()
 
     results = collection.query(
         query_embeddings=[embedding],
@@ -147,6 +136,6 @@ def format_examples_for_prompt(examples: list[dict]) -> str:
         lines.append(f"Question: {ex['question']}")
         lines.append(f"SQL: {ex['sql']}")
         lines.append("")
-    print(f"Formatted few-shot prompt:\n{lines}")
+    # print(f"Formatted few-shot prompt:\n{lines}")
 
     return "\n".join(lines)

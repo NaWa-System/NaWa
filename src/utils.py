@@ -15,7 +15,7 @@ import yaml
 import random
 import logging
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 log = logging.getLogger(__name__)
@@ -93,7 +93,7 @@ def load_schema_filtered(db_path: str, question: str) -> str:
 # SQL execution
 # ─────────────────────────────────────────────
 
-def execute_sql(db_path: str, query: str, timeout: int = 10) -> tuple[bool, any]:
+def execute_sql(db_path: str, query: str, timeout: int = 10) -> tuple[bool, Any]:
     """
     Executes a SQL query against a SQLite database.
 
@@ -156,6 +156,8 @@ def load_spider_dev(spider_dir: str, sample_size: Optional[int] = None, seed: in
             "db_path":    db_path,
             "difficulty": item.get("query_complexity", "unknown"),
             "dataset":    "spider",
+            "route":      "SQL",
+            "relevant_documents": [],
         })
 
     if sample_size and sample_size < len(examples):
@@ -215,16 +217,27 @@ def load_nawa_dev(nawa_dir: str, sample_size: Optional[int] = None, seed: int = 
 
     examples = []
     for item in data:
-        db_id   = item["db_id"]
-        db_path = os.path.join(db_base, db_id, f"{db_id}.db")
-        if not os.path.exists(db_path):
+        gold_route = item.get("route", "SQL")
+        db_id      = item.get("db_id")
+        db_path    = None
+
+        if db_id:
+            candidate_db_path = os.path.join(db_base, db_id, f"{db_id}.db")
+            if os.path.exists(candidate_db_path):
+                db_path = candidate_db_path
+
+        # SQL and HYBRID need a valid database path and gold SQL.
+        if gold_route in ("SQL", "HYBRID") and (not db_path or "query" not in item):
             continue
+
         examples.append({
-            "question": item["question"],
-            "db_id":    item["db_id"],
-            "gold_sql": item["query"],
-            "db_path":  db_path,
-            "dataset":  "nawa",
+            "question":            item["question"],
+            "db_id":               db_id,
+            "gold_sql":            item.get("query"),
+            "db_path":             db_path,
+            "dataset":             "nawa",
+            "route":               gold_route,
+            "relevant_documents":  item.get("relevant_documents", []),
         })
 
     if sample_size and sample_size < len(examples):
@@ -250,7 +263,11 @@ def load_nawa_train(nawa_dir: str) -> list[dict]:
 
     examples = []
     for item in data:
-        db_id   = item["db_id"]
+        try:
+            db_id   = item["db_id"]
+        except KeyError:
+            log.warning(f"Skipping item without 'db_id': {item}")
+            continue
         db_path = os.path.join(db_base, db_id, f"{db_id}.db")
         examples.append({
             "question": item["question"],
