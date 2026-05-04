@@ -4,7 +4,7 @@ An agentic RAG framework for Text-to-SQL that combines:
 
 - Dynamic few-shot retrieval from benchmark training examples
 - SQL generation with an iterative self-correction loop
-- Multi-mode evaluation (`baseline`, `agentic`, `gpt4`) on Spider and NAWA
+- Multi-mode evaluation (`baseline`, `agentic`, `cloud`) on Spider and NAWA
 
 The current code in this repository is focused on SQL generation and correction. The `agentic` mode currently routes SQL-only for both Spider and NAWA.
 
@@ -25,7 +25,7 @@ Hybrid-Agentic-RAG/
 |- indexing/index_few_shots.py  # Builds few-shot vector store
 |- evaluation/run_eval.py       # Main evaluation CLI
 |- evaluation/metrics.py        # Execution accuracy metrics
-|- src/pipeline.py              # Core pipeline (baseline/agentic/gpt4)
+|- src/pipeline.py              # Core pipeline (baseline/agentic/cloud)
 |- src/few_shot_retriever.py    # Few-shot retrieval + prompt formatting
 |- src/self_correction.py       # Generation + correction loop
 |- src/llm.py                   # Ollama API wrapper
@@ -41,7 +41,7 @@ Hybrid-Agentic-RAG/
 
 - Python 3.10+ (3.11/3.12 recommended)
 - Ollama installed and running for local model modes (`baseline` and `agentic`)
-- (Optional) OpenAI API key for `gpt4` mode
+- (Optional) OpenAI API key for `cloud` mode
 
 ## Installation
 
@@ -135,7 +135,7 @@ This checks config loading, SQL execution utilities, embeddings, ChromaDB, and O
 Main CLI:
 
 ```bash
-python evaluation/run_eval.py --mode <baseline|agentic|gpt4> --dataset <spider|nawa> [--sample N] [--model MODEL]
+python evaluation/run_eval.py --mode <baseline|agentic|cloud> --dataset <spider|nawa> [--sample N] [--model MODEL]
 ```
 
 ### Example commands
@@ -161,20 +161,16 @@ Run with alternate local model:
 python evaluation/run_eval.py --mode agentic --dataset spider --model qwen3:8b
 ```
 
-Use GPT-4 mode:
-
-Windows PowerShell:
-
-```powershell
-$env:OPENAI_API_KEY="your_key_here"
-python evaluation/run_eval.py --mode gpt4 --dataset spider --sample 20
-```
-
-macOS/Linux:
+Use `cloud` mode (Copilot CLI-backed, model from config):
 
 ```bash
-export OPENAI_API_KEY="your_key_here"
-python evaluation/run_eval.py --mode gpt4 --dataset spider --sample 20
+python evaluation/run_eval.py --mode cloud --dataset spider --sample 20
+```
+
+Override the Copilot model for this run:
+
+```bash
+python evaluation/run_eval.py --mode cloud --dataset spider --sample 20 --model gpt-5.2
 ```
 
 ## Output Files
@@ -212,7 +208,7 @@ Important fields:
 
 - `model`: default local model for generation
 - `model_alt`: secondary model label for manual comparisons
-- `gpt4_model`: model used in `gpt4` mode
+- `copilot_model`: model used in `cloud` mode (via Copilot CLI)
 - `embedding_model`: sentence-transformers model for retrieval
 - `k_few_shot`: number of retrieved examples per question
 - `max_retries`: correction retries (`attempts = max_retries + 1` max total)
@@ -248,16 +244,16 @@ Important fields:
 - Symptom: `No examples loaded. Have you downloaded the datasets?`
 - Fix: verify `data/spider` or `data/nawa` paths and expected files
 
-### OpenAI key missing in gpt4 mode
+### Copilot CLI not available in gpt4 mode
 
-- Symptom: `OPENAI_API_KEY not set`
-- Fix: export/set environment variable before running
+- Symptom: `Copilot CLI failed ...`
+- Fix: install/login to Copilot CLI and retry
 
 ## Current Scope and Notes
 
 - `agentic` mode currently executes SQL route for both Spider and NAWA.
-- Few-shot retrieval and self-correction are active in `agentic` mode.
-- `baseline` and `gpt4` modes run without the agentic retrieval/correction pipeline.
+- Few-shot retrieval and self-correction are active in `agentic` mode and partially in `baseline`.
+- `cloud` mode run without the agentic retrieval/correction pipeline.
 
 ## License
 
