@@ -13,42 +13,19 @@ What this does:
 
 import re
 import logging
-from src.llm import call_llm
-from src.utils import load_config
+from src.llm import call_copilot, call_llm
+from src.prompts import ROUTER_SYSTEM_PROMPT
 
 log = logging.getLogger(__name__)
 
 ROUTE_SQL    = "SQL"
 ROUTE_VECTOR = "VECTOR"
 ROUTE_HYBRID = "HYBRID"
+MODE_BASELINE = "baseline"
+MODE_AGENTIC  = "agentic"
+MODE_CLOUD    = "cloud"
 
-ROUTER_SYSTEM_PROMPT = """You are a query router for a database + document system.
-Your job is to classify a user question into exactly one of three routes:
-
-SQL    - The question asks for structured data that lives in a database: counts, totals,
-         filtering records, rankings, averages, finding specific entries, listing items.
-         ANY question that can be answered by querying a table belongs here.
-         Examples: "How many X", "Which X has the highest Y", "List all X where Y",
-         "What is the total X", "Find the X with Y", "How old is X", "What is the name of X"
-
-VECTOR - ONLY use this when the question EXPLICITLY asks for explanations, reasons,
-         summaries or context from written documents or reports.
-         Examples: "According to the report...", "What does the policy say about...",
-         "Summarize the document about...", "What is the reason described in..."
-
-HYBRID - ONLY use this when the question EXPLICITLY needs BOTH a database query
-         AND a document explanation in the same answer.
-         Example: "What were Q3 sales numbers AND why did they change according to the report?"
-
-Rules:
-- Reply with ONLY the single word: SQL, VECTOR, or HYBRID
-- No explanation, no punctuation, just the one word
-- DEFAULT to SQL when in any doubt — most questions are SQL questions
-- Only choose VECTOR or HYBRID if the question clearly references documents or reports
-"""
-
-
-def route(question: str, config: dict) -> str:
+def route(question: str, config: dict, mode:str) -> str:
     """
     Classifies the question into SQL, VECTOR, or HYBRID.
 
@@ -57,14 +34,22 @@ def route(question: str, config: dict) -> str:
     """
     log.info(f"Routing question: {question[:80]}...")
 
-    response = call_llm(
-        prompt=f"Question: {question}",
-        system=ROUTER_SYSTEM_PROMPT,
-        model=config["model"],
-        base_url=config["ollama_base_url"],
-        stream=False,          # routing doesn't need to be streamed
-        temperature=0.0,
-    )
+    if mode == MODE_AGENTIC:
+        response = call_llm(
+            prompt=f"Question: {question}",
+            system=ROUTER_SYSTEM_PROMPT,
+            model=config["model"],
+            base_url=config["ollama_base_url"],
+            stream=False,          # routing doesn't need to be streamed
+            temperature=0.0,
+        )
+    elif mode == MODE_CLOUD:
+        response = call_copilot(
+            prompt=f"{ROUTER_SYSTEM_PROMPT} \n\n Question: {question}",
+            model="gpt-4.1"
+        )
+    else:       
+        raise ValueError(f"Unsupported mode for routing: {mode}")
 
     response_clean = response.strip().upper()
 

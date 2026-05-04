@@ -13,10 +13,13 @@ What this does:
     3. If result sets match → correct (1), else wrong (0)
     4. Execution accuracy = correct / total questions
 """
-
+from scipy.optimize import linear_sum_assignment
+import numpy as np
+import sqlite3
+from collections import Counter
 import logging
 import math
-from typing import Literal, overload
+from typing import Literal, overload, Any, Iterable
 from src.utils import execute_sql
 
 log = logging.getLogger(__name__)
@@ -88,8 +91,6 @@ def cell_level_comparison(
     """
     gold_n = _normalize_result_rows(gold_rows)
     pred_n = _normalize_result_rows(pred_rows)
-    print(gold_n)
-    print(pred_n)
     
     # If both results are empty, treat as perfect match.
     if not gold_n and not pred_n:
@@ -104,6 +105,7 @@ def cell_level_comparison(
     gold_col_count = max((len(r) for r in gold_n), default=0)
     pred_col_count = max((len(r) for r in pred_n), default=0)
     shared_col_count = min(gold_col_count, pred_col_count)
+    print(f"Gold columns: {gold_col_count}, Predicted columns: {pred_col_count}, Shared columns: {shared_col_count}")
 
     if shared_col_count == 0:
         return {
@@ -117,37 +119,102 @@ def cell_level_comparison(
     # Sort rows so comparison is order-insensitive.
     gold_s = sorted(gold_n, key=lambda row: tuple(str(v) for v in row))
     pred_s = sorted(pred_n, key=lambda row: tuple(str(v) for v in row))
+    # print("\n===========================================")    
+    # print(f"Normalized & sorted gold result: {gold_s}")
+    # print(" ")
+    # print(f"Normalized & sorted predicted result: {pred_s}")
+    # print("===========================================\n")    
+    
+     # ------------------------------------------------------------------
+    # BUILD a similarity matrix  (gold_rows x pred_rows)
+    # Each cell = number of shared-column values that match between
+    # gold row i and predicted row j.
+    # ------------------------------------------------------------------
+    n_gold = len(gold_s)
+    n_pred = len(pred_s)
+    sim_matrix = np.zeros((n_gold, n_pred), dtype=float)
 
+    for i, g_row in enumerate(gold_s):
+        for j, p_row in enumerate(pred_s):
+            matches = sum(
+                1 for c in range(shared_col_count)
+                if values_match(g_row[c], p_row[c], num_tolerance)
+            )
+            sim_matrix[i, j] = matches
+
+    # ------------------------------------------------------------------
+    # HUNGARIAN ALGORITHM — finds the assignment of pred rows to gold
+    # rows that maximises total cell matches (overlap-aware).
+    # linear_sum_assignment minimises cost, so we negate the matrix.
+    # ------------------------------------------------------------------
+    cost_matrix = -sim_matrix
+    gold_indices, pred_indices = linear_sum_assignment(cost_matrix)
+
+    # ------------------------------------------------------------------
+    # ACCUMULATE per-column stats from the optimal row pairing
+    # ------------------------------------------------------------------
+    # Track per-column matches from matched pairs
+    col_matches = {c: 0 for c in range(shared_col_count)}
+
+    for gi, pi in zip(gold_indices, pred_indices):
+        for c in range(shared_col_count):
+            if values_match(gold_s[gi][c], pred_s[pi][c], num_tolerance):
+                col_matches[c] += 1
+
+    # Total rows considered = max(gold, pred) to penalise missing/extra rows
+    max_rows = max(n_gold, n_pred)
     details = {}
     total_cells = 0
     matching_cells = 0
-    max_rows = max(len(gold_s), len(pred_s))
-
-    for col_idx in range(shared_col_count):
-        col_matches = 0
-        col_total = max_rows
-
-        for row_idx in range(min(len(gold_s), len(pred_s))):
-            if values_match(gold_s[row_idx][col_idx], pred_s[row_idx][col_idx], num_tolerance):
-                col_matches += 1
-
-        col_name = f"col_{col_idx}"
+    
+    # details = {}
+    # total_cells = 0
+    # matching_cells = 0
+    # max_rows = max(len(gold_s), len(pred_s))
+    for c in range(shared_col_count):
+        col_name = f"col_{c}"
         details[col_name] = {
-            "matches": col_matches,
-            "total": col_total,
-            "accuracy": col_matches / col_total if col_total else 0.0,
+            "matches": col_matches[c],
+            "total": max_rows,
+            "accuracy": col_matches[c] / max_rows if max_rows else 0.0,
         }
+        matching_cells += col_matches[c]
+        total_cells += max_rows
 
-        matching_cells += col_matches
-        total_cells += col_total
+    # for col_idx in range(shared_col_count):
+    #     col_matches = 0
+    #     col_total = max_rows
 
-    return {
+    #     for row_idx in range(min(len(gold_s), len(pred_s))):
+    #         if values_match(gold_s[row_idx][col_idx], pred_s[row_idx][col_idx], num_tolerance):
+    #             col_matches += 1
+
+    #     col_name = f"col_{col_idx}"
+    #     details[col_name] = {
+    #         "matches": col_matches,
+    #         "total": col_total,
+    #         "accuracy": col_matches / col_total if col_total else 0.0,
+    #     }
+
+    #     matching_cells += col_matches
+    #     total_cells += col_total
+    acc = {
         "cell_accuracy": matching_cells / total_cells if total_cells else 0.0,
         "shared_columns": [f"col_{i}" for i in range(shared_col_count)],
         "missing_columns_in_pred": [f"col_{i}" for i in range(shared_col_count, gold_col_count)],
         "extra_columns_in_pred": [f"col_{i}" for i in range(shared_col_count, pred_col_count)],
         "details": details,
     }
+    # print each item in acc in a line for debugging
+    # for k, v in acc.items():
+    #     if k != "details":
+    #         print(f"{k}: {v}")
+    #     else:
+    #         for col, stats in v.items():
+    #             print(f"  {col}: {stats}")
+    # print("===========================================")    
+
+    return acc
 
 
 @overload
@@ -176,7 +243,7 @@ def execution_accuracy(
     gold_sql: str,
     predicted_sql: str,
     db_path: str,
-    similarity_threshold: float = 0.8,
+    similarity_threshold: float = 1.0,
     num_tolerance: float = 0.05,
     return_similarity: bool = False,
 ) -> bool | tuple[bool, float]:
@@ -191,7 +258,7 @@ def execution_accuracy(
     - Optionally returns (is_correct, similarity)
     """
     # Run gold SQL
-    gold_ok, gold_result = execute_sql(db_path, gold_sql)
+    gold_ok, gold_result = execute_query(db_path, gold_sql) #execute_sql(db_path, gold_sql)
     if not gold_ok:
         log.warning(f"Gold SQL failed: {gold_result}")
         if return_similarity:
@@ -199,20 +266,125 @@ def execution_accuracy(
         return False
 
     # Run predicted SQL
-    pred_ok, pred_result = execute_sql(db_path, predicted_sql)
+    pred_ok, pred_result = execute_query(db_path, predicted_sql) #execute_sql(db_path, predicted_sql)
     if not pred_ok:
         if return_similarity:
             return False, 0.0
         return False
 
-    comparison = cell_level_comparison(gold_result, pred_result, num_tolerance=num_tolerance)
-    similarity = comparison.get("cell_accuracy", 0.0)
+    # print("\n===========================================")
+    # print("Gold result:", gold_result)
+    # print(" ")
+    # print("Predicted result:", pred_result)
+    # print("===========================================\n")
+    comparison = compare_results(gold_result, pred_result) # cell_level_comparison(gold_result, pred_result, num_tolerance=num_tolerance)
+    print(f"Cell-level comparison details: {comparison}")
+    similarity = comparison.get("query_similarity", 0.0)
     is_correct = similarity >= similarity_threshold
     if return_similarity:
         return is_correct, similarity
     return is_correct
 
+# _____________________________________
+# New accuracy 
+# _____________________________________
+def normalize_value(value: Any) -> Any:
+    """Normalize SQLite values so they can be compared reliably."""
+    if value is None:
+        return "__NULL__"
+    if isinstance(value, bytes):
+        return value.hex()
+    if isinstance(value, float):
+        if math.isnan(value):
+            return "__NAN__"
+        if math.isinf(value):
+            return "__INF__" if value > 0 else "__NEG_INF__"
+    return value
 
+
+def normalize_row(row: Iterable[Any]) -> tuple[Any, ...]:
+    return tuple(normalize_value(v) for v in row)
+
+
+def execute_query(db_path: str, query: str) -> tuple[bool, Any]:
+    conn = sqlite3.connect(db_path)
+    try:
+        cur = conn.cursor()
+        cur.execute(query)
+        rows = cur.fetchall()
+        columns = [desc[0] if desc and desc[0] is not None else "" for desc in (cur.description or [])]
+        norm_rows = [normalize_row(r) for r in rows]
+        return True, {
+            "columns": columns,
+            "rows": rows,
+            "normalized_rows": norm_rows,
+        }
+    except sqlite3.Error as e:
+        return False, str(e)
+    except Exception as e:
+        return False, f"Unexpected error: {e}"
+    finally:
+        conn.close()
+
+
+def multiset_similarity(a: Counter, b: Counter) -> float:
+    """Return overlap percentage between two multisets."""
+    total_a = sum(a.values())
+    total_b = sum(b.values())
+    if total_a == 0 and total_b == 0:
+        return 100.0
+    overlap = sum((a & b).values())
+    denom = max(total_a, total_b)
+    return (overlap / denom) * 100.0
+
+
+def flatten_rows(rows: list[tuple[Any, ...]]) -> list[Any]:
+    values: list[Any] = []
+    for row in rows:
+        values.extend(row)
+    return values
+
+
+def compare_results(res1: dict[str, Any], res2: dict[str, Any]) -> dict[str, Any]:
+    cols1 = res1["columns"]
+    cols2 = res2["columns"]
+    rows1 = res1["normalized_rows"]
+    rows2 = res2["normalized_rows"]
+
+    strict_same = cols1 == cols2 and rows1 == rows2
+
+    row_counter_1 = Counter(rows1)
+    row_counter_2 = Counter(rows2)
+    row_similarity = multiset_similarity(row_counter_1, row_counter_2)
+
+    cell_counter_1 = Counter(flatten_rows(rows1))
+    cell_counter_2 = Counter(flatten_rows(rows2))
+    cell_similarity = multiset_similarity(cell_counter_1, cell_counter_2)
+
+    header_counter_1 = Counter(c.strip().lower() for c in cols1)
+    header_counter_2 = Counter(c.strip().lower() for c in cols2)
+    header_similarity = multiset_similarity(header_counter_1, header_counter_2)
+
+    # Data should drive the score most, because headers can differ while values match.
+    overall_similarity = round((0.8 * row_similarity) + (0.2 * cell_similarity), 2)
+
+    same_data_different_headers = (
+        not strict_same
+        and row_similarity == 100.0
+        and cell_similarity == 100.0
+        and header_similarity < 100.0
+    )
+    return {
+        "strictly_same": strict_same,
+        "query_correct": same_data_different_headers,
+        "query_similarity": overall_similarity,
+        "query_details": {
+            "row_similarity_percent": round(row_similarity, 2),
+            "cell_similarity_percent": round(cell_similarity, 2),
+            "header_similarity_percent": round(header_similarity, 2),
+        },
+    }
+    
 def _normalize_doc_name(name: str) -> str:
     name = (name or "").strip().lower()
     if name.endswith(".pdf"):
@@ -275,7 +447,18 @@ def compute_metrics(results: list[dict]) -> dict:
     max_points    = sum(r.get("max_points", 0) for r in results)
     route_only_correct = sum(1 for r in results if r.get("correct", False))
     failed_exec = sum(1 for r in results if r.get("query_correct") is False and r.get("success") is False)
-
+    # r["judge"]["score"] is faithfullness score from judge, we can also compute average faithfulness if needed.
+    faithfulness_scored: list[float] = []
+    avg_faithfulness = None
+    if r.get("judge", None):
+        for r in results:        
+            judge = r.get("judge", {})
+            score = judge.get("score")
+            if isinstance(score, (int, float)):
+                faithfulness_scored.append(float(score))
+        avg_faithfulness = round(sum(faithfulness_scored) / len(faithfulness_scored), 4)
+        
+    
     return {
         "overall_score_pct": round(points_earned / max_points * 100, 2) if max_points else 0,
         "points_earned": points_earned,
@@ -297,4 +480,5 @@ def compute_metrics(results: list[dict]) -> dict:
         # Backward-compatible field name now maps to route+query+docs point correctness.
         "execution_accuracy": round(points_earned / max_points * 100, 2) if max_points else 0,
         "correct": route_only_correct,
+        "avg_faithfulness": avg_faithfulness,
     }

@@ -25,24 +25,35 @@ What this does:
 
 import logging
 from pathlib import Path
-from src.llm import call_llm
+from src.llm import call_copilot, call_llm
 from src.utils import execute_sql, extract_sql
+from src.prompts import CORRECTION_SYSTEM_PROMPT
 
 log = logging.getLogger(__name__)
 
-CORRECTION_SYSTEM_PROMPT = """You are an expert SQL debugger.
-You will be given a natural language question, a SQL query that failed,
-and the error message it produced.
+def generate_sql_gpt4(
+    question: str,
+    schema: str,
+    db_path: str,
+    few_shot_prompt: str = '',
+    model: str = "gpt-4.1",
+) -> dict:
+    """
+    Generates a SQL query using GPT-4.
 
-Your task: write a corrected SQL query that fixes the error and answers the question.
+    Returns a dict with:
+      - sql:      the final SQL query
+      - success:  True if the query executed without error
+      - result:   the result rows (or error string)
+    """
+    company_name = _extract_company_name(db_path)
 
-Rules:
-- Output ONLY the SQL query, nothing else
-- Do not explain the error, do not apologize
-- The corrected query must be valid SQLite syntax
-- Use only columns and tables that exist in the schema provided
-"""
+    prompt    = _build_generation_prompt(question, schema, few_shot_prompt, company_name=company_name)
+    raw_sql   = _call_and_extract_gpt4(prompt, model)
+    success, result = execute_sql(db_path, raw_sql)
 
+    return {"sql": raw_sql, "success": success, "result": result, "attempts": 1}
+    
 
 def generate_and_correct(
     question: str,
@@ -86,7 +97,7 @@ def generate_and_correct(
         correction_prompt = _build_correction_prompt(
             question, schema, current_sql, current_error, company_name=company_name
         )
-        corrected_sql           = _call_and_extract(correction_prompt, model, base_url)
+        corrected_sql           = _call_and_extract(correction_prompt, model, base_url, system_prompt=CORRECTION_SYSTEM_PROMPT)
         success, result         = execute_sql(db_path, corrected_sql)
 
         if success:
@@ -168,7 +179,6 @@ def _build_generation_prompt(
       3. User question
     """
     parts = [
-        "/no_think",
         "=== Model Objective/Context ===",
         "You are an expert at translating questions into SQLite SQL.",
         "",
@@ -185,7 +195,7 @@ def _build_generation_prompt(
 
     parts += _build_company_context(company_name)
 
-    if few_shot_prompt:
+    if few_shot_prompt and few_shot_prompt.strip() != "":
         parts += [
             "=== Examples ===",
             few_shot_prompt,
@@ -195,7 +205,7 @@ def _build_generation_prompt(
         "=== Question to Answer ===",
         f"Question: {question}",
         "",
-        "=== SQL Query ===",
+        "SQL:",
     ]
     return "\n".join(parts)
 
@@ -237,16 +247,27 @@ def _build_correction_prompt(
 Fix the SQL query so it runs correctly. Output ONLY the corrected SQL."""
 
 
-def _call_and_extract(prompt: str, model: str, base_url: str) -> str:
+def _call_and_extract(prompt: str, model: str, base_url: str, system_prompt: str = "") -> str:
     """
     Calls the LLM and extracts the SQL from the response.
     """
+
     response = call_llm(
         prompt=prompt,
-        system=CORRECTION_SYSTEM_PROMPT,
+        system=system_prompt,
         model=model,
         base_url=base_url,
         stream=True,
         temperature=0.0,
+    )
+    return extract_sql(response)
+
+def _call_and_extract_gpt4(prompt: str, model: str, system_prompt: str = "") -> str:
+    """
+    Calls the GPT-4 model and extracts the SQL from the response.
+    """
+    response = call_copilot(
+        prompt=prompt,
+        model=model
     )
     return extract_sql(response)

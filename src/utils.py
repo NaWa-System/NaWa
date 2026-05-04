@@ -17,6 +17,8 @@ import logging
 from pathlib import Path
 from typing import Any, Optional
 
+from src.router import ROUTE_SQL
+
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 log = logging.getLogger(__name__)
 
@@ -26,9 +28,8 @@ log = logging.getLogger(__name__)
 # ─────────────────────────────────────────────
 
 def load_config(path: str = "configs/config.yaml") -> dict:
-    with open(path, "r") as f:
+    with open(path, "r",encoding="utf-8") as f:
         return yaml.safe_load(f)
-
 
 # ─────────────────────────────────────────────
 # Schema loading
@@ -111,7 +112,12 @@ def execute_sql(db_path: str, query: str, timeout: int = 10) -> tuple[bool, Any]
         rows = cursor.fetchall()
         conn.close()
         # Convert Row objects to plain tuples for easy comparison
-        result = [tuple(row) for row in rows]
+        # include column names as the first row for better context in the answer generation step
+        if not rows:
+            return True, []  # Return empty list if no results
+        column_names = rows[0].keys()
+        result = [tuple(column_names)] + [tuple(row) for row in rows]
+
         return True, result
     except sqlite3.Error as e:
         return False, str(e)
@@ -141,7 +147,7 @@ def load_spider_dev(spider_dir: str, sample_size: Optional[int] = None, seed: in
         log.error(f"Spider dev.json not found at {dev_path}. Run setup/download_data.py first.")
         return []
 
-    with open(dev_path, "r") as f:
+    with open(dev_path, "r",encoding="utf-8") as f:
         data = json.load(f)
 
     examples = []
@@ -179,7 +185,7 @@ def load_spider_train(spider_dir: str) -> list[dict]:
         log.error(f"Spider train_spider.json not found at {train_path}")
         return []
 
-    with open(train_path, "r") as f:
+    with open(train_path, "r",encoding="utf-8") as f:
         data = json.load(f)
 
     examples = []
@@ -199,7 +205,7 @@ def load_spider_train(spider_dir: str) -> list[dict]:
 # ─────────────────────────────────────────────
 # NAWA dataset loader
 # ─────────────────────────────────────────────
-def load_nawa_dev(nawa_dir: str, sample_size: Optional[int] = None, seed: int = 42) -> list[dict]:
+def load_nawa_dev(nawa_dir: str, sample_size: int = 50, seed: int = 42, start_index: int = -1) -> list[dict]:
     """
     Loads NAWA development questions.
 
@@ -212,7 +218,7 @@ def load_nawa_dev(nawa_dir: str, sample_size: Optional[int] = None, seed: int = 
         log.error(f"NAWA dev.json not found at {dev_path}.")
         return []
 
-    with open(dev_path, "r") as f:
+    with open(dev_path, "r",encoding="utf-8") as f:
         data = json.load(f)
 
     examples = []
@@ -239,11 +245,16 @@ def load_nawa_dev(nawa_dir: str, sample_size: Optional[int] = None, seed: int = 
             "route":               gold_route,
             "relevant_documents":  item.get("relevant_documents", []),
         })
-
-    if sample_size and sample_size < len(examples):
+    print(f"index: {start_index}")
+    if start_index != -1:
+        print(f"Selecting examples from index {start_index} to {start_index + sample_size}")
+        examples = examples[start_index:start_index+sample_size]
+        
+    elif sample_size and sample_size < len(examples) and start_index == -1:
         random.seed(seed)
         examples = random.sample(examples, sample_size)
 
+        
     log.info(f"Loaded {len(examples)} NAWA dev examples")
     return examples
 
@@ -258,7 +269,7 @@ def load_nawa_train(nawa_dir: str) -> list[dict]:
         log.error(f"NAWA train.json not found at {train_path}")
         return []
 
-    with open(train_path, "r") as f:
+    with open(train_path, "r",encoding="utf-8") as f:
         data = json.load(f)
 
     examples = []
@@ -310,3 +321,14 @@ def extract_sql(text: str) -> str:
 
     # Return the raw text as last resort
     return text.strip()
+
+# ─────────────────────────────────────────────
+# Results evaluation and experiment utilities
+# ─────────────────────────────────────────────
+
+def correct_route(ex, output):
+    print("correct_route")
+    predicted_route = output.lower()
+    gold_route      = ex.get("route", ROUTE_SQL).lower()
+
+    return predicted_route == gold_route
