@@ -86,8 +86,8 @@ def test_schema_loader():
     os.remove(tmp)
 
 def test_embedding_model(config):
-    from sentence_transformers import SentenceTransformer
-    model = SentenceTransformer(config["embedding_model"])
+    from src.embeddings import load_embedding_model
+    model = load_embedding_model(config)
     vec = model.encode("How many employees work in Sales?")
     assert len(vec) == 384, f"Expected 384 dims, got {len(vec)}"
     print(f"  {OK} Embedding model loaded — vector dim={len(vec)}")

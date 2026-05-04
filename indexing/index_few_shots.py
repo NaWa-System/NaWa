@@ -6,7 +6,7 @@ Run this ONCE before any evaluation:
 
 What it does:
   1. Loads all training examples from Spider / NaWa
-  2. Embeds each question using all-MiniLM-L6-v2
+  2. Embeds each question using embedding model in set config.yaml
   3. Stores question + SQL + db_id in a ChromaDB collection
 
 After this runs, the few_shot_retriever can query it at inference time.

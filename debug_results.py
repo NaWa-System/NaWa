@@ -12,7 +12,7 @@ import os
 
 
 def analyze(path: str):
-    with open(path) as f:
+    with open(path,encoding="utf-8") as f:
         data = json.load(f)
 
     metrics = data["metrics"]
@@ -24,7 +24,7 @@ def analyze(path: str):
     print(f"  Execution Accuracy : {metrics['execution_accuracy']}%")
     print(f"  Correct            : {metrics['correct']} / {metrics['total']}")
     print(f"  Failed execution   : {metrics['failed_execution']}")
-    print(f"  Avg attempts       : {metrics.get('avg_attempts', 'N/A')}")
+    print(f"  Avg attempts       : {metrics.get('avg_attempts', "")}")
 
     # Route breakdown
     routes = {}
@@ -72,9 +72,9 @@ def analyze(path: str):
 
 
 def compare(path_a: str, path_b: str):
-    with open(path_a) as f:
+    with open(path_a,encoding="utf-8") as f:
         a = json.load(f)
-    with open(path_b) as f:
+    with open(path_b,encoding="utf-8") as f:
         b = json.load(f)
 
     results_a = {r["question"]: r for r in a["results"]}

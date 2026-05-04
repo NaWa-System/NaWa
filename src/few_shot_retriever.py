@@ -89,8 +89,7 @@ def retrieve(
         return []
 
     # Mask the question before embedding
-    masked_question = mask_question(question, schema)
-    log.debug(f"Masked question: {masked_question}")
+    masked_question = question #mask_question(question, schema)
 
     # Embed and search
     model = load_embedding_model(config)
@@ -137,5 +136,4 @@ def format_examples_for_prompt(examples: list[dict]) -> str:
         lines.append(f"SQL: {ex['sql']}")
         lines.append("")
     # print(f"Formatted few-shot prompt:\n{lines}")
-
     return "\n".join(lines)

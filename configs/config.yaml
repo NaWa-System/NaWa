@@ -5,11 +5,11 @@
 # LLM (via Ollama)
 model: 'qwen3.5:9b' # local SLM for routing + generation
 model_alt: 'qwen3:8b' # second SLM for comparison runs
-gpt4_model: 'gpt-4o' # cloud upper-bound reference
+copilot_model: 'gpt-4.1' # model used in gpt4 mode via Copilot CLI
 
 # Embedding model (sentence-transformers, runs locally)
-embedding_model: 'all-MiniLM-L6-v2'
-embedding_local_path: 'models/all-MiniLM-L6-v2' # one-time downloaded model folder
+embedding_model: 'BAAI/bge-large-en-v1.5'
+embedding_local_path: 'models/bge-large-en-v1.5' # one-time downloaded model folder
 embedding_local_only: true # never download at runtime; fail if local model is missing
 embedding_quiet: true # suppress embedding progress bars in runtime
 
@@ -18,7 +18,7 @@ k_few_shot: 3 # number of examples retrieved per query
 similarity_threshold: 0.0 # minimum cosine similarity (0.0 = no filter)
 
 # Document retrieval
-top_k_docs: 5 # number of PDF chunks retrieved per query
+top_k_docs: 3 # number of PDF chunks retrieved per query
 chunk_size: 512 # tokens per chunk
 chunk_overlap: 50 # overlap between chunks
 
@@ -27,7 +27,7 @@ max_retries: 3 # maximum correction attempts per query
 
 # Evaluation
 eval_sample_size: 200 # number of dev questions to evaluate (random sample)
-eval_random_seed: 42 # fixed seed for reproducibility
+eval_random_seed: 80 # fixed seed for reproducibility
 
 # Ollama
 ollama_base_url: 'http://localhost:11434'

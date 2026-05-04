@@ -7,7 +7,7 @@ Run this ONCE after adding PDF files to data/documents/:
 What it does:
   1. Reads all PDF files from data/documents/
   2. Splits each PDF into overlapping text chunks (512 tokens, 50 overlap)
-  3. Embeds each chunk using all-MiniLM-L6-v2
+  3. Embeds each chunk using embedding model in set config.yaml
   4. Stores in ChromaDB collection 'document_store'
 
 At query time, the pipeline embeds the user question and retrieves
@@ -139,7 +139,7 @@ def query_documents(question: str, config: dict, k: int | None = None) -> list[d
     Returns list of dicts with 'text', 'source', 'score'.
     """
     store_path = config.get("document_store", "vector_stores/document_store")
-    k          = k or config.get("top_k_docs", 5)
+    k          = k or config.get("top_k_docs", 3)
 
     client     = chromadb.PersistentClient(path=store_path)
     collection = client.get_or_create_collection(
