@@ -27,7 +27,7 @@ max_retries: 3 # maximum correction attempts per query
 
 # Evaluation
 eval_sample_size: 200 # number of dev questions to evaluate (random sample)
-eval_random_seed: 80 # fixed seed for reproducibility
+eval_random_seed: 77 # fixed seed for reproducibility
 
 # Ollama
 ollama_base_url: 'http://localhost:11434'

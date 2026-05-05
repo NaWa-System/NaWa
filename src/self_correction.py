@@ -187,6 +187,7 @@ def _build_generation_prompt(
         "2) Generate a SQLite SQL query that answers the question under User Question.",
         "3) Make sure to understand the User Question.",
         "4) Output ONLY the SQL query, nothing else.",
+        "5) Give meaningful column aliases, so that the output is easy to understand.",
         "",
         "=== Database Schema ===",
         schema,

@@ -32,9 +32,7 @@ def route(question: str, config: dict, mode:str) -> str:
     Returns one of: "SQL", "VECTOR", "HYBRID"
     Falls back to "HYBRID" if the model gives an unclear response.
     """
-    log.info(f"Routing question: {question[:80]}...")
-
-    if mode == MODE_AGENTIC:
+    if mode == MODE_AGENTIC or mode == MODE_BASELINE:
         response = call_llm(
             prompt=f"Question: {question}",
             system=ROUTER_SYSTEM_PROMPT,
@@ -65,7 +63,7 @@ def route(question: str, config: dict, mode:str) -> str:
         route_label = _heuristic_route(question)
         log.warning(f"Model gave unclear route '{response}', using heuristic: {route_label}")
 
-    log.info(f"Route: {route_label}")
+    log.info(f"Predicted Route: {route_label}")
     return route_label
 
 

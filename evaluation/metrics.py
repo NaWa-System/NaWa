@@ -19,6 +19,7 @@ import sqlite3
 from collections import Counter
 import logging
 import math
+import re
 from typing import Literal, overload, Any, Iterable
 from src.utils import execute_sql
 
@@ -307,8 +308,14 @@ def normalize_row(row: Iterable[Any]) -> tuple[Any, ...]:
 
 
 def execute_query(db_path: str, query: str) -> tuple[bool, Any]:
+
     conn = sqlite3.connect(db_path)
     try:
+        query = re.sub(
+            r'(?i)(\bWHERE\b.*?)\s*=\s*',  # match = after WHERE
+            lambda m: m.group(0).replace('<>', 'NOT LIKE').replace('!=', 'NOT LIKE').replace(' = ', ' LIKE '),  # replace = with LIKE and != with NOT LIKE    
+            query
+        )
         cur = conn.cursor()
         cur.execute(query)
         rows = cur.fetchall()

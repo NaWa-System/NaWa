@@ -105,7 +105,7 @@ def call_llm(
         in_thinking = False  # tracks whether we've printed the "Thinking:" header
 
         try:
-            with urllib.request.urlopen(req, timeout=120) as response:
+            with urllib.request.urlopen(req, timeout=240) as response:
                 if stream:
                     for line in response:
                         line = line.decode("utf-8").strip()
@@ -217,7 +217,7 @@ def call_copilot(prompt: str, model: str = "gpt-4.1", params: list[str] | None =
     ]
     if params:
         cmd.extend(params)
-    proc = subprocess.run(cmd, capture_output=True, text=True, check=False, timeout=180)
+    proc = subprocess.run(cmd, capture_output=True, text=True, check=False, timeout=180, encoding="utf-8", errors="replace")
     if proc.returncode != 0:
         stderr = (proc.stderr or "").strip()
         raise RuntimeError(f"Copilot CLI failed with code {proc.returncode}: {stderr}")

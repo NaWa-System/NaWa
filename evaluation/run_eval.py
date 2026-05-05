@@ -52,6 +52,8 @@ def main():
                         help="Override the model name (e.g. qwen3.5:9b)")
     parser.add_argument("--config",  type=str, default="configs/config.yaml",
                         help="Path to config file")
+    parser.add_argument("--judge",  type=bool, default=False,
+                        help="Whether to run faithfulness judge (only for agentic/cloud modes and when route is correct)")
     args = parser.parse_args()
 
     config = load_config(args.config)
@@ -83,7 +85,7 @@ def main():
         log.error("Run: python setup/download_data.py")
         sys.exit(1)
 
-    active_model = config.get("copilot_model") if args.model == MODE_CLOUD else config.get("model")
+    active_model = config.get("copilot_model") if args.mode == MODE_CLOUD else config.get("model")
 
     log.info(f"\n{'='*50}")
     log.info(f"Mode:    {args.mode}")
@@ -93,18 +95,31 @@ def main():
     log.info(f"{'='*50}\n")
 
     results = []
-    scanned = ['For Kestrel & Coil Home Systems, what is the most common service ticket issue category in Q1 2026, and how does the Warranty & Service Operations Review describe the operational impact of that category?', 'How much shipping fee revenue did ThreadHarbor Commerce GmbH collect in Q1 2026?', 'How many support tickets are currently open at Corepath Technologies?', 'In the Sales & Margin Performance report for ThreadHarbor Commerce GmbH, what categories were described as core revenue drivers?', "What recommended next analysis items are listed in the appendix of AegisNorth Protective Services' finance report?", "According to AegisNorth Protective Services' Q1 2026 operations report, what was the main reason incident reporting was concentrated at specific sites?", 'How many contracted vehicles does each Parcela Swift depot have, and what does the operations report say about the risks of contracted fleet dependency?', 'In Q1 2026, which brands sold the most units for ThreadHarbor Commerce GmbH?', 'How many incidents were resolved in Q1 2026 for AegisNorth Protective Services?', 'How much warranty revenue did LumenForge Displayworks generate in Q1 2026, and which report discusses that warranty revenue is concentrated in Direct Online transactions?', 'What is the total sales revenue per product category for Corepath Technologies?', 'Which client generated the most estimated revenue in Q1 2026 for AegisNorth Protective Services?', 'Which parts categories have the highest total extended_price for NordHearth Scania Fleet Services (all work orders)?', 'What is the split between Fixed-Fee and Time-and-Materials projects at Nexlayer Consulting Group?', 'In Q1 2026, which work_order_type was most common for Nordwave projects?', 'In Q1 2026, how many ThreadHarbor Commerce GmbH orders were placed via Web vs Mobile?', 'For Kestrel & Coil Home Systems, what is the estimated COGS for delivered units in Q1 2026 (using products.unit_cost * quantity)?', "From Nordhaven RockTech Industries' Q1 2026 Operations report, what limitations were called out that prevent deeper root-cause analysis?", 'What is the shipment count and total revenue per service type at Parcela Swift, and which report explains the strategic importance of the top-earning service?', "What were the key findings in Corepath Technologies' Q1-Q2 2024 hardware sales performance?", 'In Q1 2026, how did LumenForge Displayworks revenue and order count split between Consumer vs Business customers?', 'For Nordhaven RockTech Industries, which product category had the highest average discount in Q1 2026 shipped orders?', 'In Q1 2026, how many delivered tons did Northforge Steelworks AB ship by customer region?', 'What capacity risks did Nexlayer Consulting Group identify in its operations report?', 'For Nordhaven RockTech Industries, which product categories generated the most shipped revenue in Q1 2026?']
+    scanned = ['What are the first names of all players, and their total ranking points?',"List the first and last name of all players in the order of birth date."]
+    filter = ["What are the names of the people who teach math courses?",
+              "Count the number of dogs of an age below the average.",
+              "Which shops run with no employees? Find the shop names",
+              "How many owners temporarily do not have any dogs?",
+              "Give the total population and average surface area corresponding to countries in North America that have a surface area greater than 3000 .","Show the date of the transcript which shows the least number of results, also list the id.","What is the maker of the carr produced in the earliest year and what year was it?","Find the model of the car whose weight is below the average weight.","What are the last name of the students who live in North Carolina but have not registered in any degree programs?","List the first and last name of all players in the order of birth date.","What are the ids of all tv channels that have more than 2 TV channels?","Find the first name of students who have cat or dog pet.","Which unique cities are in Asian countries where Chinese is the official language ?","What are all the song names by singers who are older than average?","Find the number of dog pets that are raised by female students (with sex F).","What is the id of the semester that had both Masters and Bachelors students enrolled?","What is the ship id and name that caused most total injuries?","Which dogs are of the rarest breed? Show their names and treatment dates.","Show paragraph details for paragraph with text 'Korea ' .","List the names of the dogs of the rarest breed and the treatment dates of them.","What are flight numbers of Airline \"United Airlines\"?","What is the count of the car models produced in the United States?"]
     stopped_at = 0
+    breakit = False
     for i, ex in enumerate(examples):
-        if ex.get("question") in scanned:
-            stopped_at += 1
+        if ex.get("question") in scanned: 
             continue
-
+        # if ex.get("question") not in scanned and breakit == False:
+        #     # stopped_at += 1
+        #     continue
+        # elif ex.get("question") in scanned and breakit == False:
+        #     # stopped_at += 1
+        #     breakit = True
+        #     continue
+  
         log.info(f"\n[{i+1}/{len(examples)}] {ex['question']}")
         log.info(f"DB: {ex['db_id']}")
-
+        # exit(0)
         try:
-            mainoutput = run(
+            judge = {}
+            output = run(
                 ex = ex,
                 question = ex["question"],
                 db_path  = ex["db_path"],
@@ -113,125 +128,125 @@ def main():
                 dataset  = args.dataset,
                 evaluate = True,
             )
-            if args.mode == MODE_BASELINE:
-                outputs_to_evaluate = list(mainoutput.items())
-            else:
-                outputs_to_evaluate = [(args.mode, mainoutput)]    
+            # if args.mode == MODE_BASELINE:
+            #     outputs_to_evaluate = list(mainoutput.items())
+            # else:
+            #     outputs_to_evaluate = [(args.mode, mainoutput)]    
                 
-            for label, output in outputs_to_evaluate:
+            # for label, output in outputs_to_evaluate:
 
-                predicted_route = output.get("route")
-                gold_route      = ex.get("route", ROUTE_SQL)
+            predicted_route = output.get("route")
+            gold_route      = ex.get("route", ROUTE_SQL)
 
-                route_correct = (predicted_route == gold_route)
+            route_correct = (predicted_route == gold_route)
 
-                # Evaluate SQL only when router selected SQL/HYBRID and a SQL gold answer exists.
-                query_correct = None
-                query_similarity = None
-                if predicted_route in (ROUTE_SQL, ROUTE_HYBRID) and ex.get("gold_sql") and ex.get("db_path"):
-                    query_correct, query_similarity = execution_accuracy(
-                        gold_sql      = ex["gold_sql"],
-                        predicted_sql = output.get("sql", ""),
-                        db_path       = ex["db_path"],
-                        return_similarity=True,
-                    )
-
-                # Evaluate retrieved sources only when router selected VECTOR/HYBRID.
-                docs_correct = None
-                retrieved_chunks = output.get("retrieved_chunks", []) or []
-                if predicted_route in (ROUTE_VECTOR, ROUTE_HYBRID):
-                    docs_correct = document_retrieval_hit(
-                        retrieved_chunks=retrieved_chunks,
-                        relevant_documents=ex.get("relevant_documents", []),
-                    )
-
-                # Route-dependent max points based on gold route.
-                route_point = 1 if route_correct else 0
-                query_point = 0
-                docs_point  = 0
-
-                if gold_route in (ROUTE_SQL, ROUTE_HYBRID) and query_correct is True:
-                    query_point = 1
-                if gold_route in (ROUTE_VECTOR, ROUTE_HYBRID) and docs_correct is True:
-                    docs_point = 1
-
-                if gold_route == ROUTE_HYBRID:
-                    max_points = 3
-                elif gold_route in (ROUTE_SQL, ROUTE_VECTOR):
-                    max_points = 2
-                else:
-                    max_points = 1
-
-                points_earned = route_point + query_point + docs_point
-                correct = (points_earned == max_points)
-                # exit(0) # for quick testing of metrics calculation and result saving without running the full evaluation.
-                judge={}
-                if route_correct and args.mode != MODE_BASELINE:
-                    ctx = output.get("context", "") + "\n\n" + str(output.get("result", []))
-                    judge = faithfulness_judge(ctx, output.get("answer", ""),model="gpt-4.1", timeout=60)
-                    
-                record = {
-                    "question":             ex["question"],
-                    "db_id":                ex["db_id"],
-                    "gold_sql":             ex["gold_sql"],
-                    "predicted_sql":        output.get("sql"),
-                    "route":                predicted_route,
-                    "gold_route":           gold_route,
-                    "route_correct":        route_correct,
-                    "query_correct":        query_correct,
-                    "query_similarity":     query_similarity,
-                    "docs_correct":         docs_correct,
-                    "relevant_documents":   ex.get("relevant_documents", []),
-                    "retrieved_sources":    [c.get("source", "") for c in retrieved_chunks],
-                    "success":              output.get("success"),
-                    "attempts":             output.get("attempts", 1),
-                    "correct":              correct,
-                    "points_earned":        points_earned,
-                    "max_points":           max_points,
-                    "mode":                 args.mode,
-                    "dataset":              args.dataset,
-                    "latency":              output.get("latency", {}),
-                    "judge":                judge,
-                    "answer":               output.get("answer", ""),
-                    "context":              output.get("context", ""),
-                    "db_data":              [list(row) for row in output.get("result", [])],
-                }
-                results.append(record)
-                stopped_at += 1
-
-                status = "✓" if correct else "✗"
-                log.info(
-                    f"  {status} Route={predicted_route} (gold={gold_route}) "
-                    f"RouteOK={route_correct} QueryOK={query_correct} QuerySim={query_similarity} DocsOK={docs_correct} "
-                    f"Points={points_earned}/{max_points} Attempts={output.get('attempts',1)}"
+            # Evaluate SQL only when router selected SQL/HYBRID and a SQL gold answer exists.
+            query_correct = None
+            query_similarity = None
+            if predicted_route in (ROUTE_SQL, ROUTE_HYBRID) and ex.get("gold_sql") and ex.get("db_path"):
+                query_correct, query_similarity = execution_accuracy(
+                    gold_sql      = ex["gold_sql"],
+                    predicted_sql = output.get("sql", ""),
+                    db_path       = ex["db_path"],
+                    return_similarity=True,
                 )
 
-        except Exception as e:
-            log.error(f"  ERROR on question {i+1} ({start_index+i+1}): {e}")
-            gold_route = ex.get("route", ROUTE_SQL)
-            max_points = 3 if gold_route == ROUTE_HYBRID else 2
-            results.append({
-                "flag" : "error",
-                "question": ex["question"],
-                "db_id":    ex["db_id"],
-                "gold_sql": ex["gold_sql"],
-                "route": predicted_route,
-                "gold_route": gold_route,
-                "route_correct": False,
-                "query_correct": False if gold_route in (ROUTE_SQL, ROUTE_HYBRID) else None,
-                "query_similarity": 0.0 if gold_route in (ROUTE_SQL, ROUTE_HYBRID) else None,
-                "docs_correct": False if gold_route in (ROUTE_VECTOR, ROUTE_HYBRID) else None,
-                "error":    str(e),
-                "correct":  False,
-                "points_earned": 0,
-                "max_points": max_points,
-                "mode":     args.mode,
-                "dataset":  args.dataset,
+            # Evaluate retrieved sources only when router selected VECTOR/HYBRID.
+            docs_correct = None
+            retrieved_chunks = output.get("retrieved_chunks", []) or []
+            if predicted_route in (ROUTE_VECTOR, ROUTE_HYBRID):
+                docs_correct = document_retrieval_hit(
+                    retrieved_chunks=retrieved_chunks,
+                    relevant_documents=ex.get("relevant_documents", []),
+                )
+
+            # Route-dependent max points based on gold route.
+            route_point = 1 if route_correct else 0
+            query_point = 0
+            docs_point  = 0
+
+            if gold_route in (ROUTE_SQL, ROUTE_HYBRID) and query_correct is True:
+                query_point = 1
+            if gold_route in (ROUTE_VECTOR, ROUTE_HYBRID) and docs_correct is True:
+                docs_point = 1
+
+            if gold_route == ROUTE_HYBRID:
+                max_points = 3
+            elif gold_route in (ROUTE_SQL, ROUTE_VECTOR):
+                max_points = 2
+            else:
+                max_points = 1
+
+            points_earned = route_point + query_point + docs_point
+            correct = (points_earned == max_points)
+            # exit(0) # for quick testing of metrics calculation and result saving without running the full evaluation.
+            if route_correct and args.mode != MODE_BASELINE and args.judge:
+                ctx = output.get("context", "") + "\n\n" + str(output.get("result", []))
+                judge = faithfulness_judge(ctx, output.get("answer", ""),model="gpt-4.1", timeout=60)
+                
+            record = {
+                "question":             ex["question"],
+                "db_id":                ex["db_id"],
+                "gold_sql":             ex["gold_sql"],
+                "predicted_sql":        output.get("sql"),
+                "route":                predicted_route,
+                "gold_route":           gold_route,
+                "route_correct":        route_correct,
+                "query_correct":        query_correct,
+                "query_similarity":     query_similarity,
+                "docs_correct":         docs_correct,
+                "relevant_documents":   ex.get("relevant_documents", []),
+                "retrieved_sources":    [c.get("source", "") for c in retrieved_chunks],
+                "success":              output.get("success"),
+                "attempts":             output.get("attempts", 1),
+                "correct":              correct,
+                "points_earned":        points_earned,
+                "max_points":           max_points,
+                "mode":                 args.mode,
+                "dataset":              args.dataset,
                 "latency":              output.get("latency", {}),
                 "judge":                judge,
                 "answer":               output.get("answer", ""),
                 "context":              output.get("context", ""),
                 "db_data":              [list(row) for row in output.get("result", [])],
+            }
+            results.append(record)
+            stopped_at += 1
+
+            status = "✓" if correct else "✗"
+            log.info(
+                f"  {status} Route={predicted_route} (gold={gold_route}) "
+                f"RouteOK={route_correct} QueryOK={query_correct} QuerySim={query_similarity} DocsOK={docs_correct} "
+                f"Points={points_earned}/{max_points} Attempts={output.get('attempts',1)}"
+            )
+
+        except Exception as e:
+            log.error(f"  ERROR on question {i+1} ({start_index+i+1}): {e}")
+            gold_route = ex.get("route", ROUTE_SQL)
+            max_points = 3 if gold_route == ROUTE_HYBRID else 2
+            predicted_route = "ERROR"
+            results.append({
+                "flag" :            "error",
+                "question":         ex["question"],
+                "db_id":            ex["db_id"],
+                "gold_sql":         ex["gold_sql"],
+                "route":            predicted_route,
+                "gold_route":       gold_route,
+                "route_correct":    False,
+                "query_correct":    False if gold_route in (ROUTE_SQL, ROUTE_HYBRID) else None,
+                "query_similarity": 0.0 if gold_route in (ROUTE_SQL, ROUTE_HYBRID) else None,
+                "docs_correct":     False if gold_route in (ROUTE_VECTOR, ROUTE_HYBRID) else None,
+                "error":            str(e),
+                "correct":          False,
+                "points_earned":    0,
+                "max_points":       max_points,
+                "mode":             args.mode,
+                "dataset":          args.dataset,
+                "latency":          output.get("latency", {}),
+                "judge":            judge,
+                "answer":           output.get("answer", ""),
+                "context":          output.get("context", ""),
+                "db_data":          [list(row) for row in output.get("result", [])],
             })
             break
 

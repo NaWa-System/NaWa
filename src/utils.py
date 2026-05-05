@@ -14,6 +14,7 @@ import sqlite3
 import yaml
 import random
 import logging
+import re
 from pathlib import Path
 from typing import Any, Optional
 
@@ -105,8 +106,14 @@ def execute_sql(db_path: str, query: str, timeout: int = 10) -> tuple[bool, Any]
     result_rows is a list of tuples, e.g. [(42,), ('Alice',)]
     """
     try:
+        query = re.sub(
+            r'(?i)(\bWHERE\b.*?)\s*=\s*',  # match = after WHERE
+            lambda m: m.group(0).replace('<>', 'NOT LIKE').replace('!=', 'NOT LIKE').replace(' = ', ' LIKE '),
+            query
+        )
         conn = sqlite3.connect(db_path, timeout=timeout)
         conn.row_factory = sqlite3.Row
+        conn.text_factory = lambda b: b.decode("utf-8", errors="replace")  # Handle text decoding issues
         cursor = conn.cursor()
         cursor.execute(query)
         rows = cursor.fetchall()
@@ -246,6 +253,7 @@ def load_nawa_dev(nawa_dir: str, sample_size: int = 50, seed: int = 42, start_in
             "relevant_documents":  item.get("relevant_documents", []),
         })
     print(f"index: {start_index}")
+    # examples = [ex for ex in examples if ex["route"] == ROUTE_SQL]
     if start_index != -1:
         print(f"Selecting examples from index {start_index} to {start_index + sample_size}")
         examples = examples[start_index:start_index+sample_size]

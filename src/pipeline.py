@@ -62,7 +62,7 @@ def run(
     schema = load_schema(db_path) if db_path else ""
 
     if MODE == MODE_BASELINE:
-        return _run_baseline( question, schema, db_path, config)
+        return _run_base(ex,question, schema, db_path, config, dataset, evaluate=evaluate)
     elif MODE == MODE_CLOUD:
         return _run_gpt41(ex, question, schema, db_path, config, dataset, evaluate=evaluate)
     elif MODE == MODE_AGENTIC:
@@ -106,7 +106,12 @@ def _run_agentic(
     if route_label in (ROUTE_SQL, ROUTE_HYBRID):
         examples        = retrieve(question, schema, config)
         few_shot_prompt = format_examples_for_prompt(examples)
-
+        print(f"Retrieved {len(examples)} few-shot examples for prompt.")
+        for ex in examples:
+            print(f"Example question: {ex.get('question', 'N/A')}")
+            print(f"Example SQL: {ex.get('sql', 'N/A')}")
+            print("-"*30)
+        
     if route_label in (ROUTE_VECTOR, ROUTE_HYBRID):
         retrieved_chunks = query_documents(question, config)
         doc_context = _format_doc_chunks(retrieved_chunks)
@@ -160,12 +165,7 @@ def _run_agentic(
     result["latency"] = latency
     return result
 
-
-# ─────────────────────────────────────────────
-# BASELINE mode (no agentic features)
-# ─────────────────────────────────────────────
-
-def _run_baseline_new(
+def _run_base(
     ex: dict,
     question: str,
     schema: str,
@@ -176,44 +176,142 @@ def _run_baseline_new(
 ) -> dict:
     """Full agentic pipeline: route → retrieve → generate → self-correct."""
     latency = {}
-     # Step 2: Retrieve context based on route
+    # Step 1: Route the question
+    if dataset == "spider":
+        route_label = "SQL"
+        latency["routing"] = 0.0
+    elif dataset == "nawa":
+        start = time.perf_counter()
+        route_label = route(question, config, MODE_BASELINE)
+        latency["routing"] = time.perf_counter() - start
+    else:
+        raise ValueError(f"Unknown dataset: {dataset}")
+
+    # Step 2: Retrieve context based on route
     few_shot_prompt = ""
     doc_context     = ""
     retrieved_chunks = []
-    route_label = ex.get("route", ROUTE_SQL)  # default to SQL if not specified
-
+    
     start = time.perf_counter()
-    examples = retrieve(question, schema, config)
-    few_shot_prompt = format_examples_for_prompt(examples)
-    retrieved_chunks = query_documents(question, config)
-    doc_context = _format_doc_chunks(retrieved_chunks)
+    if route_label in (ROUTE_VECTOR, ROUTE_HYBRID):
+        retrieved_chunks = query_documents(question, config)
+        doc_context = _format_doc_chunks(retrieved_chunks)
     latency["retrieval"] = time.perf_counter() - start
     
     # Step 3: For vector-only questions, generate a text answer
     start = time.perf_counter()
-    answer = _generate_text_answer(question, doc_context, config, mode=MODE_BASELINE)
-    latency["text_only_answer"] = time.perf_counter() - start
-
+    if route_label == ROUTE_VECTOR:
+        answer = _generate_text_answer(question, doc_context, config, mode=MODE_BASELINE)
+        latency["text_only_answer"] = time.perf_counter() - start
+        latency["sql_generation"] = 0.0
+        latency["full_answer"] = 0.0
+        return {
+            "route":    route_label,
+            "sql":      None,
+            "success":  True,
+            "answer":   answer,
+            "attempts": 1,
+            "mode":     MODE_BASELINE,
+            "retrieved_chunks": retrieved_chunks,
+            "context": doc_context,
+            "latency": latency,  
+        }
+    else:
+        latency["text_only_answer"] = 0.0
 
     # Step 4: For SQL or HYBRID, generate SQL with self-correction.
-    start = time.perf_counter()
+    start = time.perf_counter() 
     prompt  = _build_generation_prompt(question, schema, few_shot_prompt=few_shot_prompt, company_name=db_path)
     raw_sql = _call_and_extract(prompt, config["model"], config["ollama_base_url"])
-    success, result = execute_sql(db_path, raw_sql)
+    success, db_data = execute_sql(db_path, raw_sql)
     latency["sql_generation"] = time.perf_counter() - start
     
     start = time.perf_counter()
-    answer = _generate_answer(question, doc_context, result["result"], config=config, mode=MODE_BASELINE)
-    result["answer"] = answer.strip()
+    print(f"Baseline SQL result: {db_data}")
+    answer = _generate_answer(question, "", db_data, config=config, mode=MODE_BASELINE)
     latency["full_answer"] = time.perf_counter() - start
-
-    result["success"] = success
+    latency["text_only_answer"] = 0.0
+    print(db_data)
+    result = {
+        "result": db_data,
+        "sql":      raw_sql,
+        "success":  success,
+        "attempts": 1,
+    }
+    
+    start = time.perf_counter()
+    if correct_route(ex, route_label):
+        answer = _generate_answer(question, doc_context, db_data, config=config, mode=MODE_BASELINE)
+        result["answer"] = answer.strip()
+        latency["full_answer"] = time.perf_counter() - start
+    else:
+        result["answer"] = ""
+        latency["full_answer"] = 0.0
+    
     result["context"] = doc_context
     result["route"] = route_label
     result["mode"]  = MODE_BASELINE
     result["retrieved_chunks"] = retrieved_chunks
     result["latency"] = latency
+    print(result)
     return result
+
+
+# ─────────────────────────────────────────────
+# BASELINE mode (no agentic features)
+# ─────────────────────────────────────────────
+
+# def _run_baseline_new(
+#     ex: dict,
+#     question: str,
+#     schema: str,
+#     db_path: str,
+#     config: dict,
+#     dataset: str,
+#     evaluate: bool = False,
+# ) -> dict:
+#     """Full agentic pipeline: route → retrieve → generate → self-correct."""
+#     latency = {}
+#      # Step 2: Retrieve context based on route
+#     few_shot_prompt = ""
+#     doc_context     = ""
+#     retrieved_chunks = []
+#     route_label = ex.get("route", ROUTE_SQL)  # default to SQL if not specified
+
+#     start = time.perf_counter()
+#     examples = retrieve(question, schema, config)
+#     few_shot_prompt = format_examples_for_prompt(examples)
+#     retrieved_chunks = query_documents(question, config)
+#     doc_context = _format_doc_chunks(retrieved_chunks)
+#     latency["retrieval"] = time.perf_counter() - start
+    
+#     # Step 3: For vector-only questions, generate a text answer
+#     start = time.perf_counter()
+#     answer = _generate_text_answer(question, doc_context, config, mode=MODE_BASELINE)
+#     latency["text_only_answer"] = time.perf_counter() - start
+
+
+#     # Step 4: For SQL or HYBRID, generate SQL with self-correction.
+#     start = time.perf_counter()
+#     prompt  = _build_generation_prompt(question, schema, few_shot_prompt=few_shot_prompt, company_name=db_path)
+#     raw_sql = _call_and_extract(prompt, config["model"], config["ollama_base_url"])
+#     success, result = execute_sql(db_path, raw_sql)
+#     latency["sql_generation"] = time.perf_counter() - start
+    
+#     start = time.perf_counter()
+#     answer = _generate_answer(question, doc_context, result["result"], config=config, mode=MODE_BASELINE)
+#     result["answer"] = answer.strip()
+#     latency["full_answer"] = time.perf_counter() - start
+
+#     result["success"] = success
+#     result["context"] = doc_context
+#     result["route"] = route_label
+#     result["mode"]  = MODE_BASELINE
+#     result["retrieved_chunks"] = retrieved_chunks
+#     result["latency"] = latency
+#     return result
+
+
 
 def _run_baseline( question: str, schema: str, db_path: str, config: dict) -> dict:
     """
@@ -227,22 +325,22 @@ def _run_baseline( question: str, schema: str, db_path: str, config: dict) -> di
     retrieved_chunks = []
     
     start = time.perf_counter()
-    examples = retrieve(question, schema, config)
-    few_shot_prompt = format_examples_for_prompt(examples)
+    # examples = retrieve(question, schema, config)
+    # few_shot_prompt = format_examples_for_prompt(examples)
     retrieved_chunks = query_documents(question, config)
     doc_context = _format_doc_chunks(retrieved_chunks)
     latency["retrieval"] = time.perf_counter() - start
     
-    vec_result =  _run_baseline_vector(question, retrieved_chunks, doc_context, config, latency)
+    # vec_result =  _run_baseline_vector(question, retrieved_chunks, doc_context, config, latency)
     sql_result = _run_baseline_sql(question, schema, db_path, few_shot_prompt, config, latency)
-    hybrid_result = _run_baseline_hybrid(question, schema, db_path, few_shot_prompt, retrieved_chunks, doc_context, config, latency)
+    # hybrid_result = _run_baseline_hybrid(question, schema, db_path, few_shot_prompt, retrieved_chunks, doc_context, config, latency)
+    return sql_result
     return {
-        "vector": vec_result,
+        # "vector": vec_result,
         "sql": sql_result,
-        "hybrid": hybrid_result,
+        # "hybrid": hybrid_result,
     }
       
-
 def _run_baseline_sql(question: str, schema: str, db_path: str,few_shot_prompt: str, config: dict, latency: dict) -> dict:
     latency = {}
     start = time.perf_counter() 
@@ -253,7 +351,7 @@ def _run_baseline_sql(question: str, schema: str, db_path: str,few_shot_prompt: 
     
     start = time.perf_counter()
     print(f"Baseline SQL result: {result}")
-    answer = _generate_answer(question, "", result, config=config, mode=MODE_BASELINE)
+    answer = ""# _generate_answer(question, "", result, config=config, mode=MODE_BASELINE)
     latency["full_answer"] = time.perf_counter() - start
     latency["text_only_answer"] = 0.0
         
@@ -270,50 +368,50 @@ def _run_baseline_sql(question: str, schema: str, db_path: str,few_shot_prompt: 
         "latency":  latency
     }
     
-def _run_baseline_vector(question: str, retrieved_chunks: list, doc_context: str, config: dict, latency: dict) -> dict:
-    start = time.perf_counter()
-    answer = _generate_text_answer(question, doc_context, config, mode=MODE_BASELINE)
-    latency["text_only_answer"] = time.perf_counter() - start
-    latency["sql_generation"] = 0.0
-    latency["full_answer"] = 0.0
-    return {
-        "route":    ROUTE_VECTOR,
-        "sql":      None,
-        "success":  True,
-        "answer":   answer,
-        "attempts": 1,
-        "mode":     MODE_BASELINE,
-        "retrieved_chunks": retrieved_chunks,
-        "context": doc_context,
-        "latency": latency,  
-    }
+# def _run_baseline_vector(question: str, retrieved_chunks: list, doc_context: str, config: dict, latency: dict) -> dict:
+#     start = time.perf_counter()
+#     answer = _generate_text_answer(question, doc_context, config, mode=MODE_BASELINE)
+#     latency["text_only_answer"] = time.perf_counter() - start
+#     latency["sql_generation"] = 0.0
+#     latency["full_answer"] = 0.0
+#     return {
+#         "route":    ROUTE_VECTOR,
+#         "sql":      None,
+#         "success":  True,
+#         "answer":   answer,
+#         "attempts": 1,
+#         "mode":     MODE_BASELINE,
+#         "retrieved_chunks": retrieved_chunks,
+#         "context": doc_context,
+#         "latency": latency,  
+#     }
 
-def _run_baseline_hybrid(question, schema, db_path, few_shot_prompt, retrieved_chunks, doc_context, config, latency ):
-    latency = {}
-    start = time.perf_counter() 
-    prompt  = _build_generation_prompt(question, schema, few_shot_prompt=few_shot_prompt, company_name=db_path)
-    raw_sql = _call_and_extract(prompt, config["model"], config["ollama_base_url"])
-    success, result = execute_sql(db_path, raw_sql)
-    latency["sql_generation"] = time.perf_counter() - start
-    print(f"Baseline SQL result: {result}")
+# def _run_baseline_hybrid(question, schema, db_path, few_shot_prompt, retrieved_chunks, doc_context, config, latency ):
+#     latency = {}
+#     start = time.perf_counter() 
+#     prompt  = _build_generation_prompt(question, schema, few_shot_prompt=few_shot_prompt, company_name=db_path)
+#     raw_sql = _call_and_extract(prompt, config["model"], config["ollama_base_url"])
+#     success, result = execute_sql(db_path, raw_sql)
+#     latency["sql_generation"] = time.perf_counter() - start
+#     print(f"Baseline SQL result: {result}")
 
-    start = time.perf_counter()
-    answer = _generate_answer(question, doc_context, result, config=config, mode=MODE_BASELINE)
-    latency["full_answer"] = time.perf_counter() - start
-    latency["text_only_answer"] = 0.0
+#     start = time.perf_counter()
+#     answer = _generate_answer(question, doc_context, result, config=config, mode=MODE_BASELINE)
+#     latency["full_answer"] = time.perf_counter() - start
+#     latency["text_only_answer"] = 0.0
         
-    return {
-        "route":    ROUTE_HYBRID,
-        "sql":      raw_sql,
-        "success":  success,
-        "result":   result,
-        "attempts": 1,
-        "mode":     MODE_BASELINE,
-        "context": doc_context,
-        "retrieved_chunks": retrieved_chunks,
-        "answer": answer.strip(),
-        "latency":  latency
-    }
+#     return {
+#         "route":    ROUTE_HYBRID,
+#         "sql":      raw_sql,
+#         "success":  success,
+#         "result":   result,
+#         "attempts": 1,
+#         "mode":     MODE_BASELINE,
+#         "context": doc_context,
+#         "retrieved_chunks": retrieved_chunks,
+#         "answer": answer.strip(),
+#         "latency":  latency
+#     }
     
 
 # ─────────────────────────────────────────────
@@ -414,7 +512,6 @@ def _run_baseline_hybrid(question, schema, db_path, few_shot_prompt, retrieved_c
 #     print("\n[Openrouter stream ended]")
 
 
-
 # ─────────────────────────────────────────────
 # Copilot CLI mode (no agentic loop)
 # ─────────────────────────────────────────────
@@ -451,7 +548,7 @@ def _run_gpt41(
     
     start = time.perf_counter()
     if route_label == ROUTE_VECTOR:
-        answer = "" if evaluate else _generate_text_answer(question, doc_context, config, mode=MODE_CLOUD)
+        answer = _generate_text_answer(question, doc_context, config, mode=MODE_CLOUD)
         latency["text_only_answer"] = time.perf_counter() - start
         latency["sql_generation"] = 0.0
         latency["full_answer"] = 0.0
@@ -492,154 +589,6 @@ def _run_gpt41(
     result["retrieved_chunks"] = retrieved_chunks
     result["latency"] = latency
     return result
-        
-# def _run_gpt4(ex: dict, question: str, schema: str, db_path: str, config: dict) -> dict:
-#     """
-#     Calls Copilot CLI with a model from config.
-#     No routing/few-shot/retrieval/correction loop is used here.
-#     The model must return JSON:
-#       {"query": "<sql>", "relevant_documents": ["doc_a.pdf", ...]}
-#     """
-#     from src.utils import execute_sql
-#     model = config.get("copilot_model", "gpt-5-mini")
-#     documents_dir = os.path.abspath(config.get("documents_dir", "data/documents"))
-#     db_path_abs = os.path.abspath(db_path) if db_path else ""
-
-#     if not os.path.isdir(documents_dir):
-#         raise FileNotFoundError(f"documents_dir not found: {documents_dir}")
-
-#     system_prompt = """You are a query router and retrieval assistant for a database + document system.
-#         You will receive the following inputs:
-#         1. A question from the dataset
-#         2. Database schema
-#         3. Path to the database file
-#         4. Path to the folder with all PDF documents
-
-#         Your task is to first decide what route to take based on the question, and then return the appropriate JSON response.
-
-#         ### Routing Rules
-#         Classify the user question into exactly one of three routes:
-
-#         - **SQL**: The question asks for structured data that lives in a database: counts, totals, filtering records, rankings, averages, finding specific entries, listing items. ANY question that can be answered by querying a table belongs here.
-#         Examples: "How many X", "Which X has the highest Y", "List all X where Y", "What is the total X", "Find the X with Y", "How old is X", "What is the name of X"
-
-#         - **VECTOR**: ONLY use this when the question EXPLICITLY asks for explanations, reasons, summaries or context from written documents or reports.
-#         Examples: "According to the report...", "What does the policy say about...", "Summarize the document about...", "What is the reason described in..."
-
-#         - **HYBRID**: ONLY use this when the question EXPLICITLY needs BOTH a database query AND a document explanation in the same answer.
-#         Example: "What were Q3 sales numbers AND why did they change according to the report?"
-
-#         **Decision Constraints:**
-#         - Decide ONLY one: SQL, VECTOR, or HYBRID
-#         - DEFAULT to SQL when in any doubt — most questions are SQL questions
-#         - Only choose VECTOR or HYBRID if the question clearly references documents or reports
-
-#         ### Output Format
-#         Based on the chosen route, you MUST output strictly valid JSON matching exactly the following structures. Do not include any other text, markdown formatting, or explanations outside the JSON.
-#         For SQL route: query should be filled, relevant_documents should be an empty list.
-#         For VECTOR route: query should be an empty string, relevant_documents should list the PDF files that are relevant.
-#         For HYBRID route: query should be filled, relevant_documents should list the PDF files that are relevant.
-
-#         {"route": "<SQL|VECTOR|HYBRID>", "query": "<generated_sql_query>", "relevant_documents": ["<path_to_folder>/<document_name>.pdf"]}
-
-#         *Note: For SQL queries, use the provided database schema to write accurate SQLite query (important). For relevant documents, use the provided folder path and append the appropriate exact PDF file names that contain the answer to the question if any.*"""
-
-#     user_prompt = f"""Question:
-#     {question}
-
-#     Database schema:
-#     {schema or "(no schema provided)"}
-
-#     Database file path:
-#     {db_path_abs or "(no database file)"}
-
-#     PDF documents folder path:
-#     {documents_dir}
-#     """
-
-#     prompt = f"{system_prompt}\n\n{user_prompt}"
-#     cmd = [
-#         "copilot",
-#         "--prompt",
-#         prompt,
-#         "--model",
-#         model,
-#         # "--silent",
-#         "--allow-all-tools",
-#     ]
-#     proc = subprocess.run(cmd, capture_output=True, text=True, check=False, timeout=180)
-#     if proc.returncode != 0:
-#         stderr = (proc.stderr or "").strip()
-#         raise RuntimeError(f"Copilot CLI failed with code {proc.returncode}: {stderr}")
-
-#     response_text = (proc.stdout or "").strip()
-#     payload = _extract_json_payload(response_text)
-#     route_value = payload.get("route")
-#     query_value = payload.get("query")
-#     docs_value = payload.get("relevant_documents")
-#     print("="*50)
-#     print(f"Predicted route: {route_value}")
-#     print("")
-#     print(f"Generated SQL: {query_value}")
-#     print("")
-#     print(f"Relevant documents: {docs_value}")
-#     print("="*50)
-
-#     if not isinstance(query_value, str):
-#         raise ValueError("Copilot response JSON must contain string field: query")
-#     if not isinstance(docs_value, list) or any(not isinstance(d, str) for d in docs_value):
-#         raise ValueError("Copilot response JSON must contain list[str] field: relevant_documents")
-
-#     predicted_sql = extract_sql(query_value).strip() if query_value.strip() else ""
-#     relevant_documents = [doc.strip() for doc in docs_value if doc.strip()]
-#     retrieved_chunks = [{"source": doc_name, "text": ""} for doc_name in relevant_documents]
-#     predicted_route = route_value if route_value in (ROUTE_SQL, ROUTE_VECTOR, ROUTE_HYBRID) else "SQL"
-
-#     if predicted_route in (ROUTE_SQL, ROUTE_HYBRID):
-#         success, result = execute_sql(db_path, predicted_sql)
-#     else:
-#         success, result = True, None
-
-#     return {
-#         "route":    predicted_route,
-#         "sql":      predicted_sql,
-#         "success":  success,
-#         "result":   result,
-#         "attempts": 1,
-#         "mode":     MODE_CLOUD,
-#         "retrieved_chunks": retrieved_chunks,
-#     }
-
-
-# def _extract_json_payload(text: str) -> dict:
-#     """
-#     Parses a dict JSON payload from model output.
-#     Accepts either plain JSON or a fenced ```json block.
-#     """
-#     try:
-#         data = json.loads(text)
-#         if isinstance(data, dict):
-#             return data
-#         raise ValueError("Model output JSON must be an object.")
-#     except json.JSONDecodeError:
-#         pass
-
-#     block_match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL | re.IGNORECASE)
-#     if block_match:
-#         data = json.loads(block_match.group(1))
-#         if isinstance(data, dict):
-#             return data
-#         raise ValueError("Model output in JSON block must be an object.")
-
-#     obj_match = re.search(r"(\{.*\})", text, re.DOTALL)
-#     if obj_match:
-#         data = json.loads(obj_match.group(1))
-#         if isinstance(data, dict):
-#             return data
-#         raise ValueError("Extracted JSON payload must be an object.")
-
-#     raise ValueError("Could not parse JSON object from Copilot response.")
-
 
 # ─────────────────────────────────────────────
 # Helpers
