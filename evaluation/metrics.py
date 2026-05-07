@@ -76,146 +76,146 @@ def values_match(gold_val, pred_val, tolerance: float = 0.05) -> bool:
     return str(gold_val).strip().lower() == str(pred_val).strip().lower()
 
 
-def cell_level_comparison(
-    gold_rows: list[tuple],
-    pred_rows: list[tuple],
-    num_tolerance: float = 0.05,
-) -> dict:
-    """
-    Compare SQL results cell-by-cell.
+# def cell_level_comparison(
+#     gold_rows: list[tuple],
+#     pred_rows: list[tuple],
+#     num_tolerance: float = 0.05,
+# ) -> dict:
+#     """
+#     Compare SQL results cell-by-cell.
 
-    Handles:
-    - Shared columns only (extra columns ignored in matching score)
-    - Numeric tolerance
-    - String normalization
-    - Row-order insensitivity via deterministic sorting
-    """
-    gold_n = _normalize_result_rows(gold_rows)
-    pred_n = _normalize_result_rows(pred_rows)
+#     Handles:
+#     - Shared columns only (extra columns ignored in matching score)
+#     - Numeric tolerance
+#     - String normalization
+#     - Row-order insensitivity via deterministic sorting
+#     """
+#     gold_n = _normalize_result_rows(gold_rows)
+#     pred_n = _normalize_result_rows(pred_rows)
     
-    # If both results are empty, treat as perfect match.
-    if not gold_n and not pred_n:
-        return {
-            "cell_accuracy": 1.0,
-            "shared_columns": [],
-            "missing_columns_in_pred": [],
-            "extra_columns_in_pred": [],
-            "details": {},
-        }
+#     # If both results are empty, treat as perfect match.
+#     if not gold_n and not pred_n:
+#         return {
+#             "cell_accuracy": 1.0,
+#             "shared_columns": [],
+#             "missing_columns_in_pred": [],
+#             "extra_columns_in_pred": [],
+#             "details": {},
+#         }
 
-    gold_col_count = max((len(r) for r in gold_n), default=0)
-    pred_col_count = max((len(r) for r in pred_n), default=0)
-    shared_col_count = min(gold_col_count, pred_col_count)
-    print(f"Gold columns: {gold_col_count}, Predicted columns: {pred_col_count}, Shared columns: {shared_col_count}")
+#     gold_col_count = max((len(r) for r in gold_n), default=0)
+#     pred_col_count = max((len(r) for r in pred_n), default=0)
+#     shared_col_count = min(gold_col_count, pred_col_count)
+#     print(f"Gold columns: {gold_col_count}, Predicted columns: {pred_col_count}, Shared columns: {shared_col_count}")
 
-    if shared_col_count == 0:
-        return {
-            "cell_accuracy": 0.0,
-            "shared_columns": [],
-            "missing_columns_in_pred": [f"col_{i}" for i in range(gold_col_count)],
-            "extra_columns_in_pred": [f"col_{i}" for i in range(pred_col_count)],
-            "details": {},
-        }
+#     if shared_col_count == 0:
+#         return {
+#             "cell_accuracy": 0.0,
+#             "shared_columns": [],
+#             "missing_columns_in_pred": [f"col_{i}" for i in range(gold_col_count)],
+#             "extra_columns_in_pred": [f"col_{i}" for i in range(pred_col_count)],
+#             "details": {},
+#         }
 
-    # Sort rows so comparison is order-insensitive.
-    gold_s = sorted(gold_n, key=lambda row: tuple(str(v) for v in row))
-    pred_s = sorted(pred_n, key=lambda row: tuple(str(v) for v in row))
-    # print("\n===========================================")    
-    # print(f"Normalized & sorted gold result: {gold_s}")
-    # print(" ")
-    # print(f"Normalized & sorted predicted result: {pred_s}")
-    # print("===========================================\n")    
+#     # Sort rows so comparison is order-insensitive.
+#     gold_s = sorted(gold_n, key=lambda row: tuple(str(v) for v in row))
+#     pred_s = sorted(pred_n, key=lambda row: tuple(str(v) for v in row))
+#     # print("\n===========================================")    
+#     # print(f"Normalized & sorted gold result: {gold_s}")
+#     # print(" ")
+#     # print(f"Normalized & sorted predicted result: {pred_s}")
+#     # print("===========================================\n")    
     
-     # ------------------------------------------------------------------
-    # BUILD a similarity matrix  (gold_rows x pred_rows)
-    # Each cell = number of shared-column values that match between
-    # gold row i and predicted row j.
-    # ------------------------------------------------------------------
-    n_gold = len(gold_s)
-    n_pred = len(pred_s)
-    sim_matrix = np.zeros((n_gold, n_pred), dtype=float)
+#      # ------------------------------------------------------------------
+#     # BUILD a similarity matrix  (gold_rows x pred_rows)
+#     # Each cell = number of shared-column values that match between
+#     # gold row i and predicted row j.
+#     # ------------------------------------------------------------------
+#     n_gold = len(gold_s)
+#     n_pred = len(pred_s)
+#     sim_matrix = np.zeros((n_gold, n_pred), dtype=float)
 
-    for i, g_row in enumerate(gold_s):
-        for j, p_row in enumerate(pred_s):
-            matches = sum(
-                1 for c in range(shared_col_count)
-                if values_match(g_row[c], p_row[c], num_tolerance)
-            )
-            sim_matrix[i, j] = matches
+#     for i, g_row in enumerate(gold_s):
+#         for j, p_row in enumerate(pred_s):
+#             matches = sum(
+#                 1 for c in range(shared_col_count)
+#                 if values_match(g_row[c], p_row[c], num_tolerance)
+#             )
+#             sim_matrix[i, j] = matches
 
-    # ------------------------------------------------------------------
-    # HUNGARIAN ALGORITHM — finds the assignment of pred rows to gold
-    # rows that maximises total cell matches (overlap-aware).
-    # linear_sum_assignment minimises cost, so we negate the matrix.
-    # ------------------------------------------------------------------
-    cost_matrix = -sim_matrix
-    gold_indices, pred_indices = linear_sum_assignment(cost_matrix)
+#     # ------------------------------------------------------------------
+#     # HUNGARIAN ALGORITHM — finds the assignment of pred rows to gold
+#     # rows that maximises total cell matches (overlap-aware).
+#     # linear_sum_assignment minimises cost, so we negate the matrix.
+#     # ------------------------------------------------------------------
+#     cost_matrix = -sim_matrix
+#     gold_indices, pred_indices = linear_sum_assignment(cost_matrix)
 
-    # ------------------------------------------------------------------
-    # ACCUMULATE per-column stats from the optimal row pairing
-    # ------------------------------------------------------------------
-    # Track per-column matches from matched pairs
-    col_matches = {c: 0 for c in range(shared_col_count)}
+#     # ------------------------------------------------------------------
+#     # ACCUMULATE per-column stats from the optimal row pairing
+#     # ------------------------------------------------------------------
+#     # Track per-column matches from matched pairs
+#     col_matches = {c: 0 for c in range(shared_col_count)}
 
-    for gi, pi in zip(gold_indices, pred_indices):
-        for c in range(shared_col_count):
-            if values_match(gold_s[gi][c], pred_s[pi][c], num_tolerance):
-                col_matches[c] += 1
+#     for gi, pi in zip(gold_indices, pred_indices):
+#         for c in range(shared_col_count):
+#             if values_match(gold_s[gi][c], pred_s[pi][c], num_tolerance):
+#                 col_matches[c] += 1
 
-    # Total rows considered = max(gold, pred) to penalise missing/extra rows
-    max_rows = max(n_gold, n_pred)
-    details = {}
-    total_cells = 0
-    matching_cells = 0
+#     # Total rows considered = max(gold, pred) to penalise missing/extra rows
+#     max_rows = max(n_gold, n_pred)
+#     details = {}
+#     total_cells = 0
+#     matching_cells = 0
     
-    # details = {}
-    # total_cells = 0
-    # matching_cells = 0
-    # max_rows = max(len(gold_s), len(pred_s))
-    for c in range(shared_col_count):
-        col_name = f"col_{c}"
-        details[col_name] = {
-            "matches": col_matches[c],
-            "total": max_rows,
-            "accuracy": col_matches[c] / max_rows if max_rows else 0.0,
-        }
-        matching_cells += col_matches[c]
-        total_cells += max_rows
+#     # details = {}
+#     # total_cells = 0
+#     # matching_cells = 0
+#     # max_rows = max(len(gold_s), len(pred_s))
+#     for c in range(shared_col_count):
+#         col_name = f"col_{c}"
+#         details[col_name] = {
+#             "matches": col_matches[c],
+#             "total": max_rows,
+#             "accuracy": col_matches[c] / max_rows if max_rows else 0.0,
+#         }
+#         matching_cells += col_matches[c]
+#         total_cells += max_rows
 
-    # for col_idx in range(shared_col_count):
-    #     col_matches = 0
-    #     col_total = max_rows
+#     # for col_idx in range(shared_col_count):
+#     #     col_matches = 0
+#     #     col_total = max_rows
 
-    #     for row_idx in range(min(len(gold_s), len(pred_s))):
-    #         if values_match(gold_s[row_idx][col_idx], pred_s[row_idx][col_idx], num_tolerance):
-    #             col_matches += 1
+#     #     for row_idx in range(min(len(gold_s), len(pred_s))):
+#     #         if values_match(gold_s[row_idx][col_idx], pred_s[row_idx][col_idx], num_tolerance):
+#     #             col_matches += 1
 
-    #     col_name = f"col_{col_idx}"
-    #     details[col_name] = {
-    #         "matches": col_matches,
-    #         "total": col_total,
-    #         "accuracy": col_matches / col_total if col_total else 0.0,
-    #     }
+#     #     col_name = f"col_{col_idx}"
+#     #     details[col_name] = {
+#     #         "matches": col_matches,
+#     #         "total": col_total,
+#     #         "accuracy": col_matches / col_total if col_total else 0.0,
+#     #     }
 
-    #     matching_cells += col_matches
-    #     total_cells += col_total
-    acc = {
-        "cell_accuracy": matching_cells / total_cells if total_cells else 0.0,
-        "shared_columns": [f"col_{i}" for i in range(shared_col_count)],
-        "missing_columns_in_pred": [f"col_{i}" for i in range(shared_col_count, gold_col_count)],
-        "extra_columns_in_pred": [f"col_{i}" for i in range(shared_col_count, pred_col_count)],
-        "details": details,
-    }
-    # print each item in acc in a line for debugging
-    # for k, v in acc.items():
-    #     if k != "details":
-    #         print(f"{k}: {v}")
-    #     else:
-    #         for col, stats in v.items():
-    #             print(f"  {col}: {stats}")
-    # print("===========================================")    
+#     #     matching_cells += col_matches
+#     #     total_cells += col_total
+#     acc = {
+#         "cell_accuracy": matching_cells / total_cells if total_cells else 0.0,
+#         "shared_columns": [f"col_{i}" for i in range(shared_col_count)],
+#         "missing_columns_in_pred": [f"col_{i}" for i in range(shared_col_count, gold_col_count)],
+#         "extra_columns_in_pred": [f"col_{i}" for i in range(shared_col_count, pred_col_count)],
+#         "details": details,
+#     }
+#     # print each item in acc in a line for debugging
+#     # for k, v in acc.items():
+#     #     if k != "details":
+#     #         print(f"{k}: {v}")
+#     #     else:
+#     #         for col, stats in v.items():
+#     #             print(f"  {col}: {stats}")
+#     # print("===========================================")    
 
-    return acc
+#     return acc
 
 
 @overload
@@ -381,6 +381,7 @@ def compare_results(res1: dict[str, Any], res2: dict[str, Any]) -> dict[str, Any
         and cell_similarity == 100.0
         and header_similarity < 100.0
     )
+    overall_similarity = overall_similarity / 100.0  # convert to 0-1 scale
     return {
         "strictly_same": strict_same,
         "query_correct": same_data_different_headers,

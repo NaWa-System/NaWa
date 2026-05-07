@@ -32,15 +32,15 @@ BATCH_SIZE = 256   # how many examples to embed and insert at once
 def build_few_shot_bank(config: dict):
     store_path   = config.get("few_shot_store", "vector_stores/few_shot_bank")
     model_name   = config.get("embedding_model", "all-MiniLM-L6-v2")
-    # spider_dir   = config.get("spider_dir", "data/spider")
+    spider_dir   = config.get("spider_dir", "data/spider")
     nawa_dir     = config.get("nawa_dir", "data/nawa")
 
     os.makedirs(store_path, exist_ok=True)
 
     # Load training examples
     examples = []
-    # examples += load_spider_train(spider_dir)
-    examples += load_nawa_train(nawa_dir)
+    examples += load_spider_train(spider_dir)
+    # examples += load_nawa_train(nawa_dir)
 
     if not examples:
         log.error("No training examples found. Download the datasets first.")
