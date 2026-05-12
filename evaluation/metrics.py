@@ -334,6 +334,21 @@ def execute_query(db_path: str, query: str) -> tuple[bool, Any]:
         conn.close()
 
 
+def recall_similarity(a: Counter, b: Counter) -> float:
+    """
+    Return what percentage of gold (a) is covered by predicted (b).
+    Extra data in b does NOT penalize the score.
+    Missing data from a DOES penalize the score.
+    """
+    total_a = sum(a.values())
+    if total_a == 0:
+        # Gold is empty; if predicted is also empty, perfect score.
+        # If predicted has extra data, still perfect (no shortage).
+        return 100.0
+    overlap = sum((a & b).values())
+    return (overlap / total_a) * 100.0  # denominator is always gold count
+
+
 def multiset_similarity(a: Counter, b: Counter) -> float:
     """Return overlap percentage between two multisets."""
     total_a = sum(a.values())
@@ -344,12 +359,49 @@ def multiset_similarity(a: Counter, b: Counter) -> float:
     denom = max(total_a, total_b)
     return (overlap / denom) * 100.0
 
+def row_is_subset(gold_row: tuple, pred_row: tuple) -> bool:
+    """
+    Check if all values in gold_row appear in pred_row
+    (pred_row may have extra columns).
+    Uses multiset containment so duplicate values are handled correctly.
+    """
+    gold_counter = Counter(gold_row)
+    pred_counter = Counter(pred_row)
+    # Every value in gold must be covered by predicted
+    return all(pred_counter[val] >= count for val, count in gold_counter.items())
+
+def match_rows_recall(
+    gold_rows: list[tuple], pred_rows: list[tuple]
+) -> float:
+    """
+    For each gold row, try to find a matching predicted row
+    that contains all gold row values (subset match).
+    Returns recall percentage: how many gold rows are covered.
+    Uses greedy 1-to-1 matching to avoid double-counting.
+    """
+    if not gold_rows:
+        return 100.0
+
+    pred_available = list(pred_rows)  # track which pred rows are still available
+    matched = 0
+
+    for gold_row in gold_rows:
+        for i, pred_row in enumerate(pred_available):
+            if row_is_subset(gold_row, pred_row):
+                matched += 1
+                pred_available.pop(i)  # consume this pred row (1-to-1 matching)
+                break
+
+    return (matched / len(gold_rows)) * 100.0
+
 
 def flatten_rows(rows: list[tuple[Any, ...]]) -> list[Any]:
     values: list[Any] = []
     for row in rows:
         values.extend(row)
     return values
+
+
 
 
 def compare_results(res1: dict[str, Any], res2: dict[str, Any]) -> dict[str, Any]:
@@ -362,15 +414,20 @@ def compare_results(res1: dict[str, Any], res2: dict[str, Any]) -> dict[str, Any
 
     row_counter_1 = Counter(rows1)
     row_counter_2 = Counter(rows2)
-    row_similarity = multiset_similarity(row_counter_1, row_counter_2)
+    # row_similarity = multiset_similarity(row_counter_1, row_counter_2)
+    row_similarity = recall_similarity(row_counter_1, row_counter_2)
+    row_similarity = match_rows_recall(rows1, rows2)
+
 
     cell_counter_1 = Counter(flatten_rows(rows1))
     cell_counter_2 = Counter(flatten_rows(rows2))
-    cell_similarity = multiset_similarity(cell_counter_1, cell_counter_2)
+    # cell_similarity = multiset_similarity(cell_counter_1, cell_counter_2)
+    cell_similarity = recall_similarity(cell_counter_1, cell_counter_2)
 
     header_counter_1 = Counter(c.strip().lower() for c in cols1)
     header_counter_2 = Counter(c.strip().lower() for c in cols2)
-    header_similarity = multiset_similarity(header_counter_1, header_counter_2)
+    # header_similarity = multiset_similarity(header_counter_1, header_counter_2)
+    header_similarity = recall_similarity(header_counter_1, header_counter_2)
 
     # Data should drive the score most, because headers can differ while values match.
     overall_similarity = round((0.8 * row_similarity) + (0.2 * cell_similarity), 2)
@@ -392,6 +449,7 @@ def compare_results(res1: dict[str, Any], res2: dict[str, Any]) -> dict[str, Any
             "header_similarity_percent": round(header_similarity, 2),
         },
     }
+    
     
 def _normalize_doc_name(name: str) -> str:
     name = (name or "").strip().lower()

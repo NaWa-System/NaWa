@@ -113,6 +113,60 @@ def retrieve(
     log.info(f"Retrieved {len(examples)} few-shot examples (top score: {examples[0]['score']:.3f})")
     return examples
 
+def retrieve_routes(
+    question: str,
+    config: dict,
+    store_path: str = None,
+) -> list[dict]:
+    """
+    Retrieves the k most similar question→SQL examples from the few-shot bank.
+
+    Returns a list of dicts, each with:
+      - question: the similar training question
+      - sql:      its correct SQL query
+      - db_id:    database it came from
+
+    These are injected into the generation prompt as examples.
+    """
+    k          = config.get("k_few_shot", 3)
+    store_path = store_path or config.get("few_shot_routes_store", "vector_stores/few_shot_routes_bank")
+
+    # Connect to ChromaDB
+    client     = chromadb.PersistentClient(path=store_path)
+    collection = client.get_or_create_collection(
+        name="few_shot_routes_bank",
+        metadata={"hnsw:space": "cosine"}
+    )
+
+    if collection.count() == 0:
+        log.warning("Few-shot routes bank is empty. Run: python indexing/index_few_shots.py")
+        return []
+
+    # Mask the question before embedding
+    masked_question = question #mask_question(question, schema)
+
+    # Embed and search
+    model = load_embedding_model(config)
+    embedding = model.encode(masked_question, show_progress_bar=False).tolist()
+
+    results = collection.query(
+        query_embeddings=[embedding],
+        n_results=min(k, collection.count()),
+        include=["documents", "metadatas", "distances"]
+    )
+
+    examples = []
+    for i in range(len(results["documents"][0])):
+        examples.append({
+            "question": results["documents"][0][i],
+            "route":      results["metadatas"][0][i].get("route", ""),
+            "db_id":    results["metadatas"][0][i].get("db_id", ""),
+            "score":    1 - results["distances"][0][i],  # convert distance to similarity
+        })
+
+    log.info(f"Retrieved {len(examples)} few-shot routes (top score: {examples[0]['score']:.3f})")
+    return examples
+
 
 def format_examples_for_prompt(examples: list[dict]) -> str:
     """
@@ -136,4 +190,27 @@ def format_examples_for_prompt(examples: list[dict]) -> str:
         lines.append(f"SQL: {ex['sql']}")
         lines.append("")
     # print(f"Formatted few-shot prompt:\n{lines}")
+    return "\n".join(lines)
+
+def format_routes_for_prompt(examples: list[dict]) -> str:
+    """
+    Formats retrieved examples into the string that goes into the LLM prompt.
+
+    Output looks like:
+        Example 1:
+        Question: How many students are enrolled in each department?
+        Route: SQL
+
+        Example 2:
+        ...
+    """
+    if not examples:
+        return ""
+
+    lines = []
+    for i, ex in enumerate(examples, 1):
+        lines.append(f"Example {i}:")
+        lines.append(f"Question: {ex['question']}")
+        lines.append(f"Route: {ex['route']}")
+        lines.append("")
     return "\n".join(lines)

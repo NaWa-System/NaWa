@@ -39,8 +39,8 @@ def build_few_shot_bank(config: dict):
 
     # Load training examples
     examples = []
-    examples += load_spider_train(spider_dir)
-    # examples += load_nawa_train(nawa_dir)
+    # examples += load_spider_train(spider_dir)
+    examples += load_nawa_train(nawa_dir)
 
     if not examples:
         log.error("No training examples found. Download the datasets first.")

@@ -106,11 +106,7 @@ def execute_sql(db_path: str, query: str, timeout: int = 10) -> tuple[bool, Any]
     result_rows is a list of tuples, e.g. [(42,), ('Alice',)]
     """
     try:
-        query = re.sub(
-            r'(?i)(\bWHERE\b.*?)\s*=\s*',  # match = after WHERE
-            lambda m: m.group(0).replace('<>', 'NOT LIKE').replace('!=', 'NOT LIKE').replace(' = ', ' LIKE '),
-            query
-        )
+        query = replace_equals_with_like(query)
         conn = sqlite3.connect(db_path, timeout=timeout)
         conn.row_factory = sqlite3.Row
         conn.text_factory = lambda b: b.decode("utf-8", errors="replace")  # Handle text decoding issues
@@ -131,7 +127,45 @@ def execute_sql(db_path: str, query: str, timeout: int = 10) -> tuple[bool, Any]
     except Exception as e:
         return False, f"Unexpected error: {e}"
 
-
+def replace_equals_with_like(query):
+    """
+    Replace = with LIKE for string comparisons in WHERE clauses
+    Handles: WHERE, AND, OR conditions
+    """
+    
+    def replace_operator(match):
+        column = match.group(1)   # column name/expression
+        operator = match.group(2)  # =, !=, <>
+        value = match.group(3)    # 'string value'
+        
+        if operator.strip() == '=':
+            return f"{column} LIKE {value}"
+        elif operator.strip() in ('!=', '<>'):
+            return f"{column} NOT LIKE {value}"
+        return match.group(0)
+    
+    # Pattern breakdown:
+    # ([\w.]+)     - capture column name (e.g. so.order_status)
+    # \s*          - optional spaces
+    # (=|!=|<>)    - capture operator
+    # \s*          - optional spaces  
+    # ('[^']*')    - capture string value in single quotes
+    
+    pattern = r"([\w.]+)\s*(=|!=|<>)\s*('[^']*')"
+    
+    # Only apply after WHERE keyword
+    where_match = re.search(r'(?i)\bWHERE\b', query)
+    
+    if where_match:
+        before_where = query[:where_match.end()]
+        after_where = query[where_match.end():]
+        
+        # Apply replacement only to the WHERE clause portion
+        after_where = re.sub(pattern, replace_operator, after_where, flags=re.IGNORECASE)
+        
+        query = before_where + after_where
+    
+    return query
 # ─────────────────────────────────────────────
 # Spider dataset loader
 # ─────────────────────────────────────────────
@@ -289,6 +323,7 @@ def load_nawa_train(nawa_dir: str) -> list[dict]:
             continue
         db_path = os.path.join(db_base, db_id, f"{db_id}.db")
         examples.append({
+            "route":    item["route"],  # default to SQL if not specified
             "question": item["question"],
             "db_id":    item["db_id"],
             "gold_sql": item["query"],

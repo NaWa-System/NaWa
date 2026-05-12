@@ -26,7 +26,7 @@ What this does:
 import logging
 from pathlib import Path
 from src.llm import call_copilot, call_llm
-from src.utils import execute_sql, extract_sql
+from src.utils import execute_sql, extract_sql, replace_equals_with_like
 from src.prompts import CORRECTION_SYSTEM_PROMPT
 
 log = logging.getLogger(__name__)
@@ -56,6 +56,7 @@ def generate_sql_gpt4(
     
 
 def generate_and_correct(
+    route_label : str,
     question: str,
     schema: str,
     db_path: str,
@@ -77,18 +78,19 @@ def generate_and_correct(
     company_name = _extract_company_name(db_path)
 
     # ── First attempt ──────────────────────────────────────────────────────────
-    prompt    = _build_generation_prompt(question, schema, few_shot_prompt, company_name=company_name)
+    prompt    = _build_generation_prompt(question, schema, few_shot_prompt, company_name, route_label)
     raw_sql   = _call_and_extract(prompt, model, base_url)
+    refined_sql = replace_equals_with_like(raw_sql)
     success, result = execute_sql(db_path, raw_sql)
 
     if success:
         log.info(f"SQL succeeded on attempt 1")
-        return {"sql": raw_sql, "success": True, "result": result, "attempts": 1}
+        return {"sql": refined_sql, "success": True, "result": result, "attempts": 1}
 
     log.info(f"Attempt 1 failed: {result}")
 
     # ── Correction loop ────────────────────────────────────────────────────────
-    current_sql   = raw_sql
+    current_sql   = refined_sql
     current_error = result
 
     for attempt in range(2, max_retries + 2):
@@ -169,6 +171,7 @@ def _build_generation_prompt(
     schema: str,
     few_shot_prompt: str,
     company_name: str = "",
+    route_label :str = ""
 ) -> str:
     """
     Assembles the initial SQL generation prompt.
@@ -188,17 +191,26 @@ def _build_generation_prompt(
         "3) Make sure to understand the User Question.",
         "4) Output ONLY the SQL query, nothing else.",
         "5) Give meaningful column aliases, so that the output is easy to understand.",
-        "",
+    ]
+    
+    if route_label.strip() == "HYBRID":
+            parts += ["6) The question is a HYBRID question:",
+                    'SQL - The question asks for structured data that lives in a database: counts, totals, filtering records, rankings, averages, finding specific entries, listing items.ANY question that can be answered by querying a table belongs here.Examples: "How many X", "Which X has the highest Y", "List all X where Y","What is the total X", "Find the X with Y", "How old is X", "What is the name of X"',
+                    'VECTOR - ONLY use this when the question EXPLICITLY asks for explanations, reasons, summaries or context from written documents or reports. Examples:  "According to the report...", "What does the policy say about...","Summarize the document about...", "What is the reason described in..."',
+                    'HYBRID - ONLY use this when the question EXPLICITLY needs BOTH a database query AND a document explanation in the same answer. Example: "What were Q3 sales numbers AND why did they change according to the report?"'
+    ]
+        
+    parts += ["",
         "=== Database Schema ===",
         schema,
-        "",
-    ]
+        "",]
 
     parts += _build_company_context(company_name)
 
     if few_shot_prompt and few_shot_prompt.strip() != "":
         parts += [
-            "=== Examples ===",
+            "=== Few-Shot Examples ===",
+            "Study these examples carefully. Each shows a question and the correct SQL - notice that the SQL answers ONLY the database/numeric part of the question and does NOT import filters or conditions that belong to the vector/document part.",
             few_shot_prompt,
         ]
 
@@ -208,6 +220,7 @@ def _build_generation_prompt(
         "",
         "SQL:",
     ]
+    print("\n".join(parts))
     return "\n".join(parts)
 
 

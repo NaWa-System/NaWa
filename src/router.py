@@ -14,7 +14,7 @@ What this does:
 import re
 import logging
 from src.llm import call_copilot, call_llm
-from src.prompts import ROUTER_SYSTEM_PROMPT
+from src.prompts import route_system_prompt
 
 log = logging.getLogger(__name__)
 
@@ -24,18 +24,28 @@ ROUTE_HYBRID = "HYBRID"
 MODE_BASELINE = "baseline"
 MODE_AGENTIC  = "agentic"
 MODE_CLOUD    = "cloud"
+MODE_BOTH    = "both"
 
-def route(question: str, config: dict, mode:str) -> str:
+def route(question: str, config: dict, mode:str, few_shot_examples: str = "") -> str:
     """
     Classifies the question into SQL, VECTOR, or HYBRID.
 
     Returns one of: "SQL", "VECTOR", "HYBRID"
     Falls back to "HYBRID" if the model gives an unclear response.
     """
-    if mode == MODE_AGENTIC or mode == MODE_BASELINE:
+    if mode == MODE_AGENTIC :
         response = call_llm(
             prompt=f"Question: {question}",
-            system=ROUTER_SYSTEM_PROMPT,
+            system=route_system_prompt(few_shot_examples),
+            model=config["model"],
+            base_url=config["ollama_base_url"],
+            stream=False,          # routing doesn't need to be streamed
+            temperature=0.0,
+        )
+    elif mode == MODE_BASELINE:
+        response = call_llm(
+            prompt=f"Question: {question}",
+            system=route_system_prompt(),  # no few-shot examples for baseline
             model=config["model"],
             base_url=config["ollama_base_url"],
             stream=False,          # routing doesn't need to be streamed
@@ -43,7 +53,7 @@ def route(question: str, config: dict, mode:str) -> str:
         )
     elif mode == MODE_CLOUD:
         response = call_copilot(
-            prompt=f"{ROUTER_SYSTEM_PROMPT} \n\n Question: {question}",
+            prompt=f"{route_system_prompt()} \n\n Question: {question}",
             model="gpt-4.1"
         )
     else:       

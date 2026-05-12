@@ -31,7 +31,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from src.judge import faithfulness_judge
 from src.utils import load_config, load_spider_dev, load_nawa_dev
 from src.pipeline import run
-from src.router import ROUTE_SQL, ROUTE_VECTOR, ROUTE_HYBRID, MODE_BASELINE, MODE_AGENTIC, MODE_CLOUD
+from src.router import MODE_BOTH, ROUTE_SQL, ROUTE_VECTOR, ROUTE_HYBRID, MODE_BASELINE, MODE_AGENTIC, MODE_CLOUD
 from evaluation.metrics import execution_accuracy, compute_metrics, document_retrieval_hit
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
@@ -40,7 +40,7 @@ log = logging.getLogger(__name__)
 def main():
     start = time.perf_counter()
     parser = argparse.ArgumentParser(description="Agentic Hybrid RAG Evaluation")
-    parser.add_argument("--mode",    choices=[MODE_BASELINE, MODE_AGENTIC, MODE_CLOUD], required=True,
+    parser.add_argument("--mode",    choices=[MODE_BASELINE, MODE_AGENTIC, MODE_CLOUD, MODE_BOTH], required=True,
                         help="Which system configuration to evaluate")
     parser.add_argument("--dataset", choices=["spider", "nawa"], default="spider",
                         help="Which benchmark dataset to use")
@@ -96,16 +96,23 @@ def main():
 
     results = []
     scanned = ['What are the first names of all players, and their total ranking points?',"List the first and last name of all players in the order of birth date."]
-    filter = ["What are the names of the people who teach math courses?",
-              "Count the number of dogs of an age below the average.",
-              "Which shops run with no employees? Find the shop names",
-              "How many owners temporarily do not have any dogs?",
-              "Give the total population and average surface area corresponding to countries in North America that have a surface area greater than 3000 .","Show the date of the transcript which shows the least number of results, also list the id.","What is the maker of the carr produced in the earliest year and what year was it?","Find the model of the car whose weight is below the average weight.","What are the last name of the students who live in North Carolina but have not registered in any degree programs?","List the first and last name of all players in the order of birth date.","What are the ids of all tv channels that have more than 2 TV channels?","Find the first name of students who have cat or dog pet.","Which unique cities are in Asian countries where Chinese is the official language ?","What are all the song names by singers who are older than average?","Find the number of dog pets that are raised by female students (with sex F).","What is the id of the semester that had both Masters and Bachelors students enrolled?","What is the ship id and name that caused most total injuries?","Which dogs are of the rarest breed? Show their names and treatment dates.","Show paragraph details for paragraph with text 'Korea ' .","List the names of the dogs of the rarest breed and the treatment dates of them.","What are flight numbers of Airline \"United Airlines\"?","What is the count of the car models produced in the United States?"]
+    filtered = [
+        "How much warranty revenue did LumenForge Displayworks generate in Q1 2026, and which report discusses that warranty revenue is concentrated in Direct Online transactions?", 
+        "For Nordhaven RockTech Industries, what was shipped revenue in Q1 2026 by channel (Direct vs Distributor)?",
+        "For Nordhaven RockTech Industries, which product categories generated the most shipped revenue in Q1 2026?",
+        "For Nordhaven RockTech Industries, what was total shipped revenue in Q1 2026, and what explanations does the Q1 sales report provide for the quarter\u2019s performance and risks?",
+        "For NordHearth Scania Fleet Services, what is the transport margin (revenue minus fuel_cost) in Q1 2026?",
+        "Which parts categories have the highest total extended_price for NordHearth Scania Fleet Services (all work orders)?",
+        "Which parts category has the highest extended spend in the database, and which NordHearth Scania Fleet Services report discusses that category as a key cost driver?",
+        "For NordVigil Aeronautics & Secure Systems (NVASS), how many deliveries have status Delivered?",
+                ]
     stopped_at = 0
     breakit = False
     for i, ex in enumerate(examples):
         if ex.get("question") in scanned: 
             continue
+        # if ex.get("question") not in filtered:
+        #     continue
         # if ex.get("question") not in scanned and breakit == False:
         #     # stopped_at += 1
         #     continue
@@ -128,12 +135,13 @@ def main():
                 dataset  = args.dataset,
                 evaluate = True,
             )
-            # if args.mode == MODE_BASELINE:
-            #     outputs_to_evaluate = list(mainoutput.items())
-            # else:
-            #     outputs_to_evaluate = [(args.mode, mainoutput)]    
-                
-            # for label, output in outputs_to_evaluate:
+            # for k,output in moutput.items():     
+                # if args.mode == MODE_BASELINE:
+                #     outputs_to_evaluate = list(mainoutput.items())
+                # else:
+                #     outputs_to_evaluate = [(args.mode, mainoutput)]    
+                    
+                # for label, output in outputs_to_evaluate:
 
             predicted_route = output.get("route")
             gold_route      = ex.get("route", ROUTE_SQL)
@@ -202,7 +210,7 @@ def main():
                 "correct":              correct,
                 "points_earned":        points_earned,
                 "max_points":           max_points,
-                "mode":                 args.mode,
+                "mode":                 output.get("mode"),
                 "dataset":              args.dataset,
                 "latency":              output.get("latency", {}),
                 "judge":                judge,
@@ -251,6 +259,47 @@ def main():
             break
 
     # Compute and print final metrics
+    # if args.mode == MODE_BOTH:
+    #     res1 = [r for r in results if r["mode"] == MODE_AGENTIC]
+    #     res2 = [r for r in results if r["mode"] == MODE_BASELINE]
+    #     metrics = compute_metrics(res1)
+    #     metrics["seed"] = seed  # include seed in metrics for reproducibility
+    #     metrics["start_index"] = start_index
+    #     metrics["sample_size"] = len(examples)
+    #     metrics["stopped_at"] = stopped_at
+    #     metrics["exec_time"] = time.perf_counter() - start
+    #     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    #     # Save results
+    #     os.makedirs(config["results_dir"], exist_ok=True)
+    #     outfile = os.path.join(
+    #         config["results_dir"],
+    #         f"{MODE_AGENTIC}_{args.dataset}_{timestamp}.json"
+    #     )
+
+    #     with open(outfile, "w",encoding="utf-8") as f:
+    #         json.dump({"metrics": metrics, "results": results}, f, indent=2)
+    #     log.info(f"Full results saved to: {outfile}")
+        
+    #     metrics = compute_metrics(res2)
+    #     metrics["seed"] = seed  # include seed in metrics for reproducibility
+    #     metrics["start_index"] = start_index
+    #     metrics["sample_size"] = len(examples)
+    #     metrics["stopped_at"] = stopped_at
+    #     metrics["exec_time"] = time.perf_counter() - start
+    #     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    #     # Save results
+    #     os.makedirs(config["results_dir"], exist_ok=True)
+    #     outfile = os.path.join(
+    #         config["results_dir"],
+    #         f"{MODE_BASELINE}_{args.dataset}_{timestamp}.json"
+    #     )
+
+    #     with open(outfile, "w",encoding="utf-8") as f:
+    #         json.dump({"metrics": metrics, "results": results}, f, indent=2)
+
+    #     log.info(f"Full results saved to: {outfile}")
+    #     exit(0)
+    
     metrics = compute_metrics(results)
     metrics["seed"] = seed  # include seed in metrics for reproducibility
     metrics["start_index"] = start_index

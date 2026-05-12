@@ -21,8 +21,8 @@ import logging
 import time
 from typing import Any
 from src.prompts import ANSWER_QUESTION_PROMPT
-from src.router import route, ROUTE_SQL, ROUTE_VECTOR, ROUTE_HYBRID, MODE_AGENTIC, MODE_BASELINE, MODE_CLOUD
-from src.few_shot_retriever import retrieve, format_examples_for_prompt
+from src.router import route, ROUTE_SQL, ROUTE_VECTOR, ROUTE_HYBRID, MODE_AGENTIC, MODE_BASELINE, MODE_CLOUD, MODE_BOTH
+from src.few_shot_retriever import format_routes_for_prompt, retrieve, format_examples_for_prompt, retrieve_routes
 from src.self_correction import generate_and_correct, generate_sql_gpt4, _build_generation_prompt, _call_and_extract
 from src.utils import correct_route, load_schema, execute_sql # , extract_sql
 from src.llm import call_copilot, call_llm
@@ -67,6 +67,8 @@ def run(
         return _run_gpt41(ex, question, schema, db_path, config, dataset, evaluate=evaluate)
     elif MODE == MODE_AGENTIC:
         return _run_agentic(ex,question, schema, db_path, config, dataset, evaluate=evaluate)
+    elif MODE == MODE_BOTH:
+        return _run_both(ex,question, schema, db_path, config, dataset, evaluate=evaluate)
     else:
         raise ValueError(f"Unsupported mode: {mode}")
 
@@ -92,7 +94,9 @@ def _run_agentic(
         latency["routing"] = 0.0
     elif dataset == "nawa":
         start = time.perf_counter()
-        route_label = route(question, config, MODE_AGENTIC)
+        examples        = retrieve_routes(question, config)
+        few_shot_routes_prompt = format_routes_for_prompt(examples)
+        route_label = route(question, config, MODE_AGENTIC, few_shot_routes_prompt)
         latency["routing"] = time.perf_counter() - start
     else:
         raise ValueError(f"Unknown dataset: {dataset}")
@@ -118,8 +122,8 @@ def _run_agentic(
     latency["retrieval"] = time.perf_counter() - start
     
     # Step 3: For vector-only questions, generate a text answer
-    start = time.perf_counter()
     if route_label == ROUTE_VECTOR:
+        start = time.perf_counter()
         answer = _generate_text_answer(question, doc_context, config, mode=MODE_AGENTIC)
         latency["text_only_answer"] = time.perf_counter() - start
         latency["sql_generation"] = 0.0
@@ -141,6 +145,7 @@ def _run_agentic(
     # Step 4: For SQL or HYBRID, generate SQL with self-correction.
     start = time.perf_counter()
     result = generate_and_correct(
+        route_label = route_label,
         question=question,
         schema=schema,
         db_path=db_path,
@@ -149,8 +154,8 @@ def _run_agentic(
     )
     latency["sql_generation"] = time.perf_counter() - start
     
-    start = time.perf_counter()
     if correct_route(ex, route_label):
+        start = time.perf_counter()
         answer = _generate_answer(question, doc_context, result["result"], config=config, mode=MODE_AGENTIC)
         result["answer"] = answer.strip()
         latency["full_answer"] = time.perf_counter() - start
@@ -199,8 +204,8 @@ def _run_base(
     latency["retrieval"] = time.perf_counter() - start
     
     # Step 3: For vector-only questions, generate a text answer
-    start = time.perf_counter()
     if route_label == ROUTE_VECTOR:
+        start = time.perf_counter()
         answer = _generate_text_answer(question, doc_context, config, mode=MODE_BASELINE)
         latency["text_only_answer"] = time.perf_counter() - start
         latency["sql_generation"] = 0.0
@@ -239,8 +244,8 @@ def _run_base(
         "attempts": 1,
     }
     
-    start = time.perf_counter()
     if correct_route(ex, route_label):
+        start = time.perf_counter()
         answer = _generate_answer(question, doc_context, db_data, config=config, mode=MODE_BASELINE)
         result["answer"] = answer.strip()
         latency["full_answer"] = time.perf_counter() - start
@@ -255,6 +260,169 @@ def _run_base(
     result["latency"] = latency
     print(result)
     return result
+
+
+def _run_both(
+    ex: dict,
+    question: str,
+    schema: str,
+    db_path: str,
+    config: dict,
+    dataset: str,
+    evaluate: bool = False,
+) -> dict:
+    """Full agentic pipeline: route → retrieve → generate → self-correct."""
+    latency = {}
+    # Step 1: Route the question
+    if dataset == "spider":
+        route_label = "SQL"
+        latency["routing"] = 0.0
+    elif dataset == "nawa":
+        start = time.perf_counter()
+        route_label = route(question, config, MODE_AGENTIC)
+        latency["routing"] = time.perf_counter() - start
+    else:
+        raise ValueError(f"Unknown dataset: {dataset}")
+
+    # Step 2: Retrieve context based on route
+    res = {}
+    def run_base_pipeline(latency: dict) -> dict:        
+        few_shot_prompt  = ""
+        doc_context      = ""
+        retrieved_chunks = []
+        start = time.perf_counter()
+        if route_label in (ROUTE_VECTOR, ROUTE_HYBRID):
+            retrieved_chunks = query_documents(question, config)
+            doc_context = _format_doc_chunks(retrieved_chunks)
+        latency["retrieval"] = time.perf_counter() - start     
+        # Step 3: For vector-only questions, generate a text answer
+        start = time.perf_counter()
+        if route_label == ROUTE_VECTOR:
+            answer = _generate_text_answer(question, doc_context, config, mode=MODE_BASELINE)
+            latency["text_only_answer"] = time.perf_counter() - start
+            latency["sql_generation"] = 0.0
+            latency["full_answer"] = 0.0
+            return {
+                "route":    route_label,
+                "sql":      None,
+                "success":  True,
+                "answer":   answer,
+                "attempts": 1,
+                "mode":     MODE_BASELINE,
+                "retrieved_chunks": retrieved_chunks,
+                "context": doc_context,
+                "latency": latency,  
+            }
+        else:
+            latency["text_only_answer"] = 0.0
+            # Step 4: For SQL or HYBRID, generate SQL with self-correction.
+        start = time.perf_counter() 
+        prompt  = _build_generation_prompt(question, schema, few_shot_prompt=few_shot_prompt, company_name=db_path)
+        raw_sql = _call_and_extract(prompt, config["model"], config["ollama_base_url"])
+        success, db_data = execute_sql(db_path, raw_sql)
+        latency["sql_generation"] = time.perf_counter() - start
+        
+        start = time.perf_counter()
+        print(f"Baseline SQL result: {db_data}")
+        answer = _generate_answer(question, "", db_data, config=config, mode=MODE_BASELINE)
+        latency["full_answer"] = time.perf_counter() - start
+        latency["text_only_answer"] = 0.0
+        print(db_data)
+        result = {
+            "result": db_data,
+            "sql":      raw_sql,
+            "success":  success,
+            "attempts": 1,
+            "mode":     MODE_BASELINE,
+        }
+        
+        start = time.perf_counter()
+        if correct_route(ex, route_label):
+            answer = _generate_answer(question, doc_context, db_data, config=config, mode=MODE_BASELINE)
+            result["answer"] = answer.strip()
+            latency["full_answer"] = time.perf_counter() - start
+        else:
+            result["answer"] = ""
+            latency["full_answer"] = 0.0
+        
+        result["context"] = doc_context
+        result["route"] = route_label
+        result["mode"]  = MODE_BASELINE
+        result["retrieved_chunks"] = retrieved_chunks
+        result["latency"] = latency    
+        print(result)
+        return result
+        
+    def run_agentic_pipeline(latency: dict) -> dict:        
+        few_shot_prompt = ""
+        doc_context     = ""
+        retrieved_chunks = []
+        start = time.perf_counter()
+        if route_label in (ROUTE_SQL, ROUTE_HYBRID):
+            examples        = retrieve(question, schema, config)
+            few_shot_prompt = format_examples_for_prompt(examples)
+            print(f"Retrieved {len(examples)} few-shot examples for prompt.")
+            for ex in examples:
+                print(f"Example question: {ex.get('question', 'N/A')}")
+                print(f"Example SQL: {ex.get('sql', 'N/A')}")
+                print("-"*30)
+        if route_label in (ROUTE_VECTOR, ROUTE_HYBRID):
+            retrieved_chunks = query_documents(question, config)
+            doc_context = _format_doc_chunks(retrieved_chunks)
+        latency["retrieval"] = time.perf_counter() - start        
+        
+        # Step 3: For vector-only questions, generate a text answer
+        start = time.perf_counter()
+        if route_label == ROUTE_VECTOR:
+            answer = _generate_text_answer(question, doc_context, config, mode=MODE_AGENTIC)
+            latency["text_only_answer"] = time.perf_counter() - start
+            latency["sql_generation"] = 0.0
+            latency["full_answer"] = 0.0
+            return {
+                "route":    route_label,
+                "sql":      None,
+                "success":  True,
+                "answer":   answer,
+                "attempts": 1,
+                "mode":     MODE_AGENTIC,
+                "retrieved_chunks": retrieved_chunks,
+                "context": doc_context,
+                "latency": latency,  
+            }
+        else:
+            latency["text_only_answer"] = 0.0
+
+        # Step 4: For SQL or HYBRID, generate SQL with self-correction.
+        start = time.perf_counter()
+        result = generate_and_correct(
+            route_label=route_label,
+            question=question,
+            schema=schema,
+            db_path=db_path,
+            few_shot_prompt=few_shot_prompt,
+            config=config,
+        )
+        latency["sql_generation"] = time.perf_counter() - start
+        
+        start = time.perf_counter()
+        if correct_route(ex, route_label):
+            answer = _generate_answer(question, doc_context, result["result"], config=config, mode=MODE_AGENTIC)
+            result["answer"] = answer.strip()
+            latency["full_answer"] = time.perf_counter() - start
+        else:
+            result["answer"] = ""
+            latency["full_answer"] = 0.0
+            
+        result["context"] = doc_context
+        result["route"] = route_label
+        result["mode"]  = MODE_AGENTIC
+        result["retrieved_chunks"] = retrieved_chunks
+        result["latency"] = latency
+        return result
+    
+    res["agentic"] = run_agentic_pipeline(latency.copy())
+    res["baseline"] = run_base_pipeline(latency.copy())
+    return res
 
 
 # ─────────────────────────────────────────────

@@ -12,7 +12,9 @@
 
 from typing import Any
 
-ROUTER_SYSTEM_PROMPT = """You are a query router for a database + document system.
+
+def route_system_prompt( few_shot_examples: str = "") -> str:
+  template = """You are a query router for a database + document system.
 Your job is to classify a user question into exactly one of three routes:
 
 SQL    - The question asks for structured data that lives in a database: counts, totals,
@@ -36,6 +38,9 @@ Rules:
 - DEFAULT to SQL when in any doubt — most questions are SQL questions
 - Only choose VECTOR or HYBRID if the question clearly references documents or reports
 """
+  if few_shot_examples:
+    template += f"\nFEW SHOT EXAMPLES:\n{few_shot_examples}\n"
+  return template
 
 CORRECTION_SYSTEM_PROMPT = """You are an expert SQL debugger.
 You will be given a natural language question, a SQL query that failed,
