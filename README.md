@@ -173,6 +173,25 @@ Override the Copilot model for this run:
 python evaluation/run_eval.py --mode cloud --dataset spider --sample 20 --model gpt-5.2
 ```
 
+## Sensitive Word Masking UI (Tkinter)
+
+Run the desktop app:
+
+```bash
+python sensitive_masker_app.py
+```
+
+What it includes:
+
+- Persistent category-based sensitive-word list stored in `sensitive_words.json`
+- Batch file selection and processing
+- Output files saved to `output/` with original filenames
+- Side-by-side before/after preview
+- Highlighted masked terms in preview
+- Mask report (`N words masked across M categories`)
+- Recent files list stored in `recent_files.json`
+- Dark/light mode toggle
+
 ## Output Files
 
 Each run saves a JSON file in `results/`:
