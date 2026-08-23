@@ -1,0 +1,8 @@
+{
+  "source_json": "json/skyvector_operations_group.json",
+  "company_name": "SkyVector Operations Group",
+  "database_file": "generated/skyvector_operations_group/skyvector_operations_group.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/skyvector_operations_group"
+}

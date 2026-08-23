@@ -1,0 +1,8 @@
+{
+  "source_json": "json/flamegrill_masters_inc.json",
+  "company_name": "FlameGrill Masters Inc.",
+  "database_file": "generated/flamegrill_masters_inc/flamegrill_masters_inc.db",
+  "reports_exported": 1,
+  "pdf_reports_exported": 1,
+  "output_root": "generated/flamegrill_masters_inc"
+}

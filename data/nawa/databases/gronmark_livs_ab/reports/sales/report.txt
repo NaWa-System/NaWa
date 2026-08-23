@@ -1,0 +1,75 @@
+GRÖNMARK LIVS AB
+Q1 2024 SALES PERFORMANCE REPORT
+
+Organisation: Grönmark Livs AB
+Period: Q1 2024 (January - March 2024)
+Prepared by: Business Intelligence & Reporting Team
+
+========================================
+EXECUTIVE SUMMARY
+========================================
+
+Grönmark Livs AB recorded solid sales performance across its four stores in Q1 2024, with 23 transactions processed totalling approximately SEK 10,120 in combined revenue. The Stockholm region dominated transaction volume, with the Södermalm and Vasastan stores collectively accounting for the majority of activity.
+
+The click-and-collect channel showed strong traction, driven primarily by business members placing bulk orders. Catering Lunden AB and Frisk & Nyttig HB were the top-spending accounts and warrant dedicated account management attention.
+
+March was the busiest month with 9 transactions. Private-label products featured consistently, reflecting good shelf penetration. Discount usage was targeted, applied mainly on chicken breast lines.
+
+Two transactions were recorded from non-members. Growing member conversion among repeat non-member shoppers should be a Q2 priority.
+
+========================================
+KEY METRICS
+========================================
+
+Total Transactions: 23
+Total Revenue: ~SEK 10,120
+Click-and-Collect Share: ~26% (6 of 23 transactions)
+Member Transaction Rate: 91% (21 of 23 transactions)
+Top Spending Channel: Click-and-Collect (~SEK 970 avg basket)
+Private-Label SKUs Active: 6 of 14
+Busiest Store: Södermalm (8 transactions)
+Business Member Revenue Share: ~46%
+
+========================================
+REPORT SECTIONS
+========================================
+
+1. TRANSACTION VOLUME BY STORE AND MONTH
+
+Södermalm led all stores with 8 transactions in Q1. Monthly volume was consistent at 7 transactions in January and February before rising to 9 in March. The Uppsala Centrum and Vasastan stores each recorded 6 transactions. Västerås recorded 3, reflecting its smaller footprint.
+
+2. REVENUE BY CHANNEL
+
+Click-and-collect averaged approximately SEK 970 per basket versus SEK 270 for in-store transactions. Business members drove this gap through bulk procurement orders. Expanding click-and-collect penetration among household members is identified as a key Q2 growth lever.
+
+3. TOP PRODUCTS BY QUANTITY SOLD
+
+Grönmark Chicken Breast 400g was the highest-volume product by units. Grönmark Whole Milk 1L and Organic Tomatoes 500g were the most frequently purchased items in household baskets. Smoked Salmon and Olive Oil appeared predominantly in click-and-collect orders. The bakery range maintained steady in-store velocity throughout the quarter.
+
+4. MEMBER VS NON-MEMBER SALES
+
+91% of transactions were linked to active members. Business members generated the highest per-transaction values. Anna Karlsson and Maria Lindberg were the most frequent individual shoppers, each appearing three times in Q1. Two transactions had no member recorded.
+
+5. DISCOUNT USAGE
+
+Discounts were applied on Grönmark Chicken Breast (10-15% for business bulk orders) and Sourdough Loaf (5% in one transaction). No broad promotional discounting was observed. Discount exposure is modest relative to total revenue.
+
+========================================
+APPENDIX
+========================================
+
+Assumptions:
+- transactions.total_amount is the authoritative revenue figure per transaction.
+- Non-member transactions included in totals, excluded from member segmentation.
+- All four stores fully operational throughout Q1 2024.
+
+Known Limitations:
+- No prior-quarter data available for trend comparisons.
+- Non-member shopper identity not captured.
+
+Recommended Next Analysis:
+- Gross margin analysis by department.
+- Member purchase frequency and basket size segmentation.
+- Private-label vs branded revenue share by department.
+- Store-level profitability including supplier delivery costs.
+- Click-and-collect basket composition vs in-store analysis.

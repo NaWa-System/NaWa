@@ -1,0 +1,56 @@
+Q1 2026 Sales Performance by Channel, Region, and Product Series
+
+Organisation: LumenForge Displayworks
+Reporting Period: 2026-01-01 to 2026-03-31
+
+EXECUTIVE SUMMARY
+Q1 2026 sales activity was driven primarily by business-to-business volume through National Retail and Regional Dealer channels, with meaningful supplemental revenue from Direct Online consumer orders and warranty attachments. The product mix skewed toward higher-volume Core LED units in partner channels, while Direct Online over-indexed on Nova OLED and larger-screen models.
+
+Regional results reflected expected channel footprints: the Northeast and Midwest benefited from National Retail placements, while the South and West showed stronger Regional Dealer throughput. Across the quarter, the Apex and Nova premium lines contributed outsized revenue per unit, but Core products remained the consistent unit engine.
+
+Warranty attach performance was concentrated in Direct Online consumer transactions, indicating an opportunity to improve protection plan conversion in retail/dealer environments via training, offer design, and point-of-sale messaging. A small amount of returned revenue appeared late in the quarter; this should be monitored as volume scales, particularly for premium models where absolute refund impact is higher.
+
+KEY METRICS
+- Total Revenue (TV + Warranty): $135,872
+- TV Hardware Revenue: $134,408
+- Warranty Revenue: $1,464
+- Units Shipped (TVs): 184
+- Average Selling Price (ASP) per TV: $730
+- Revenue Mix by Channel: Regional Dealer ~45%, National Retail ~43%, Direct Online ~12%
+- Direct Online Warranty Attach Rate: 100% (in-sample)
+- Returns: 1 order returned (refunded)
+
+MAIN SECTIONS
+1) Quarter Overview: Revenue and Unit Volume
+Quarterly results show a classic split between partner-driven unit volume and online-driven premium mix. Business orders (retail and dealer) generated the bulk of total units, while consumer direct orders showed higher per-unit revenue and stronger warranty add-on capture.
+
+2) Revenue by Channel
+Regional Dealer and National Retail channels accounted for the majority of revenue due to bulk orders and repeat business customers. Direct Online remained smaller in absolute dollars but is strategically important for premium positioning and warranty attachment.
+
+3) Regional Performance Snapshot
+The Midwest and Northeast benefited from National Retail throughput, while the South and West were more influenced by regional dealer distribution. Allocation and enablement efforts should remain regionally tailored.
+
+4) Product Mix: Series and Panel Type
+Core LED models remained the backbone for unit volume, while Nova OLED and Apex QLED drove higher revenue per unit. Monitoring mix is important because profitability and return exposure differ materially by series.
+
+5) Warranty Attachments (Direct Online Focus)
+Warranty revenue in the quarter was generated almost exclusively from Direct Online consumer orders. Replicating the online offer experience in retail/dealer environments could lift attach rates.
+
+6) Returns and Revenue Reversals
+A single premium-model return occurred in the quarter and was refunded in full including warranty. Premium returns warrant monitoring by model, reason codes, and channel.
+
+APPENDIX / NOTES
+Assumptions
+- Revenue computed as (quantity * unit_price) + warranty_price per line.
+- Q1 includes orders with order_date between 2026-01-01 and 2026-03-31.
+- Refunds are captured via the returns table and treated as revenue reversals.
+
+Known Limitations
+- No explicit promotions/discount attribution beyond unit_price.
+- No shipping, marketing, or incentive costs.
+- Warranty is stored as a line-level amount (not per-unit).
+
+Recommended Next Analysis
+- Add promotions and applied-discount tracking.
+- Measure warranty attach rate by store/dealer and test enablement interventions.
+- Model shipments and delivery SLAs to analyze shipping-damage drivers.

@@ -1,0 +1,96 @@
+ICA HANDLARNAS AB
+LOYALTY PROGRAMME ACTIVITY REPORT — Q4 2024
+
+Organisation: ICA Handlarnas AB
+Reporting Period: October – December 2024
+Prepared by: Customer Insights & Loyalty Analytics
+Date: January 2025
+
+========================================
+EXECUTIVE SUMMARY
+========================================
+
+This report summarises loyalty programme activity across the ICA Handlarnas AB store network for Q4 2024. The programme currently tracks 10 members distributed across eight stores, with four Gold, three Silver, and three Bronze tier members.
+
+Gold-tier members were disproportionately responsible for total loyalty spend and points earned during the quarter. Members associated with ICA Maxi Uppsala and ICA Kvantum Gothenburg City recorded the highest individual spend figures, reflecting both larger basket sizes at large-format stores and the higher engagement levels typical of Gold-tier households.
+
+December saw the highest concentration of loyalty transactions in the quarter, consistent with the seasonal peak observed in the wholesale performance data. Bronze-tier members showed limited Q4 activity, suggesting a potential engagement gap that warrants targeted campaign activity in Q1 2025.
+
+========================================
+KEY METRICS
+========================================
+
+Total Tracked Members: 10
+  -- 4 Gold, 3 Silver, 3 Bronze tier members across 8 home stores.
+
+Total Loyalty Spend (Q4 2024): SEK 12,393
+  -- Across 20 transactions, October through December 2024.
+
+Total Points Earned: 12,374 points
+  -- Points earned at 1 point per SEK spent.
+
+Highest-Spending Member: Member 8 (Gold, ICA Maxi Uppsala)
+  -- Over SEK 3,900 in loyalty spend across three Q4 transactions.
+
+Average Spend per Transaction: SEK 619.65
+  -- Gold-tier transactions averaged significantly above this figure.
+
+December Share of Q4 Loyalty Spend: approximately 45 percent
+  -- Holiday season peak aligned with wholesale volume trend.
+
+Bronze-Tier Re-Engagement Risk: 3 members
+  -- Low balances and limited Q4 activity; campaign recommended.
+
+========================================
+SECTION 1: LOYALTY MEMBER TIER DISTRIBUTION
+========================================
+
+Of the 10 tracked members, four hold Gold status, three Silver, and three Bronze. Gold members represent 40 percent of the base but contribute a substantially higher share of total loyalty programme spend. The three Bronze-tier members (4, 7, and 9) joined the programme more recently in 2023 and hold lower accumulated point balances, consistent with shorter membership tenure.
+
+========================================
+SECTION 2: TRANSACTION VOLUME AND SPEND BY MONTH
+========================================
+
+October recorded 10 transactions totalling approximately SEK 4,391. November saw 4 transactions and around SEK 2,820 in spend. December showed a clear uplift with 6 transactions generating approximately SEK 5,182 in loyalty-recorded spend. The December increase is consistent with increased shopping frequency during the Christmas period.
+
+========================================
+SECTION 3: MEMBER SPEND BY HOME STORE
+========================================
+
+Members associated with ICA Maxi Uppsala and ICA Kvantum Gothenburg City recorded the highest cumulative Q4 spend, reflecting both higher basket sizes at large-format stores and Gold-tier engagement patterns. ICA Nara home-store members recorded the lowest totals, consistent with the convenience format's smaller average basket.
+
+========================================
+SECTION 4: POINTS ACCUMULATION AND TIER PROGRESSION RISK
+========================================
+
+Gold-tier members hold strong points balances ranging from 18,400 to 41,200 points. Silver-tier members are in a stable range of 7,800 to 11,300 points but should be monitored for tier retention risk. Bronze-tier members hold low balances between 1,800 and 3,100 points and recorded limited Q4 transaction activity, making them candidates for targeted promotional campaigns ahead of the next tier review cycle.
+
+========================================
+SECTION 5: CROSS-STORE SHOPPING BEHAVIOUR
+========================================
+
+The majority of loyalty transactions were recorded at the member's home store, consistent with habitual shopping patterns. A small number of transactions were logged at stores other than the member's home location, indicating some cross-store shopping behaviour. Understanding this overlap can support format-level marketing decisions and store catchment analysis.
+
+========================================
+APPENDIX
+========================================
+
+ASSUMPTIONS
+- Points are earned at 1 point per SEK spent, rounded to the nearest integer.
+- Tier classifications reflect cumulative programme history, not Q4 activity in isolation.
+- Monthly spend totals are derived from transaction_date groupings on the loyalty_transactions table.
+
+KNOWN LIMITATIONS
+- Only 10 members are tracked; this is a sample and does not represent full ICA loyalty programme membership.
+- Points redemption is not captured in the current schema; total_points reflects gross accumulation only.
+- Tier thresholds are not defined in the schema and are assumed to follow standard ICA programme rules.
+
+RECOMMENDED NEXT ANALYSIS
+- Add a points redemptions table to track spend-down behaviour and net points liability.
+- Analyse tier upgrade and downgrade velocity to identify at-risk Silver members ahead of the next review cycle.
+- Run a campaign attribution analysis to measure whether Bronze-tier re-engagement promotions improve transaction frequency in Q1 2025.
+- Correlate loyalty member spend at the store level with wholesale order volumes to validate the supply-demand relationship.
+
+========================================
+END OF REPORT
+========================================

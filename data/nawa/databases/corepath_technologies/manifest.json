@@ -1,0 +1,8 @@
+{
+  "source_json": "json/corepath_technologies.json",
+  "company_name": "Corepath Technologies",
+  "database_file": "generated/corepath_technologies/corepath_technologies.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/corepath_technologies"
+}

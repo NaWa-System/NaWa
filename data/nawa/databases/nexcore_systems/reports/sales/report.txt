@@ -1,0 +1,72 @@
+NEXCORE SYSTEMS
+Q1 2024 SALES PERFORMANCE REPORT
+
+Organisation: NexCore Systems
+Period: Q1 2024 (January - March 2024)
+Prepared by: Business Intelligence Team
+
+========================================
+EXECUTIVE SUMMARY
+========================================
+
+NexCore Systems closed Q1 2024 with strong overall revenue performance driven primarily by high-value custom PC builds and laptop sales. The quarter saw 18 orders processed across both online and in-store channels, with the online channel accounting for the majority of transaction volume. Business customers, while fewer in number, contributed disproportionately to total revenue due to multi-unit bulk orders at negotiated discount rates.
+
+March was the busiest month of the quarter with 9 orders recorded, compared to 5 in January and 4 in February. One order was returned in February and one was cancelled in March.
+
+Warranty subscription uptake remained healthy with 10 new subscriptions activated during the quarter. Going into Q2, NexCore should focus on converting the pending order and accelerating warranty attach rates for individual customers.
+
+========================================
+KEY METRICS
+========================================
+
+Total Orders: 18
+Gross Revenue (Completed): ~EUR 97,400
+Online vs In-Store Split: 72% Online / 28% In-Store
+Business Revenue Share: ~58%
+Average Order Value: ~EUR 5,400
+Return Rate: 5.6%
+New Warranty Subscriptions: 10
+Warranty Attach Rate: ~56%
+
+========================================
+REPORT SECTIONS
+========================================
+
+1. ORDER VOLUME AND MONTHLY TREND
+
+Order volume grew steadily across Q1, with January recording 5 orders, February 4, and March 9. The acceleration in March is attributable to business procurement cycles. The online channel dominated, accounting for 13 of 18 orders.
+
+2. REVENUE BY CUSTOMER TYPE
+
+Business customers generated the majority of Q1 revenue despite representing only 4 of 10 unique customers. Baltic Tech and NordMedia placed the largest individual transactions with 3 and 5 units respectively.
+
+3. DISCOUNT ANALYSIS
+
+Discounts were applied selectively, primarily to business customers and custom build SKUs. The NexCore Custom Build i7 was discounted at 8% across multiple orders. Total discount exposure estimated at approximately EUR 3,800.
+
+4. RETURNS AND CANCELLATIONS
+
+One return was recorded in February (Zenbook Pro 14) and one order was cancelled in March (in-store). One order remains pending at quarter close. Rates are within acceptable thresholds.
+
+5. WARRANTY SUBSCRIPTION PERFORMANCE
+
+Ten warranty subscriptions were activated in Q1 2024. The Business Pro 24-month plan was taken up by all four B2B customers. No cancellations or expirations occurred during the quarter.
+
+========================================
+APPENDIX
+========================================
+
+Assumptions:
+- Revenue calculated from order line items; returned/cancelled orders excluded from net figures.
+- Warranty revenue recognized on an annual basis.
+- Shipping costs treated as pass-through.
+
+Known Limitations:
+- No prior-quarter data available for trend comparison.
+- Pending order (order_id 14) excluded from revenue totals.
+
+Recommended Next Analysis:
+- Gross margin analysis by product category.
+- Customer lifetime value segmentation by individual vs business.
+- Regional revenue breakdown across Nordic and Baltic markets.
+- Warranty attach rate drill-down by product category.

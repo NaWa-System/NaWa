@@ -1,0 +1,58 @@
+Q1 2026 Customer Deliveries, Order Intake, and On-Time Shipping Performance
+
+Organisation: Northforge Steelworks AB
+Reporting period: 2026-01-01 to 2026-03-31
+
+EXECUTIVE SUMMARY
+In Q1 2026, Northforge Steelworks AB recorded steady order intake across OEM and service-center segments, with a product mix spanning hot-rolled coil, plate, and coated products. Shipment execution through the quarter was generally reliable, with most deliveries recorded as completed and only a small number of late-quarter shipments still in transit.
+
+Customer demand was diversified across regions, with meaningful volume moving to Nordics, DACH, UKI, and CEE/Baltics. This diversification reduced single-market exposure and supported stable plant loading.
+
+From a service perspective, on-time performance appears strong for February and March deliveries, with most shipments dispatched near their promised ship dates. Where shipment quantities fell slightly below ordered quantities, the pattern suggests partial deliveries and follow-on fulfillment behavior typical for steel supply programs.
+
+Key sales priorities for early Q2 include closing out remaining open quantities on recent orders, minimizing partial-shipment fragmentation (which increases freight cost per ton), and proactively managing any supply constraints tied to coated product quality holds or allocation decisions.
+
+KEY METRICS (Q1 2026)
+- Orders Confirmed: 12
+- Order Lines: 16
+- Delivered Shipments (count): 12
+- Delivered Shipped Tons (approx.): approximately 1.4k tons
+- In-Transit at Quarter Close (through 2026-03-31 ship dates): 0
+- Estimated On-Time Shipping Rate: High (majority on/near promise)
+- Average Freight Cost per Delivered Shipment: approximately $5k–$6k (mixed currencies not normalized)
+- Top Product Category by Shipped Volume: HRC
+
+MAIN SECTIONS
+1) Order Intake Overview (Q1) by Customer Segment and Region
+Q1 orders were distributed across OEMs, fabricators, distributors, and service centers, reducing concentration risk. The order book spans multiple regions (Nordics, DACH, UKI, Baltics, CEE), supporting stable demand even if one market slows.
+
+2) Revenue Proxy: Booked Value by Product Category
+Booked order value is concentrated in a handful of high-tonnage HRC and coated lines, with plate contributing baseline value. Differences in unit pricing reflect grade and product form, and the mix supports commercial optimization through value-added coated products where service execution is strong.
+
+3) Shipment Execution: Delivered Tons and Freight by Plant
+Shipments were fulfilled primarily from the strip mill and coating/finishing site, with plate deliveries supporting heavy-fabrication customers. Freight costs track distance and shipment size; partial shipments increase freight exposure and can erode commercial outcomes if they become frequent.
+
+4) On-Time Shipping: Promise Date vs Ship Date
+Across delivered shipments, ship dates generally fall close to promised ship dates, supporting strong customer experience and reducing the likelihood of penalties or expedited logistics.
+
+5) Partial Fulfillment Signals (Ordered vs Shipped Tons)
+Several lines show shipped tons slightly below ordered tons, consistent with partial deliveries and remaining open quantities. While common, excessive fragmentation increases freight cost per ton and complicates customer scheduling.
+
+6) Early Q2 Watchlist: In-Transit Shipments and Allocation Risk
+Shipments initiated in early April are in transit and should be monitored for delivery confirmation. Any coated product constraints caused by late-March quality holds may affect sequencing; proactive communication of ship windows will protect service perception.
+
+APPENDIX / NOTES
+Assumptions
+- Booked value is approximated as ordered_tons multiplied by unit_price_per_ton per line; currencies are not normalized.
+- On-time performance uses promised_ship_date versus ship_date for shipped lines.
+- Delivered shipments are identified by delivery_status = Delivered and a non-null delivered_date.
+
+Known limitations
+- No invoices exist; recognized revenue timing cannot be measured.
+- Multiple currencies exist without FX rates.
+- Open backlog is not precisely measurable without explicit remaining quantity fields.
+
+Recommended next analysis
+- Add FX and a reporting currency to enable consolidated sales and freight analytics.
+- Add invoicing and payment data to measure cash-cycle KPIs.
+- Track remaining open quantity per line and multiple shipments per line to compute fill rate and backlog aging.

@@ -1,0 +1,240 @@
+================================================================================
+Q1 2024 SALES PERFORMANCE REPORT
+Product, Channel & Category Analysis
+================================================================================
+Organisation:     Verdant Shelf Co.
+Reporting Period: January 1, 2024 – March 31, 2024
+Prepared by:      Business Intelligence Team
+Date Issued:      April 5, 2024
+================================================================================
+
+
+EXECUTIVE SUMMARY
+-----------------
+
+Verdant Shelf Co. delivered a strong first quarter in 2024, recording 20 orders
+across its online and in-store channels with gross product revenue approaching
+$1,980 before discounts and the single refund recorded in late March. The quarter
+demonstrated healthy month-over-month volume growth, with March emerging as the
+highest-order-count month driven by the spring seasonal uplift and increased
+returning customer activity.
+
+Tropical Plants and Accessories & Care remained the top-performing categories by
+revenue contribution, reflecting the core customer preference for statement plants
+paired with premium care products. The Online channel dominated order volume at
+approximately 75% of transactions, while in-store orders carried higher average
+basket values — particularly for large-format Tropical Plant SKUs.
+
+One order was refunded during the period (Order #20, March 30), representing less
+than 5% of total orders. Discounts were applied selectively across six orders,
+indicating disciplined promotional activity. The spring season ahead presents a
+clear growth opportunity, and Verdant Shelf is well positioned to capitalise on
+increased consumer demand in Q2.
+
+
+KEY METRICS
+-----------
+
+  Total Orders                  20
+    Across all channels; volume increased each month of the quarter.
+
+  Gross Product Revenue         ~$1,980
+    Before discounts and the late-March refund.
+
+  Average Order Value (AOV)     ~$94
+    In-store AOV skews higher due to large Tropical Plant purchases.
+
+  Online vs. In-Store Split     75% Online / 25% In-Store
+    15 online, 5 in-store orders during the quarter.
+
+  Top-Selling Product           Bird of Paradise (Large)
+    Highest single-unit revenue at $74.99; appeared in two in-store orders.
+
+  Total Discounts Applied       $33.00
+    Across 6 orders; average $5.50 per discounted order.
+
+  Refund Rate                   5% (1 order)
+    Not material at current volumes; monitor in Q2.
+
+  Repeat Customer Orders        5 returning customers
+    33% repeat rate across the 90-day quarter.
+
+  Total Shipping Revenue        ~$89.85
+    Online orders billed at $5.99 flat rate; in-store orders carry no charge.
+
+
+================================================================================
+SECTION 1 — MONTHLY ORDER VOLUME TREND
+================================================================================
+
+Order volume grew consistently across the quarter: January recorded 5 orders,
+February 6, and March delivered the strongest performance at 9 orders. The March
+spike aligns with the traditional spring houseplant buying season and coincides
+with the Spring Potting Party workshop event held on March 9, which likely drove
+both footfall and online discovery.
+
+The upward trend is encouraging and suggests natural seasonal tailwinds as the
+company enters Q2. Management should ensure inventory adequacy for Tropical Plants
+and growing kits ahead of April.
+
+
+  - Monthly bar chart of order count
+  - Line chart overlaying order count with workshop event dates
+
+
+================================================================================
+SECTION 2 — REVENUE BY PRODUCT CATEGORY
+================================================================================
+
+Tropical Plants generated the highest aggregate revenue across the quarter, driven
+by the high unit prices of the Monstera Deliciosa, Fiddle Leaf Fig, and Bird of
+Paradise. Accessories & Care performed strongly as a secondary category, with the
+Ceramic Pot Set (3-pack) and Premium Potting Mix regularly appearing as add-on
+items alongside plant purchases — a clear cross-sell pattern.
+
+Succulents & Cacti and Ferns & Foliage delivered moderate revenue contributions.
+Growing Kits showed consistent but modest performance, suggesting potential for
+bundle promotion to improve attach rate and basket size.
+
+
+  - Horizontal bar chart of revenue by category
+  - Pie chart of category revenue share
+
+
+================================================================================
+SECTION 3 — CHANNEL PERFORMANCE: ONLINE VS. IN-STORE
+================================================================================
+
+The Online channel processed 75% of all orders, confirming its role as the
+primary revenue engine. However, in-store orders consistently featured higher-
+priced items — most notably the Bird of Paradise ($74.99) and Boston Fern with
+add-on Potting Mix — resulting in above-average basket sizes.
+
+In-store orders also carried zero shipping cost, improving net margin per
+transaction. The in-store channel additionally functions as a physical gateway to
+workshop events, creating a dual commercial role disproportionate to its raw order
+count. The company should consider strategies to convert in-store browsers into
+online repeat purchasers via loyalty or subscription upsell programmes.
+
+
+  - Grouped bar chart: order count and AOV by channel
+  - Comparative table: channel revenue, discounts applied, and shipping cost
+
+
+================================================================================
+SECTION 4 — TOP PRODUCTS BY UNITS SOLD AND REVENUE
+================================================================================
+
+The Monstera Deliciosa (Medium) was the most frequently ordered individual product,
+appearing in three separate orders. The Ceramic Pot Set ranked highly by units,
+reflecting strong accessory attach rates across the range. The Bird of Paradise
+contributed the highest per-unit revenue at $74.99.
+
+The Barrel Cactus was ordered in a quantity of 3 in a single transaction,
+suggesting gift or bulk purchasing behaviour. Terrarium Starter Kits and Herb Grow
+Kits show solid quantities per order, appealing to gift buyers and DIY enthusiasts.
+No products were out of stock during the period; however, high-velocity SKUs
+should be flagged for Q2 reorder planning.
+
+
+  - Ranked bar chart: top 10 products by units sold
+  - Scatter plot: unit price vs. units sold, coloured by category
+
+
+================================================================================
+SECTION 5 — DISCOUNT AND PROMOTIONS ANALYSIS
+================================================================================
+
+Six orders received discounts totalling $33.00 — approximately 1.7% of gross
+product revenue. The largest single discount applied was $10.00 (Order #4) and
+the average per discounted order was $5.50. Discounting was distributed across
+both online and in-store channels with no apparent over-concentration in either.
+
+The relatively low rate of discounting is positive and suggests that demand is
+being captured at full price for the majority of transactions. The company should
+monitor whether discount usage increases during Q2 as competition intensifies
+during peak spring season.
+
+
+  - Table of orders with discounts applied
+  - Bar chart: discount amount by month
+
+
+================================================================================
+SECTION 6 — WORKSHOP EVENT REVENUE
+================================================================================
+
+Five workshops were held during Q1 2024, collectively selling 96 of 110 available
+tickets (87% average capacity utilisation). Total event revenue reached
+approximately $3,155.
+
+  Event                               Date      Sold  Cap   Price   Revenue
+  ----------------------------------  --------  ----  ---   ------  -------
+  Terrarium Building Workshop         Jan 20     18    20   $35.00  $630
+  Beginner Plant Care Class           Feb 10     22    25   $25.00  $550
+  Succulent Arrangement Masterclass   Feb 24     15    15   $45.00  $675  (SOLD OUT)
+  Spring Potting Party                Mar 9      27    30   $30.00  $810
+  Propagation Workshop                Mar 23     14    20   $35.00  $490
+
+The Succulent Arrangement Masterclass was the only fully sold-out event and
+delivered the highest per-ticket revenue. The Propagation Workshop was the weakest
+performer at 70% capacity, suggesting a need for stronger lead-time promotion.
+
+
+  - Bar chart: tickets sold vs. capacity per event
+  - Summary table: event fill rate and revenue
+
+
+================================================================================
+SECTION 7 — CUSTOMER ACQUISITION AND REPEAT PURCHASE BEHAVIOUR
+================================================================================
+
+Fifteen unique customers transacted during Q1 2024, with five placing more than
+one order across the quarter — a repeat rate of approximately 33%. Returning
+customers included Ava Lindqvist, Marcus Osei, Priya Nair, Ethan Cho, and Naomi
+Adeyemi, all of whom placed at least two purchases within the 90-day window.
+
+The majority of new customers were acquired through the Online channel (10 of 15),
+while in-store acquisitions skewed toward Austin-based buyers. Geographic spread
+is widening to include Denver, Portland, New Orleans, and Dallas — an early
+indicator of organic national reach through the e-commerce channel.
+
+
+  - Map chart: customers by city and state
+  - Bar chart: new vs. returning customers by month
+
+
+================================================================================
+APPENDIX
+================================================================================
+
+ASSUMPTIONS
+  - Gross product revenue excludes the refunded Order #20 and is calculated on
+    completed orders only.
+  - In-store shipping cost is $0.00 for all in-store channel orders.
+  - Event revenue is treated as supplementary to product order revenue and is
+    reported in a separate section.
+  - Subscription box revenue is covered in the dedicated Subscription Performance
+    Report for the same period.
+
+KNOWN LIMITATIONS
+  - Gross margin by order cannot be precisely calculated without joining
+    order_items to products.unit_cost in a dedicated reporting view.
+  - Return reason for Order #20 is not captured in the schema; root cause
+    analysis is not possible with current data.
+  - Marketing spend and customer acquisition cost (CAC) are not tracked.
+  - Data covers Q1 2024 only; year-over-year comparison is unavailable.
+
+RECOMMENDED NEXT ANALYSIS
+  - Add a marketing_spend table by channel and month to enable CAC and ROAS
+    calculations starting Q2.
+  - Introduce a returns table with reason codes for refund root cause tracking.
+  - Build a product margin report by joining order_items to products.unit_cost.
+  - Develop a CLV model combining one-time order revenue with subscription
+    monthly revenue per customer.
+  - Quantify event attendee-to-purchaser conversion rate if event attendees can
+    be linked to customer records.
+
+================================================================================
+END OF REPORT
+================================================================================

@@ -1,0 +1,8 @@
+{
+  "source_json": "json/freshbasket_markets.json",
+  "company_name": "FreshBasket Markets",
+  "database_file": "generated/freshbasket_markets/freshbasket_markets.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/freshbasket_markets"
+}

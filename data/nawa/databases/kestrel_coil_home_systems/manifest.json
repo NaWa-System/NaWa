@@ -1,0 +1,8 @@
+{
+  "source_json": "json/kestrel_coil_home_systems.json",
+  "company_name": "Kestrel & Coil Home Systems",
+  "database_file": "generated/kestrel_coil_home_systems/kestrel_coil_home_systems.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/kestrel_coil_home_systems"
+}

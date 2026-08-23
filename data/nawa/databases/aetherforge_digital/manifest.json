@@ -1,0 +1,8 @@
+{
+  "source_json": "json/aetherforge_digital.json",
+  "company_name": "AetherForge Digital",
+  "database_file": "generated/aetherforge_digital/aetherforge_digital.db",
+  "reports_exported": 1,
+  "pdf_reports_exported": 1,
+  "output_root": "generated/aetherforge_digital"
+}

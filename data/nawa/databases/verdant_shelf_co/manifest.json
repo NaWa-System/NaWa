@@ -1,0 +1,8 @@
+{
+  "source_json": "json/verdant_shelf_co.json",
+  "company_name": "Verdant Shelf Co.",
+  "database_file": "generated/verdant_shelf_co/verdant_shelf_co.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/verdant_shelf_co"
+}

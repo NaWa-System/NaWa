@@ -1,0 +1,124 @@
+Q1 2024 CLIENT BILLING AND REVENUE SUMMARY
+===========================================
+
+Organisation:     SkyVector Operations Group
+Reporting Period: January 1, 2024 - March 31, 2024
+Report Type:      Finance
+Prepared by:      SkyVector Finance & Commercial Team
+Date of Issue:    April 7, 2024
+
+
+EXECUTIVE SUMMARY
+------------------
+
+SkyVector Operations Group closed the first quarter of 2024 with a strong billing performance, achieving full payment collection across all four active client accounts. Total revenue billed for the quarter reached approximately $160,129, comprising platform subscription fees, per-flight dispatch charges, and variable add-on module fees. All twelve billing records carry a Paid status, indicating no outstanding receivables at the close of the period.
+
+Maverick Air remained the highest-revenue client, generating approximately $61,125 across the three billing months. Pacific Crest Airways contributed approximately $45,466, while Saltline Express and Gulf Palms Charter contributed approximately $30,860 and $23,678 respectively.
+
+Per-flight revenues remained stable quarter-over-quarter, consistent with fixed contractual rates. The principal variable component in Q1 billing was add-on charges, which increased in March across three of four clients. This trend represents a clear upsell conversion signal for Q2.
+
+The revenue base is well-protected by long-term platform agreements with no contract lapse risk within the next twelve months. The finance team is advised to begin proactive contract review discussions with Saltline Express, the most recent client onboarding, which has scope for fleet expansion and corresponding fee uplifts.
+
+
+KEY METRICS
+-----------
+
+  Total Q1 Revenue Billed              $160,129
+  Context: All four clients, January through March 2024. All invoices confirmed Paid.
+
+  Total Platform Fees Billed           $150,000
+  Context: Monthly subscription fees across all four clients over three billing months.
+
+  Total Per-Flight Charges             ~$306
+  Context: Aggregate per-flight dispatch fees for 28 flights at contractual rates.
+
+  Total Add-On Charges                 $9,800
+  Context: Variable module charges; increased in March across three of four clients.
+
+  Outstanding Receivables              $0
+  Context: All 12 billing records carry Paid status. No overdue invoices at quarter close.
+
+  Highest-Revenue Client               Maverick Air -- ~$61,125
+  Context: Largest fleet, highest platform fee, highest add-on charge uptake.
+
+  Lowest-Revenue Client                Gulf Palms Charter -- ~$23,678
+  Context: Smallest fleet (12 aircraft) and lowest contracted platform fee at $7,500/month.
+
+  Avg Monthly Revenue per Client       ~$13,344
+  Context: Total Q1 revenue divided by 12 billing records (4 clients x 3 months).
+
+  Add-On Revenue Growth (Jan to Mar)   ~+22% portfolio-wide
+  Context: Driven by analytics module demand following Q1 irregularity events.
+
+  Active Billing Contracts             4
+  Context: All four contracts active throughout Q1 with no lapses or disputes.
+
+
+SECTION 1: Q1 REVENUE OVERVIEW
+-------------------------------
+
+Total revenue billed in Q1 2024 reached approximately $160,129 across three revenue streams: platform fees (93.7% of total), add-on module charges (6.1%), and per-flight dispatch fees (the balance). The subscription-anchored revenue model provides excellent billing predictability, with platform fees providing a stable base irrespective of monthly flight volume fluctuations. As client fleet sizes grow and flight volumes increase, the per-flight charge component will become increasingly material to total quarterly revenue.
+
+
+SECTION 2: REVENUE BY CLIENT AIRLINE
+--------------------------------------
+
+Maverick Air was the largest revenue contributor in Q1 at approximately $61,125, representing 38% of total billed revenue. This reflects its $18,500 monthly platform fee, the highest in the active portfolio, combined with 10 dispatched flights and the greatest add-on service consumption. Pacific Crest Airways contributed approximately $45,466 supported by its $14,200 monthly platform fee. Saltline Express contributed approximately $30,860, and Gulf Palms Charter approximately $23,678. Revenue concentration is moderate and no single client represents an undue dependency risk. All four clients demonstrated stable billing engagement throughout the quarter.
+
+
+SECTION 3: MONTHLY BILLING TREND
+----------------------------------
+
+Monthly billing was stable in January and February, with March showing a modest aggregate increase driven by higher add-on charges across three client accounts. Maverick Air's March invoice of approximately $20,338 was the highest single monthly billing event in Q1. Gulf Palms Charter maintained flat add-on charges of $300 per month across all three months, suggesting limited engagement with supplementary product features. The commercial team should flag this account for an add-on product conversation ahead of the Q2 invoice cycle.
+
+
+SECTION 4: PER-FLIGHT REVENUE ANALYSIS
+----------------------------------------
+
+Per-flight dispatch fees range from $10.00 per flight (Saltline Express) to $13.00 per flight (Gulf Palms Charter). Despite Gulf Palms holding the highest per-flight rate, its low dispatch volume (six total flights) results in the lowest aggregate per-flight revenue. Maverick Air's $12.50 rate across ten dispatched flights generates the highest per-flight revenue contribution at approximately $125 for the quarter. The current pricing structure appropriately reflects the higher operational complexity and lower dispatch predictability of charter operations relative to scheduled carriers.
+
+
+SECTION 5: ADD-ON REVENUE ANALYSIS
+-------------------------------------
+
+Add-on module charges totalled $9,800 for Q1, representing 6.1% of total billings with positive growth momentum. Maverick Air was the largest consumer at $5,500 across the quarter. Pacific Crest Airways increased add-on spend to $1,200 in March, likely linked to the mechanical delay events in February raising interest in predictive maintenance alerting features. Saltline Express and Gulf Palms Charter both recorded step-ups in March, suggesting that recent operational disruptions are driving broader awareness of supplementary product value. The commercial team should use this momentum to structure formal add-on package proposals for all four clients before the Q2 billing cycle.
+
+
+SECTION 6: PAYMENT STATUS AND COLLECTIONS
+-------------------------------------------
+
+All twelve billing records issued in Q1 carry a Paid payment status, confirming that SkyVector's accounts receivable position is entirely clean at the close of the quarter. No invoices are outstanding, disputed, or partially paid. This reflects positively on the financial health of the client portfolio and the effectiveness of SkyVector's billing and collections processes. The transparent billing structure -- clearly separating platform fees, per-flight charges, and add-on fees on each invoice -- is likely a key contributing factor to this consistently clean collection outcome.
+
+
+SECTION 7: CONTRACT VALUE AND CLIENT TENURE
+---------------------------------------------
+
+SkyVector's four active contracts range in monthly platform fee from $7,500 (Gulf Palms Charter) to $18,500 (Maverick Air), reflecting differences in fleet size, operational complexity, and service scope. Pacific Crest Airways is the longest-tenured client with a contract start date of November 2021. Maverick Air joined in March 2022 and has become the highest-revenue account. Saltline Express, the most recent addition at January 2023, shows growth potential as it expands its fleet. Gulf Palms Charter provides a differentiated charter revenue profile. No contracts are at lapse risk within the next twelve months based on available contract data.
+
+
+APPENDIX
+--------
+
+Assumptions:
+  - All billing figures are taken directly from the billing_records table without accrual or deferred revenue adjustments.
+  - Add-on charges are billed as flat monthly fees and are not itemised by specific module.
+  - Per-flight charges are calculated as contracted per_flight_fee multiplied by the flights_dispatched count.
+  - Payment status of Paid is treated as confirmed receipt.
+  - All figures are in USD.
+
+Known Limitations:
+  - Add-on revenue cannot be attributed to specific product modules in the current billing schema.
+  - SkyVector's internal cost data is not included; profitability and margin analysis cannot be performed from this dataset alone.
+  - Contract end dates are not stored in the schema, limiting formal renewal risk assessment.
+  - Flight dispatch counts in billing records cross-reference reasonably with the flights table but minor differences may exist.
+
+Recommended Next Analysis:
+  - Develop a gross margin model by incorporating SkyVector's internal operational costs alongside billing revenue data.
+  - Enhance the billing schema with add-on module identifiers to enable product-level revenue attribution.
+  - Project annual recurring revenue (ARR) per client and model fleet expansion scenarios for Saltline Express.
+  - Establish a contract renewal calendar once contract end date data is captured in the system.
+  - Build a structured add-on conversion proposal for Gulf Palms Charter, using Q1 operational event data as the business case anchor.
+
+-----------------------------------------------
+End of Report
+SkyVector Operations Group - Confidential

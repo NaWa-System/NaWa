@@ -1,0 +1,8 @@
+{
+  "source_json": "json/nexlayer_consulting_group.json",
+  "company_name": "Nexlayer Consulting Group",
+  "database_file": "generated/nexlayer_consulting_group/nexlayer_consulting_group.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/nexlayer_consulting_group"
+}

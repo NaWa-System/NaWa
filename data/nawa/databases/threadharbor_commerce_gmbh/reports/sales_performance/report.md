@@ -1,0 +1,59 @@
+# Q1 2026 Sales & Margin Performance (Jan–Mar) — Channel, Category, and Region View
+
+**Organisation:** ThreadHarbor Commerce GmbH  
+**Reporting period:** 2026-01-01 to 2026-03-31  
+
+## Executive Summary
+Q1 2026 showed healthy order activity across both Web and Mobile channels, with Mobile slightly leading on order volume while Web remained important for higher-consideration baskets. Sales were diversified across Apparel and Footwear, with Accessories acting as a frequent basket add-on.
+
+Gross margin performance was strongest on higher-priced footwear and select premium apparel (e.g., knitwear and dresses), while basics (e.g., tees) contributed steady volume at lower unit margin. Discounting was used selectively, with a small number of orders using meaningful discounts to drive conversion.
+
+Regionally, Germany remained the largest single market by customer count and order volume, while the Netherlands, Austria, and Belgium delivered consistent contribution. Switzerland featured higher-priced items and a lower discount pattern, supporting strong item-level economics.
+
+Returns were present but manageable; size-related returns were the most common driver, which is consistent with category mix (denim, dresses, and footwear). The quarter’s results indicate an opportunity to reduce returns through improved fit guidance and to protect margin by targeting promotions toward categories and customer segments with stronger repeat and lower return propensity.
+
+## Key Metrics
+- **Total Orders (Q1):** 12
+- **Gross Revenue (Items):** $1,592.30
+- **Net Revenue (After Discounts + Shipping Fees):** $1,566.00
+- **Estimated Gross Profit (Pre-Returns):** $748.60
+- **Estimated Gross Margin (Pre-Returns):** 47.0%
+- **Orders by Channel:** Mobile: 6 | Web: 6
+- **Average Items per Order:** 1.83
+- **Return Rate (Units):** 31.8%
+- **Return Refund Value:** $466.50
+
+## Main Findings
+### 1) Sales Overview (Quarter Trend and Mix)
+Sales in Q1 were steady with consistent order cadence across January, February, and March. Order composition favored Apparel and Footwear, while Accessories frequently appeared as add-ons, suggesting cross-sell potential via bundles and cart recommendations. Discounting was applied to a minority of transactions, helping maintain average selling prices.
+
+### 2) Revenue by Category and Brand
+Apparel remained a core revenue driver through denim, dresses, and knitwear, while Footwear contributed a meaningful share from higher-priced boots and runner sneakers. Brand contribution was distributed, with a mix of basics (Northline Basics), mid-market (Kinetiq, Rivertown Denim), and premium/sustainable labels (Atelier Lune, GreenThread, Alpine Loom). This balanced brand portfolio reduces concentration risk and supports both volume and margin management.
+
+### 3) Channel Performance (Web vs Mobile)
+Mobile matched Web on order volume, indicating strong app adoption and a healthy mobile shopping experience. Web still played a key role for multi-item or higher-consideration baskets. Continued investment in mobile merchandising (personalized recommendations and quick re-order flows) should help increase repeat purchase frequency without relying on deep discounts.
+
+### 4) Customer and Region Contribution
+Germany contributed the largest base of customers and orders, while the Netherlands, Austria, Belgium, and Switzerland collectively represented meaningful incremental revenue. The regional distribution supports a multi-warehouse approach and continued localized marketing. Marketing opt-in coverage is mixed, and expanding opt-in rates could improve lifecycle communications and repeat conversion.
+
+### 5) Margin View (Estimated, Pre-Returns)
+Margin was supported by higher-priced footwear and premium apparel, while basics provided consistent traffic and basket building. The cost structure suggests that improving attach rate (adding accessories or a second item) is a practical lever for improving contribution per shipment. Promotions should remain targeted toward SKUs with healthy margin headroom to avoid over-discounting.
+
+### 6) Returns Impact on Sales Quality
+Returns reduced net realized revenue, with size-related returns most prevalent in categories where fit variance is common (denim, dresses, footwear). Reducing return incidence is likely the highest-impact lever for improving effective margin: better fit guidance, richer product detail pages, and proactive post-purchase messaging may reduce 'changed mind' returns and improve customer satisfaction.
+
+## Appendix / Notes
+**Assumptions**
+- Revenue calculations use order_items.unit_price at time of order and do not reprice based on products.list_price.
+- Estimated gross profit uses products.unit_cost and does not include shipping, payment processing, packaging, or customer service costs.
+- Returns impact is represented via returns.refund_amount and assumes refunded value approximates revenue reversal.
+
+**Known limitations**
+- No inventory-on-hand or procurement data is included, so sell-through and stockout impacts cannot be assessed.
+- No marketing campaign attribution exists, so channel mix cannot be tied to specific spend or ROAS.
+- Currency handling is simplified; CHF orders are included but not FX-converted in a separate table.
+
+**Recommended next analysis**
+- Add an FX rate table and convert all revenue/costs into a reporting currency for consolidated reporting.
+- Segment returns by category/brand and prioritize fit-related fixes for the highest-return SKUs.
+- Build a repeat-customer metric (first vs repeat orders) by comparing orders.order_date against customers.created_at and first purchase date.

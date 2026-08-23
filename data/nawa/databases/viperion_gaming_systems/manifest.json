@@ -1,0 +1,8 @@
+{
+  "source_json": "json/viperion_gaming_systems.json",
+  "company_name": "Viperion Gaming Systems",
+  "database_file": "generated/viperion_gaming_systems/viperion_gaming_systems.db",
+  "reports_exported": 1,
+  "pdf_reports_exported": 1,
+  "output_root": "generated/viperion_gaming_systems"
+}

@@ -1,0 +1,8 @@
+{
+  "source_json": "json/hemkop_detaljhandel_ab.json",
+  "company_name": "Hemk\u00f6p Detaljhandel AB",
+  "database_file": "generated/hemkop_detaljhandel_ab/hemkop_detaljhandel_ab.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/hemkop_detaljhandel_ab"
+}

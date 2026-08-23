@@ -1,0 +1,32 @@
+Q1 2024 Sales Volume and Private Label Penetration
+Organisation: SveaLågpris AB
+Reporting Period: Q1 2024
+
+EXECUTIVE SUMMARY
+This report evaluates sales performance and brand type distribution for SveaLågpris AB across its three primary discount store locations during Q1 2024. The data demonstrates a strong reliance on the 'Svea Vardag' private label to drive basket size and transaction volume, while national brand mainstays like Gevalia and Arla contribute significantly to total revenue due to higher price points.
+
+KEY METRICS
+* Total Q1 Revenue: 614.30 SEK
+* Total Transactions: 5
+* Private Label Volume: 13 units
+* Top Selling Category: Dairy
+
+MAIN SECTIONS
+
+Store Performance
+SveaLågpris Barkarby recorded the highest number of transactions and the highest aggregate revenue (312.10 SEK). Svågertorp followed closely in revenue despite fewer transactions, driven by bulk purchases of national brand dairy items.
+
+Private Label vs. National Brand Dynamics
+Private label goods account for the majority of unit volume (13 out of 17 total items sold). However, National Brands generated higher gross revenue per unit. The 'Svea Vardag' milk is the most frequently purchased item, appearing in 60% of all baskets.
+
+Category Analysis
+The Dairy category is the absolute revenue driver, combining the high velocity of private label milk with the high transaction value of Arla cheese. Household goods also show strong basket attachment when bought in multi-packs.
+
+APPENDIX & NOTES
+Assumptions:
+- All transactions reflect finalized, non-refunded purchases.
+- Base prices remained static throughout Q1 2024.
+
+Recommended Next Analysis:
+- Conduct margin analysis to compare profitability of Svea Vardag products against National Brands.
+- Analyze customer basket composition to optimize cross-merchandising in aisles.

@@ -1,0 +1,148 @@
+POLICY RETENTION, RENEWAL PERFORMANCE & CLAIMS ACTIVITY REPORT
+Q1/Q2 2024 (January – April 2024)
+
+Organisation: Meridian Cover Solutions Ltd
+Report Type: Operations
+Prepared by: Management Information Team
+Date: May 2024
+
+========================================================
+EXECUTIVE SUMMARY
+========================================================
+
+This operational report provides Meridian Cover Solutions Ltd's management team with a structured review of policy renewal performance, client retention outcomes, and claims activity across the January to April 2024 period. Together, these three operational dimensions represent the core service delivery indicators that underpin the firm's long-term client relationships and insurer panel reputation.
+
+Across the period, Meridian processed 20 renewal events, of which 17 resulted in a successful retained or new business placement. The overall retention rate for policies due for renewal stands at approximately 93%, which is strong by industry standards and reflects the account management team's proactive engagement strategy. The single non-renewed policy — Coldwell Fabrications Ltd's commercial property cover — is attributable to the client entering a period of reduced trading activity rather than competitive displacement.
+
+On the claims side, 15 claims were registered across the portfolio between January and April 2024, with a total claimed amount of approximately £126,800. Of these, 8 have been settled for a combined settled amount of approximately £84,100, representing an average settlement ratio of approximately 92% of claimed value on closed cases. Seven claims remain open, concentrated in the fleet motor, liability, and professional indemnity lines.
+
+Overall, Meridian's operational performance in Q1/Q2 2024 is satisfactory. Retention is strong, new business additions are healthy, and the claims management process is functioning within normal parameters. However, the volume of open claims entering May 2024 warrants active chase-up with insurer claims teams to ensure prompt resolution and client satisfaction.
+
+========================================================
+KEY METRICS
+========================================================
+
+  Overall Renewal Retention Rate   93%
+  14 of 15 renewal-eligible policies retained during the period.
+
+  Total Renewals Processed         20
+  Includes renewals, new business placements, and one mid-term adjustment.
+
+  GWP Growth on Renewed Policies   +6.8% average
+  Reflects insurer rate hardening and sum insured adjustments at renewal.
+
+  Total Claims Registered          15
+  Across all active policies for January to April 2024.
+
+  Total Claimed Amount             £126,800
+  Aggregate value of all claims lodged; open and settled combined.
+
+  Total Settled Amount             £84,100
+  Across 8 closed claims; approximately 92% of claimed value on closed cases.
+
+  Open Claims                      7
+  Combined outstanding exposure approximately £61,500.
+
+  Highest Value Open Claim         £18,500
+  Vehicle theft on the Apex Fleet Management fleet motor policy.
+
+  Lapsed Policies                  1
+  Coldwell Fabrications Ltd commercial property; £8,900 GWP lost.
+
+  New Policies Added (Q1/Q2)       5
+  New business placements placed during the reporting period.
+
+========================================================
+SECTION 1: RENEWAL PERFORMANCE SUMMARY
+========================================================
+
+Of the 20 events recorded in the period, 14 were classified as renewals of existing policies, 5 as new business, and 1 as a mid-term adjustment. Of the 15 policies eligible for renewal during January to April 2024, 14 were successfully renewed, all recording a retention_flag of TRUE in the system. The sole non-renewal was the Coldwell Fabrications Ltd commercial property policy, recorded with a retention_flag of FALSE. The renewal cycle was busiest in January (5 renewals), followed by March (4 renewals) and February (3 renewals), consistent with the portfolio's January calendar-year inception skew.
+
+========================================================
+SECTION 2: GWP MOVEMENT ON RENEWALS
+========================================================
+
+Comparing prior-year GWP against renewed GWP across the 14 successfully retained policies reveals a consistent pattern of moderate premium uplifts at renewal. The Sandhurst Hotels Group commercial property renewal saw the largest absolute uplift, moving from £36,000 to £38,500 (6.9%). Castleway Logistics fleet renewed from £29,000 to £31,500 (8.6%), consistent with fleet market rate trends. Across all renewed policies, aggregate GWP moved from approximately £186,100 to approximately £198,600, an overall uplift of approximately 6.7%. This organic GWP growth directly increases commission income on a like-for-like book basis.
+
+========================================================
+SECTION 3: CLAIMS FREQUENCY AND VOLUME BY PRODUCT LINE
+========================================================
+
+Fleet Motor generated the highest claims frequency with three events across two fleet policies, for a combined claimed amount of approximately £56,000. Two of three fleet claims remain open. Commercial Property recorded three events totalling approximately £29,500, all now settled. Liability lines (Public Liability and Employers Liability) recorded four claims totalling approximately £20,200, of which three remain open. Professional Indemnity has one open claim for £15,000. Cyber Liability recorded one settled claim at £18,500 against a £22,000 gross claim. SME Package policies produced the lowest average claim values, with two settled claims totalling approximately £3,900.
+
+========================================================
+SECTION 4: OPEN CLAIMS ANALYSIS
+========================================================
+
+As at the end of April 2024, seven claims remain open with a combined outstanding claimed value of approximately £61,500:
+
+  Fleet Motor (2 claims):           Approximately £24,800 combined
+    - Apex Fleet Management vehicle theft (£18,500, lodged 3 April 2024)
+    - Castleway Logistics vehicle collision (£6,300, lodged 20 April 2024)
+
+  Public Liability (2 claims):      Approximately £9,700 combined
+    - Sandhurst Hotels public liability slip (£4,200)
+    - Ridgeline Civil Engineering public liability injury (£5,500)
+
+  Professional Indemnity (1 claim): £15,000
+    - Ashbrook Legal professional negligence claim (lodged 20 March 2024)
+
+  Employers Liability (1 claim):    £3,800
+    - Lynbrook Care Services employee injury (lodged 25 April 2024)
+
+  Third Party Property Damage (1):  £3,200
+    - Ridgeline Civil Engineering contractors claim (lodged 12 March 2024)
+
+Account managers should maintain active contact on all open claim matters. The Ashbrook Legal claim warrants particular attention given its size and reputational sensitivity.
+
+========================================================
+SECTION 5: SETTLEMENT RATIO AND CLAIMS OUTCOME ANALYSIS
+========================================================
+
+Of the 8 settled claims in the period, total claimed value was approximately £47,700 and total settled value approximately £44,600, yielding an average settlement ratio of approximately 93.5% of claimed value on closed cases. Commercial property claims settled in full or near-full. The cyber liability claim settled at 84.1% of claimed value (£18,500 of £22,000), within expected parameters for first-party cyber claims. The employers liability claim settled at 92.5% (£6,200 of £6,700). No claim was declined outright by any panel insurer during the period. These settlement ratios should be referenced in renewal discussions where clients have experienced claims.
+
+========================================================
+SECTION 6: CLIENT RETENTION AND LAPSE RISK ASSESSMENT
+========================================================
+
+The single lapsed client, Coldwell Fabrications Ltd, has been reclassified as Lapsed in the client record. The associated property policy expiry results in the loss of approximately £890 per annum in commission income. Account manager Tom Bradshaw (Yorkshire, SME) should initiate a reconnection call to assess whether the client's trading position has stabilised and whether reinstatement or a new submission is viable in H2 2024.
+
+Beyond this single lapse, no other clients are currently flagged as at-risk. However, single-policy clients including Harwick Catering Services and Ironbridge Digital Agency should be prioritised for cross-sell conversations to deepen relationship stickiness and reduce single-policy vulnerability to future lapses.
+
+========================================================
+SECTION 7: CLAIMS ACTIVITY BY REGION AND ACCOUNT MANAGER
+========================================================
+
+The North West region recorded the highest number of claim events (6 claims), reflecting the larger and more complex fleet and commercial risks managed in that region. The Midlands recorded 5 claims, with the Thornfield Manufacturing fire damage and Ashbrook Legal professional negligence claims the most significant by value. Yorkshire recorded 4 claims, predominantly within the Sandhurst Hotels and Ridgeline Civil Engineering accounts.
+
+From an account management perspective, James Okafor (North West, Commercial) is managing the most active open claims caseload and should receive prioritised support from the claims liaison team. No account manager recorded zero claims across their managed portfolio during the period, which is consistent with the commercial nature of the risks held.
+
+========================================================
+APPENDIX & NOTES
+========================================================
+
+ASSUMPTIONS
+- Retention rate is calculated on policies with a renewal event due in January–April 2024 only.
+- New business policies (where prior_gwp is NULL) are excluded from the GWP growth calculation.
+- Settled claims are those with claim_status = 'Settled'; open claims are claim_status = 'Open'.
+- The mid-term adjustment for Apex Fleet Management is excluded from the formal renewal count.
+- Claims registered after 30 April 2024 are outside the scope of this report.
+- GWP uplift percentages are calculated individually per policy and averaged across the renewed book.
+
+KNOWN LIMITATIONS
+- Claims data reflects lodged and settled amounts only; no insurer reserve data is held, limiting outstanding liability estimates.
+- No claims handling timeline data is captured in the current schema; service efficiency KPIs cannot be produced.
+- A formal combined ratio or loss ratio cannot be calculated from Meridian's internal data alone.
+- No client satisfaction or NPS data is available in the current schema.
+- Root cause analysis data for the Coldwell Fabrications lapse is not captured in the system.
+
+RECOMMENDED NEXT ANALYSIS
+- Add a claims timeline table to capture notification, acknowledgement, and settlement dates for handling KPI reporting.
+- Introduce an at-risk flag to the clients or policies table to support proactive retention monitoring.
+- Build a rolling 12-month claims frequency analysis by product line and insurer to support panel review discussions.
+- Develop a cross-sell opportunity report identifying single-policy clients by sector eligible for additional product lines.
+- Commission an indicative insurer-level loss ratio estimate using claims data and approximate premium allocations to inform the next formal panel review.
+
+========================================================
+Meridian Cover Solutions Ltd — Confidential Management Information — May 2024
+========================================================

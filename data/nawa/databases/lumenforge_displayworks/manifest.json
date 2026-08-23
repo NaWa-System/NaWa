@@ -1,0 +1,8 @@
+{
+  "source_json": "json/lumenforge_displayworks.json",
+  "company_name": "LumenForge Displayworks",
+  "database_file": "generated/lumenforge_displayworks/lumenforge_displayworks.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/lumenforge_displayworks"
+}

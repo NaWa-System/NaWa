@@ -1,0 +1,144 @@
+Q1 2024 SALES PERFORMANCE REPORT
+FreshBasket Markets
+Reporting Period: January 1, 2024 – March 31, 2024
+Prepared by: Business Intelligence & Reporting Team
+Classification: Internal Management Report
+
+========================================
+EXECUTIVE SUMMARY
+========================================
+
+FreshBasket Markets recorded a solid first quarter in 2024, with total revenue across all five store locations trending upward through the period. January established a baseline of transactional activity that was built upon in February and March, with March emerging as the strongest revenue month of the quarter, driven in part by increased basket sizes at the Portland Central and Seattle North flagship stores.
+
+The Meat & Seafood and Fresh Produce categories remained the highest contributors to gross revenue, reflecting customer preference for premium perishables and the enduring appeal of the company's locally sourced offer. Private-label products continued to demonstrate strong unit volume, particularly within Dairy & Eggs and Packaged Goods, underscoring the strategic value of the FreshBasket own-brand range in driving repeat visits and margin improvement.
+
+The Click-and-Collect channel showed consistent engagement throughout the quarter, accounting for approximately 37% of total transaction volume, particularly across suburban locations such as Beaverton and Bellevue. This is consistent with the company's digital growth strategy and highlights an opportunity to invest further in fulfilment capacity at these stores.
+
+Promotion-driven transactions contributed positively to basket value in each month, with the Spring Clean Household Discount and Protein Week promotions in March generating above-average transaction amounts. Gold tier loyalty customers demonstrated the highest average transaction values, reinforcing the importance of loyalty programme investment in retaining the company's most valuable shoppers.
+
+========================================
+KEY METRICS
+========================================
+
+Total Q1 Revenue:               $1,313.30
+  Across all 30 transactions, five stores, two channels.
+
+Total Transactions:             30
+  Including loyalty-linked and anonymous purchases.
+
+Average Transaction Value:      $43.78
+  Driven higher by Meat & Seafood basket inclusions.
+
+Click-and-Collect Share:        37%
+  11 of 30 transactions completed via digital channel.
+
+Total Discounts Applied:        $74.00
+  Concentrated in February and March promotion periods.
+
+Top Revenue Store:              Portland Central
+  Highest transaction count and revenue across all months.
+
+Best-Selling Category:          Meat & Seafood
+  Atlantic Salmon and Chicken Breast top contributors.
+
+Private-Label Unit Share:       ~38% of items sold
+  Strong own-brand performance in Dairy and Packaged Goods.
+
+Gold Tier Avg. Basket:          ~$58.24
+  Gold customers consistently outspend other tiers.
+
+Month-on-Month Growth (Jan-Mar): +14% (est.)
+  March significantly outperformed January.
+
+========================================
+SECTION 1: OVERALL REVENUE TREND BY MONTH
+========================================
+
+Revenue grew progressively across the quarter, with January representing the lowest monthly total and March recording the highest. This upward trajectory was supported by a combination of increased transaction frequency and larger average basket sizes, particularly at Portland Central and Seattle North. The presence of multiple active promotions in March contributed to higher average spend per visit. The trend suggests improving customer confidence and loyalty engagement as the quarter progressed.
+
+
+Data Fields Used: transactions.transaction_date, transactions.total_amount, transactions.store_id, transactions.channel.
+
+========================================
+SECTION 2: REVENUE AND VOLUME BY STORE LOCATION
+========================================
+
+Portland Central was the top-performing store by both transaction count and total revenue across all three months, reflecting its urban positioning and larger catchment area. Seattle North ranked second, with strong performance particularly in March. The two suburban Washington stores — Beaverton and Bellevue — showed steady click-and-collect volumes. Eugene recorded the lowest absolute revenue but delivered consistent transaction activity, suggesting a stable but smaller customer base. Oregon stores collectively outperformed Washington stores in transaction volume during Q1.
+
+
+Data Fields Used: transactions.store_id, transactions.total_amount, stores.store_name, stores.city, stores.region.
+
+========================================
+SECTION 3: SALES BY PRODUCT CATEGORY
+========================================
+
+Meat & Seafood generated the highest combined revenue across transaction items, driven primarily by Atlantic Salmon Fillet and Chicken Breast. Fresh Produce and Dairy & Eggs ranked second and third respectively, benefiting from high purchase frequency among repeat customers. Packaged Goods and Bakery demonstrated consistent unit volumes but lower per-item revenue contribution. Beverages and Frozen Foods played a supporting role, with Frozen Foods benefiting from the January–February winter promotion. Household & Cleaning received a boost from the March Spring Clean promotion.
+
+
+Data Fields Used: transaction_items.product_id, transaction_items.unit_price, transaction_items.quantity, products.category_id, categories.category_name, categories.department.
+
+========================================
+SECTION 4: GROSS MARGIN ANALYSIS BY PRODUCT
+========================================
+
+Gross margin was highest in percentage terms for Packaged Goods and Bakery, where private-label products such as FreshBasket Pasta and FreshBasket Sourdough Loaf offered strong cost efficiency. Meat & Seafood operated on tighter margins despite generating the highest absolute revenue. Dairy private-label products delivered a reliable margin. Overall, private-label items consistently outperformed branded equivalents on gross margin percentage, validating the company's own-brand strategy.
+
+
+Data Fields Used: transaction_items.unit_price, transaction_items.unit_cost, transaction_items.quantity, products.product_name, products.is_private_label, categories.category_name.
+
+========================================
+SECTION 5: CHANNEL PERFORMANCE — IN-STORE VS. CLICK-AND-COLLECT
+========================================
+
+In-store transactions accounted for approximately 63% of all Q1 transactions, while Click-and-Collect represented around 37%. Click-and-Collect transactions recorded a marginally higher average basket value, consistent with the planned purchasing behaviour associated with pre-order fulfilment. Beaverton and Bellevue were the primary drivers of click-and-collect volume. Discount application rates were slightly higher on Click-and-Collect orders, indicating digital shoppers may be more responsive to promotions. Growing this channel remains a strategic priority.
+
+
+Data Fields Used: transactions.channel, transactions.total_amount, transactions.discount_applied, transactions.store_id, stores.store_type.
+
+========================================
+SECTION 6: LOYALTY CUSTOMER BEHAVIOUR
+========================================
+
+Loyalty-linked transactions accounted for 27 of the 30 recorded Q1 transactions, indicating strong loyalty programme penetration. Gold tier customers generated the highest individual transaction totals, with multi-category basket compositions spanning premium perishables and branded goods. Silver tier customers showed consistent repeat visit patterns, while Bronze tier customers tended to make smaller, more targeted purchases. Three transactions were anonymous, representing a gap in loyalty capture that may warrant review at point-of-sale.
+
+
+Data Fields Used: transactions.customer_id, transactions.total_amount, customers.loyalty_tier, customers.first_name, customers.last_name, customers.home_store_id.
+
+========================================
+SECTION 7: PROMOTIONAL IMPACT ON SALES
+========================================
+
+Five promotions were active during Q1 2024, spanning Fresh Produce, Frozen Foods, Bakery, Meat & Seafood, and Household categories. Total discounts applied across all transactions reached $74.00, with the largest individual discounts recorded on transactions involving Gold and Silver tier customers. The March promotions — Protein Week and Spring Clean — aligned with the quarter's highest-revenue period. The Valentines Bakery Special drove incremental Bakery sales in an otherwise moderate February. Monitoring discount-to-revenue ratios will be important in future quarters.
+
+
+Data Fields Used: transactions.discount_applied, transactions.transaction_date, promotions.promotion_name, promotions.start_date, promotions.end_date, promotions.category_id, promotions.discount_percent.
+
+========================================
+APPENDIX & NOTES
+========================================
+
+ASSUMPTIONS
+- Revenue figures are based on the total_amount field in the transactions table, treated as net of returns not captured in this dataset.
+- Gross margin calculations are derived from unit_price minus unit_cost and exclude store operating costs and overheads.
+- All 30 transactions are treated as representative of broader store activity for analytical purposes.
+- Channel classifications are taken directly from the transactions.channel field.
+- Loyalty tier classifications reflect customer records at the time of data extraction.
+
+KNOWN LIMITATIONS
+- The dataset contains 30 transactions; a full operational dataset would typically contain thousands of daily transactions.
+- Three anonymous transactions limit full loyalty programme coverage analysis.
+- Promotional attribution relies on date overlap between transaction dates and promotion periods; no direct promotion flag exists on transactions.
+- Inventory data is a point-in-time end-of-quarter snapshot and cannot reconstruct earlier stock levels.
+- No return, refund, or void transaction data is included.
+
+RECOMMENDED NEXT ANALYSIS
+- Year-over-year Q1 comparison once Q1 2023 data is made available.
+- Customer lifetime value model segmented by loyalty tier.
+- Promotion ROI analysis: margin uplift versus discount cost per promotion.
+- Click-and-Collect adoption forecast model for suburban stores.
+- Anonymous transaction capture rate review by store location.
+
+----------------------------------------
+Report generated by FreshBasket Markets BI Team
+Q1 2024 | Confidential — Internal Use Only
+----------------------------------------

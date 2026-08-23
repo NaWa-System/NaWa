@@ -1,0 +1,8 @@
+{
+  "source_json": "json/klarmarkt_discount_gmbh.json",
+  "company_name": "KlarMarkt Discount GmbH",
+  "database_file": "generated/klarmarkt_discount_gmbh/klarmarkt_discount_gmbh.db",
+  "reports_exported": 1,
+  "pdf_reports_exported": 1,
+  "output_root": "generated/klarmarkt_discount_gmbh"
+}

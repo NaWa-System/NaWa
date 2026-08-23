@@ -1,0 +1,8 @@
+{
+  "source_json": "json/nordhearth_scania_fleet_services.json",
+  "company_name": "NordHearth Scania Fleet Services",
+  "database_file": "generated/nordhearth_scania_fleet_services/nordhearth_scania_fleet_services.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/nordhearth_scania_fleet_services"
+}

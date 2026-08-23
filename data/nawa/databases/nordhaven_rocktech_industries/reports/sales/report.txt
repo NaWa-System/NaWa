@@ -1,0 +1,58 @@
+Q1 2026 Sales Performance & Order Fulfillment Review (Mining Tools)
+
+Organisation: Nordhaven RockTech Industries
+Reporting period: 2026-01-01 to 2026-03-31
+
+EXECUTIVE SUMMARY
+Q1 2026 showed steady demand across Nordhaven RockTech’s core consumables portfolio, with drill bits and drill steel continuing to anchor order volume while reamers and adapters contributed meaningful value per shipment. The quarter’s shipments were concentrated in North America and LATAM accounts, with Nordics/Europe orders present but smaller in overall shipped volume.
+
+Order fulfillment performance was generally reliable, with most shipped orders leaving within the requested ship window or only modestly late. A small number of shipments slipped past the requested date, indicating pockets of constraint that are likely tied to scheduling and/or allocation of high-run SKUs.
+
+Channel mix remained balanced between direct and distributor activity, and discounting stayed controlled (predominantly low single-digit concessions). Warranty/credit activity remained limited relative to shipments; however, the claims that were approved point to specific product/quality failure modes (e.g., premature wear and brazing-related issues) that should be monitored alongside manufacturing batch yields.
+
+Overall, the data supports a view of healthy commercial execution with targeted opportunities: tighten ship-date adherence on peak weeks, deepen distributor momentum in Nordics/Europe, and connect warranty signals to batch-level quality review for drill bits.
+
+KEY METRICS
+- Shipped Orders (Q1): 9 orders. Based on orders with order_status = 'Shipped' and order_date within Q1 2026.
+- Open Orders at Quarter End: 1 order. One order placed in late March remained open as of 2026-03-31.
+- Estimated Shipped Revenue (Q1): $526,533. Sum of shipped order line revenue after line-level discounts.
+- Average Line Discount (Revenue-Weighted, Shipped): ~1.5%. Discounting was generally disciplined; most lines were between 0% and 4%.
+- Top Revenue Category (Shipped): Drill Bits. Highest shipped revenue among categories in Q1 2026.
+- Direct vs Distributor Revenue Share (Shipped): Direct ~56% / Distributor ~44%. Based on shipped orders grouped by channel.
+- On-Time Shipment Rate (Requested vs Ship Date): ~67%. Six of nine shipped orders shipped on or before the requested ship date.
+- Warranty Credits Approved (Q1 claims dated in Q1): $1,250. Approved warranty credit recorded in March for a drill bit SKU.
+
+MAIN SECTIONS
+1) Revenue and Volume Overview (Q1 2026)
+Shipped revenue was supported by consistent multi-line orders that paired high-run drill consumables (drill bits and drill rods) with complementary tools (reamers and adapters). The pattern suggests customers are purchasing tooling bundles, which typically improves share-of-wallet and reduces order fragmentation. Discount levels remained low, indicating pricing integrity held even as volume increased on core SKUs.
+
+2) Revenue by Product Category
+Drill bits led category revenue for the quarter, followed by drill steel and then reamers/adapters. Wear parts contributed fewer lines but higher value per unit, indicating an opportunity to expand attachment rates where customers are already buying drilling consumables. Tracking category mix will help validate whether sales motion is evolving beyond replenishment to broader wear solutions.
+
+3) Customer and Region Performance
+North America generated the largest shipped activity and included repeat purchases from established accounts. LATAM distributor-led orders were material and tended to include higher quantities of core SKUs, consistent with consolidated replenishment behavior. Nordics/Europe activity was present via a contractor and a distributor; while smaller in shipped Q1 revenue, it provides a base for growth if supported with localized stocking and distributor enablement.
+
+4) Channel Mix and Commercial Terms
+Direct sales accounted for a slight majority of shipped revenue in Q1, with distributors providing a strong secondary channel—particularly for LATAM and Nordics/Europe. Discounting remained within a narrow band, implying that channel expansion did not require aggressive concessions. Continued governance is recommended to ensure larger-quantity distributor orders maintain profitability while remaining competitive.
+
+5) Order Fulfillment and Ship-Date Adherence
+Most shipped orders met or slightly exceeded the requested ship date, though a handful slipped by 1–2 days and one by nearly two weeks. The late shipments appear concentrated around mid- to late-March and one mid-January order, which may indicate allocation constraints or production scheduling gaps on select SKUs. Improving ship-date adherence can reduce expedite costs and strengthen contractor confidence.
+
+6) Warranty and Credit Signals
+Warranty activity was limited but informative: approved claims tied to premature wear and brazing defects suggest targeted quality attention for drill bit production and process controls. A denied claim related to misuse/installation emphasizes the need for clearer field guidance and distributor training. Open claims should be monitored for cycle time and repeat-failure indicators.
+
+APPENDIX / NOTES
+Assumptions:
+- Revenue computed as quantity * unit_price * (1 - discount_pct/100).
+- Q1 scope based on order_date from 2026-01-01 through 2026-03-31.
+- On-time compares ship_date to requested_ship_date for shipped orders.
+
+Known limitations:
+- No FX rates provided; USD/EUR values are aggregated nominally.
+- Freight/taxes/returns not modeled beyond warranty credits.
+- No salesperson/territory or lead-time fields to isolate root causes of lateness.
+
+Recommended next analysis:
+- Add FX conversion and a reporting currency for clean rollups.
+- Estimate gross margin by product/category using products.standard_cost as a baseline.
+- Introduce lot/batch traceability between shipments and manufacturing_batches to accelerate quality containment.

@@ -1,0 +1,160 @@
+Q1 2024 INVENTORY STATUS & REPLENISHMENT RISK REPORT
+
+Organisation:     QuickStop Markets
+Reporting Period: As of March 31, 2024
+Report Type:      Inventory
+Prepared By:      Business Intelligence & Analytics Team
+Date of Issue:    April 2024
+
+========================================
+EXECUTIVE SUMMARY
+========================================
+
+This report presents the end-of-quarter inventory position across five QuickStop Markets locations as of March 31, 2024, identifying stock levels relative to established reorder thresholds and flagging products at immediate or near-term replenishment risk. The snapshot captures 22 product-store combinations representing key SKUs across Beverages, Fresh Deli, Tobacco & Vape, Household Essentials, and Frozen & Dairy categories.
+
+The most pressing replenishment concern is at Store 4 (Portland East), where Laundry Detergent Pod 10ct has a quantity-on-hand of just five units against a reorder level of ten — below threshold and requiring an immediate purchase order. Additionally, Store 2's Chips Regular Bag inventory of 12 units against a reorder level of 25 presents a significant stockout risk given the product's high attachment rate in multi-item transactions.
+
+Conversely, several locations maintain healthy or surplus inventory positions. Store 1's Bottled Water and Fountain Drink stocks are well above reorder thresholds, and Store 3's Cigarette stock at 62 units provides comfortable cover. These positions reduce short-term procurement urgency.
+
+The report recommends immediate action on three at-risk SKUs, a review of reorder level parameters for high-velocity items, and a streamlined replenishment protocol for Stores 4 and 2.
+
+========================================
+KEY METRICS
+========================================
+
+Metric                              Value                   Context
+------                              -----                   -------
+SKU-Store Combinations Monitored    22                      Across 5 stores and 14 distinct products
+SKUs Below or At Reorder Level      3                       Store 4 Detergent (below), Store 2 Chips (below), Store 4 Vape (at threshold)
+Highest Stock Position              90 units                Store 2 - Bottled Water 1L; 3x reorder level
+Most Recently Restocked             March 28, 2024          Store 1 Deli Sandwich and Store 2 Fresh Deli
+Highest Risk Store                  Store 4 - Portland East Two SKUs at or below threshold
+Oldest Last-Restock Date            March 10, 2024          Store 4 Laundry Detergent; 21 days since restock
+Fresh Deli Coverage                 8-18 units per store    Adequate but requires close freshness monitoring
+Tobacco & Vape Position             Adequate at most stores Vape Pen at Store 4 exactly at reorder threshold
+
+========================================
+SECTION 1: INVENTORY SNAPSHOT — STOCK LEVELS VS. REORDER THRESHOLDS
+========================================
+
+As of March 31, 2024, three inventory records are at or below their configured reorder levels:
+
+  - Store 4, Laundry Detergent Pod 10ct: 5 units on hand vs. reorder level of 10
+  - Store 2, Chips Regular Bag: 12 units on hand vs. reorder level of 25
+  - Store 4, Disposable Vape Pen: 10 units on hand, exactly at reorder level of 10
+
+All other monitored SKUs maintain quantities above their thresholds with varying degrees of buffer. The overall inventory position is manageable, but the concentration of below-threshold records at Store 4 warrants prompt procurement action to prevent stockout before the next scheduled delivery.
+
+Data fields used: inventory.store_id, inventory.product_id, inventory.quantity_on_hand, inventory.reorder_level, inventory.last_restocked_date, products.product_name, product_categories.category_name
+
+========================================
+SECTION 2: CRITICAL REPLENISHMENT ALERTS
+========================================
+
+Three SKUs require immediate or near-term replenishment action:
+
+  1. LAUNDRY DETERGENT POD 10CT — STORE 4 (PORTLAND EAST)
+     On Hand: 5 units | Reorder Level: 10 units | Last Restocked: March 10, 2024 (21 days ago)
+     Action: Purchase order required immediately. Below threshold.
+
+  2. CHIPS REGULAR BAG — STORE 2 (SEATTLE PIKE)
+     On Hand: 12 units | Reorder Level: 25 units | Shortfall: 52%
+     Action: High transaction attachment rate elevates stockout risk within coming days. Order urgently.
+
+  3. DISPOSABLE VAPE PEN — STORE 4
+     On Hand: 10 units | Reorder Level: 10 units | At threshold.
+     Action: Any further sales will breach threshold. Top-up order recommended.
+
+Data fields used: inventory.product_id, inventory.store_id, inventory.quantity_on_hand, inventory.reorder_level, inventory.last_restocked_date, products.product_name, products.unit_price, products.unit_cost
+
+========================================
+SECTION 3: WELL-STOCKED POSITIONS AND RESTOCKING CYCLE OPTIMISATION
+========================================
+
+Several product-store combinations hold stock well above their reorder thresholds:
+
+  - Store 2 — Bottled Water 1L: 90 units on hand vs. reorder level of 30 (3x threshold)
+  - Store 1 — Large Fountain Drink: 85 units on hand vs. reorder level of 20
+  - Store 3 — Cigarettes Pack King: 62 units on hand vs. reorder level of 30
+
+Central procurement should review whether reorder levels for these SKUs are calibrated to current sales velocity and whether delivery frequency at these locations can safely be reduced to lower logistics costs.
+
+Data fields used: inventory.product_id, inventory.store_id, inventory.quantity_on_hand, inventory.reorder_level, inventory.last_restocked_date, products.product_name, product_categories.category_name
+
+========================================
+SECTION 4: FRESH DELI INVENTORY MANAGEMENT
+========================================
+
+Fresh Deli items require vigilant monitoring given their perishable nature and the absence of an expiry date field in the current inventory schema.
+
+  - Store 1 — Deli Sandwich Turkey: 18 units, restocked March 28. Appropriate end-of-quarter position.
+  - Store 2 — Deli Sandwich Turkey: 8 units vs. reorder level 10. Rapid sell-through likely; early April delivery required.
+  - Store 3 — Breakfast Burrito: 30 units vs. reorder level 20. Comfortable but aging from March 25 restock.
+
+Recommendation: Add a best-before or expiry date field to the inventory schema to support freshness compliance reporting in future periods.
+
+Data fields used: inventory.product_id, inventory.store_id, inventory.quantity_on_hand, inventory.reorder_level, inventory.last_restocked_date, products.product_name, product_categories.category_name, product_categories.department
+
+========================================
+SECTION 5: STORE-LEVEL INVENTORY RISK RANKING
+========================================
+
+Ranking stores by concentration of below-threshold inventory positions:
+
+  RANK 1 — STORE 4 (PORTLAND EAST): HIGHEST RISK
+  Two SKUs flagged: Laundry Detergent (below threshold), Disposable Vape Pen (at threshold)
+
+  RANK 2 — STORE 2 (SEATTLE PIKE): ELEVATED RISK
+  One SKU flagged: Chips Regular Bag (below threshold)
+
+  RANK 3 — STORES 1, 3, 5: LOW RISK
+  No SKUs currently below reorder threshold; selected items warrant continued monitoring.
+
+Store 4's repeat appearance in replenishment alerts may reflect a structural supply chain or logistics gap in the Willamette Valley region that merits operational review.
+
+Data fields used: inventory.store_id, inventory.product_id, inventory.quantity_on_hand, inventory.reorder_level, stores.store_name, stores.city, stores.region
+
+========================================
+SECTION 6: REORDER LEVEL CALIBRATION REVIEW
+========================================
+
+A number of reorder levels appear potentially miscalibrated relative to Q1 sales velocity observations:
+
+  - Chips Regular Bag at Store 2: Reorder level of 25 may need to be raised to 35-40 units given frequent transaction appearances.
+  - Large Fountain Drink at Store 1: Reorder level of 20 appears low for a store holding 85 units; threshold may predate the current traffic volume.
+  - Energy Drink 16oz at Store 5: 18 units vs. reorder level 15 is within acceptable range but close enough to warrant monitoring as sales volumes grow.
+
+A formal reorder level audit cross-referencing inventory positions with transaction_items sales frequency data is recommended as a Q2 planning exercise.
+
+Data fields used: inventory.product_id, inventory.store_id, inventory.quantity_on_hand, inventory.reorder_level, transaction_items.product_id, transaction_items.quantity, products.product_name
+
+========================================
+APPENDIX AND NOTES
+========================================
+
+ASSUMPTIONS
+- Inventory records represent end-of-quarter stock positions as of March 31, 2024; no intra-day movements after the final transaction are reflected.
+- Reorder levels reflect thresholds set by the central procurement team and represent intended minimum stock positions before replenishment.
+- Last_restocked_date represents the most recent full replenishment event; partial top-up orders may not be captured.
+- No spoilage, damage, or shrinkage adjustments are reflected in quantity_on_hand figures.
+- The inventory table covers a representative subset of the full product catalogue.
+
+KNOWN LIMITATIONS
+- No best-before or expiry date field exists in the inventory schema, limiting freshness analysis for perishable Fresh Deli and Frozen & Dairy items.
+- No supplier lead time data is available, preventing calculation of days-of-stock-remaining relative to next expected delivery.
+- Inventory coverage is incomplete; not all stores have all products represented in the inventory table.
+- Sales velocity estimates rely on a transaction sample; full-quarter data would enable more accurate sell-through rate modelling.
+- Shrinkage, theft, and waste are not tracked and may cause discrepancies between system-reported and physical stock figures.
+
+RECOMMENDED NEXT ANALYSIS
+- Integrate transaction_items sales velocity data with inventory records to calculate estimated days of stock remaining per SKU per store.
+- Add supplier lead time data to enable delivery-window-adjusted automatic reorder point calculations.
+- Introduce a product expiry or best-before date field to inventory records for Fresh Deli and Frozen & Dairy categories.
+- Conduct a full reorder level audit for all SKUs across all stores, calibrated against Q1 observed sales velocity.
+- Investigate Store 4 (Portland East) supply chain and logistics performance to determine whether repeated below-threshold positions reflect a structural gap.
+- Develop a weekly automated inventory alert report flagging all below-threshold positions within 48 hours of data refresh.
+
+----------------------------------------
+Report generated by QuickStop Markets Business Intelligence & Analytics Team.
+For internal use only. Not for external distribution.
+----------------------------------------

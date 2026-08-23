@@ -1,0 +1,8 @@
+{
+  "source_json": "json/skybridge_analytics.json",
+  "company_name": "SkyBridge Analytics",
+  "database_file": "generated/skybridge_analytics/skybridge_analytics.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/skybridge_analytics"
+}

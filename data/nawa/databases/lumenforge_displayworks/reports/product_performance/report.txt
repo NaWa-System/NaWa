@@ -1,0 +1,56 @@
+Q1 2026 Product Margin and Returns Review (Model/Series Focus)
+
+Organisation: LumenForge Displayworks
+Reporting Period: 2026-01-01 to 2026-03-31
+
+EXECUTIVE SUMMARY
+Product profitability in Q1 2026 was shaped by channel mix and portfolio positioning. Core LED models generated the highest unit throughput across partner channels and provided stable gross profit dollars through scale, while premium Nova OLED and Apex QLED models delivered stronger per-unit gross margin and revenue density in consumer and select retail transactions.
+
+Gross margin performance varied by model and channel pricing. Partner purchase orders showed expected wholesale pricing (lower realized unit prices relative to MSRP) but provided meaningful volume that supports manufacturing utilization and shelf presence. Direct Online transactions exhibited higher realized prices and incremental warranty revenue, improving blended gross profit per order.
+
+Returns were limited in the period, with one premium model return and refund recorded. While the overall return count is low, the value impact of premium returns is material and justifies proactive monitoring. Recommended next steps focus on building a margin/returns dashboard by model, tracking wholesale price floors, and adding cost components (logistics and rebates) to refine contribution margin analysis.
+
+KEY METRICS
+- Estimated Gross Profit (Hardware + Warranty, net of refunds): $37,352
+- Estimated Gross Margin %: 27.5%
+- Highest Unit Volume Model: Core 50 LED
+- Highest Revenue Model (Q1): Core 65 LED
+- Premium Mix Share (Nova + Apex, by units): ~14%
+- Refunded Revenue (Returns): $1,398
+- Return Rate (by orders): 1 of 14 orders (~7%)
+- Warranty Profit Contribution (Direct Online): $456
+
+MAIN SECTIONS
+1) Portfolio Performance Summary (Series-Level View)
+Core series products provided volume and revenue stability, especially through National Retail and Regional Dealer channels. Nova and Apex series delivered higher per-unit economics and reinforce brand positioning.
+
+2) Model-Level Revenue and Unit Ranking
+Model rankings show Core 50 and Core 65 dominating units, while premium models contribute episodic higher-dollar sales. This supports maintaining Core availability while using premium lines to expand margin in direct channels.
+
+3) Estimated Gross Profit by Model
+Estimated gross profit varies by model due to different cost structures and price realization. A model-by-channel margin view is recommended to guide price floors and allocation decisions.
+
+4) Channel Pricing Realization vs MSRP (Signal View)
+Realized unit prices are consistently below MSRP in wholesale channels and closer to MSRP in Direct Online, where warranty attachments improve order economics. Discount governance would be improved with explicit promotion and agreement tracking.
+
+5) Warranty Attachments and Incremental Profit
+Warranty performance is concentrated in Direct Online sales, producing incremental gross profit. The near-term opportunity is to lift attach in partner channels through packaging and sales enablement.
+
+6) Returns Review (Reason, Status, and Model Impact)
+Return activity is low, but the recorded return is a premium OLED unit with a full refund. Premium returns can disproportionately affect net results and should be monitored by model and reason.
+
+APPENDIX / NOTES
+Assumptions
+- Gross profit = sum((unit_price - unit_cost) * quantity) + sum(warranty_price) - sum(refund_amount).
+- Refunds fully reverse revenue for the returned item.
+- unit_cost represents simplified landed manufacturing cost.
+
+Known Limitations
+- Returns are not linked to order_item_id (limits partial return modeling).
+- Warranty claims costs are not modeled.
+- No partner rebates/MDF captured.
+
+Recommended Next Analysis
+- Add partner incentives (rebates/MDF) to refine channel profitability.
+- Add warranty claims to assess net warranty margin.
+- Expand returns granularity with order_item_id and returned_quantity.

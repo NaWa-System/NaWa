@@ -1,0 +1,8 @@
+{
+  "source_json": "json/matrix_star_innovations.json",
+  "company_name": "Matrix-Star Innovations",
+  "database_file": "generated/matrix_star_innovations/matrix_star_innovations.db",
+  "reports_exported": 1,
+  "pdf_reports_exported": 1,
+  "output_root": "generated/matrix_star_innovations"
+}

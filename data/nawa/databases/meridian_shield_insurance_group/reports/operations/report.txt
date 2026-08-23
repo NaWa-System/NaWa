@@ -1,0 +1,132 @@
+POLICY PORTFOLIO & RENEWAL ANALYSIS — 2024 YEAR-TO-DATE
+=========================================================
+
+Organisation:     Meridian Shield Insurance Group
+Reporting Period: January 2024 – November 2024
+Report Type:      Operations
+Prepared by:      Underwriting Operations & Strategy Team
+Date Issued:      November 2024
+
+
+EXECUTIVE SUMMARY
+-----------------
+
+This operational report examines Meridian Shield Insurance Group's policy portfolio composition, growth, and renewal performance for the period January through November 2024. The active policy book comprises 16 in-force policies spanning seven product types across personal and commercial lines, with steady growth in new policy issuance demonstrated throughout the year.
+
+The renewal cycle for policies expiring in late 2024 and early 2025 is now underway. Of the ten renewal decisions tracked, two have been formally renewed, one has lapsed, one has been declined, and six remain pending. The premium at risk from pending decisions represents a meaningful share of the portfolio's revenue base and is a near-term operational priority.
+
+Broker channel agents Patricia Holloway and Michael Tran produce the highest average premium per policy. The Direct Digital channel is growing but tends toward shorter-tenure, lower-premium personal lines relationships. Building retention mechanisms into the digital customer journey is essential to improving lifetime value.
+
+Two non-active policy records represent revenue that was not retained. Reducing lapse rates through targeted intervention programs is a key lever for sustainable portfolio growth in 2025.
+
+
+KEY METRICS
+-----------
+
+  Total Active Policies                16
+  Excludes one Expired and one Lapsed policy.
+
+  Total In-Force Annual Premium        $50,790.00
+  Sum across all active policies in the portfolio.
+
+  New Policies Issued (YTD)            15
+  Policies with effective dates January-September 2024.
+
+  Renewal Conversion Rate (Decided)    67%
+  2 of 3 decided renewals successfully retained.
+
+  Pending Renewal Decisions            6
+  Unresolved offers representing risk to premium continuity.
+
+  Policies Lapsed or Declined          2
+  One lapsed, one renewal declined by the customer.
+
+  Average Annual Premium (Active)      $3,174
+  Blended average; commercial policies skew upward significantly.
+
+  Commercial Lines Policy Count        6
+  Approximately 62% of total annual premium volume.
+
+  Broker Channel Policy Share          69%
+  Approximately 11 of 16 active policies placed via broker.
+
+
+SECTION 1: PORTFOLIO COMPOSITION BY PRODUCT TYPE
+-------------------------------------------------
+
+The active portfolio spans all seven product types offered by Meridian Shield. Standard Auto is the most frequently held product by policy count. Commercial products including BOP, Commercial Property, and General Liability represent fewer policies but dominate premium contribution. The portfolio's diversification across product lines reduces concentration risk while maintaining a commercially viable book of business.
+
+
+Data Fields Used: policy_types.type_name, policy_types.line_of_business, policies.policy_type_id, policies.annual_premium, policies.status
+
+
+SECTION 2: NEW POLICY ISSUANCE TRENDS
+--------------------------------------
+
+New policy issuance was front-loaded in Q1 2024, with seven policies commencing around January 1st. February and March added further volume, while Q2 saw moderate personal lines intake. The pace slowed in Q3, consistent with seasonal patterns in auto and homeowners markets. Monitoring the new business pipeline going into Q4 is important for 2025 premium planning.
+
+
+Data Fields Used: policies.effective_date, policies.policy_type_id, policy_types.line_of_business, policies.status
+
+
+SECTION 3: RENEWAL PIPELINE AND CONVERSION ANALYSIS
+----------------------------------------------------
+
+Ten renewal records are currently tracked. Two completed renewals represent the highest-value retentions. One lapsed and one declined renewal indicate areas of competitive vulnerability. Six pending decisions collectively represent material premium at risk. Outreach prioritisation should focus on the highest-premium pending accounts first, particularly commercial lines renewals.
+
+
+Data Fields Used: renewals.renewal_decision, renewals.new_premium, renewals.renewal_offer_date, renewals.decision_date, policies.annual_premium
+
+
+SECTION 4: AGENT AND CHANNEL PERFORMANCE
+-----------------------------------------
+
+Patricia Holloway and Michael Tran are the top contributors by premium under management. James Rutherford maintains a steady mid-market personal lines book in New England. Direct Digital agents Kowalski and Simmons manage five policies with a lower average premium consistent with the personal lines focus of their channel. Robert Esquivel handles two high-value commercial policies in the Mid-Atlantic region. All six agents are currently active and in good standing.
+
+
+Data Fields Used: agents.agent_name, agents.channel, agents.region, policies.agent_id, policies.annual_premium
+
+
+SECTION 5: CUSTOMER SEGMENT AND RETENTION PROFILE
+--------------------------------------------------
+
+The customer base comprises 12 unique customers: eight Personal and four Commercial. Commercial customers each hold one to three policies, making multi-policy relationships a key retention priority. Longer-tenured personal customers represent the most stable segment of the book. Customers acquired in 2022 and 2023 have not yet had a full renewal cycle, making their 2025 retention rates an important early performance indicator.
+
+
+Data Fields Used: customers.customer_since, customers.customer_segment, policies.customer_id, policies.annual_premium, policies.status
+
+
+SECTION 6: POLICY STATUS OVERVIEW
+-----------------------------------
+
+Of 18 total policy records, 16 are Active, one is Expired, and one is Lapsed. The Expired policy was subsequently replaced with a new active policy, indicating an effective renewal process for that customer. The Lapsed record represents a genuine attrition event with no corresponding renewal entry. Ensuring all expiring policies are systematically entered into the renewal workflow before their expiry date is a recommended operational improvement.
+
+
+Data Fields Used: policies.status, policies.expiry_date, policies.effective_date, policies.policy_id, policies.customer_id
+
+
+APPENDIX & NOTES
+----------------
+
+Assumptions:
+  - Policy status fields are maintained in near-real-time by the underwriting operations team.
+  - Renewal premium values represent offered rates and may differ from final bound premiums after negotiation.
+  - The renewals table captures formal offers only; informal discussions not yet entered are excluded.
+  - Customer segment classifications are assigned at onboarding and assumed accurate.
+
+Known Limitations:
+  - Mid-term policy changes and endorsements are not captured; actual in-force premium may vary.
+  - New business pipeline data not yet bound is not available in the current schema.
+  - Reasons for renewal declinations or lapses are not currently recorded, limiting root cause analysis.
+  - Customer-level profitability cannot be fully computed without complete claims disbursement records.
+
+Recommended Next Analysis:
+  - Build a renewal funnel report tracking offer-to-decision conversion by product, channel, and region.
+  - Develop a customer lifetime value model using premium history, tenure, and claims frequency data.
+  - Implement a lapse risk scoring model to prioritise proactive retention outreach before policy expiry.
+  - Analyse competitor pricing for BOP and Commercial Property in the Mid-Atlantic region to understand renewal decline drivers.
+
+
+--------------------------------------------------
+Meridian Shield Insurance Group
+Confidential Internal Report — Not for External Distribution

@@ -1,0 +1,111 @@
+# Q1 2024 Flight Operations Performance Report
+
+**Organisation:** SkyBridge Analytics — Meridian Air & Crestline Airways Network  
+**Reporting Period:** January 2024 – March 2024  
+**Prepared by:** SkyBridge Analytics Reporting Division  
+**Date of Issue:** April 2024
+
+---
+
+## Executive Summary
+
+This report presents an assessment of flight operations performance across the Meridian Air and Crestline Airways networks for Q1 2024. The analysis covers all operated and cancelled flights, on-time performance (OTP), delay distribution, load factors, and aircraft utilisation across both carriers.
+
+Across the quarter, the combined network operated 28 completed flights out of 30 scheduled departures, yielding a completion rate of 93.3% and a cancellation rate of 6.7%. Both cancellations — one per carrier — were isolated incidents, though the rate remains above the regional European industry benchmark of 2–4%.
+
+On-time performance showed clear improvement across the quarter. January recorded the highest concentration of significant delays, with one incident reaching 55 minutes. By March, the majority of completed flights recorded zero delay minutes, indicating improved operational coordination as the quarter progressed.
+
+Load factors in the economy cabin averaged approximately 83% across the network, with business class bookings concentrated on longer and flexible-fare routes. All six registered aircraft were utilised throughout the quarter with no recorded groundings.
+
+Overall, Q1 2024 demonstrates a resilient operational baseline with clear improvement trends, while flagging the need to address cancellation rates and early-quarter delay patterns ahead of Q2.
+
+---
+
+## Key Metrics
+
+| Metric | Value | Context |
+|---|---|---|
+| Total Scheduled Flights | 30 | Across both carriers and 10 routes |
+| Completed Flights | 28 | 93.3% completion rate |
+| Cancellation Rate | 6.7% | Two flights cancelled, one per carrier |
+| On-Time Performance (OTP) | ~50% | Approximately half of flights had zero delay; March was strongest |
+| Avg. Delay (Delayed Flights Only) | ~30 min | January had worst outliers at 55 minutes |
+| Economy Load Factor (Avg.) | ~83% | Consistently above 80% across most routes |
+| Total Aircraft Utilised | 6 | All registered aircraft active; no groundings |
+| Routes with Zero Delays in March | 5 of 8 | Best monthly OTP performance of Q1 |
+
+---
+
+## Report Sections
+
+### 1. Flight Completion & Cancellation Summary
+
+Of the 30 flights scheduled across Q1 2024, 28 reached completion and 2 were cancelled. The cancelled flights were MA610 (London–Vienna, 30 January) and CL504 (Dublin–Athens, 28 February). Both cancellations resulted in zero revenue but still incurred fixed operational costs. The 6.7% cancellation rate exceeds the regional European benchmark of 2–4% and is flagged as a priority for Q2 monitoring.
+
+
+
+---
+
+### 2. On-Time Performance by Month
+
+January was the weakest OTP month, with five of eleven scheduled flights recording delays of 8–55 minutes. February improved moderately, though a 50-minute delay on CL302 (Dublin–Madrid) remained notable. March recorded the strongest OTP, with only two delays and none exceeding 37 minutes. The progressive improvement across the quarter is an encouraging trend that should be sustained and built upon in Q2.
+
+
+
+---
+
+### 3. Delay Distribution by Route
+
+Route-level analysis shows that the London–Rome (MA303) and Manchester–Barcelona (MA505) corridors were disproportionately responsible for accumulated delay minutes. The London–Rome route recorded 55 minutes of delay in January and a further 12 minutes in March, suggesting persistent scheduling or ground-handling challenges at FCO. The Dublin–Athens medium-haul route showed consistent on-time performance, likely due to more generous scheduled buffers.
+
+
+
+---
+
+### 4. Aircraft Utilisation Overview
+
+All six aircraft — three per airline — were deployed across the quarter. G-MERB (Airbus A321, 220 seats) provided the highest capacity per operation on high-volume routes such as London–Madrid. EI-CLA (Airbus A319, 144 seats) suited the short-haul Dublin–Paris route efficiently with lower fuel costs. No groundings were recorded, though maintenance cost trends should be monitored on a rolling basis.
+
+
+
+---
+
+### 5. Load Factor Analysis by Cabin Class
+
+Economy cabin load factors were consistently strong at 80–95% across most routes. Business class bookings were concentrated on longer routes (Dublin–Athens, London–Rome) and flexible-fare itineraries. Short-haul routes such as London–Paris recorded minimal business class uptake, consistent with leisure and point-to-point demand patterns. Ancillary revenue tracked proportionally with passenger volumes, with flexible-fare passengers generating higher per-booking ancillary yield.
+
+
+
+---
+
+### 6. Operational Cost Breakdown
+
+Fuel costs dominate the operating cost structure across the network. The Dublin–Athens medium-haul route (2,822 km) incurred the highest absolute fuel costs per operation. Cancelled flights continued to generate crew and airport fee charges, highlighting the financial cost of cancellations beyond lost revenue. Airport fees were highest for LHR and CDG operations. Crew costs were stable across all routes, reflecting standardised agreements across both carriers.
+
+
+
+---
+
+## Appendix & Notes
+
+### Assumptions
+- Delay minutes are based on the difference between actual_arrival and scheduled_arrival where both values are present.
+- Cancelled flights are excluded from OTP and load factor averages but included in cost summaries.
+- Seat capacity is taken directly from the aircraft table and represents total saleable seats.
+- Bookings with zero passengers on cancelled flights are excluded from revenue and load factor calculations.
+
+### Known Limitations
+- The 30-flight sample provides limited statistical confidence for trend conclusions.
+- Delay root cause categories are not captured in the current schema.
+- Passenger satisfaction data is not available in this version.
+- Connecting passenger flows are not modelled, which may affect load factor interpretation on hub-origin routes.
+
+### Recommended Next Analysis
+- Introduce a delay_reason field to enable root cause classification.
+- Extend analysis to H1 2024 to assess sustainability of March OTP improvements.
+- Add a passenger feedback or NPS table to correlate OTP with customer satisfaction.
+- Develop route profitability scores combining booking revenue with flight cost data.
+
+---
+
+*Report generated by SkyBridge Analytics. Data sourced from the SkyBridge Operations Intelligence Platform.*

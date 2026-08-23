@@ -1,0 +1,119 @@
+CLEARPATH HEALTH PARTNERS
+CLINICIAN UTILISATION & APPOINTMENT EFFICIENCY REPORT — H1 2024
+
+Organisation: ClearPath Health Partners
+Reporting Period: January 1, 2024 – June 30, 2024
+Report Type: Operations
+Prepared By: Analytics & Reporting Team
+Date of Issue: July 2024
+
+========================================================
+EXECUTIVE SUMMARY
+========================================================
+
+This operational report examines clinician-level appointment activity, specialty throughput, and scheduling efficiency across ClearPath Health Partners' clinical network during the first half of 2024. Eight clinicians delivered services across five clinic locations spanning five specialty areas. The report supports evaluation of workload distribution, identification of capacity constraints, and staffing planning for H2 2024.
+
+Appointment activity was unequally distributed across the clinician team, with cardiology specialists at ClearPath Central and ClearPath Southbrook accounting for disproportionately high revenue contributions due to the high standard fees associated with cardiac diagnostic services. Part-time clinicians maintained caseloads broadly consistent with their contracted availability.
+
+Scheduling efficiency remained high across the network. No individual clinician was responsible for more than one non-completion event across the period. The four non-completion events — two no-shows and two cancellations — appear patient-driven, and proactive appointment reminder protocols are recommended as a practical mitigation measure.
+
+The specialty mix is well-aligned with the current patient demographic. ClearPath Lakeview (Toledo) is flagged as an operational risk location due to single-clinician deployment in Orthopedics only. Adding a Primary Care clinician at this site is recommended for H2 2024.
+
+========================================================
+KEY METRICS
+========================================================
+
+Metric                                    Value
+--------------------------------------------------------------------
+Total Clinicians Active                   8 (6 full-time, 2 part-time)
+Total Appointments Delivered              31 (completed appointments)
+Average Appointments per Clinician        3.9
+Highest Volume Clinician                  Dr. Margaret Holloway (Primary Care, Central)
+Highest Revenue Specialty per Visit       Cardiology ($300-$420 per visit)
+No-Show Rate                             5.7% (2 of 35 scheduled)
+Cancellation Rate                         5.7% (2 of 35 scheduled)
+Part-Time Clinician Contribution          ~25% of total completed appointments
+Lowest Utilisation Location               ClearPath Lakeview (2 completed appointments)
+
+========================================================
+SECTION 1: CLINICIAN APPOINTMENT VOLUME & COMPLETION RATE
+========================================================
+
+Appointment volumes varied significantly across the eight active clinicians. Full-time Primary Care physicians at ClearPath Central and ClearPath Southbrook maintained the highest appointment counts. Cardiologists contributed strong volumes relative to their specialty, driven by the concentration of cardiac patients in the active patient panel. All eight clinicians achieved high individual completion rates, with no single clinician responsible for more than one non-completed appointment during the six-month period. This reflects consistently professional patient scheduling and management practices across the clinical team.
+
+
+
+========================================================
+SECTION 2: SPECIALTY THROUGHPUT & REVENUE CONTRIBUTION
+========================================================
+
+Cardiology generated the highest average billed revenue per appointment, with cardiac stress tests priced at $420 and ECGs at $300 per visit. Primary Care delivered the highest total appointment volume across the network, functioning as the primary throughput engine. Endocrinology contributed meaningful revenue from diabetes management consultations despite single part-time staffing. Pediatrics maintained consistent preventive care volumes through well-child visits and immunisation appointments. Orthopedics contributed two high-value specialty appointments at ClearPath Lakeview.
+
+The specialty mix is well-suited to the current patient demographic. However, Cardiology and Endocrinology capacity may become constrained as the chronic disease patient panel continues to grow into H2 2024 and beyond.
+
+
+
+========================================================
+SECTION 3: NO-SHOW & CANCELLATION ANALYSIS
+========================================================
+
+Four of 35 scheduled appointments did not result in completed visits during H1 2024, representing a combined non-completion rate of 11.4%. Two events were classified as no-shows and two as cancellations. Non-completion events were distributed across different clinicians, specialties, and clinic locations, indicating that systemic rather than individual clinician factors are likely responsible. Patient-side factors — including competing healthcare demands, transportation barriers, or inadequate appointment reminders — are the most probable drivers.
+
+A structured appointment reminder protocol (SMS/email at 72 hours and 24 hours prior to scheduled visit) and a proactive rescheduling process for chronic disease patients are recommended to reduce recurrence in H2 2024.
+
+
+
+========================================================
+SECTION 4: CLINIC-LEVEL CLINICIAN DEPLOYMENT
+========================================================
+
+ClearPath Central (Columbus) hosts the largest clinical team with three clinicians across Primary Care and Cardiology. ClearPath Southbrook (Cincinnati) and ClearPath Northgate (Cleveland) each operate with two clinicians in complementary specialties. ClearPath Westside (Dayton) provides dedicated Pediatrics coverage. ClearPath Lakeview (Toledo) operates with a single full-time Orthopedics clinician — the lowest deployment footprint in the network.
+
+The single-clinician configuration at Lakeview poses operational risk: any period of clinician unavailability would result in a complete service shutdown at that location. It is recommended that at least one Primary Care clinician be recruited and placed at Lakeview to improve patient access, increase appointment volume, and provide operational resilience.
+
+
+
+========================================================
+SECTION 5: MONTHLY CLINICIAN ACTIVITY TRENDS
+========================================================
+
+Monthly completed appointment volumes were stable across H1 2024 and showed modest positive growth. January and February each recorded five completions. March, April, May, and June each averaged approximately six completions per month. The consistency of monthly activity is a positive indicator of stable patient demand and reliable scheduling practices. Individual clinician monitoring should begin in Q3 2024 to detect early signs of panel saturation or scheduling bottlenecks before they impact patient access or revenue.
+
+
+
+========================================================
+SECTION 6: FOLLOW-UP & RECURRING PATIENT LOAD BY CLINICIAN
+========================================================
+
+A significant proportion of completed appointments during H1 2024 consisted of return visits from established patients managing chronic conditions. Cardiologists overseeing patients with coronary artery disease recorded multiple encounters with the same patients across the reporting period, reflecting dense longitudinal caseloads. This pattern supports a predictable recurring revenue base but may constrain new patient intake capacity as existing panels fill. Cardiologists and the Endocrinology part-time clinician should be specifically monitored for panel saturation as the patient population grows. Consideration should be given to establishing formal panel size targets per clinician by specialty.
+
+
+
+========================================================
+APPENDIX & NOTES
+========================================================
+
+ASSUMPTIONS
+- Clinician utilisation is assessed by appointment volume only; scheduled slot capacity data is not available in the current schema.
+- Part-time clinicians are assumed to operate at approximately 50% of a standard full-time scheduling allocation.
+- All completed appointments are assumed to represent standard-duration clinical encounters appropriate for the relevant service type.
+- Non-completion events are attributed to patient-side factors in the absence of clinician-specific scheduling logs.
+
+KNOWN LIMITATIONS
+- Appointment slot capacity is not tracked in the schema; true clinician utilisation rates cannot be calculated from current data.
+- Clinician absence, annual leave, and sick leave are not recorded, which may distort average activity comparisons across the team.
+- The dataset of 35 appointments across 8 clinicians over 6 months is a small sample; individual performance conclusions should be treated as directional rather than statistically conclusive.
+- Formal patient panel size per clinician is not tracked; recurring patient load analysis is inferred from appointment records.
+- No patient satisfaction scores, clinical audit data, or quality-of-care metrics are available in the current schema.
+
+RECOMMENDED NEXT ANALYSIS
+- Introduce a clinician scheduling capacity table to enable calculation of true utilisation rates (appointments completed vs. available slots).
+- Begin tracking clinician absence and leave data to produce adjusted productivity metrics.
+- Conduct a formal patient panel analysis per clinician to compare current panel sizes against specialty-appropriate recommended maximums.
+- Model the revenue impact and payback period of recruiting an additional clinician at ClearPath Lakeview.
+- Extend the reporting period to cover full-year 2024 to identify any seasonal patterns in clinician workload, specialty demand, or no-show frequency.
+
+--------------------------------------------------------------------
+Report prepared by ClearPath Health Partners Analytics & Reporting Team.
+For internal management use only. Not for external distribution.
+--------------------------------------------------------------------

@@ -1,10 +1,12 @@
 /data/spider
 /data/spider.zip
-/data/nawa
 /data/documents
 /results
 /vector_stores
 /models
+/backup
+/raw
+/charts 
 
 **/__pycache__/
 **/*.pyc

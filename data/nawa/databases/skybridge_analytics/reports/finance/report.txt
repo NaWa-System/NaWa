@@ -1,0 +1,124 @@
+Q1 2024 ROUTE REVENUE & COST ANALYSIS
+
+Organisation: SkyBridge Analytics — Meridian Air & Crestline Airways Network
+Reporting Period: January 2024 – March 2024
+Prepared by: SkyBridge Analytics Commercial Reporting Division
+Date of Issue: April 2024
+
+========================================
+EXECUTIVE SUMMARY
+========================================
+
+This report provides a consolidated financial analysis of route-level revenue, cost, and margin performance across the Meridian Air and Crestline Airways networks for Q1 2024.
+
+Total network fare revenue reached approximately $878,000 for the quarter, supplemented by ancillary revenues of approximately $31,000. Business class bookings contributed a disproportionately high share of fare revenue relative to their passenger volume, driven by premium flexible-fare pricing on longer-haul routes.
+
+Operating costs across the 30 scheduled flights totalled approximately $974,000, with fuel representing the dominant cost category at approximately 46% of total expenditure. Medium-haul routes — particularly Dublin–Athens and London–Rome — carried the highest absolute cost loads.
+
+Two cancellations generated zero revenue while still absorbing fixed operational costs, representing a direct financial drag on Q1 performance. On completed routes, revenue consistently covered variable operating costs, indicating a broadly sustainable commercial model.
+
+March posted the strongest combined fare and ancillary revenue of the three months, providing a positive basis for Q2 commercial planning.
+
+========================================
+KEY METRICS
+========================================
+
+Total Fare Revenue:              ~$878,000
+  Aggregated across all completed bookings for Q1 2024.
+
+Total Ancillary Revenue:         ~$31,000
+  Add-on services; flexible-fare passengers generated higher ancillary yields.
+
+Total Operating Costs:           ~$974,000
+  Covers all 30 flights, including the two cancellations.
+
+Business Class Revenue:          ~$213,000
+  Premium fare contribution from flexible business bookings across the network.
+
+Cancelled Flight Revenue Loss:   $0 (2 flights)
+  MA610 and CL504 generated no revenue despite incurring fixed costs.
+
+Avg. Economy Fare Per Booking:   ~$140
+  Varies significantly by route length and fare type.
+
+Avg. Business Fare Per Booking:  ~$800
+  Flexible-fare premium substantially above economy equivalent.
+
+Fuel Cost as % of Total Costs:   ~46%
+  Dominant cost driver; highest on medium-haul operations.
+
+Highest Revenue Route:           Dublin–Athens (CL504)
+  Highest per-flight fare revenue of all operated routes.
+
+========================================
+REPORT SECTIONS
+========================================
+
+1. TOTAL REVENUE BY ROUTE
+--------------------------
+Route-level revenue analysis reveals meaningful variation across the ten operated routes. The Dublin–Athens medium-haul route generated the highest combined fare and ancillary revenue per flight, driven by longer sector length, higher base fares, and consistent passenger volumes. London–Madrid and London–Rome also posted strong revenue per operation. Short-haul routes such as London–Paris and London–Amsterdam produced lower absolute revenue, though their lower operating costs partially compensate. Cancelled flights on the London–Vienna and Dublin–Athens routes represent direct revenue gaps in the quarterly totals.
+
+
+
+
+2. REVENUE BY CABIN CLASS AND FARE TYPE
+-----------------------------------------
+Economy class accounted for the majority of booking volume and total fare revenue. However, business class flexible fares generated substantially higher revenue per passenger, with bookings on long routes yielding between $700 and $1,100 per booking compared with $110–$175 for economy saver fares. Routes offering both cabin classes — Dublin–Athens, London–Rome, and London–Madrid — demonstrated the strongest blended revenue profiles for the quarter.
+
+
+
+
+3. ANCILLARY REVENUE ANALYSIS
+-------------------------------
+Ancillary revenue contributed approximately 3.5% of total combined revenue in Q1. Ancillary income was highest on flights with larger passenger volumes and flexible-fare bookings, with Dublin–Athens and London–Madrid generating the strongest ancillary yields. Economy saver bookings on short-haul routes produced the lowest ancillary revenue per passenger. The correlation between flexible fares and ancillary uptake suggests a targeted upselling opportunity on premium routes.
+
+
+
+
+4. OPERATING COST BREAKDOWN BY CATEGORY
+-----------------------------------------
+Fuel costs represented approximately 46% of total operating expenditure across the network. Crew costs accounted for approximately 17%, airport fees approximately 9%, and maintenance approximately 5%. Cancelled flights contributed sunk costs through crew standby and airport access fees. Medium-haul services consistently incurred higher absolute costs across all categories, which is only commercially justified where fare yields are proportionally elevated.
+
+
+
+
+5. ROUTE-LEVEL REVENUE VS. COST COMPARISON
+--------------------------------------------
+Comparing booking revenue against operating costs on a per-route basis reveals that short-haul routes demonstrated the most favourable revenue-to-cost ratios. The Dublin–Athens route, while generating the highest absolute revenue, also carries the highest operating costs, narrowing its net margin relative to shorter routes. Routes with recurring delays — such as London–Rome and Manchester–Barcelona — may also face hidden costs not currently captured in the schema, such as crew overtime and passenger compensation.
+
+
+
+
+6. MONTHLY REVENUE TREND
+--------------------------
+Monthly revenue showed an upward trend across Q1 2024. January was constrained by the London–Vienna cancellation and a high proportion of economy saver bookings. February saw increased flexible-fare and business class uptake on Crestline routes. March posted the highest combined revenue of the three months, supported by a stronger booking mix and the successful operation of previously cancelled routes. The upward trajectory heading into Q2 is an encouraging commercial signal.
+
+
+
+========================================
+APPENDIX & NOTES
+========================================
+
+ASSUMPTIONS
+- Total fare revenue is summed from bookings.total_fare for all completed flight bookings.
+- Ancillary revenue is summed from bookings.ancillary_revenue across all valid bookings.
+- Operating costs per flight are aggregated from all five cost categories in the flight_costs table.
+- Cancelled flights are included in cost totals but excluded from revenue calculations.
+- Currency is assumed to be uniform (USD) across all records.
+
+KNOWN LIMITATIONS
+- The schema does not capture indirect costs such as crew overtime, passenger compensation, or rebooking charges for disrupted flights.
+- Tax and government surcharge components of fares are not separated from base fare values in the bookings table.
+- Seasonal demand fluctuations within Q1 may not be fully visible at the current level of flight frequency in the dataset.
+- No prior-period comparator data is currently available within the SkyBridge platform for year-over-year benchmarking.
+
+RECOMMENDED NEXT ANALYSIS
+- Introduce a compensation cost field or linked table to capture the full financial impact of delays and cancellations.
+- Segment revenue by booking lead time to evaluate the effectiveness of early-bird and last-minute pricing strategies.
+- Model route contribution margins by subtracting fully allocated operating costs from per-route revenue.
+- Benchmark Q1 2024 results against Q1 2023 data once historical records are integrated into the platform.
+
+========================================
+Report generated by SkyBridge Analytics.
+Data sourced from the SkyBridge Operations Intelligence Platform.
+========================================

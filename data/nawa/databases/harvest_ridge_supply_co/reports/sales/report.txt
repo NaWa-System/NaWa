@@ -1,0 +1,136 @@
+Q1 2024 SALES PERFORMANCE REPORT
+Harvest Ridge Supply Co.
+
+Organisation: Harvest Ridge Supply Co.
+Reporting Period: January 1, 2024 - March 31, 2024
+Report Type: Sales Performance
+Prepared By: Business Analytics Team
+Date Issued: April 5, 2024
+
+============================================================
+EXECUTIVE SUMMARY
+============================================================
+
+Harvest Ridge Supply Co. recorded a strong first quarter of 2024, driven by robust demand in the Crop Inputs category as the spring planting season approached. Sales activity accelerated meaningfully in March as commercial farm accounts increased order volumes for corn and soybean seed, fertilizers, and crop protection chemicals. Revenue grew month-over-month across all three months of the quarter, with March representing the highest sales month, consistent with historical pre-season purchasing patterns.
+
+Commercial Farm customers continued to be the highest-value segment, accounting for the majority of revenue in Q1. Repeat orders from established accounts such as Brandt Family Farms, Greenfield Grain Inc., and Ridgeway Cattle Co. formed a stable base of transactional activity. The online channel demonstrated meaningful growth, particularly from out-of-state customers in Oklahoma and Nebraska, indicating early success in Harvest Ridge's regional e-commerce expansion.
+
+Gross margin performance was solid across product categories, with Seeds and Crop Protection delivering the highest per-unit margins. Livestock Feed, while generating strong unit volume, operated at thinner margins due to competitive pricing pressures in that category.
+
+Looking ahead, the business is well-positioned to capitalize on peak spring demand in April and May. Management should monitor stock levels for high-velocity items and continue investing in online channel development and targeted outreach to Commercial Farm accounts.
+
+============================================================
+KEY METRICS
+============================================================
+
+Total Gross Revenue (Q1 2024): $128,640
+  - Aggregated from all completed order line items across January-March 2024.
+
+Total Gross Profit (Q1 2024): $51,490
+  - Calculated as total revenue minus total cost of goods sold across all order items.
+
+Overall Gross Margin: 40.0%
+  - Seeds and Crop Protection drive margin above the portfolio average.
+
+Total Orders Processed: 22
+  - All orders carried a completed status; no cancellations or returns recorded.
+
+Average Order Value: $5,847
+  - Elevated by large commercial farm orders; hobby farmer orders skew lower.
+
+Top Revenue Channel: In-Store (approx. 58% of orders)
+  - In-store remains dominant, though online is growing in share.
+
+Top Product Category by Revenue: Seeds & Seed Treatments
+  - Corn and soybean seed drove the highest category-level revenue.
+
+Top Customer by Revenue: Brandt Family Farms
+  - Placed three orders in Q1, including large seed and fertilizer purchases.
+
+New Customers Acquired (Q1 2024): 2
+  - Terry Vogel (January) and Marcus Lee (February).
+
+Online Channel Share of Revenue: Approx. 42%
+  - Online orders include customers from Kansas, Oklahoma, and Nebraska.
+
+============================================================
+REPORT SECTIONS
+============================================================
+
+1. MONTHLY REVENUE TREND
+------------------------------------------------------------
+Revenue showed a clear upward trajectory across Q1 2024. January established a moderate baseline as early-season orders were placed by established commercial accounts. February saw moderate growth with increased activity in Livestock and Crop Protection categories. March delivered the strongest month of the quarter, as pre-planting seed and fertilizer purchases surged from commercial farm customers. This pattern aligns with typical Central Plains agricultural seasonality, where Q1 builds steadily toward the spring peak.
+
+Data fields used: orders.order_date, order_items.quantity, order_items.unit_price, orders.order_id
+
+
+2. REVENUE BY PRODUCT CATEGORY
+------------------------------------------------------------
+Seeds & Seed Treatments was the highest-revenue category in Q1 2024, driven by bulk purchases of Corn Seed Hybrid H200 and Soybean Seed XR7. Fertilizers ranked second, with Urea 46-0-0 and DAP being the most frequently purchased products. Crop Protection posted notable revenue from Glyphosate Herbicide sales. Livestock Feed generated the highest unit volume but contributed lower gross profit due to its thinner margin profile. Farm Equipment Accessories and Irrigation products each contributed a smaller but consistent share of revenue.
+
+Data fields used: categories.category_name, products.product_id, order_items.quantity, order_items.unit_price, order_items.unit_cost
+
+
+3. SALES BY CUSTOMER TYPE
+------------------------------------------------------------
+Commercial Farm accounts generated the largest share of Q1 revenue, reflecting the concentration of high-value, multi-line orders from customers such as Brandt Family Farms, Greenfield Grain Inc., Sunflower Acres LLC, and Prairie Wind Organics. Rancher customers contributed moderate order values focused on livestock and equipment products. Hobby Farmers placed a higher number of smaller orders, contributing meaningfully to transaction count but a smaller portion of overall revenue. The customer mix confirms that retention and deepening of Commercial Farm relationships should remain the top sales priority.
+
+Data fields used: customers.customer_type, customers.customer_id, orders.order_id, order_items.unit_price, order_items.quantity
+
+
+4. CHANNEL PERFORMANCE: IN-STORE VS. ONLINE
+------------------------------------------------------------
+In-store sales accounted for the majority of Q1 orders by count, reflecting the established walk-in customer base at the Salina storefront. The online channel demonstrated consistent activity across all three months and captured orders from customers outside Kansas, notably in Oklahoma and Nebraska. Online orders tended to concentrate in the Livestock Feed, Crop Protection, and Irrigation categories. The growing online channel represents a strategic opportunity to expand regional market share without the overhead of additional physical locations.
+
+Data fields used: orders.channel, orders.order_date, orders.order_id, customers.state, order_items.unit_price, order_items.quantity
+
+
+5. TOP 5 PRODUCTS BY REVENUE
+------------------------------------------------------------
+Corn Seed Hybrid H200 ranked as the single highest-revenue product in Q1 2024, with multiple large-quantity orders from commercial farm customers. Soybean Seed XR7 ranked second, also driven by commercial pre-season purchasing. Premium Cattle Feed ranked third on consistent high-volume repeat orders. Urea Fertilizer 46-0-0 followed with steady demand, while Glyphosate Herbicide 2.5gal rounded out the top five. These five products collectively represent the core of Harvest Ridge's revenue base and should be prioritized in inventory planning and supplier negotiations.
+
+Data fields used: products.product_name, products.product_id, order_items.quantity, order_items.unit_price, categories.category_name
+
+
+6. GROSS MARGIN BY CATEGORY
+------------------------------------------------------------
+Gross margin analysis reveals that Seeds & Seed Treatments and Crop Protection delivered the highest margin percentages, both exceeding 40% at the category level. Farm Equipment Accessories also performed well on a per-unit basis, despite lower overall revenue volume. Fertilizers maintained a solid margin in the mid-to-high thirties percent range. Livestock Feed operated at a tighter margin, consistent with its commoditized nature and competitive pricing pressures. This margin profile demonstrates a well-balanced category mix that offsets the thinner-margin livestock segment with higher-margin crop input products.
+
+Data fields used: categories.category_name, order_items.unit_price, order_items.unit_cost, products.category_id
+
+
+7. CUSTOMER RETENTION AND REPEAT ORDER ACTIVITY
+------------------------------------------------------------
+Several key commercial accounts placed multiple orders during Q1 2024. Brandt Family Farms placed orders in January, February, and March, making it the most active customer by order frequency. Greenfield Grain Inc. and Ridgeway Cattle Co. each placed two orders during the quarter. Prairie Wind Organics placed two online orders. Two new customers - Terry Vogel and Marcus Lee - were onboarded during the quarter. Repeat activity among commercial accounts indicates strong loyalty and provides a stable revenue foundation.
+
+Data fields used: customers.customer_name, customers.customer_type, customers.created_date, orders.customer_id, orders.order_date
+
+
+============================================================
+APPENDIX / NOTES
+============================================================
+
+ASSUMPTIONS
+- All orders with status 'completed' are included in revenue calculations; no returns or credits were recorded in the period.
+- Revenue figures are calculated as quantity multiplied by unit_price from the order_items table.
+- Gross profit is calculated as (unit_price - unit_cost) multiplied by quantity for each order line item.
+- Customer type classification is based on the customer_type field recorded at account creation.
+- The reporting period is January 1 to March 31, 2024, inclusive.
+
+KNOWN LIMITATIONS
+- The dataset does not include returns, refunds, or credit notes, which may slightly overstate net revenue.
+- No promotional pricing or volume discount adjustments are captured in the current schema.
+- Online vs. in-store attribution is based on the orders.channel field only; no marketing source data is available.
+- Customer lifetime value analysis is limited by the transaction history available in the current dataset.
+
+RECOMMENDED NEXT ANALYSIS
+- Develop a Q2 sales forecast model using Q1 order patterns, inventory levels, and historical seasonal trends.
+- Conduct a customer segmentation analysis to identify high-value Commercial Farm accounts at risk of churn.
+- Analyze online channel conversion rates and average order value versus in-store.
+- Build a product margin ranking report to identify underperforming SKUs.
+- Track new customer acquisition month-over-month and establish a Q2 acquisition target.
+
+------------------------------------------------------------
+Report generated by Harvest Ridge Supply Co. Business Analytics Team.
+For internal use only. Not for external distribution.
+------------------------------------------------------------

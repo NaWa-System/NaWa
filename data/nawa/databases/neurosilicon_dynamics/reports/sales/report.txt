@@ -1,0 +1,45 @@
+Q1 2026 GPU and AI Accelerator Sales Performance Report
+
+Organisation: NeuroSilicon Dynamics
+Period: January 2026 - March 2026
+
+Executive Summary
+NeuroSilicon Dynamics demonstrated strong demand across both AI accelerators and GPU product lines. Growth was driven by cloud providers and OEM partners, particularly in North America and Europe.
+
+Sales performance increased steadily throughout the quarter, with the NSD A100X leading revenue contributions. Inventory levels suggest potential supply constraints if demand continues at current levels.
+
+Key Metrics
+- Total Revenue: $2.8M+
+- Top Product: NSD A100X
+- Largest Customer Segment: Cloud Providers
+- Average Order Size: High
+- Inventory Utilization: Moderate
+
+Revenue by Product Category
+AI accelerators contributed the largest share of revenue, followed by GPUs and edge AI products.
+
+Sales by Region
+North America led total sales, with strong growth in Europe.
+
+Customer Segment Performance
+Cloud providers and OEMs generated the highest revenue contributions.
+
+Order Trends Over Time
+Order volume increased steadily throughout the quarter.
+
+Inventory and Fulfillment
+Inventory levels declined due to increased sales activity.
+
+Appendix
+Assumptions:
+- Completed orders are fully delivered
+- Stable pricing across transactions
+
+Limitations:
+- No cost breakdown per order
+- Limited to one quarter of data
+
+Next Steps:
+- Profitability analysis
+- Demand forecasting
+- Supply chain risk evaluation

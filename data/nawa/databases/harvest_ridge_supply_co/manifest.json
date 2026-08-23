@@ -1,0 +1,8 @@
+{
+  "source_json": "json/harvest_ridge_supply_co.json",
+  "company_name": "Harvest Ridge Supply Co.",
+  "database_file": "generated/harvest_ridge_supply_co/harvest_ridge_supply_co.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/harvest_ridge_supply_co"
+}

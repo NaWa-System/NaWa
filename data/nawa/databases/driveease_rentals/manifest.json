@@ -1,0 +1,8 @@
+{
+  "source_json": "json/driveease_rentals.json",
+  "company_name": "DriveEase Rentals",
+  "database_file": "generated/driveease_rentals/driveease_rentals.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/driveease_rentals"
+}

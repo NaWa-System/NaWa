@@ -1,0 +1,8 @@
+{
+  "source_json": "json/gronmark_livs_ab.json",
+  "company_name": "Gr\u00f6nmark Livs AB",
+  "database_file": "generated/gronmark_livs_ab/gronmark_livs_ab.db",
+  "reports_exported": 1,
+  "pdf_reports_exported": 1,
+  "output_root": "generated/gronmark_livs_ab"
+}

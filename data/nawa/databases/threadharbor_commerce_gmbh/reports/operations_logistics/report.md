@@ -1,0 +1,58 @@
+# Q1 2026 Fulfillment & Returns Review — Delivery Timelines, Carriers, and Return Drivers
+
+**Organisation:** ThreadHarbor Commerce GmbH  
+**Reporting period:** 2026-01-01 to 2026-03-31  
+
+## Executive Summary
+In Q1 2026, ThreadHarbor’s fulfillment execution was stable, with most delivered orders shipping within one day of order placement and arriving within a typical 2–3 day window. Carrier performance was consistent across DHL, PostNL, Austrian Post, Swiss Post, and bpost, with delivery times clustering tightly by warehouse region.
+
+Returns were a material operational driver during the quarter, with refunds concentrated in fit-sensitive categories such as footwear, denim, and dresses. Size-related reasons were the most frequent return driver, indicating that product fit guidance and size consistency remain the primary levers for reducing reverse-logistics volume.
+
+From a regional lens, the company’s use of country-aligned warehouse regions supports predictable delivery lead times. Maintaining this reliability while reducing return incidence should improve customer experience and protect contribution margin by lowering avoidable handling and shipping costs.
+
+Immediate operational priorities for Q2 should focus on (1) reducing size-related returns through better fit content and structured product attributes, and (2) tightening the shipping workflow for orders that remain in a “pending shipment” state beyond expected cutoffs.
+
+## Key Metrics
+- **Orders Delivered (Q1):** 12
+- **Average Ship Lead Time:** 1.0 days
+- **Average Delivery Lead Time:** 3.0 days
+- **On-Time Delivery (Proxy):** High (most within 2–4 days)
+- **Total Return Transactions (Q1):** 7
+- **Top Return Reason:** Size
+- **Return Refund Value (Q1):** $466.50
+- **Carriers Utilized (Q1):** 5
+
+## Main Sections
+### 1) Fulfillment Volume and Status Health
+All Q1 orders in scope were delivered successfully, indicating stable downstream execution from picking/packing through last-mile delivery. The distribution across carriers and warehouse regions suggests the network is correctly aligned to key demand markets. Monitoring should continue for any buildup in non-delivered statuses (e.g., pending) as order volume grows into Q2.
+
+### 2) Ship Lead Time (Order to Ship)
+Ship lead times were consistently tight, with shipments generally leaving the warehouse within one day of order placement. This performance supports customer expectations for fast fulfillment and helps reduce cancellation risk. Operationally, the next improvement would be ensuring that peak periods maintain the same same-day/next-day dispatch performance.
+
+### 3) Delivery Lead Time by Carrier
+Delivery lead times were stable across carriers, generally landing within a 2–4 day window from order placement. No single carrier showed a materially worse pattern in the observed quarter. Maintaining carrier scorecards and exception logging would help separate normal variation from service degradation as volumes increase.
+
+### 4) Warehouse Region Alignment
+Warehouse regions aligned to the customer’s market (e.g., DHL in Germany, PostNL in the Netherlands, Austrian Post in Austria) supported predictable timelines. This suggests routing logic is functioning as intended and indicates further expansion should preserve a local-warehouse strategy for top regions to prevent delivery lead time creep.
+
+### 5) Returns Volume and Drivers
+Returns were concentrated in fit-sensitive categories, with size being the dominant reason. The operational cost of returns (processing, relisting, and shipping) likely represents a meaningful drag on contribution margin. Improving size guidance and reducing fit uncertainty is the most direct lever to reduce reverse logistics volume.
+
+### 6) High-Value Return Exposure (Refund Concentration)
+A small number of high-ticket items (e.g., boots and dresses) accounted for a disproportionate share of refunded value. Reducing returns on these items can yield outsized financial impact. Suggested actions include enhanced photography, material callouts, and tighter product sizing notes, especially for brands or SKUs that show recurring return behavior.
+
+## Appendix / Notes
+**Assumptions**
+- Lead time calculations assume calendar days between dates and do not adjust for weekends/holidays.
+- Carrier performance is inferred from shipped_date and delivered_date only; no scan-level event data is included.
+- Returns are treated as customer-initiated and do not distinguish between carrier damage vs product defects beyond the recorded reason field.
+
+**Known limitations**
+- No promised delivery SLA or customer-facing ETA is stored, so true on-time rate cannot be measured precisely.
+- No warehouse operational data (pick/pack time, staffing, backlog) is included, limiting root-cause analysis for delays.
+- No return shipping cost or refurbishment cost is captured, so full returns cost-to-serve cannot be quantified.
+
+**Recommended next analysis**
+- Add SLA/ETA fields (or a service-level table) to measure on-time delivery against promise rather than observed averages.
+- Capture return processing outcomes (restockable vs damaged) to quantify value recovery and operational burden by reason.
+- Build a carrier exception report using a shipment event table (handoff, out-for-delivery, failed delivery) to isolate bottlenecks.

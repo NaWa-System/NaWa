@@ -1,0 +1,8 @@
+{
+  "source_json": "json/meridian_auto_group.json",
+  "company_name": "Meridian Auto Group",
+  "database_file": "generated/meridian_auto_group/meridian_auto_group.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/meridian_auto_group"
+}

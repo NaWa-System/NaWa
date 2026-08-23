@@ -1,0 +1,104 @@
+ICA HANDLARNAS AB
+WHOLESALE SALES PERFORMANCE REPORT — Q4 2024
+
+Organisation: ICA Handlarnas AB
+Reporting Period: October – December 2024
+Prepared by: Business Intelligence & Reporting Division
+Date: January 2025
+
+========================================
+EXECUTIVE SUMMARY
+========================================
+
+This report covers the wholesale supply performance of ICA Handlarnas AB for Q4 2024. The quarter delivered consistent month-over-month growth, with December recording the highest aggregate wholesale volume driven by pre-holiday stock builds at larger-format stores.
+
+Across eight active stores, total wholesale disbursements grew from approximately SEK 485,000 in October to over SEK 629,000 in December, a growth of roughly 30 percent. ICA Maxi format stores at Kungens Kurva and Uppsala were the dominant volume contributors throughout the quarter.
+
+Private-label product lines (ICA Basic, ICA Selection) featured in the majority of order compositions, reflecting continued progress toward a higher-margin product mix within the cooperative supply chain.
+
+One order from ICA Kvantum Orebro placed on December 23 remained in Pending status at period close due to a logistics scheduling issue. Resolution is expected in early January 2025.
+
+========================================
+KEY METRICS
+========================================
+
+Total Wholesale Revenue (Q4): SEK 1,641,700
+  -- All delivered and pending orders, October through December 2024.
+
+Total Orders Placed: 24
+  -- 23 delivered, 1 pending at period close.
+
+Highest-Volume Store: ICA Maxi Kungens Kurva
+  -- SEK 145,600 in December alone.
+
+Month-over-Month Growth (October to December): +29.7%
+  -- Seasonal holiday uplift in final weeks of quarter.
+
+Average Order Value: SEK 68,400
+  -- High variance by store format.
+
+Pending Orders at Period Close: 1 order, valued at SEK 79,900
+  -- ICA Kvantum Orebro, December 23.
+
+Private-Label Orders: Featured in 18 of 24 orders
+  -- ICA Basic and ICA Selection SKUs.
+
+========================================
+SECTION 1: MONTHLY WHOLESALE VOLUME TREND
+========================================
+
+October wholesale orders totalled approximately SEK 485,000 across the network. November grew modestly to around SEK 506,000 as stores began building pre-holiday stock positions. December accelerated significantly to approximately SEK 630,000, the highest monthly figure in the tracked period. This seasonal pattern is consistent with Swedish grocery retail dynamics, where the weeks before Christmas generate the largest replenishment cycles.
+
+========================================
+SECTION 2: REVENUE CONTRIBUTION BY STORE FORMAT
+========================================
+
+ICA Maxi stores (Kungens Kurva and Uppsala) collectively generated the largest wholesale revenue share. ICA Kvantum locations formed the second tier with per-order values ranging from SEK 60,000 to 95,000. ICA Supermarket locations followed, while ICA Nara convenience stores recorded the smallest per-order values, consistent with their limited assortment range.
+
+========================================
+SECTION 3: TOP ORDERED PRODUCTS BY VOLUME
+========================================
+
+Arla Mellanmjolk 3L, Scan Kycklingfile 1kg, and Coca-Cola 1.5L were consistently ordered across the quarter. ICA private-label items, particularly ICA Basic Diskmedel and ICA Basic Frysta Artor, featured in repeat orders from mid-size format stores. ICA Selection Lax showed elevated ordering frequency in December, likely reflecting holiday demand.
+
+========================================
+SECTION 4: PRIVATE-LABEL VS BRANDED ORDER COMPOSITION
+========================================
+
+Private-label SKUs (ICA Basic and ICA Selection) were present in 18 of 24 orders, demonstrating strong network-wide adoption. These products carry higher wholesale margins than branded equivalents, and continued private-label penetration therefore improves the cooperative's overall margin profile. The ICA Selection fresh category showed particularly strong representation in December.
+
+========================================
+SECTION 5: REGIONAL PERFORMANCE OVERVIEW
+========================================
+
+The Stockholm region led total wholesale contribution, anchored by ICA Maxi Kungens Kurva. Uppsala and Vastra Gotaland (Gothenburg) followed as the next strongest regions. Skane, Ostergotland, and Orebro contributed stable but smaller volumes consistent with single-store representation in each of those regions.
+
+========================================
+SECTION 6: ORDER FULFILMENT AND DELIVERY TIMELINESS
+========================================
+
+23 of 24 orders were delivered with an average lead time of approximately two calendar days, within the standard service-level target. One order remains pending due to Christmas-period logistics constraints and is expected to be resolved in January 2025.
+
+========================================
+APPENDIX
+========================================
+
+ASSUMPTIONS
+- Revenue figures reflect wholesale charges to store operators, not end-consumer retail sales.
+- Private-label identification is based on the product category flag in the database.
+- Month-over-month growth calculations exclude the single pending order.
+
+KNOWN LIMITATIONS
+- End-consumer sales data is not included; this report covers wholesale supply activity only.
+- Only 8 of approximately 1,300 ICA network stores are represented in this dataset.
+- The pending December order means Q4 totals are slightly understated by SEK 79,900.
+
+RECOMMENDED NEXT ANALYSIS
+- Integrate point-of-sale retail data to compare replenishment volumes with consumer sell-through rates.
+- Conduct a year-over-year Q4 comparison once 2023 comparative data is available in the same schema.
+- Quantify private-label margin contribution in SEK terms to formally evidence the financial benefit.
+- Segment delivery reliability by region and logistics partner to identify service-level improvement opportunities.
+
+========================================
+END OF REPORT
+========================================

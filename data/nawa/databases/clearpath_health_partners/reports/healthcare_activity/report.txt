@@ -1,0 +1,119 @@
+CLEARPATH HEALTH PARTNERS
+OUTPATIENT CLINICAL ACTIVITY & REVENUE REPORT — Q1-Q2 2024
+
+Organisation: ClearPath Health Partners
+Reporting Period: January 1, 2024 – June 30, 2024
+Report Type: Healthcare Activity
+Prepared By: Analytics & Reporting Team
+Date of Issue: July 2024
+
+========================================================
+EXECUTIVE SUMMARY
+========================================================
+
+This report presents an overview of outpatient clinical activity and billing performance across all five ClearPath Health Partners clinic locations during the first half of 2024. The period covers 35 scheduled appointments, of which 31 (88.6%) were completed successfully. Two appointments resulted in no-shows and two in cancellations.
+
+Total billed revenue across the network exceeded $7,700, with collected amounts of approximately $5,900, reflecting payer mix dynamics including Medicare reimbursement adjustments and outstanding Medicaid and self-pay balances. Diagnostic services — particularly cardiac procedures — generated the highest per-appointment revenue, while preventive care drove the highest appointment volume.
+
+Chronic disease management, principally cardiovascular disease and type 2 diabetes, represents the most recurring clinical workload. Approximately 71% of completed appointments generated follow-up requirements, reflecting active longitudinal care relationships. The organisation is well-positioned entering H2 2024 with stable patient volumes and a growing base of returning patients.
+
+Accounts receivable attention is recommended for three Pending Medicaid claims and two partially collected self-pay billing records, representing a combined outstanding exposure of approximately $755.
+
+========================================================
+KEY METRICS
+========================================================
+
+Metric                          Value           Context
+--------------------------------------------------------------------
+Total Appointments Scheduled    35              All five clinics, Jan-Jun 2024
+Appointment Completion Rate     88.6%           31 of 35 completed
+Total Billed Revenue            $7,755.00       Before payer adjustments
+Total Amount Collected          $5,907.00       Actual payments received
+Collection Rate                 76.2%           Billed-to-collected ratio
+Pending / Outstanding Payments  $580.00         Three Pending Medicaid records
+Most Active Service Category    Diagnostic      Highest avg fee per appointment
+Top Payer by Volume             Medicare        Largest share of activity
+Patients Requiring Follow-Up    71.0%           ~22 of 31 completed appointments
+Unique Active Patients          12              Across all clinics, H1 2024
+
+========================================================
+SECTION 1: APPOINTMENT VOLUME & STATUS BY MONTH
+========================================================
+
+Appointment volumes increased gradually across H1 2024. January and February each recorded five appointments, with volumes rising to six in both March and April, reflecting stronger patient throughput entering the spring period. No-show events occurred in March and May, while cancellations were recorded in April and June.
+
+The 88.6% completion rate is strong relative to industry benchmarks, though no-show frequency warrants continued monitoring to protect clinician utilisation and slot revenue. Urban clinic locations — particularly ClearPath Central in Columbus — drove the majority of appointment volume across the reporting period.
+
+
+
+========================================================
+SECTION 2: REVENUE & COLLECTIONS BY PAYER TYPE
+========================================================
+
+Medicare represented the dominant payer by both volume and billed revenue, but reimbursement adjustments consistently reduced collected amounts to approximately 80% of billed rates. Private Insurance payers demonstrated the highest collection efficiency, with most claims settled at 100% of billed amounts. Three Medicaid billing records remain Pending, and two self-pay appointments carry partially collected balances.
+
+The organisation's payer mix reflects its patient demographic profile, with Medicare concentration linked to a significant number of older patients managing chronic cardiac and metabolic conditions. Targeted billing and accounts receivable processes for Medicaid and self-pay patients are recommended.
+
+
+
+========================================================
+SECTION 3: SERVICE CATEGORY PERFORMANCE
+========================================================
+
+Four service categories were active during H1 2024: Consultation, Preventive, Diagnostic, and Specialty. Diagnostic services commanded the highest standard fees, with cardiac stress tests billed at $420 per visit and ECGs at $300 per visit. Preventive care — including well-child checks, annual wellness exams, and immunisations — recorded the highest appointment volume overall. Specialty visits in Orthopedics and Endocrinology generated strong per-visit revenue. Follow-up consultations were the most frequently recurring appointment type among patients managing chronic disease.
+
+
+
+========================================================
+SECTION 4: CLINIC LOCATION ACTIVITY COMPARISON
+========================================================
+
+ClearPath Central (Columbus) recorded the highest appointment volume, driven by concentrated cardiac and chronic disease caseloads. ClearPath Southbrook (Cincinnati) demonstrated strong throughput in cardiology and primary care. ClearPath Westside (Dayton) maintained consistent paediatric visit volumes throughout the period. ClearPath Lakeview (Toledo) recorded the lowest activity at two orthopedic appointments, representing a potential capacity expansion or community outreach opportunity.
+
+
+
+========================================================
+SECTION 5: PATIENT OUTCOME SUMMARY & FOLLOW-UP DEMAND
+========================================================
+
+Chronic disease management dominates the clinical workload, with coronary artery disease (ICD-10: I25.10) and type 2 diabetes mellitus (E11.x) accounting for the highest frequency of diagnoses and follow-up requirements. The majority of patient outcomes were classified as Stable or Improving, suggesting that care management protocols are functioning effectively. One acute cardiac event (I21.9) was escalated via appropriate specialist referral. Preventive and wellness visit outcomes were predominantly classified as Healthy with no further follow-up required.
+
+
+
+========================================================
+SECTION 6: ACCOUNTS RECEIVABLE & BILLING STATUS
+========================================================
+
+Of 31 billing records issued during H1 2024, the majority have reached Paid status. Three Pending records associated with Medicaid claims and two Partial records for self-pay patients represent the primary outstanding accounts receivable balance. The average elapsed time from appointment date to billing date is approximately two to three business days, indicating efficient internal claims processing. Private Insurance and Medicare claims are generally resolved promptly following submission.
+
+The accounts receivable team is advised to prioritise outreach on the three Pending Medicaid claims and to implement structured payment plans for self-pay patients to reduce partial payment recurrence.
+
+
+
+========================================================
+APPENDIX & NOTES
+========================================================
+
+ASSUMPTIONS
+- Medicare reimbursement modelled at approximately 80% of billed rates, consistent with standard CMS fee schedules.
+- Medicaid reimbursements modelled at approximately 80% of billed amounts where payment status is Paid.
+- No-show and cancelled appointments excluded from billing records as no charges were processed.
+- Follow-up requirements are based on clinician-recorded outcome data captured at the time of the indexed appointment.
+
+KNOWN LIMITATIONS
+- The dataset covers 35 appointments across 12 patients; broader statistical conclusions should be treated with caution.
+- No cost-side data is available in the current schema; margin or profitability analysis is not possible at this stage.
+- Insurance contract-level fee schedules are approximated rather than individually modelled.
+- Appointment slot capacity per clinician is not tracked; true clinician utilisation rates cannot be calculated.
+
+RECOMMENDED NEXT ANALYSIS
+- Introduce staffing and facility cost data to enable profitability analysis by clinic and service line.
+- Develop a patient cohort retention model to identify patients overdue for scheduled follow-up care.
+- Expand the reporting dataset to full-year 2024 to enable H1 vs. H2 seasonal comparison and annual trend modelling.
+- Investigate root causes of no-show and cancellation events by patient demographics, payer type, and scheduling patterns.
+- Model the projected revenue impact of converting all Pending and Partial billing records to fully collected status.
+
+--------------------------------------------------------------------
+Report prepared by ClearPath Health Partners Analytics & Reporting Team.
+For internal management use only. Not for external distribution.
+--------------------------------------------------------------------

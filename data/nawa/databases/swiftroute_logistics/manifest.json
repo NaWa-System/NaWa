@@ -1,0 +1,8 @@
+{
+  "source_json": "json/swiftroute_logistics.json",
+  "company_name": "SwiftRoute Logistics",
+  "database_file": "generated/swiftroute_logistics/swiftroute_logistics.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/swiftroute_logistics"
+}

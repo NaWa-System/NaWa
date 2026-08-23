@@ -1,0 +1,8 @@
+{
+  "source_json": "json/nexcore_systems.json",
+  "company_name": "NexCore Systems",
+  "database_file": "generated/nexcore_systems/nexcore_systems.db",
+  "reports_exported": 1,
+  "pdf_reports_exported": 1,
+  "output_root": "generated/nexcore_systems"
+}

@@ -1,0 +1,8 @@
+{
+  "source_json": "json/nordicfit_wellness_group.json",
+  "company_name": "NordicFit Wellness Group",
+  "database_file": "generated/nordicfit_wellness_group/nordicfit_wellness_group.db",
+  "reports_exported": 1,
+  "pdf_reports_exported": 1,
+  "output_root": "generated/nordicfit_wellness_group"
+}

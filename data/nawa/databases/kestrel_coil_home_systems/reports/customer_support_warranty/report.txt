@@ -1,0 +1,85 @@
+Q1 2026 Warranty & Service Operations Review (Jan–Mar 2026)
+
+Organisation: Kestrel & Coil Home Systems
+Reporting Period: 2026-01-01 to 2026-03-31
+
+EXECUTIVE SUMMARY
+Service activity in Q1 was concentrated in February and March, largely tied to higher-volume categories sold through wholesale partners and a smaller number of higher-severity cases in refrigeration and dishwashing. Most tickets in the quarter were resolved or closed within a single-digit day range, indicating a generally effective support workflow when parts are readily available.
+
+Leak and cooling-related issues are the most operationally material themes: leaks drive higher labor intensity in dishwashing, while cooling incidents in refrigeration have elevated severity and a higher customer impact risk. Open tickets at quarter-end were present, including a high-severity cooling ticket, suggesting a need to strengthen escalation paths and parts availability for the refrigeration platform.
+
+Warranty coverage accounted for the majority of ticket volume, with one non-warranty installation-related ticket showing that customer expectation management and installer alignment can meaningfully reduce avoidable service cost.
+
+The data supports prioritizing (1) dishwasher leak root-cause reduction, (2) refrigeration cooling escalation/parts readiness, and (3) installation guidance improvements for retail and installer channels to reduce non-warranty service interactions.
+
+KEY METRICS
+- Total Service Tickets (Q1): 9
+  Context: Count of tickets with ticket_date in Jan–Mar 2026.
+
+- Tickets Resolved or Closed (Q1): 8 of 9
+  Context: Most tickets were completed within the quarter; one remained open.
+
+- Open Tickets at Quarter-End: 1
+  Context: One high-severity refrigeration cooling issue remained open.
+
+- Warranty-Covered Share: Approx. 89% (8 of 9)
+  Context: Most service activity is warranty-driven.
+
+- High Severity Tickets: 2
+  Context: High severity concentrated in leak/cooling categories.
+
+- Top Issue Categories: Leak and Cooling
+  Context: Most material themes due to labor intensity and customer impact.
+
+- Average Resolution Time (Closed/Resolved): Approx. 5–7 days
+  Context: Most resolved/closed tickets completed within about a week.
+
+- Total Recorded Service Cost (Parts + Labor, Q1): $1,314.00
+  Context: Sum of recorded parts and labor; open tickets may understate true exposure.
+
+FINDINGS AND ANALYSIS
+1) Ticket Volume Trend and Status Mix
+Ticket volume increased into February and March, consistent with the ramp in delivered units from early-quarter wholesale and installer activity. Backlog remained low, but a single high-severity open case highlights the need for escalation discipline.
+
+Recommendation: implement explicit SLA targets and escalation triggers for high severity categories.
+
+2) Issues by Product and Category
+Dishwashers are associated with leak incidents that are labor intensive. Refrigerators show cooling incidents with elevated severity. Other categories appear more sporadic.
+
+Recommendation: run targeted reliability workstreams for dishwasher leak prevention and refrigerator cooling diagnostics/parts readiness.
+
+3) Resolution Time Performance
+Closed/resolved tickets typically completed within a week; longer durations correlate with higher severity and categories requiring more on-site work.
+
+Recommendation: standardize parts kits for common failure modes and escalate high-severity cooling cases earlier.
+
+4) Warranty vs. Non-Warranty Cost Drivers
+Warranty-covered tickets drive the bulk of costs. A non-warranty installation ticket indicates preventable service interactions when installation responsibilities and first-use setup are unclear.
+
+Recommendation: tighten installation documentation, partner guidance, and first-use customer education.
+
+5) Regional Service Patterns
+Tickets occurred across multiple regions with no single-region concentration. Variation may reflect partner installation practices and local servicing capacity.
+
+Recommendation: align partner guidance and first-install checklists consistently by region.
+
+6) Service Cost Snapshot (Parts and Labor)
+Labor dominates recorded service cost in Q1, indicating that reducing truck rolls and on-site time is likely the most impactful lever. Parts costs are modest.
+
+Recommendation: strengthen remote triage, improve setup instructions, and pre-position kits for high-frequency categories.
+
+APPENDIX / NOTES
+Assumptions
+- Service cost = parts_cost + labor_cost per ticket.
+- Average resolution time uses tickets with non-null resolution_days.
+- Tickets are assigned to Q1 by ticket_date.
+
+Known Limitations
+- Open tickets may understate cost if not yet recorded.
+- Partner/installer identifiers are not captured.
+- No serial/batch data limits quality containment analysis.
+
+Recommended Next Analysis
+- Add service partner/technician and visit count to isolate labor drivers.
+- Add production batch linkage for targeted quality interventions.
+- Combine delivered units and tickets to estimate incident rate per 100 units by product.

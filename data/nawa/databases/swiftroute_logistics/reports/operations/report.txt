@@ -1,0 +1,124 @@
+Q1 2024 SHIPMENT OPERATIONS & DELIVERY PERFORMANCE REPORT
+SwiftRoute Logistics
+Reporting Period: January 1 - March 31, 2024
+Report Type: Operations
+Prepared By: Operations Analytics Team
+
+========================================================
+EXECUTIVE SUMMARY
+========================================================
+
+SwiftRoute Logistics processed 30 shipments across all four operating regions during Q1 2024, reflecting solid demand across our client base and continued growth in freight volume. The overwhelming majority of shipments were completed successfully and on time, with the company maintaining a strong delivery completion rate through January and February. March saw the highest shipment volume of the quarter, which also introduced the first meaningful cluster of delayed and in-transit shipments as seasonal demand pressures and isolated operational incidents affected execution.
+
+Delivery performance remained robust in the New England and Mid-Atlantic regions, which together accounted for the highest share of completed shipments. The Greater NYC corridor demonstrated strong Express service demand, particularly from retainer clients such as Castleton Electronics and BlueSky Apparel. The Capital District region showed steady growth driven by Apex Wholesale Distributors and FreshMart Grocery Chain.
+
+Two shipments at the close of March were flagged as Delayed, linked to a traffic incident and a vehicle inspection event respectively. These incidents highlight the need for improved contingency dispatching protocols. Fleet utilisation across owned and leased vehicles remained high, with Semi-Trailers carrying the largest aggregate freight weight.
+
+Looking ahead to Q2, management should monitor the resolution of outstanding March shipments, address the root causes of the two delayed deliveries, and evaluate whether driver capacity in Greater NYC is sufficient to support projected volume growth.
+
+========================================================
+KEY METRICS
+========================================================
+
+Total Shipments Processed:       30
+  Across all four regions for full Q1 2024
+
+Delivered On Time:               25 (83%)
+  83% of all Q1 shipments delivered without a delay flag
+
+Shipments In Transit (EOP):      3
+  Initiated in final days of March; expected to close in Q2
+
+Delayed Shipments:               2
+  Both in final week of March; NYC and Mid-Atlantic corridors
+
+Total Freight Weight Moved:      ~58,160 kg
+  Semi-Trailers accounted for the majority of tonnage
+
+Most Active Region:              Mid-Atlantic
+  Highest combined freight weight and freight charge value
+
+Express Service Share:           33% (10 of 30 shipments)
+  Disproportionately high freight charge contribution relative to volume
+
+Same-Day Completion Rate:        80% (4 of 5)
+  One delayed in March due to urban congestion incident
+
+Active Drivers Utilised:         8
+  Full human fleet capacity utilised throughout Q1
+
+========================================================
+SECTION 1: SHIPMENT VOLUME BY MONTH
+========================================================
+
+Shipment volumes grew progressively throughout Q1 2024. January recorded 8 completed shipments, February matched that figure, and March saw the highest activity with 14 shipments initiated, including several that remained open at quarter close. This upward trend suggests accelerating customer demand and validates SwiftRoute's investment in expanding contracted driver capacity in late 2023. The March volume surge warrants close monitoring to ensure operational capacity keeps pace with commercial growth.
+
+
+Data Fields Used: shipments.scheduled_date, shipments.status, shipments.shipment_id
+
+========================================================
+SECTION 2: DELIVERY STATUS BREAKDOWN
+========================================================
+
+Of the 30 shipments processed in Q1, 25 were fully delivered, 3 remained in transit as of March 31, and 2 were flagged as Delayed. The delivery success rate of 83% is a reasonable baseline but falls below the internal SLA target of 90% on-time delivery when delayed and in-transit shipments are considered together. Both delayed shipments involved contracted drivers in the Greater NYC and Mid-Atlantic regions, suggesting contracted driver oversight may warrant review.
+
+
+Data Fields Used: shipments.status, shipments.shipment_id, shipments.region_id, shipments.driver_id
+
+========================================================
+SECTION 3: PERFORMANCE BY SERVICE TYPE
+========================================================
+
+SwiftRoute operates three service tiers: Standard, Express, and Same-Day. Standard shipments accounted for 17 of 30 jobs and demonstrated the broadest geographic spread across all four regions. Express shipments (10 total) generated significantly higher freight charges per job and maintained strong on-time performance in January and February. The Same-Day tier processed 5 shipments with a 4/5 on-time completion rate. The one delayed Same-Day shipment in March underscores the sensitivity of this tier to last-mile disruptions in high-density urban corridors.
+
+
+Data Fields Used: shipments.service_type, shipments.status, shipments.freight_charge, shipments.scheduled_date, shipments.delivered_date
+
+========================================================
+SECTION 4: REGIONAL OPERATIONS OVERVIEW
+========================================================
+
+The Mid-Atlantic region led in total freight weight handled, driven primarily by large semi-trailer shipments for Greenfield Manufacturing and NorthEast Medical Supplies. New England posted the highest shipment count with consistent Standard service demand from Harborline Retail Co. and Pinecrest Home Goods. The Capital District showed a growing cadence from Apex Wholesale Distributors throughout the quarter. The Greater NYC corridor contributed the most Express service volume and the highest average freight charge per shipment.
+
+
+Data Fields Used: shipments.region_id, regions.region_name, shipments.freight_charge, shipments.weight_kg, shipments.service_type
+
+========================================================
+SECTION 5: DRIVER & FLEET UTILISATION
+========================================================
+
+All eight drivers were actively dispatched throughout Q1 2024. Diana Reyes handled the highest-weight shipments in the Mid-Atlantic corridor using the company's owned Semi-Trailer fleet. Marcus Webb was the most frequently dispatched driver in New England, completing five shipments over the quarter. By vehicle type, Semi-Trailers moved the greatest aggregate tonnage despite being used on fewer individual assignments. Cargo Vans served short-haul Same-Day and Standard routes efficiently. No vehicles were flagged as inactive or undergoing unplanned maintenance during the period.
+
+
+Data Fields Used: shipments.driver_id, drivers.full_name, shipments.vehicle_id, vehicles.vehicle_type, shipments.weight_kg, shipments.shipment_id
+
+========================================================
+SECTION 6: DELIVERY EVENT LOG ANALYSIS
+========================================================
+
+The delivery events table captured 26 discrete events across Q1, covering pickup confirmations, in-transit status updates, and final delivery recordings. Shipments with recorded in-transit intermediate events (shipments 3, 10, and 19) each experienced weather delays, overnight holds, or documentation processing, but all three were ultimately delivered successfully. The two delayed shipments at quarter-end (28 and 30) have pickup events logged but no corresponding delivery records, confirming they remain unresolved. Improving event granularity -- particularly mid-route check-ins for long-haul Standard shipments -- would enhance real-time customer visibility and exception management.
+
+
+Data Fields Used: delivery_events.event_type, delivery_events.event_timestamp, delivery_events.shipment_id, delivery_events.notes
+
+========================================================
+APPENDIX
+========================================================
+
+ASSUMPTIONS
+- On-time delivery is defined as delivered_date on or before scheduled_date plus the standard SLA buffer (1 day for Standard, same-day for Express and Same-Day services).
+- Shipments with status In Transit at March 31 are excluded from the delivery success rate calculation as they remain open.
+- Fuel surcharge is treated as a pass-through cost and is separated from operational freight charge analysis.
+- Driver and vehicle assignments reflect the state recorded at shipment creation and are assumed accurate.
+
+KNOWN LIMITATIONS
+- The delivery events table does not contain entries for all 30 shipments; some events may have been unlogged during the period.
+- Customer satisfaction scores and SLA breach penalty data are not captured in the current schema.
+- Vehicle maintenance schedules and downtime records are not included, limiting fleet health analysis.
+- Contracted driver performance cannot be compared against a formal benchmark within the current data structure.
+
+RECOMMENDED NEXT ANALYSIS
+- Conduct a root cause analysis on delayed shipments 28 and 30 to identify common causal factors such as driver type, route characteristics, or time of day.
+- Introduce a delivery confirmation rating field to the delivery_events table to enable formal SLA compliance scoring.
+- Build a vehicle maintenance log table to track downtime and correlate fleet availability with delivery performance outcomes.
+- Model Q2 capacity requirements based on the March shipment growth trend and projected volume commitments from retainer accounts.

@@ -1,0 +1,8 @@
+{
+  "source_json": "json/neurosilicon_dynamics.json",
+  "company_name": "NeuroSilicon Dynamics",
+  "database_file": "generated/neurosilicon_dynamics/neurosilicon_dynamics.db",
+  "reports_exported": 1,
+  "pdf_reports_exported": 1,
+  "output_root": "generated/neurosilicon_dynamics"
+}

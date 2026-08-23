@@ -1,0 +1,239 @@
+================================================================================
+Q1 2024 SUBSCRIPTION BOX PERFORMANCE & RETENTION REPORT
+================================================================================
+Organisation:     Verdant Shelf Co.
+Reporting Period: January 1, 2024 – March 31, 2024
+Prepared by:      Business Intelligence Team
+Date Issued:      April 5, 2024
+================================================================================
+
+
+EXECUTIVE SUMMARY
+-----------------
+
+Verdant Shelf Co.'s subscription box programme ended Q1 2024 with 9 active
+subscribers across three plan tiers — Sprout ($24.99/month), Grow ($44.99/month),
+and Flourish ($69.99/month). The programme acquired 11 subscribers during the
+quarter and experienced 2 cancellations, yielding a Q1 cohort churn rate of
+approximately 18%.
+
+Estimated monthly recurring revenue (MRR) at quarter-end is approximately $389 to
+$465, with an annualised subscription run rate approaching $4,670. The Grow plan
+proved the most popular tier by active subscriber count, while Flourish delivered
+the highest revenue per subscriber at $69.99/month — confirming that the premium
+tier resonates with the company's engaged plant enthusiast audience.
+
+Both cancellations originated from the January cohort, signalling that first-box
+experience and onboarding quality are critical early retention levers. Subscriber
+acquisition accelerated through the quarter, with six of eleven sign-ups occurring
+after January, indicating growing digital discovery and word-of-mouth momentum.
+
+
+KEY METRICS
+-----------
+
+  Active Subscribers (End of Q1)      9
+    Across all three tiers after 2 cancellations during the quarter.
+
+  Total Subscribers Acquired in Q1    11
+    5 in January, 3 in February, 3 in March.
+
+  Cancellations in Q1                 2
+    Both from the January sign-up cohort.
+
+  Churn Rate (Q1 Cohort)              ~18%
+    2 of 11 Q1 subscribers cancelled before quarter-end.
+
+  Estimated MRR (End of Q1)           ~$389–$465 / month
+    Based on active subscription plan pricing for 9 active subscribers.
+
+  Annualised Subscription Run Rate    ~$4,670
+    End-of-Q1 MRR extrapolated over 12 months; assumes no further change.
+
+  Most Popular Plan                   Grow ($44.99/month)
+    4 active subscribers; largest active cohort across tiers.
+
+  Average Revenue Per Subscriber      ~$43.25/month
+    Weighted average across active plan mix at quarter-end.
+
+
+================================================================================
+SECTION 1 — SUBSCRIBER ACQUISITION BY MONTH
+================================================================================
+
+Subscriber acquisition grew progressively across the quarter:
+
+  January  —  5 new subscribers (Ava Lindqvist, Priya Nair, Ethan Cho,
+               Ravi Kapoor, and one additional Grow-tier subscriber)
+  February —  3 new subscribers (James Whitfield, Naomi Adeyemi, Leo Tanaka)
+  March    —  3 new subscribers (Darius Okonkwo, Claire Fontaine, Tamsin Graves)
+
+The acceleration of sign-ups from January through March is a positive leading
+indicator. Maintaining this growth trajectory in Q2 will be important for
+reaching a self-sustaining subscriber base that can absorb any seasonal churn.
+
+
+  - Monthly bar chart: new subscriber sign-ups by month
+  - Cumulative subscriber growth line chart
+
+
+================================================================================
+SECTION 2 — PLAN TIER DISTRIBUTION AND MRR BREAKDOWN
+================================================================================
+
+At the end of Q1 2024, active subscriptions were distributed as follows:
+
+  Plan       Price/Month   Box Size   Active Subscribers   MRR Contribution
+  ---------  -----------   --------   ------------------   ----------------
+  Sprout     $24.99        Small      3                    ~$75
+  Grow       $44.99        Medium     4                    ~$180
+  Flourish   $69.99        Large      3                    ~$210
+  TOTAL                               9                    ~$465
+
+The relatively even distribution across plan tiers is commercially healthy and
+reduces revenue concentration risk. The Flourish plan's strong uptake at $69.99
+confirms that the premium box value proposition is effectively differentiated
+and resonating with the target audience of engaged plant enthusiasts.
+
+
+  - Stacked bar chart: active subscribers by plan tier per month
+  - Pie chart: MRR contribution by plan
+  - Summary table: plan name, price, active subscribers, MRR
+
+
+================================================================================
+SECTION 3 — CHURN ANALYSIS AND CANCELLATION DETAIL
+================================================================================
+
+Two subscribers cancelled their plans during Q1 2024:
+
+  Ethan Cho   — Subscription #3, Flourish plan
+                Start: January 22, 2024 | Cancelled: March 22, 2024
+                Tenure: Approximately 2 months
+
+  Ravi Kapoor — Subscription #10, Grow plan
+                Start: January 28, 2024 | Cancelled: February 28, 2024
+                Tenure: Approximately 1 month
+
+Both cancellations originated from the January cohort. The concentration of
+early churn within this cohort suggests that first-impression and onboarding
+quality are critical retention levers for new subscribers. No cancellations were
+recorded among subscribers who joined in February or March, though these cohorts
+have had less time in programme.
+
+A post-cancellation survey mechanism is strongly recommended to capture structured
+exit feedback and identify correctable causes of early churn.
+
+
+  - Cohort retention table by sign-up month
+  - Bar chart: subscriber tenure at time of cancellation
+
+
+================================================================================
+SECTION 4 — SUBSCRIBER PROFILE AND CHANNEL ORIGIN
+================================================================================
+
+All 11 subscribers were acquired through either the Online or In-Store channel.
+The majority originated online, consistent with the broader customer acquisition
+pattern for Verdant Shelf Co. Geographically, Austin-based subscribers represent
+the core base, with online-acquired subscribers spread to Houston, Denver, Dallas,
+New Orleans, and Portland.
+
+The geographic diversity confirms that the subscription product has national
+appeal and is not limited to local in-store discovery — a strong foundation for
+scaling subscriber acquisition through digital marketing and social channels.
+
+
+  - Map chart: active subscribers by city and state
+  - Bar chart: subscriber acquisition by channel (Online vs. In-Store)
+
+
+================================================================================
+SECTION 5 — SUBSCRIPTION REVENUE VS. ONE-TIME ORDER REVENUE
+================================================================================
+
+Subscription MRR at the end of Q1 (~$389–$465/month) represents a growing
+but still modest proportion of total company revenue relative to Q1 gross product
+sales of approximately $1,980. However, the subscription channel provides a
+predictable, recurring revenue base that is structurally more valuable than an
+equivalent volume of one-time order revenue, as it reduces monthly revenue
+volatility and improves cash flow predictability.
+
+Importantly, several subscribers — including Ava Lindqvist, Priya Nair, and
+Naomi Adeyemi — also placed one-time product orders during the quarter. This
+confirms that the subscription product is driving incremental spending rather
+than cannibalising product sales, a critical validation of the dual-revenue model.
+
+
+  - Stacked area chart: subscription MRR vs. one-time order revenue by month
+  - Table: customers with both an active subscription and order history
+
+
+================================================================================
+SECTION 6 — RETENTION RATE AND FORWARD OUTLOOK
+================================================================================
+
+Early cohort retention results for Q1 2024:
+
+  January Cohort (5 subscribers):   3 active at end of March (~60% retained)
+  February Cohort (3 subscribers):  3 active at end of March (100% retained)
+  March Cohort (3 subscribers):     3 active at end of March (100% — too early
+                                    to assess meaningful retention)
+
+These results are broadly consistent with industry benchmarks for new subscription
+box services in the lifestyle category, but the sample size is small. The company
+should target a 70%+ 90-day retention rate as the operational benchmark for Q2.
+
+Key retention levers recommended for Q2:
+  - Personalised plant recommendations tailored to each subscriber's history
+  - A post-delivery care guide included with every box
+  - A loyalty incentive (discount or bonus plant) for subscribers active beyond
+    three consecutive months
+
+
+  - Cohort retention heatmap by sign-up month and month-in-programme
+  - Line chart: cumulative retention rate by cohort
+
+
+================================================================================
+APPENDIX
+================================================================================
+
+ASSUMPTIONS
+  - MRR is calculated as the sum of monthly_price for all subscriptions with
+    status = 'Active' as of March 31, 2024.
+  - Churn rate is defined as cancellations during the quarter divided by total
+    subscribers acquired during the quarter (not a start-of-period base, as the
+    programme launched in Q1).
+  - ARPU is estimated end-of-Q1 MRR divided by 9 active subscribers.
+  - Subscription revenue is inferred from plan pricing and status; no billing
+    table exists in the schema to confirm actual cash collected.
+  - Subscribers with both a subscription and product orders are counted in both
+    reports without double-counting their individual spend contributions.
+
+KNOWN LIMITATIONS
+  - No subscription billing or invoice table exists; actual cash collected cannot
+    be precisely reconciled from the current schema.
+  - Box contents per shipment are not tracked; subscription-specific COGS and
+    gross margin cannot be calculated.
+  - No customer satisfaction, NPS, or first-box rating data is captured.
+  - Only Active and Cancelled statuses are available; paused or skipped
+    subscriptions are not represented in the current data model.
+  - The subscriber base is small (11 total, 9 active); all conclusions should be
+    treated as directional, not statistically definitive.
+
+RECOMMENDED NEXT ANALYSIS
+  - Introduce a subscription_invoices table with payment dates and amounts billed
+    to enable accurate MRR, ARR, and payment reconciliation.
+  - Add an exit_survey_responses table to capture structured cancellation reasons
+    and begin building a churn prediction capability.
+  - Track box contents per subscription shipment to calculate subscription-
+    specific COGS and gross margin by plan tier.
+  - Build a subscriber lifetime value (sLTV) model once a minimum of 6 months
+    of cohort data is available.
+  - Design a cross-sell analysis to quantify how subscription membership
+    influences incremental one-time product order spending per customer.
+
+================================================================================
+END OF REPORT
+================================================================================

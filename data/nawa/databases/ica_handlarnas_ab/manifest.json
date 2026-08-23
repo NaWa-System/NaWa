@@ -1,0 +1,8 @@
+{
+  "source_json": "json/ica_handlarnas_ab.json",
+  "company_name": "ICA Handlarnas AB",
+  "database_file": "generated/ica_handlarnas_ab/ica_handlarnas_ab.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/ica_handlarnas_ab"
+}

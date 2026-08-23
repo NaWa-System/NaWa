@@ -1,0 +1,55 @@
+Q1 2026 Contract Profitability Snapshot (Billed Hours, Revenue, and Direct Labor Cost)
+
+Organisation: AegisNorth Protective Services
+Reporting Period: 2026-01-01 to 2026-03-31
+
+EXECUTIVE SUMMARY
+This Q1 2026 snapshot summarizes contract-level financial performance based on billed shift hours and direct officer labor cost captured in the operational dataset. The quarter shows a clear revenue concentration in on-site guarding contracts, driven by longer shifts and higher contracted hour minimums. Mobile patrol work contributes a smaller but steady share of billed hours, supporting retail deterrence programs with predictable cadence.
+
+Gross margin performance (revenue less direct labor cost) varies primarily with (1) bill rate levels by contract and shift type and (2) officer cost mix assigned to those shifts. Contracts with higher bill rates and consistent shift completion show stronger contribution, while contracts delivered with higher-cost labor or premium night rates require closer scheduling discipline to maintain target margins.
+
+The dataset also suggests a practical profitability lever: standardizing rate cards for premium night coverage where risk level is high and incident rates warrant heightened deterrence. Additionally, ensuring sensor/alarm maintenance issues are addressed quickly can reduce non-productive time and improve the perceived value of coverage without materially increasing labor input.
+
+This report should be read as a directional management view rather than a full P&L: it excludes overhead (dispatch, supervision, vehicles), equipment pass-throughs, and any client credits/penalties. Even with those limitations, it supports actionable comparisons by contract, region, and service type.
+
+KEY METRICS
+- Total Billed Hours (Q1): 204.0
+- Estimated Service Revenue (Q1): $7,956.00
+- Estimated Direct Labor Cost (Q1): $4,687.00
+- Estimated Gross Margin (Q1): $3,269.00
+- Estimated Gross Margin %: 41.1%
+- Revenue Concentration: On-site guarding dominates
+- Highest Billing Rate Observed (Q1): $44.00/hr
+- Active Clients Contributing in Q1: 5
+
+MAIN SECTIONS
+1) Revenue and Cost Basis (Method and Scope)
+Revenue is derived directly from delivered shifts using recorded bill rates by shift. Direct labor cost is computed from officer hourly cost multiplied by delivered hours. This provides a clean and auditable bridge between operational delivery and a management-level contribution view. This is not a full P&L and excludes overhead and non-labor costs, but it is sufficient for contract comparison and staffing optimization discussions.
+
+2) Revenue by Contract and Service Type
+On-site guarding contracts account for the majority of revenue due to longer hour profiles and higher bill rates. Mobile patrol work is consistent and repeatable, providing steady revenue but at lower delivered hours per event. This mix supports a strategy of combining stable contract guarding with scalable patrol capacity, while monitoring patrol profitability to ensure route density remains adequate.
+
+3) Margin Drivers: Bill Rate vs Officer Cost Mix
+Contribution varies with bill rates and officer cost assignment. Premium night rates improve revenue per hour, but they must be paired with appropriate staffing to prevent cost creep that erodes margin. Standardizing minimum acceptable bill rates for high-risk night coverage, and monitoring assignment of higher-cost officers to lower-rate patrol work, are practical steps to stabilize gross margin performance.
+
+4) Client and Site Concentration
+Revenue and incidents both concentrate in higher-risk sites (warehouse, garage, manufacturing plant). This concentration can justify premium coverage and stronger post-order controls, but it also elevates service risk if staffing continuity is disrupted. Diversifying within-region site coverage and maintaining an active relief pool in high-risk regions would reduce operational dependency while protecting revenue continuity.
+
+5) Quarter-End Notes and Controls
+One quarter-end incident remained open, highlighting that certain client environments require longer investigative cycles. While incident management is not a direct revenue line item, unresolved cases can create additional unbilled effort (client calls, evidence handling) and should be monitored as an indirect cost driver. Aligning investigation workflows with client contacts and documenting time spent on escalations would improve accuracy of profitability views over time.
+
+APPENDIX / NOTES
+Assumptions
+- All shifts in scope are billable and represent recognized service delivery for management reporting purposes.
+- Officer hourly_cost represents direct wage cost inclusive of typical payroll burden; any variance is not modeled.
+- Hourly bill rates in shifts reflect the client-billable rates for those hours (including any night premium).
+
+Known Limitations
+- No invoice table exists; this report estimates revenue from shifts rather than actual billed/paid amounts.
+- No overhead allocation (supervision, dispatch, vehicles, training) is included, so net profitability is unknown.
+- No discounts, credits, penalties, or client-specific adjustments are modeled in the dataset.
+
+Recommended Next Analysis
+- Add an invoices table (invoice_date, amount, status, paid_date) to reconcile delivered hours to cash collection.
+- Track overtime and pay differentials separately to improve direct labor accuracy beyond a single hourly_cost.
+- Model supervisory overhead by region and allocate to contracts to estimate net margin by client.

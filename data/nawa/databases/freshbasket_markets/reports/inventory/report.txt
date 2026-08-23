@@ -1,0 +1,135 @@
+Q1 2024 INVENTORY HEALTH & STOCK MANAGEMENT REPORT
+FreshBasket Markets
+Reporting Period: January 1, 2024 – March 31, 2024
+Prepared by: Business Intelligence & Reporting Team
+Classification: Internal Management Report
+
+========================================
+EXECUTIVE SUMMARY
+========================================
+
+This report provides an assessment of inventory health across FreshBasket Markets' five store locations as at the end of Q1 2024. The analysis draws on end-of-quarter stock snapshot data, product-level cost and pricing information, and transaction-level unit sales to evaluate stock adequacy, identify at-risk product lines, and support procurement planning for Q2 2024.
+
+Overall, the majority of monitored stock-keeping units across stores maintained healthy quantities above their designated reorder thresholds at the close of the quarter. However, a number of items — most notably Dishwasher Tablets (30pk) across Beaverton and Bellevue stores — were identified as having fallen below their reorder levels, raising a moderate replenishment risk if sales velocity maintained its March trajectory.
+
+Meat & Seafood products exhibited some of the tightest stock margins relative to reorder levels, particularly Atlantic Salmon Fillet at Portland Central and Seattle North. Given that this category is the highest revenue contributor and operates on a perishable handling cycle, maintaining adequate stock buffers is operationally critical.
+
+Looking ahead to Q2, procurement planning should account for anticipated demand uplift driven by seasonal fresh produce availability, the continuation of promotional activity, and the expected growth in click-and-collect fulfilment at suburban locations.
+
+========================================
+KEY METRICS
+========================================
+
+Total SKUs Monitored:                    23
+  Across 5 stores and 16 products at end of Q1 2024.
+
+SKUs Below Reorder Level:               2
+  Dishwasher Tablets at Beaverton (stock: 18) and Bellevue (stock: 12).
+
+SKUs Within 20% of Reorder Level:       3
+  Atlantic Salmon (Portland Central), Chicken Breast (Bellevue), Frozen Pizza (Bellevue).
+
+Most Restocked Product Type:            Fresh Produce & Dairy
+  Consistent with perishable restocking cycles.
+
+Highest Absolute Stock (Single SKU):    FreshBasket Pasta — 300 units (Portland Central)
+  Dry goods maintain high buffer stock levels.
+
+Lowest Absolute Stock (Below Reorder):  Dishwasher Tablets — 12 units (Bellevue)
+  40% below reorder level of 20 units; most immediate replenishment risk.
+
+Private-Label Stock Representation:     7 of 16 products
+  Well-represented own-brand SKUs across all stores.
+
+Avg. Days Since Last Restock (Perish.): ~4-6 days
+  Perishable SKUs restocked within the final week of March.
+
+========================================
+SECTION 1: STOCK LEVEL STATUS BY STORE AND PRODUCT
+========================================
+
+A review of end-of-quarter stock quantities against reorder thresholds across all 23 monitored inventory records reveals that the majority of SKUs are adequately stocked. Portland Central holds the largest absolute inventory volumes, particularly for dry goods, reflecting its position as the highest-traffic store. Beaverton and Bellevue present the most critical stock positions, with Dishwasher Tablets at both locations falling at or below reorder levels. Seattle North and Eugene show balanced inventory profiles with no immediate replenishment alerts. The data suggests that suburban stores may benefit from more frequent automated reorder triggers given their tighter stock positions relative to demand.
+
+
+Data Fields Used: inventory.store_id, inventory.product_id, inventory.stock_quantity, inventory.reorder_level, inventory.last_restocked_date, stores.store_name, products.product_name.
+
+========================================
+SECTION 2: AT-RISK SKUs REQUIRING IMMEDIATE REPLENISHMENT
+========================================
+
+Two SKUs have been identified as below their designated reorder thresholds as at the end of Q1: Dishwasher Tablets (30pk) at Beaverton (stock 18 vs. reorder level 20) and at Bellevue (stock 12 vs. reorder level 20). Three additional SKUs — Atlantic Salmon Fillet at Portland Central, Chicken Breast at Bellevue, and Frozen Margherita Pizza at Bellevue — are within 20% of their reorder thresholds and should be flagged for priority review. Given the perishable nature of some items and their role in high-value customer baskets, procurement should initiate supplier contact for expedited replenishment at affected stores.
+
+
+Data Fields Used: inventory.stock_quantity, inventory.reorder_level, inventory.store_id, inventory.product_id, products.product_name, categories.category_name, stores.store_name.
+
+========================================
+SECTION 3: INVENTORY VALUE AND MARGIN EXPOSURE
+========================================
+
+Combining inventory quantities with unit cost data provides an estimate of the current stock value held across each store. Meat & Seafood products — particularly Atlantic Salmon Fillet — represent the highest unit cost items in stock, meaning that any spoilage or write-off in this category carries significant financial exposure. Conversely, Packaged Goods such as FreshBasket Pasta carry low unit costs and high stock volumes, representing lower per-unit financial risk. Private-label items offer the strongest cost-to-price margin and should be maintained at adequate stock levels to protect the company's margin contribution from this category. Stores should be vigilant about perishable goods rotation to minimise wastage costs.
+
+
+Data Fields Used: inventory.stock_quantity, inventory.product_id, inventory.store_id, products.unit_cost, products.unit_price, products.is_private_label, categories.category_name.
+
+========================================
+SECTION 4: RESTOCKING RECENCY AND SUPPLY CHAIN CADENCE
+========================================
+
+Analysis of the last_restocked_date field across all inventory records indicates that perishable categories — Fresh Produce, Dairy, Meat & Seafood, and Bakery — were restocked most recently, with the majority of relevant SKUs restocked within the final five days of March. Non-perishable categories show slightly older restock dates, which is operationally appropriate given their longer shelf lives. One exception is Dishwasher Tablets at Bellevue, which was last restocked on March 18 — over ten days before the snapshot date — and may indicate a supplier delivery delay or oversight in the replenishment cycle that contributed to its below-threshold stock position.
+
+
+Data Fields Used: inventory.last_restocked_date, inventory.product_id, inventory.store_id, inventory.stock_quantity, products.product_name, categories.category_name.
+
+========================================
+SECTION 5: INVENTORY VS. SALES VELOCITY BY CATEGORY
+========================================
+
+Cross-referencing inventory stock levels with Q1 transaction item volumes provides an indication of relative sales velocity by product category. Meat & Seafood items featured in numerous high-quantity transaction records throughout the quarter, suggesting strong sell-through rates that tightened end-of-quarter stock positions. Fresh Produce also showed high unit volumes across transactions. Packaged Goods and Frozen Foods demonstrated moderate velocity, supported by promotional activity in January and February. Household & Cleaning products moved more slowly early in the quarter before picking up in March under the Spring Clean promotion, which is reflected in reduced stock levels at Portland Central by quarter end.
+
+
+Data Fields Used: transaction_items.product_id, transaction_items.quantity, inventory.stock_quantity, products.category_id, categories.category_name, transactions.transaction_date.
+
+========================================
+SECTION 6: Q2 2024 REPLENISHMENT PLANNING RECOMMENDATIONS
+========================================
+
+Based on the Q1 stock snapshot, transaction velocity data, and the active promotions schedule, the following replenishment priorities are recommended for Q2 2024:
+
+- Dishwasher Tablets should be prioritised for immediate restocking at Beaverton and Bellevue.
+- Atlantic Salmon Fillet and Chicken Breast stock buffers should be increased at high-traffic stores ahead of anticipated warmer-month demand uplift.
+- Packaged Goods and Frozen Foods stock levels appear sufficient entering Q2 but should be reviewed following any new promotional activity.
+- Click-and-Collect pick stock at Beaverton should be held at a higher buffer to avoid pick failures.
+- A formal reorder automation review is recommended for all suburban stores to reduce manual replenishment gaps.
+
+
+Data Fields Used: inventory.stock_quantity, inventory.reorder_level, inventory.store_id, inventory.product_id, products.product_name, transactions.channel, stores.store_type.
+
+========================================
+APPENDIX & NOTES
+========================================
+
+ASSUMPTIONS
+- Inventory data represents a point-in-time snapshot at end of Q1 2024 and does not reflect intra-quarter stock movements.
+- Estimated stock value is calculated by multiplying inventory.stock_quantity by products.unit_cost, excluding shrinkage or pending deliveries.
+- Reorder level thresholds are as recorded in the inventory table and assumed to reflect current operational policy per store.
+- Sales velocity assessments are based on total Q1 transaction_items unit volumes.
+- A standard 3-5 business day supplier lead time is assumed for replenishment urgency assessments.
+
+KNOWN LIMITATIONS
+- Only 23 product-store inventory records are available; the full range of store SKUs is broader than represented here.
+- No intra-quarter stock movement records exist; temporary stockouts cannot be identified.
+- Spoilage, waste, and shrinkage are not captured; perishable stock values may be slightly overstated.
+- Supplier and purchase order data are not included in the current schema.
+- No receiving records exist to calculate restocking volumes per delivery.
+
+RECOMMENDED NEXT ANALYSIS
+- Implement a stock movement log table to capture daily or weekly stock-in and stock-out events, enabling true velocity and turn rate calculations.
+- Add supplier and purchase order tables to support full procurement lifecycle analysis including lead time performance.
+- Develop a demand forecasting model using Q1 sales velocity adjusted for seasonal patterns and planned promotions.
+- Conduct a spoilage and shrinkage audit for perishable categories to quantify wastage costs.
+- Review and update reorder level thresholds for suburban stores to reflect growing click-and-collect demand.
+
+----------------------------------------
+Report generated by FreshBasket Markets BI Team
+Q1 2024 | Confidential — Internal Use Only
+----------------------------------------

@@ -1,0 +1,262 @@
+Q1 2024 REVENUE AND DEPOT PROFITABILITY ANALYSIS
+Parcela Swift Ltd.
+Reporting Period: January 2024 - March 2024
+Report Type: Finance -- Revenue & Profitability
+Prepared by: Finance & Analytics Team
+Date of Issue: April 2024
+
+================================================================================
+EXECUTIVE SUMMARY
+================================================================================
+
+Parcela Swift Ltd. delivered a financially strong first quarter in 2024, with
+total network revenue growing consistently from January through to March across
+all five depot locations. London Gateway Depot retained its position as the
+primary revenue engine of the business, while Birmingham Central demonstrated the
+most improved revenue-to-cost ratio across the quarter, driven by growing B2B
+contract activity and efficient use of its owned Heavy Goods Vehicle asset. Every
+depot recorded a positive gross contribution in each reporting month, confirming
+that no part of the network was operating below cost recovery threshold during
+the period.
+
+Operating costs grew broadly in line with shipment volume increases, reflecting
+the predominantly variable character of Parcela Swift's cost base. However, the
+Dublin Express Depot continued to exhibit a structurally higher cost-to-revenue
+ratio than its UK counterparts, a pattern attributable to its fully contracted
+vehicle fleet and the administrative overhead associated with cross-border
+logistics operations between Ireland and the UK. This dynamic is expected to
+persist unless addressed through targeted pricing adjustments or a transition
+toward partly owned fleet capacity in Dublin.
+
+The Freight Pallet service tier generated the highest revenue per consignment
+across the quarter, with individual bookings from CrestMed Pharmaceuticals and
+Ferngrove Organics consistently exceeding GBP 95 per shipment. Two unresolved
+Freight Pallet exception cases at quarter-end -- including one involving a
+declared consignment value of GBP 4,500 -- represent a contingent financial
+liability that should be estimated and provisioned before Q1 accounts are
+finalised.
+
+Heading into Q2, the revenue growth trajectory is encouraging. Management should
+focus on sustaining the Birmingham Central margin improvement, addressing the
+Dublin cost structure, and ensuring the two highest-exposure exception cases are
+resolved promptly to protect the otherwise strong Q1 financial result.
+
+================================================================================
+KEY METRICS
+================================================================================
+
+Total Network Revenue (Q1 2024)          GBP 108,320
+  Aggregated from depot_performance across all five depots, January to March.
+
+Total Network Operating Cost (Q1 2024)   GBP 79,200
+  Cost growth broadly tracked volume. Figures before central overhead.
+
+Network Gross Margin                     26.9%
+  Calculated as (Revenue - Operating Cost) / Revenue. Before central overhead.
+
+Highest Revenue Depot (Q1 Total)         London Gateway -- GBP 41,980
+  Sum of Jan, Feb, Mar revenue from depot_performance. B2B volume and premium
+  service mix.
+
+Best Gross Margin Depot                  Birmingham Central -- approx. 28.5%
+  Owned HGV and high B2B contract density supporting cost efficiency.
+
+Lowest Gross Margin Depot                Dublin Express -- approx. 20.4%
+  Fully contracted fleet and cross-border overhead drive structural cost gap.
+
+Revenue Growth (January to March)        +25.3%
+  Network total from approx. GBP 39,390 in January to GBP 50,610 in March.
+
+Contingent Claims Liability (Estimate)   Up to GBP 4,500
+  Based on declared value of shipment 1027 (CrestMed Pharmaceuticals).
+  Actual liability subject to freight policy terms and claims outcome.
+
+================================================================================
+SECTION 1: REVENUE PERFORMANCE BY DEPOT
+================================================================================
+
+London Gateway Depot generated the highest total revenue in each of the three
+reporting months, underpinned by high shipment throughput and a favourable mix
+of Next Day Express and Freight Pallet bookings from Halsworth Retail Group and
+Consumer Direct Pool customers.
+
+Birmingham Central recorded strong revenue performance, growing materially in
+February and March as Voltline Tech Solutions activity increased alongside
+CrestMed Pharmaceuticals' regular freight pallet schedule.
+
+Manchester North showed consistent growth driven by Ferngrove Organics and
+TinderBox Gifts Ltd. activity. Glasgow Hub and Dublin Express both recorded
+month-on-month revenue increases across the quarter. Total network revenue grew
+by approximately 25.3% between January and March, representing a positive
+commercial trajectory entering Q2.
+
+Data fields used: depot_performance.total_revenue_gbp, depot_performance.report_month,
+depot_performance.depot_id, depots.depot_name, regions.region_name,
+customers.customer_name
+
+================================================================================
+SECTION 2: OPERATING COST ANALYSIS BY DEPOT
+================================================================================
+
+Total operating costs across the network rose proportionally with shipment
+volumes in Q1 2024, confirming the predominantly variable nature of Parcela
+Swift's cost base. London Gateway incurred the highest absolute operating costs,
+consistent with its position as the highest-volume depot.
+
+Dublin Express exhibited the most unfavourable cost-to-revenue ratio throughout
+the quarter, driven by its fully contracted vehicle fleet and the additional
+overheads of cross-border logistics. Glasgow Hub carried elevated costs relative
+to its revenue contribution in January, with the ratio improving as volumes grew
+through February and March.
+
+Birmingham Central demonstrated the most controlled cost management across Q1,
+with operating cost growth lagging revenue growth in each successive month --
+a sign of improving operational leverage at that location.
+
+Data fields used: depot_performance.operating_cost_gbp,
+depot_performance.total_revenue_gbp, depot_performance.report_month,
+depots.depot_name, vehicles.owned_or_contracted
+
+================================================================================
+SECTION 3: GROSS MARGIN BY DEPOT AND MONTH
+================================================================================
+
+All five Parcela Swift depots recorded positive gross contributions in every
+month of Q1 2024, confirming network-wide profitability above cost recovery
+threshold throughout the reporting period. Network gross margin averaged 26.9%
+before central overhead allocation.
+
+London Gateway and Birmingham Central consistently outperformed this average,
+benefitting from a combination of owned fleet assets and concentrated B2B
+contract revenue. Manchester North performed at broadly the network average.
+
+Glasgow Hub's gross margin was materially weaker in January but improved as
+monthly volumes grew and fixed-like costs were spread across a higher shipment
+base. Dublin Express remained the weakest-margin depot for the full quarter --
+a structural rather than operational issue requiring a pricing or fleet strategy
+response.
+
+Data fields used: depot_performance.total_revenue_gbp,
+depot_performance.operating_cost_gbp, depot_performance.depot_id,
+depot_performance.report_month, depots.depot_name
+
+================================================================================
+SECTION 4: REVENUE BY SERVICE TYPE
+================================================================================
+
+Freight Pallet bookings contributed the highest revenue per individual
+consignment across Q1, with individual transactions recorded between GBP 95 and
+GBP 120 in the shipments dataset. Next Day Express generated the highest
+cumulative revenue contribution by volume, reflecting both its premium base rate
+and its dominance in the B2B shipment mix.
+
+Two Day Standard provided a reliable mid-range revenue stream across multiple
+accounts. Economy Parcel, most commonly used by the Consumer Direct Pool,
+generated the lowest per-shipment yield at approximately GBP 5 per booking.
+
+Returns Management revenue remained modest in absolute terms but showed a clear
+upward trend linked to Halsworth Retail Group's growing returns volumes,
+suggesting this service line warrants a dedicated pricing and capacity review
+ahead of the post-Easter returns peak.
+
+Data fields used: shipments.revenue_gbp, shipments.service_id,
+service_types.service_name, service_types.base_rate_gbp, shipments.shipment_date,
+customers.customer_name
+
+================================================================================
+SECTION 5: KEY ACCOUNT REVENUE CONTRIBUTION
+================================================================================
+
+Halsworth Retail Group was the most active account by shipment count across Q1,
+generating revenue across three distinct service types -- Next Day Express,
+Freight Pallet, and Returns Management -- indicating strong commercial dependency
+on Parcela Swift's full service range.
+
+CrestMed Pharmaceuticals, while operating a lower shipment frequency, contributed
+significantly to revenue through high-value freight pallet bookings with declared
+values consistently exceeding GBP 2,000 per consignment.
+
+Ferngrove Organics submitted a high-value freight pallet booking in March valued
+at GBP 120 in delivery revenue. Voltline Tech Solutions and TinderBox Gifts Ltd.
+represent mid-tier accounts with growing activity trajectories.
+
+The Consumer Direct Pool generated consistent but low-yield B2C volume across
+Economy Parcel and Next Day Express services.
+
+Data fields used: customers.customer_name, customers.customer_type,
+shipments.revenue_gbp, shipments.service_id, shipments.customer_id,
+shipments.shipment_date, shipments.declared_value_gbp
+
+================================================================================
+SECTION 6: EXCEPTION-LINKED FINANCIAL RISK AND PROVISIONING
+================================================================================
+
+Two unresolved delivery exceptions as of 31 March 2024 carry direct financial
+implications requiring provisioning before Q1 accounts are closed.
+
+  Shipment 1027 -- CrestMed Pharmaceuticals
+    Freight pallet with declared value of GBP 4,500. Failed delivery caused by
+    vehicle breakdown at Birmingham Central Depot on 14 March 2024. Claims review
+    is pending. Depending on the outcome, Parcela Swift may face partial or full
+    compensation under its freight liability policy. Finance should establish a
+    minimum provision based on applicable policy liability cap.
+
+  Shipment 1019 -- Cross-Border Economy Parcel
+    Awaiting customs clearance documentation as of 31 March 2024. Holding and
+    handling costs are accruing daily. A delay compensation request from the
+    originating customer is possible if clearance is not obtained promptly.
+
+Additionally, shipment 1012 (resolved in February) required a replacement
+shipment dispatched at no charge following transit damage -- a direct revenue
+cost to be formally recorded against the Birmingham Central depot P&L for Q1.
+
+Finance is recommended to establish a minimum claims provision ahead of Q1
+account finalisation.
+
+Data fields used: delivery_exceptions.exception_type, delivery_exceptions.resolved,
+delivery_exceptions.resolution_notes, shipments.declared_value_gbp,
+shipments.revenue_gbp, shipments.status, customers.customer_name, depots.depot_name
+
+================================================================================
+APPENDIX
+================================================================================
+
+ASSUMPTIONS
+  - depot_performance.total_revenue_gbp and operating_cost_gbp are treated as
+    the authoritative financial figures for depot-level monthly reporting.
+  - Gross margin is calculated as (revenue minus operating cost) divided by
+    revenue, before any allocation of central overhead including corporate
+    administration, insurance, IT, and senior management costs.
+  - Individual shipment revenue figures in the shipments table are used for
+    service-type and account-level analysis only.
+  - Claims liability exposure is estimated based on shipments.declared_value_gbp;
+    actual liability will depend on freight policy terms, claim investigation
+    outcome, and applicable liability caps.
+
+KNOWN LIMITATIONS
+  - Central overhead cost allocations are absent from the schema; reported gross
+    margin figures do not represent net operating margin.
+  - Fuel expenditure, driver wages, and vehicle maintenance costs are not
+    itemised; operating cost is a single monthly aggregate per depot.
+  - Invoice settlement dates and accounts receivable ageing data are not
+    available; cash flow and debtor reporting cannot be produced.
+  - The impact of GBP/EUR exchange rate movements on the Dublin Express Depot
+    cost and revenue base is not modelled in the current dataset.
+
+RECOMMENDED NEXT ANALYSIS
+  - Net margin analysis incorporating central overhead allocation by depot
+    revenue share to establish true depot-level profitability.
+  - Accounts receivable ageing report for all B2B clients, with priority focus
+    on CrestMed Pharmaceuticals given the open exception and high declared values.
+  - Freight liability claims register to formally track compensation exposure,
+    provisioning levels, and settlement outcomes across all depots.
+  - Dublin Express depot pricing review to assess whether current service rates
+    for cross-border consignments adequately reflect the structural cost
+    differential versus UK-based depots.
+  - Returns Management service line profitability review ahead of anticipated
+    volume growth in Q2 from Halsworth Retail Group.
+
+================================================================================
+Report prepared by the Parcela Swift Ltd. Finance & Analytics Team.
+For internal use only. Not for external distribution.
+================================================================================

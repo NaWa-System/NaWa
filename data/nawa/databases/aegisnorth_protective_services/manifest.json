@@ -1,0 +1,8 @@
+{
+  "source_json": "json/aegisnorth_protective_services.json",
+  "company_name": "AegisNorth Protective Services",
+  "database_file": "generated/aegisnorth_protective_services/aegisnorth_protective_services.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/aegisnorth_protective_services"
+}

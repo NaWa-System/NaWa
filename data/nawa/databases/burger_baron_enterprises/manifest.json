@@ -1,0 +1,8 @@
+{
+  "source_json": "json/burger_baron_enterprises.json",
+  "company_name": "Burger Baron Enterprises",
+  "database_file": "generated/burger_baron_enterprises/burger_baron_enterprises.db",
+  "reports_exported": 1,
+  "pdf_reports_exported": 1,
+  "output_root": "generated/burger_baron_enterprises"
+}

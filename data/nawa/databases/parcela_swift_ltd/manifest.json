@@ -1,0 +1,8 @@
+{
+  "source_json": "json/parcela_swift_ltd.json",
+  "company_name": "Parcela Swift Ltd.",
+  "database_file": "generated/parcela_swift_ltd/parcela_swift_ltd.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/parcela_swift_ltd"
+}

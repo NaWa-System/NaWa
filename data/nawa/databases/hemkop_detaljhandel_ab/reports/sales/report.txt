@@ -1,0 +1,113 @@
+HEMKOP DETALJHANDEL AB
+STORE SALES PERFORMANCE REPORT — Q4 2024
+
+Organisation: Hemkop Detaljhandel AB
+Reporting Period: October – December 2024
+Prepared by: Commercial Analytics & Reporting
+Date: January 2025
+
+========================================
+EXECUTIVE SUMMARY
+========================================
+
+This report presents store-level sales performance for Hemkop Detaljhandel AB across Q4 2024. The quarter followed a clear seasonal arc: October established a steady baseline, November grew moderately as early holiday preparation began influencing shopping patterns, and December delivered the highest transaction volumes and basket sizes of the quarter, particularly in the final week before Christmas.
+
+The Stockholm region led aggregate sales, with Hemkop Sundbyberg as the top-performing individual store. Meat & Fish was the highest-value department, boosted by the Julmat Specialerbjudande promotion running through most of December. Hemkop private-label products featured in the large majority of transactions, reinforcing the brand's value positioning across departments.
+
+Card payments dominated at approximately 75 percent of transactions, with mobile payments growing among Professional-segment and city-centre shoppers. Cash usage continued its gradual decline consistent with broader Swedish retail payment trends.
+
+========================================
+KEY METRICS
+========================================
+
+Total Sales Revenue (Q4 2024): SEK 10,195.20
+  -- 36 transactions across 7 stores, October through December 2024.
+
+Total Transactions: 36
+  -- December had the highest concentration of transactions in the quarter.
+
+Average Transaction Value: SEK 283.20
+  -- December transactions averaged materially higher, driven by Christmas basket inflation.
+
+Highest-Volume Store: Hemkop Sundbyberg
+  -- Largest footprint at 1,050 sqm; Christmas Eve single transaction of SEK 632.40.
+
+Top-Selling Department: Meat & Fish
+  -- Laxfile and Hemkop Notfars featured in the majority of high-value transactions.
+
+Hemkop Brand Transaction Presence: approximately 85 percent of transactions
+  -- Private-label products appeared across all key departments.
+
+Dominant Payment Method: Card (approximately 75 percent)
+  -- Mobile payments growing; cash declining but still present.
+
+Active Promotions in Q4: 6
+  -- Covering Fresh Produce, Meat & Fish, Pantry, Dairy, and Bakery departments.
+
+========================================
+SECTION 1: MONTHLY SALES VOLUME TREND
+========================================
+
+October established the baseline with 12 transactions totalling approximately SEK 2,874. November recorded 10 transactions with a combined value of approximately SEK 2,681. December was the strongest month with 14 transactions and approximately SEK 4,091 in total, driven by Christmas-period basket inflation and elevated shopping frequency in the final two weeks of the year. The December 24 transactions at Sundbyberg, Vasastan, and Linnegatanwere among the highest single-transaction values recorded in the entire quarter.
+
+========================================
+SECTION 2: SALES PERFORMANCE BY STORE
+========================================
+
+Hemkop Sundbyberg led total sales volume, benefiting from its 1,050 sqm footprint and high transaction frequency among Family-segment customers. Hemkop Ostermalm performed strongly with Professional-segment shoppers and above-average basket values. Hemkop Linnegatan in Gothenburg was the strongest out-of-Stockholm performer. Hemkop Vasastan, despite being the smallest store at 680 sqm, delivered strong December performance due to proximity to high-density residential areas. Molndal, Lund Centrum, and Vasteras City each showed stable, format-consistent transaction profiles.
+
+========================================
+SECTION 3: TOP-SELLING PRODUCTS AND DEPARTMENTS
+========================================
+
+Laxfile Norsk 400g and Hemkop Notfars 500g were the highest-value line items throughout the quarter, both featuring heavily in December transactions during the Julmat promotion. Hemkop Ekologiska Tomater was the most frequently purchased private-label Fresh Produce item. Hemkop Surdegsbrod benefited from the Advent Bakat Hemma promotion in December. Ramlosa Citron and Hemkop Apelsinjuice were consistent beverage contributors across multiple stores. Hemkop Pasta Penne provided reliable Pantry volume across all store locations.
+
+========================================
+SECTION 4: HEMKOP PRIVATE-LABEL VS NATIONAL BRAND MIX
+========================================
+
+Hemkop own-brand products appeared in the large majority of transactions. Private-label strength was highest in Fresh Produce, Bakery, Meat, and Pantry. National brands including Arla Mellanmjolk, Barilla Spaghetti, and Pagen Frukostfralla remained important basket staples but increasingly appeared alongside Hemkop alternatives. The margin premium on private-label products contributes positively to gross margin in all departments where private-label penetration is high.
+
+========================================
+SECTION 5: PROMOTIONAL ACTIVITY IMPACT
+========================================
+
+Six promotions ran across Q4 2024. The Julmat Specialerbjudande offered 18 percent off Meat & Fish from December 9 to 24 and coincided with the highest Meat & Fish line item volumes of the quarter. Advent Bakat Hemma supported Hemkop Surdegsbrod sales through the December bakery promotion. Host-Gronsaksveckan drove above-average Fresh Produce quantities in the first week of October. As no promotion-attribution field exists in the current schema, all promotional impact observations are based on timing correlation.
+
+========================================
+SECTION 6: PAYMENT METHOD BREAKDOWN
+========================================
+
+Card payments accounted for approximately 75 percent of all transactions in Q4. Mobile payments were concentrated among Professional-segment customers at city-centre locations including Ostermalm, Vasastan, and Linnegatan. Cash transactions were limited and declining, primarily at Sundbyberg and Lund Centrum. The payment mix supports continued investment in contactless and mobile payment infrastructure aligned with the customer base.
+
+========================================
+SECTION 7: CUSTOMER SEGMENT CONTRIBUTION
+========================================
+
+Family-segment customers generated the highest aggregate transaction values across the quarter. Professional-segment customers showed higher frequency but lower average basket values. Senior-segment customers demonstrated consistent moderate spending patterns throughout the quarter. A number of December transactions were recorded without a linked customer ID, representing walk-in or unregistered shoppers — a pattern that increased notably during the Christmas period as expected.
+
+========================================
+APPENDIX
+========================================
+
+ASSUMPTIONS
+- Transaction totals represent gross consumer spend including VAT.
+- Private-label identification is based on the is_hemkop_brand boolean flag.
+- Promotional impact is inferred from timing correlation; direct attribution is not available.
+- NULL customer_id represents walk-in or unregistered customers.
+
+KNOWN LIMITATIONS
+- 36 transactions represent a sample subset; not the full transaction population.
+- No promotion-attribution linkage exists in the current schema.
+- Returns and refunds are not modelled.
+- Stock depletion during the quarter is not reflected in sales transaction data.
+
+RECOMMENDED NEXT ANALYSIS
+- Add promotion_id foreign key to transaction_items to enable direct attribution analysis.
+- Integrate a returns table to enable net revenue reporting.
+- Conduct basket analysis to identify cross-sell and upsell opportunities.
+- Compare Q4 2024 results against Q4 2023 once historical data is available.
+
+========================================
+END OF REPORT
+========================================

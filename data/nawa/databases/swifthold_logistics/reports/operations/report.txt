@@ -1,0 +1,206 @@
+================================================================================
+Q1 2024 FULFILLMENT OPERATIONS PERFORMANCE REPORT
+================================================================================
+Organisation:     SwiftHold Logistics
+Reporting Period: January 1, 2024 – March 31, 2024
+Report Type:      Operations
+Prepared By:      SwiftHold Analytics & Operations Team
+Date Issued:      April 2024
+================================================================================
+
+
+EXECUTIVE SUMMARY
+------------------
+
+SwiftHold Logistics experienced a period of sustained operational activity across
+both distribution centers during Q1 2024, processing outbound shipments for five
+active clients and managing inbound receipts totaling over 19,000 units across the
+quarter. The Columbus DC (OH) handled the majority of outbound volume, driven
+primarily by high-frequency clients in the apparel and beauty segments, while the
+Reno DC (NV) supported clients in the nutrition and outdoor equipment verticals.
+
+Outbound order volumes showed a consistent upward trend from January through March,
+with Brightline Beauty and PixelWear Apparel posting the most significant
+month-on-month growth in units shipped. Returns volumes increased modestly across
+the quarter, consistent with typical post-holiday return tail patterns in January
+and a slight uptick in March that warrants monitoring. The overall restock rate for
+returned units remained healthy, averaging above 80% across all clients.
+
+Inventory levels declined steadily across most SKUs through the quarter, indicating
+strong sell-through rates. However, several clients — particularly Verde Nutrition
+and PixelWear Apparel — may need to accelerate inbound replenishment cycles in Q2
+to avoid potential stockout risk.
+
+Overall, Q1 2024 demonstrated SwiftHold's ability to scale outbound throughput
+without a proportional increase in operational exceptions. The operations team
+should focus Q2 planning on returns trend monitoring, proactive client inventory
+reviews, and carrier performance benchmarking.
+
+
+KEY METRICS
+-----------
+
+  Total Orders Shipped (Q1):         7,768 orders
+  Context: Aggregated across all active clients and both DCs, Jan–Mar 2024.
+
+  Total Units Shipped (Q1):          14,415 units
+  Context: Units shipped increased each month; March recorded the highest volume.
+
+  Total Units Received (Q1):         19,950 units
+  Context: 15 receipt events across both DCs, averaging ~1,330 units per receipt.
+
+  Total Returns Processed (Q1):      793 units returned
+  Context: Returns increased slightly through the quarter; March saw the highest count.
+
+  Average Restock Rate:              81.8%
+  Context: Units restocked as a percentage of total units returned, all clients.
+
+  Units Disposed (Q1):               ~144 units
+  Context: ~18% of returned units; PixelWear Apparel drove the highest disposal rate.
+
+  Active Clients Served:             5 clients
+  Context: All five active clients generated outbound activity in every month of Q1.
+
+  Columbus DC Outbound Share:        ~63% of total orders
+  Context: High-frequency clients concentrated at Columbus drove majority throughput.
+
+  Fastest Growing Client (Volume):   Brightline Beauty
+  Context: Units shipped grew from ~1,240 in January to 1,500 in March (+21%).
+
+
+SECTION 1: OUTBOUND SHIPMENT VOLUME BY CLIENT
+----------------------------------------------
+
+Outbound shipment activity was distributed unevenly across the five active clients
+during Q1 2024. Brightline Beauty and PixelWear Apparel consistently ranked as the
+highest-volume clients by both orders and units shipped, together accounting for
+over half of total outbound throughput across the quarter. Verde Nutrition and
+Lumos Home Goods maintained stable mid-tier volumes, while TrekMate Outdoors
+generated the lowest order counts but with heavier average unit weights.
+
+Month-on-month growth was observed across most clients, with no clients recording a
+decline in outbound activity between February and March, suggesting healthy
+end-customer demand heading into Q2.
+
+Data Fields Used: outbound_shipments.client_id, outbound_shipments.ship_date,
+outbound_shipments.orders_shipped, outbound_shipments.units_shipped, clients.client_name
+
+
+SECTION 2: WAREHOUSE THROUGHPUT BY DISTRIBUTION CENTER
+-------------------------------------------------------
+
+The Columbus DC handled a disproportionately large share of outbound shipment
+events relative to the Reno DC during Q1 2024. Columbus processed outbound batches
+for three clients — Lumos Home Goods, PixelWear Apparel, and Brightline Beauty —
+resulting in 14 distinct shipment events across the quarter. Reno DC served two
+clients — Verde Nutrition and TrekMate Outdoors — processing 8 shipment events with
+generally heavier per-unit weights and larger inbound pallet volumes.
+
+Capacity utilization remained stable at both sites, with no warehouse approaching
+its pallet capacity ceiling.
+
+Data Fields Used: outbound_shipments.warehouse_id, outbound_shipments.orders_shipped,
+inbound_receipts.pallets_received, inventory_snapshots.pallets_occupied,
+warehouses.warehouse_name, warehouses.total_pallet_capacity
+
+
+SECTION 3: INBOUND RECEIVING ACTIVITY
+--------------------------------------
+
+A total of 15 inbound receipt events were logged across both distribution centers
+during Q1 2024. Units received peaked in January before normalizing in February and
+stabilizing in March. Brightline Beauty was the largest contributor of inbound
+volume in January and March, reflecting its aggressive replenishment cadence.
+Verde Nutrition also generated significant pallet-heavy inbound receipts due to the
+bulk nature of protein supplement SKUs.
+
+Receiving fees totaled a meaningful portion of Q1 billing for all clients, and the
+consistent inbound schedule suggests clients are managing replenishment proactively.
+
+Data Fields Used: inbound_receipts.client_id, inbound_receipts.warehouse_id,
+inbound_receipts.received_date, inbound_receipts.units_received,
+inbound_receipts.pallets_received, inbound_receipts.receiving_fee, clients.client_name
+
+
+SECTION 4: INVENTORY LEVELS AND END-OF-MONTH SNAPSHOTS
+-------------------------------------------------------
+
+End-of-month inventory snapshots captured a clear downward trend in units on hand
+across the majority of SKUs throughout Q1 2024. This is consistent with healthy
+sell-through and limited over-stocking. However, several SKUs — notably Verde
+Nutrition's protein tub (VN-010) and PixelWear Apparel's hoodie SKU (PW-202) —
+experienced more pronounced drawdowns relative to their inbound replenishment rates.
+
+If these trends continue into Q2, clients may face stockout risk. Pallets occupied
+correspondingly declined across most SKUs, gradually freeing storage space.
+
+Data Fields Used: inventory_snapshots.sku_id, inventory_snapshots.snapshot_date,
+inventory_snapshots.units_on_hand, inventory_snapshots.pallets_occupied,
+skus.sku_code, skus.description
+
+
+SECTION 5: RETURNS PROCESSING AND RESTOCK PERFORMANCE
+------------------------------------------------------
+
+Returns processing activity was moderate across Q1 2024, with 15 return events
+logged totaling 793 units returned. The overall restock rate of approximately 81.8%
+indicates the majority of returned goods were graded as resalable and re-entered
+active inventory. PixelWear Apparel recorded the highest absolute return volumes
+and also experienced the highest disposal rate on a per-return basis. TrekMate
+Outdoors had the fewest returns, consistent with its lower outbound volumes.
+
+The operations team should monitor disposal rates by client and SKU in Q2 to
+identify quality or packaging issues driving above-average unit loss.
+
+Data Fields Used: returns_processing.client_id, returns_processing.return_date,
+returns_processing.units_returned, returns_processing.units_restocked,
+returns_processing.units_disposed, returns_processing.returns_fee, clients.client_name
+
+
+SECTION 6: CARRIER AND SERVICE LEVEL MIX
+-----------------------------------------
+
+Three primary carriers were active across SwiftHold's outbound network in Q1 2024:
+FedEx, UPS, and USPS. UPS Ground was the dominant service for high-volume clients
+such as Brightline Beauty and Verde Nutrition. USPS Priority was used exclusively
+by PixelWear Apparel, appropriate for lightweight garment SKUs. TrekMate Outdoors
+utilized FedEx Express for all shipments, reflecting premium delivery expectations.
+
+This carrier mix appears well-aligned to client profiles and shipping zone
+distributions. A formal carrier cost-per-shipment analysis is recommended for Q2
+negotiations.
+
+Data Fields Used: outbound_shipments.carrier, outbound_shipments.service_level,
+outbound_shipments.shipping_zone, outbound_shipments.orders_shipped,
+outbound_shipments.fulfillment_fee, outbound_shipments.client_id
+
+
+================================================================================
+APPENDIX & NOTES
+================================================================================
+
+ASSUMPTIONS:
+  - Inventory snapshot data represents end-of-month positions only.
+  - Fulfillment fees are SwiftHold's service charges and exclude carrier freight.
+  - Restock rate = units_restocked / units_returned across all Q1 return events.
+  - Shipment batch records represent consolidated runs, not individual parcels.
+  - NovaSound Electronics (Inactive) is excluded from all Q1 reporting.
+
+KNOWN LIMITATIONS:
+  - No parcel-level shipment data available; analysis is at batch/event level.
+  - Carrier freight cost data not stored in the schema.
+  - No on-time delivery or shipment exception data available.
+  - SKU-level outbound shipment attribution is not captured.
+  - Returns are not linked to specific original outbound shipments.
+
+RECOMMENDED NEXT ANALYSIS:
+  - Add parcel-level tracking for on-time delivery and exception rate reporting.
+  - Conduct SKU-level inventory velocity analysis to flag stockout risk.
+  - Integrate carrier cost data to benchmark against freight spend by zone.
+  - Develop returns root-cause categorization for quality trend analysis.
+  - Model Q2 capacity utilization projections based on Q1 growth trends.
+
+================================================================================
+Report generated by SwiftHold Logistics – Operations Analytics
+Confidential – Internal Use Only
+================================================================================

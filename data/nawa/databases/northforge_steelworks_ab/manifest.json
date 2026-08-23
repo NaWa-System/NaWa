@@ -1,0 +1,8 @@
+{
+  "source_json": "json/northforge_steelworks_ab.json",
+  "company_name": "Northforge Steelworks AB",
+  "database_file": "generated/northforge_steelworks_ab/northforge_steelworks_ab.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/northforge_steelworks_ab"
+}

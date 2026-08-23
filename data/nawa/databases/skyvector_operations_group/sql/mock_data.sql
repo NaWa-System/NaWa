@@ -1,0 +1,111 @@
+INSERT INTO airlines VALUES
+  (1, 'MVR', 'Maverick Air', 'DFW', 42, '2022-03-01', 18500.00, 12.50),
+  (2, 'PCF', 'Pacific Crest Airways', 'SEA', 28, '2021-11-01', 14200.00, 11.00),
+  (3, 'SLT', 'Saltline Express', 'SLC', 18, '2023-01-01', 9800.00, 10.00),
+  (4, 'GLP', 'Gulf Palms Charter', 'MIA', 12, '2022-07-01', 7500.00, 13.00);
+
+INSERT INTO airports VALUES
+  (1,  'DFW', 'Dallas Fort Worth International', 'Dallas', 'USA', 'America/Chicago'),
+  (2,  'SEA', 'Seattle-Tacoma International', 'Seattle', 'USA', 'America/Los_Angeles'),
+  (3,  'SLC', 'Salt Lake City International', 'Salt Lake City', 'USA', 'America/Denver'),
+  (4,  'MIA', 'Miami International', 'Miami', 'USA', 'America/New_York'),
+  (5,  'ORD', 'Chicago O Hare International', 'Chicago', 'USA', 'America/Chicago'),
+  (6,  'LAX', 'Los Angeles International', 'Los Angeles', 'USA', 'America/Los_Angeles'),
+  (7,  'DEN', 'Denver International', 'Denver', 'USA', 'America/Denver'),
+  (8,  'ATL', 'Hartsfield Jackson Atlanta International', 'Atlanta', 'USA', 'America/New_York'),
+  (9,  'PHX', 'Phoenix Sky Harbor International', 'Phoenix', 'USA', 'America/Phoenix'),
+  (10, 'LAS', 'Harry Reid International', 'Las Vegas', 'USA', 'America/Los_Angeles');
+
+INSERT INTO aircraft VALUES
+  (1,  1, 'N401MV', 'Boeing 737-800', 162, 'Active'),
+  (2,  1, 'N402MV', 'Boeing 737-800', 162, 'Active'),
+  (3,  1, 'N403MV', 'Boeing 737-700', 140, 'Active'),
+  (4,  1, 'N404MV', 'Embraer E175', 76,  'Maintenance'),
+  (5,  2, 'N501PC', 'Boeing 737-800', 162, 'Active'),
+  (6,  2, 'N502PC', 'Airbus A320',    150, 'Active'),
+  (7,  2, 'N503PC', 'Embraer E175',   76,  'Active'),
+  (8,  3, 'N601SL', 'Embraer E175',   76,  'Active'),
+  (9,  3, 'N602SL', 'Embraer E175',   76,  'Active'),
+  (10, 4, 'N701GP', 'Boeing 737-700', 140, 'Active'),
+  (11, 4, 'N702GP', 'Cessna Citation X', 12, 'Active');
+
+INSERT INTO flights VALUES
+  (1,  1, 1,  'MV101', 1, 5,  '2024-01-08 06:00:00', '2024-01-08 06:08:00', '2024-01-08 08:30:00', '2024-01-08 08:41:00', 'Completed', 11,  'Air Traffic Control', 158),
+  (2,  1, 2,  'MV102', 5, 1,  '2024-01-08 10:00:00', '2024-01-08 10:00:00', '2024-01-08 12:30:00', '2024-01-08 12:28:00', 'Completed', 0,   NULL,                  160),
+  (3,  1, 3,  'MV201', 1, 6,  '2024-01-15 07:30:00', '2024-01-15 08:45:00', '2024-01-15 10:00:00', '2024-01-15 11:18:00', 'Completed', 78,  'Mechanical',          135),
+  (4,  1, 1,  'MV301', 1, 7,  '2024-01-22 09:00:00', '2024-01-22 09:05:00', '2024-01-22 11:00:00', '2024-01-22 11:02:00', 'Completed', 5,   'Late Crew',           155),
+  (5,  1, 2,  'MV401', 1, 8,  '2024-02-05 06:30:00', '2024-02-05 06:30:00', '2024-02-05 09:00:00', '2024-02-05 09:05:00', 'Completed', 5,   'Weather',             162),
+  (6,  1, 3,  'MV501', 1, 9,  '2024-02-12 14:00:00', '2024-02-12 15:10:00', '2024-02-12 16:30:00', '2024-02-12 17:45:00', 'Completed', 75,  'Mechanical',          128),
+  (7,  1, 1,  'MV601', 1, 10, '2024-02-20 08:00:00', '2024-02-20 08:00:00', '2024-02-20 10:15:00', '2024-02-20 10:10:00', 'Completed', 0,   NULL,                  150),
+  (8,  1, 2,  'MV701', 1, 5,  '2024-03-04 07:00:00', '2024-03-04 07:22:00', '2024-03-04 09:30:00', '2024-03-04 09:52:00', 'Completed', 22,  'Weather',             145),
+  (9,  1, 3,  'MV801', 1, 6,  '2024-03-18 11:00:00', '2024-03-18 11:00:00', '2024-03-18 13:30:00', '2024-03-18 13:28:00', 'Completed', 0,   NULL,                  138),
+  (10, 1, 1,  'MV901', 1, 7,  '2024-03-25 15:00:00', '2024-03-25 15:00:00', '2024-03-25 17:00:00', '2024-03-25 16:58:00', 'Completed', 0,   NULL,                  161),
+  (11, 2, 5,  'PC101', 2, 6,  '2024-01-10 08:00:00', '2024-01-10 08:18:00', '2024-01-10 10:45:00', '2024-01-10 11:05:00', 'Completed', 20,  'Weather',             155),
+  (12, 2, 6,  'PC201', 2, 7,  '2024-01-18 12:00:00', '2024-01-18 12:00:00', '2024-01-18 14:30:00', '2024-01-18 14:25:00', 'Completed', 0,   NULL,                  148),
+  (13, 2, 7,  'PC301', 2, 3,  '2024-02-07 09:30:00', '2024-02-07 09:45:00', '2024-02-07 11:00:00', '2024-02-07 11:18:00', 'Completed', 18,  'Late Crew',           72),
+  (14, 2, 5,  'PC401', 2, 8,  '2024-02-14 13:00:00', '2024-02-14 13:00:00', '2024-02-14 18:30:00', '2024-02-14 18:45:00', 'Completed', 15,  'Air Traffic Control', 160),
+  (15, 2, 6,  'PC501', 2, 10, '2024-03-01 07:00:00', '2024-03-01 07:00:00', '2024-03-01 09:30:00', '2024-03-01 09:28:00', 'Completed', 0,   NULL,                  147),
+  (16, 2, 7,  'PC601', 2, 5,  '2024-03-15 10:30:00', '2024-03-15 11:05:00', '2024-03-15 14:00:00', '2024-03-15 14:40:00', 'Completed', 40,  'Mechanical',          70),
+  (17, 3, 8,  'SL101', 3, 7,  '2024-01-12 08:00:00', '2024-01-12 08:00:00', '2024-01-12 09:30:00', '2024-01-12 09:30:00', 'Completed', 0,   NULL,                  74),
+  (18, 3, 9,  'SL201', 3, 9,  '2024-01-26 11:00:00', '2024-01-26 11:35:00', '2024-01-26 12:45:00', '2024-01-26 13:22:00', 'Completed', 37,  'Weather',             68),
+  (19, 3, 8,  'SL301', 3, 10, '2024-02-09 14:00:00', '2024-02-09 14:00:00', '2024-02-09 15:45:00', '2024-02-09 15:42:00', 'Completed', 0,   NULL,                  71),
+  (20, 3, 9,  'SL401', 3, 5,  '2024-02-23 09:00:00', '2024-02-23 09:52:00', '2024-02-23 12:30:00', '2024-02-23 13:22:00', 'Completed', 52,  'Mechanical',          65),
+  (21, 3, 8,  'SL501', 3, 6,  '2024-03-08 07:30:00', '2024-03-08 07:30:00', '2024-03-08 09:15:00', '2024-03-08 09:12:00', 'Completed', 0,   NULL,                  76),
+  (22, 3, 9,  'SL601', 3, 8,  '2024-03-22 13:00:00', '2024-03-22 13:00:00', '2024-03-22 16:30:00', '2024-03-22 16:30:00', 'Completed', 0,   NULL,                  73),
+  (23, 4, 10, 'GP101', 4, 8,  '2024-01-14 09:00:00', '2024-01-14 09:25:00', '2024-01-14 11:30:00', '2024-01-14 11:58:00', 'Completed', 28,  'Weather',             132),
+  (24, 4, 10, 'GP201', 4, 5,  '2024-01-28 15:00:00', '2024-01-28 15:00:00', '2024-01-28 17:30:00', '2024-01-28 17:28:00', 'Completed', 0,   NULL,                  138),
+  (25, 4, 11, 'GP301', 4, 6,  '2024-02-11 10:00:00', '2024-02-11 10:00:00', '2024-02-11 13:00:00', '2024-02-11 13:08:00', 'Completed', 8,   'Air Traffic Control', 11),
+  (26, 4, 10, 'GP401', 4, 7,  '2024-02-25 08:00:00', '2024-02-25 08:00:00', '2024-02-25 10:30:00', '2024-02-25 10:30:00', 'Completed', 0,   NULL,                  140),
+  (27, 4, 10, 'GP501', 4, 9,  '2024-03-10 12:00:00', '2024-03-10 12:45:00', '2024-03-10 14:00:00', '2024-03-10 14:48:00', 'Completed', 48,  'Mechanical',          125),
+  (28, 4, 11, 'GP601', 4, 10, '2024-03-24 16:00:00', '2024-03-24 16:00:00', '2024-03-24 18:30:00', '2024-03-24 18:30:00', 'Completed', 0,   NULL,                  12);
+
+INSERT INTO crew_assignments VALUES
+  (1,  1,  101, 'Captain',          '2024-01-08 05:00:00', '2024-01-08 09:30:00', 'Completed'),
+  (2,  1,  102, 'First Officer',    '2024-01-08 05:00:00', '2024-01-08 09:30:00', 'Completed'),
+  (3,  1,  201, 'Lead Flight Attendant', '2024-01-08 05:15:00', '2024-01-08 09:30:00', 'Completed'),
+  (4,  3,  103, 'Captain',          '2024-01-15 07:00:00', '2024-01-15 12:00:00', 'Completed'),
+  (5,  3,  104, 'First Officer',    '2024-01-15 07:00:00', '2024-01-15 12:00:00', 'Completed'),
+  (6,  6,  101, 'Captain',          '2024-02-12 13:30:00', '2024-02-12 18:30:00', 'Completed'),
+  (7,  6,  105, 'First Officer',    '2024-02-12 13:30:00', '2024-02-12 18:30:00', 'Completed'),
+  (8,  11, 201, 'Captain',          '2024-01-10 07:00:00', '2024-01-10 12:00:00', 'Completed'),
+  (9,  11, 202, 'First Officer',    '2024-01-10 07:00:00', '2024-01-10 12:00:00', 'Completed'),
+  (10, 13, 203, 'Captain',          '2024-02-07 09:00:00', '2024-02-07 12:30:00', 'Completed'),
+  (11, 13, 204, 'First Officer',    '2024-02-07 08:30:00', '2024-02-07 12:30:00', 'Late Start'),
+  (12, 16, 201, 'Captain',          '2024-03-15 10:00:00', '2024-03-15 15:30:00', 'Completed'),
+  (13, 16, 205, 'First Officer',    '2024-03-15 10:00:00', '2024-03-15 15:30:00', 'Completed'),
+  (14, 17, 301, 'Captain',          '2024-01-12 07:00:00', '2024-01-12 10:30:00', 'Completed'),
+  (15, 18, 302, 'Captain',          '2024-01-26 10:00:00', '2024-01-26 14:00:00', 'Completed'),
+  (16, 20, 301, 'Captain',          '2024-02-23 08:00:00', '2024-02-23 14:00:00', 'Completed'),
+  (17, 23, 401, 'Captain',          '2024-01-14 08:00:00', '2024-01-14 13:00:00', 'Completed'),
+  (18, 25, 402, 'Captain',          '2024-02-11 09:00:00', '2024-02-11 14:00:00', 'Completed'),
+  (19, 27, 401, 'Captain',          '2024-03-10 11:00:00', '2024-03-10 15:30:00', 'Completed'),
+  (20, 27, 403, 'First Officer',    '2024-03-10 11:00:00', '2024-03-10 15:30:00', 'Completed');
+
+INSERT INTO irregularity_events VALUES
+  (1,  3,  'Mechanical Delay',    'Engine bleed air fault detected pre-departure; maintenance required aircraft swap procedure', '2024-01-15 07:45:00', '2024-01-15 08:40:00', 'Aircraft Swap',       14200.00),
+  (2,  6,  'Mechanical Delay',    'Hydraulic system warning light illuminated at gate; engineering inspection and repair required', '2024-02-12 14:05:00', '2024-02-12 15:00:00', 'On-Site Repair',      8750.00),
+  (3,  20, 'Mechanical Delay',    'APU failure requiring ground power unit deployment and part replacement', '2024-02-23 09:10:00', '2024-02-23 09:45:00', 'On-Site Repair',      6300.00),
+  (4,  27, 'Mechanical Delay',    'Landing gear indicator fault; avionics team dispatched for inspection and MEL deferral', '2024-03-10 12:50:00', '2024-03-10 12:40:00', 'MEL Deferral',        3100.00),
+  (5,  16, 'Mechanical Delay',    'Galley equipment fault causing passenger safety concern; catering reconfiguration required', '2024-03-15 10:40:00', '2024-03-15 10:55:00', 'Catering Swap',       1850.00),
+  (6,  18, 'Weather Diversion',   'Destination airport closed due to winter storm; aircraft held at origin 37 minutes', '2024-01-26 11:05:00', '2024-01-26 11:42:00', 'Ground Stop Lifted',  2200.00),
+  (7,  23, 'Weather Delay',       'Thunderstorm activity at MIA caused ground stop; crew extended duty period authorised', '2024-01-14 09:10:00', '2024-01-14 09:35:00', 'Ground Stop Lifted',  1400.00),
+  (8,  8,  'Weather Delay',       'De-icing queue at DFW extended departure by 22 minutes', '2024-03-04 07:05:00', '2024-03-04 07:25:00', 'De-icing Completed',  900.00),
+  (9,  13, 'Crew Late Arrival',   'Relief first officer delayed by inbound flight; duty time adjusted and new pairing issued', '2024-02-07 09:15:00', '2024-02-07 09:40:00', 'Crew Substitution',   2600.00),
+  (10, 4,  'Crew Late Arrival',   'Captain late check-in due to hotel transport failure at overnight station', '2024-01-22 08:50:00', '2024-01-22 09:00:00', 'Crew Substitution',   1100.00),
+  (11, 1,  'ATC Restriction',     'EDCT issued by TRACON for DFW arrival sequencing; minor departure delay absorbed', '2024-01-08 05:55:00', '2024-01-08 06:05:00', 'EDCT Compliance',     450.00),
+  (12, 14, 'ATC Restriction',     'Miles-in-trail restriction on ATL corridor caused airborne holding', '2024-02-14 13:10:00', '2024-02-14 13:50:00', 'Route Adjustment',    1200.00);
+
+INSERT INTO billing_records VALUES
+  (1,  1, '2024-01-01', 18500.00, 4,  50.00,   2200.00, 20750.00, 'Paid'),
+  (2,  1, '2024-02-01', 18500.00, 3,  37.50,   1500.00, 20037.50, 'Paid'),
+  (3,  1, '2024-03-01', 18500.00, 3,  37.50,   1800.00, 20337.50, 'Paid'),
+  (4,  2, '2024-01-01', 14200.00, 2,  22.00,   800.00,  15022.00, 'Paid'),
+  (5,  2, '2024-02-01', 14200.00, 2,  22.00,   800.00,  15022.00, 'Paid'),
+  (6,  2, '2024-03-01', 14200.00, 2,  22.00,   1200.00, 15422.00, 'Paid'),
+  (7,  3, '2024-01-01', 9800.00,  2,  20.00,   400.00,  10220.00, 'Paid'),
+  (8,  3, '2024-02-01', 9800.00,  2,  20.00,   400.00,  10220.00, 'Paid'),
+  (9,  3, '2024-03-01', 9800.00,  2,  20.00,   600.00,  10420.00, 'Paid'),
+  (10, 4, '2024-01-01', 7500.00,  2,  26.00,   300.00,  7826.00,  'Paid'),
+  (11, 4, '2024-02-01', 7500.00,  2,  26.00,   300.00,  7826.00,  'Paid'),
+  (12, 4, '2024-03-01', 7500.00,  2,  26.00,   500.00,  8026.00,  'Paid');
+

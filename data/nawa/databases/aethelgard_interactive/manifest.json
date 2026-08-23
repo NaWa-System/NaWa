@@ -1,0 +1,8 @@
+{
+  "source_json": "json/aethelgard_interactive.json",
+  "company_name": "Aethelgard Interactive",
+  "database_file": "generated/aethelgard_interactive/aethelgard_interactive.db",
+  "reports_exported": 1,
+  "pdf_reports_exported": 1,
+  "output_root": "generated/aethelgard_interactive"
+}

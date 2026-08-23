@@ -1,0 +1,8 @@
+{
+  "source_json": "json/nordhaven_rocktech_industries.json",
+  "company_name": "Nordhaven RockTech Industries",
+  "database_file": "generated/nordhaven_rocktech_industries/nordhaven_rocktech_industries.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/nordhaven_rocktech_industries"
+}

@@ -1,0 +1,8 @@
+{
+  "source_json": "json/medipath_pharmacy_group.json",
+  "company_name": "MediPath Pharmacy Group",
+  "database_file": "generated/medipath_pharmacy_group/medipath_pharmacy_group.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/medipath_pharmacy_group"
+}

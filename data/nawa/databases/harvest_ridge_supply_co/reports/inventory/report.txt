@@ -1,0 +1,124 @@
+Q1 2024 INVENTORY & PROCUREMENT STATUS REPORT
+Harvest Ridge Supply Co.
+
+Organisation: Harvest Ridge Supply Co.
+Reporting Period: January 1, 2024 - March 31, 2024
+Report Type: Inventory & Procurement
+Prepared By: Operations & Supply Chain Team
+Date Issued: April 5, 2024
+
+============================================================
+EXECUTIVE SUMMARY
+============================================================
+
+This report provides a comprehensive review of inventory positions and procurement activity at Harvest Ridge Supply Co. for the first quarter of 2024. The quarter was characterized by heavy inbound procurement to build stock ahead of the spring planting season, with purchase orders issued to all seven active suppliers across January, February, and March. A total of 22 purchase orders were placed during the period, with 21 received and one remaining in pending status as of the close of the quarter.
+
+Inventory management during Q1 reflected the seasonal demand profile of the business. High-velocity crop input items - particularly Corn Seed Hybrid H200, Urea Fertilizer, and Glyphosate Herbicide - were restocked multiple times across the quarter to meet accelerating order demand. Despite this, the Hydraulic Filter Kit ended Q1 below its defined reorder threshold, representing the most acute stock risk heading into Q2. Insecticide MaxGuard also approached its reorder level by quarter end.
+
+Supplier reliability was strong across the quarter, with all received purchase orders fulfilled without recorded discrepancies. Pioneer AgriSeed Corp. was the most active supplier by order frequency and total procurement value. Great Plains Feed Co. provided consistent and timely deliveries of livestock feed, supporting steady demand from rancher and commercial farm customers throughout the quarter.
+
+Heading into Q2, inventory strategy should focus on expediting the outstanding pending order for Insecticide MaxGuard from ShieldChem Agricultural, proactively assessing whether additional safety stock is warranted for Corn Seed Hybrid H200, and conducting a formal reorder point review for the Farm Equipment Accessories category.
+
+============================================================
+KEY METRICS
+============================================================
+
+Total Purchase Orders Placed (Q1 2024): 22
+  - Issued to all seven active suppliers across January, February, and March 2024.
+
+Purchase Orders Received: 21 of 22
+  - One order (Insecticide MaxGuard, PO #22, placed March 16) remains in pending status.
+
+Total Procurement Spend (Q1 2024): Approx. $111,800
+  - Calculated from purchase_orders quantity_ordered multiplied by unit_cost across all Q1 orders.
+
+SKUs Below Reorder Level at Quarter End: 2
+  - Hydraulic Filter Kit (8 units on hand vs. reorder level of 10).
+  - Insecticide MaxGuard (18 units on hand vs. reorder level of 20).
+
+Total Active SKUs Tracked: 18
+  - All 18 product SKUs have corresponding inventory records with current quantity on hand.
+
+Most Restocked Product: Corn Seed Hybrid H200
+  - Received two separate purchase order deliveries in Q1 (January and March).
+
+Top Supplier by Procurement Value: Pioneer AgriSeed Corp.
+  - Supplied Corn Seed Hybrid H200, Soybean Seed XR7, and Winter Wheat Seed across four purchase orders.
+
+Pending Purchase Orders at Quarter End: 1
+  - PO #22 for Insecticide MaxGuard (80 units), placed March 16, 2024, status: pending.
+
+============================================================
+REPORT SECTIONS
+============================================================
+
+1. CURRENT INVENTORY POSITIONS AND REORDER RISK
+------------------------------------------------------------
+As of March 31, 2024, all 18 active SKUs maintain recorded inventory positions. The majority of products are within acceptable stock ranges relative to their defined reorder thresholds. However, two SKUs present elevated risk: the Hydraulic Filter Kit currently holds 8 units against a reorder level of 10, a deficit of 2 units below threshold. Insecticide MaxGuard holds 18 units against a reorder level of 20; while a pending purchase order for 80 units is expected to resolve this, the open order status introduces delivery timing risk. All other products are adequately stocked, with Livestock Feed items holding the deepest safety stock positions.
+
+Data fields used: inventory.product_id, inventory.quantity_on_hand, inventory.last_restocked_date, products.reorder_level, products.product_name, categories.category_name
+
+
+2. PROCUREMENT ACTIVITY BY SUPPLIER
+------------------------------------------------------------
+All seven active suppliers received purchase orders during Q1 2024. Pioneer AgriSeed Corp. was the most active supplier, with four purchase orders across seed categories. NutriGrow Fertilizers LLC fulfilled three purchase orders for fertilizer products. Great Plains Feed Co. processed two orders for livestock feed. ShieldChem Agricultural fulfilled two crop protection orders, with a third pending. IronHand Equipment Parts and AquaFlow Irrigation Systems each received two orders. VetPro Animal Supplies fulfilled orders for two product lines. No supplier reliability issues were recorded during the quarter, and all received orders were logged as fulfilled.
+
+Data fields used: purchase_orders.supplier_id, suppliers.supplier_name, purchase_orders.order_date, purchase_orders.status, purchase_orders.quantity_ordered, purchase_orders.unit_cost
+
+
+3. PROCUREMENT SPEND BY MONTH
+------------------------------------------------------------
+Procurement spending was weighted toward January and March, which aligns with the business's practice of building stock ahead of anticipated demand surges. January saw the largest initial round of purchase orders establishing baseline inventory for the quarter. February procurement focused on supplementary replenishment of fertilizers, crop protection, and equipment parts. March procurement activity was the most intensive by order count, with significant restocking of seed and fertilizer products to support the spring selling season. The rolling replenishment approach reflects sound inventory management practice.
+
+Data fields used: purchase_orders.order_date, purchase_orders.quantity_ordered, purchase_orders.unit_cost, purchase_orders.supplier_id, purchase_orders.status
+
+
+4. STOCK CONSUMED VS. STOCK RECEIVED BY CATEGORY
+------------------------------------------------------------
+Comparing units sold through order_items against units received through purchase_orders reveals that the Seeds & Seed Treatments category experienced the tightest stock utilization, with sales volumes closely tracking procurement receipts - particularly for Corn Seed Hybrid H200. The Fertilizers category received substantial inbound volume and maintained comfortable buffer stock throughout the quarter. Crop Protection products were replenished on a rolling basis, with Glyphosate Herbicide turning over most rapidly. Livestock Feed showed strong inbound volume relative to sales. Equipment Accessories had the lowest inbound volume and the tightest stock situation at quarter end.
+
+Data fields used: order_items.product_id, order_items.quantity, purchase_orders.product_id, purchase_orders.quantity_ordered, products.category_id, categories.category_name
+
+
+5. SUPPLIER DEPENDENCY AND CONCENTRATION RISK
+------------------------------------------------------------
+Pioneer AgriSeed Corp. represents the highest single-supplier dependency for Harvest Ridge, supplying all three seed SKUs - products that account for a significant portion of Q1 revenue. Any disruption to Pioneer AgriSeed's supply chain during the March-to-May planting season would carry material revenue risk. NutriGrow Fertilizers LLC is the sole supplier for all three fertilizer SKUs, representing a similar concentration risk in the second-highest revenue category. Management is advised to assess dual-sourcing options for these two categories and maintain closer communication with both suppliers regarding forward availability commitments ahead of Q2.
+
+Data fields used: suppliers.supplier_id, suppliers.supplier_name, products.product_id, products.supplier_id, categories.category_name, purchase_orders.quantity_ordered
+
+
+6. PENDING ORDERS AND OUTSTANDING PROCUREMENT RISK
+------------------------------------------------------------
+As of the close of Q1 2024, one purchase order remains in pending status: PO #22 for Insecticide MaxGuard (80 units) from ShieldChem Agricultural, placed on March 16, 2024. At the current inventory level of 18 units, and given the product's reorder threshold of 20 units, any further sales of MaxGuard before this shipment arrives will push stock below the safety level. The operations team should contact ShieldChem Agricultural to confirm the expected delivery date and expedite if necessary. No other outstanding purchase orders were unresolved at quarter end.
+
+Data fields used: purchase_orders.po_id, purchase_orders.status, purchase_orders.order_date, purchase_orders.quantity_ordered, purchase_orders.product_id, inventory.quantity_on_hand, products.reorder_level
+
+
+============================================================
+APPENDIX / NOTES
+============================================================
+
+ASSUMPTIONS
+- Quantity on hand in the inventory table reflects end-of-quarter positions after all Q1 sales and received purchase orders have been applied.
+- Procurement spend is calculated as quantity_ordered multiplied by unit_cost for each purchase order row.
+- The pending purchase order (PO #22) has not been received and is excluded from inventory on-hand figures.
+- All purchase orders with status 'received' are assumed to have been fully delivered at the specified unit cost with no partial deliveries or discrepancies.
+- Reorder levels in the products table represent the minimum quantity on hand before a replenishment order should be placed.
+
+KNOWN LIMITATIONS
+- The schema does not track inventory adjustments for shrinkage, damage, or write-offs; actual on-hand quantities may differ from recorded values.
+- No lead time data is captured for suppliers, limiting the ability to calculate precise reorder trigger dates.
+- The inventory table stores a single current snapshot rather than a time series; historical daily stock levels cannot be reconstructed.
+- No warehouse location or bin-level tracking is included; all inventory is treated as a single location.
+
+RECOMMENDED NEXT ANALYSIS
+- Implement a supplier lead time field in purchase_orders to enable forward-looking reorder point calculations.
+- Conduct a formal ABC analysis of SKUs by revenue contribution and stock turn rate.
+- Develop a Q2 procurement plan aligned with Q1 sales velocity data, with particular emphasis on seed and fertilizer categories.
+- Explore dual-sourcing arrangements for Pioneer AgriSeed Corp. and NutriGrow Fertilizers LLC.
+- Add an inventory transaction log table to capture daily movements and enable trend analysis of stock levels over time.
+
+------------------------------------------------------------
+Report generated by Harvest Ridge Supply Co. Operations & Supply Chain Team.
+For internal use only. Not for external distribution.
+------------------------------------------------------------

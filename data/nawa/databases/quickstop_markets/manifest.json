@@ -1,0 +1,8 @@
+{
+  "source_json": "json/quickstop_markets.json",
+  "company_name": "QuickStop Markets",
+  "database_file": "generated/quickstop_markets/quickstop_markets.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/quickstop_markets"
+}

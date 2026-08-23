@@ -1,0 +1,100 @@
+# Revenue & Invoicing Financial Report — H1 2024
+
+**Organisation:** Nexlayer Consulting Group  
+**Reporting Period:** January 2024 – June 2024  
+**Report Type:** Finance  
+**Prepared by:** Finance & Business Intelligence Team  
+**Date:** June 2024
+
+---
+
+## Executive Summary
+
+This financial report summarises Nexlayer Consulting Group's revenue recognition, invoicing activity, and accounts receivable performance for the first half of 2024. The period reflects strong top-line performance, with total invoice value raised across project-based and managed services revenue streams exceeding expectations relative to the prior year comparable period.
+
+Project invoicing activity spanned twelve client engagements across five service lines, with the Financial Services and Healthcare verticals accounting for the largest share of billed revenue. The firm issued twenty-four project invoices during the period, of which seventeen have been collected as paid, representing a healthy collection rate. Seven invoices remain outstanding but within payment due dates, with no overdue balances recorded as of the report date.
+
+Managed Services retainers continue to provide a resilient recurring revenue layer, with seven active retainers generating a stable monthly income stream of approximately $54,700. The primary financial risk in the current period relates to revenue concentration across a small number of large client accounts, which warrants ongoing monitoring. Overall, the firm's financial position remains solid heading into H2 2024.
+
+---
+
+## Key Metrics
+
+| Metric | Value | Context |
+|---|---|---|
+| Total Invoice Value Raised (H1 2024) | $1,229,750 | Sum of all project invoices issued in the period |
+| Total Paid Invoice Value | $893,666 | Aggregate of all invoices with confirmed payment |
+| Total Outstanding Invoice Value | $336,084 | No outstanding invoices are currently overdue |
+| Invoice Collection Rate | 70.7% | Expected to improve as Q2 invoices clear in July |
+| Number of Invoices Issued | 24 | Across twelve client engagements |
+| Number of Invoices Paid | 17 | Seven invoices outstanding and within due date |
+| Monthly Retainer Revenue | $54,700/month | From seven active managed services retainers |
+| Largest Client Invoice Value (H1) | $320,000 | Meridian Health Systems — EHR Integration |
+| Avg. Days to Payment (Paid Invoices) | ~22 days | Well within standard net-30 commercial terms |
+| Fixed-Fee Revenue Share | ~67% | Provides income predictability and billing certainty |
+
+---
+
+## 1. Invoice Activity Summary
+
+Nexlayer issued twenty-four invoices during H1 2024 across twelve project engagements. Invoice frequency ranges from single-milestone billings on shorter fixed-fee projects to structured multi-instalment schedules on larger programmes. The Cloud Migration Phase 1 project for Hartwell Financial was fully invoiced and paid across three milestone tranches. Invoice issuance volume increases progressively from Q1 to Q2, reflecting both the ramping of new projects and the scheduled milestone billing cadences of larger engagements.
+
+---
+
+## 2. Revenue by Service Line
+
+Cloud Migration & Infrastructure is the leading revenue-generating service line in H1 2024, driven by three active or recently completed engagements. Cybersecurity & Compliance contributes strong per-engagement value at a premium day rate of $1,950. Enterprise Systems Integration revenue is concentrated in two engagements — the EHR Systems Integration and the Legacy System Decommission — with the former being the largest individual project by contracted value. Data Analytics & BI has generated meaningful revenue across three client projects, and Advisory revenue from Digital Transformation Strategy, though limited to one engagement, carried a high per-day realisation rate.
+
+---
+
+## 3. Accounts Receivable & Collection Performance
+
+Of the twenty-four invoices issued during H1 2024, seventeen have been confirmed as paid with recorded payment dates. The remaining seven invoices are all within their respective payment due dates as of the report period — no invoices have entered a past-due status. The average time from invoice issuance to payment receipt across settled invoices is approximately twenty-two days, well within typical net-30 commercial terms.
+
+The Enterprise Data Warehouse Build, Digital Transformation Roadmap, and Network Infrastructure Overhaul each have one outstanding invoice due in June or July 2024, requiring follow-up monitoring in the near term.
+
+---
+
+## 4. Revenue by Client & Vertical
+
+Financial Services clients account for the largest share of project invoicing in H1 2024, led by Hartwell Financial Corp and Pelham Insurance Group. Healthcare is the second-largest vertical, underpinned by the scale of Meridian Health Systems engagements. Public Sector clients contribute moderate but steady revenue. The newer Logistics, Energy, and Education clients have generated initial project revenue and represent key growth verticals for H2 2024.
+
+Revenue concentration is notable, with the top three clients accounting for a disproportionate share of total invoiced value. Diversification across verticals and regions remains a strategic priority.
+
+---
+
+## 5. Managed Services Recurring Revenue
+
+Managed Services retainers generated predictable recurring income throughout H1 2024. With seven retainers active as of June 2024, the aggregate monthly fee stands at $54,700, annualising at approximately $656,400. This recurring revenue stream provides a financial buffer against project pipeline variability and directly supports overhead recovery.
+
+The cancellation of the Aldgate Capital Markets retainer ($4,900/month) in March 2024 was an isolated event tied to account inactivity and did not reflect broader churn. The average active retainer contract age is approximately eighteen months, suggesting a well-established and stable base.
+
+---
+
+## 6. Revenue Concentration & Risk Assessment
+
+The top three clients by invoiced project value — Hartwell Financial Corp, Meridian Health Systems, and Pelham Insurance Group — collectively account for over half of total H1 project billings. While these are established relationships with strong payment histories, dependency on a small number of high-value accounts introduces revenue risk.
+
+The firm's managed services retainer base partially mitigates this risk by distributing recurring income across eight clients. Continued expansion into new verticals and geographic regions is essential to reducing revenue concentration over the medium term.
+
+---
+
+## Appendix & Notes
+
+### Assumptions
+- Invoice amounts are used as proxies for recognised revenue; formal recognition schedules may differ under applicable accounting standards.
+- Retainer revenue is calculated as the sum of monthly_fee for all active retainers as of June 2024.
+- Average days to payment is estimated from invoice_date and paid_date for settled invoices.
+- Collection rate is calculated as total paid value divided by total invoice value raised in the period.
+
+### Known Limitations
+- No cost-of-revenue or expense table exists in the schema, preventing gross margin calculations.
+- Tax and VAT calculations are not represented in the invoices table.
+- Retainer payments are not tracked as individual invoice records, limiting unified AR ageing analysis.
+- Credit terms are not stored in the schema, so overdue assessments are approximated from due_date.
+
+### Recommended Next Analysis
+- Introduce a cost-of-delivery table to enable per-project gross margin reporting.
+- Create monthly retainer invoice records for unified accounts receivable ageing.
+- Build a revenue forecast model combining contracted values and retainer schedules for Q3–Q4 2024.
+- Conduct a client-level revenue trend analysis comparing H1 2024 versus H1 2023.

@@ -1,0 +1,8 @@
+{
+  "source_json": "json/luminatech_ecosystems.json",
+  "company_name": "LuminaTech Ecosystems",
+  "database_file": "generated/luminatech_ecosystems/luminatech_ecosystems.db",
+  "reports_exported": 1,
+  "pdf_reports_exported": 1,
+  "output_root": "generated/luminatech_ecosystems"
+}

@@ -1,0 +1,58 @@
+# Fleet Maintenance Cost & Downtime Report (Jan–Apr 2026 YTD)
+
+**Organisation:** NordHearth Scania Fleet Services  
+**Reporting period:** 2026-01-01 to 2026-04-09
+
+## Executive Summary
+From January 1 through April 9, 2026, NordHearth’s workshop activity reflected a mix of preventive services, inspections, and several higher-impact repair events. Preventive work orders were completed on schedule and represented an efficient use of labor hours with relatively low downtime, supporting fleet readiness for recurring contract lanes.
+
+Repair activity, while fewer in count than routine preventive tasks, drove a disproportionate share of cost and downtime. Brake and tire-related parts represented the most visible cost drivers within parts usage, and the highest downtime event occurred on an older unit that remained sensitive to corrective maintenance. The presence of an open repair work order in early April indicates ongoing risk of capacity constraints if resolution is delayed.
+
+Across the period, labor charges were consistent due to a stable labor rate, making parts consumption and downtime the primary levers for cost control. The data supports continuing to shift work from corrective repairs to scheduled preventive windows, particularly for older vehicles and those assigned to longer-haul lanes.
+
+## Key Metrics
+- **Total Work Orders (YTD):** 9
+- **Closed Work Orders:** 8
+- **Open Work Orders:** 1
+- **Total Maintenance Cost:** $10,903
+- **Total Parts Cost (as recorded on work orders):** $5,403
+- **Total Labor Hours:** 45.75
+- **Avg. Downtime per Work Order:** 0.95 days
+- **Highest Downtime Event:** 2.30 days
+
+## Main Sections
+### 1) Work Order Volume and Mix (Preventive vs Repair)
+Preventive activity remained consistent and low-disruption. Repairs were fewer but drove most operational variance. Maintaining a preventive-first cadence should continue to reduce unplanned disruptions.
+
+### 2) Maintenance Cost Breakdown (Labor vs Parts)
+Labor is predictable at a stable rate; parts spend is the main source of volatility. Brakes and tires represent the categories most likely to create cost spikes when corrective work is required.
+
+### 3) Downtime Impact and Operational Risk
+Downtime is concentrated in repairs, with one March event materially higher than the rest. The open April repair should be treated as a near-term risk to fleet availability until closed.
+
+### 4) Parts Consumption and Category Drivers
+Consumables are steady and expected; spikes are driven by brakes and tires. Tracking top parts by extended price is a practical way to prioritize preventive checks and procurement attention.
+
+### 5) Vehicle-Level Maintenance Hotspots
+A small number of units appear to drive higher cost and downtime. Older vehicles and high-mileage assignments should be prioritized for preventive scheduling and closer condition monitoring.
+
+### 6) Action Plan for Next 30–60 Days
+- Close the open April repair as a first priority.
+- Increase brake/tire inspection cadence on high-mileage units.
+- Align preventive windows with shipment calendars to avoid peak week disruptions.
+
+## Appendix / Notes
+**Assumptions**
+- Labor cost is inferred as labor_hours × labor_rate and included in total_cost.
+- Parts_cost and total_cost are assumed to follow internal accounting conventions.
+- Period covers work orders dated 2026-01-01 through 2026-04-09.
+
+**Known Limitations**
+- No technician dimension or labor detail by technician.
+- Parts usage does not capture unit_cost at line level.
+- No direct linkage from maintenance downtime to shipment service impacts.
+
+**Recommended Next Analysis**
+- Add technician/time entry detail for productivity analytics.
+- Add a vehicle daily status/uptime table and tie to shipment disruption.
+- Add supplier and cost history to manage high-impact parts categories.

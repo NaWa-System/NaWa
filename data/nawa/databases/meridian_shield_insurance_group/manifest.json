@@ -1,0 +1,8 @@
+{
+  "source_json": "json/meridian_shield_insurance_group.json",
+  "company_name": "Meridian Shield Insurance Group",
+  "database_file": "generated/meridian_shield_insurance_group/meridian_shield_insurance_group.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/meridian_shield_insurance_group"
+}

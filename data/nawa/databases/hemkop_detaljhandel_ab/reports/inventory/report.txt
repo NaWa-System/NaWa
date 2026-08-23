@@ -1,0 +1,96 @@
+HEMKOP DETALJHANDEL AB
+END-OF-PERIOD STOCK LEVEL REVIEW — Q4 2024
+
+Organisation: Hemkop Detaljhandel AB
+Reporting Period: As of 28 December 2024
+Prepared by: Supply Chain & Inventory Management
+Date: January 2025
+
+========================================
+EXECUTIVE SUMMARY
+========================================
+
+This report reviews end-of-period stock levels across the Hemkop store network as of 28 December 2024. Of 16 stock records reviewed, three SKU-store combinations are at or below their reorder threshold, all involving Laxfile Norsk 400g — a direct result of the Julmat Specialerbjudande promotion running through December 24.
+
+Replenishment orders should be raised immediately for Laxfile at Hemkop Sundbyberg (18 units, threshold 20), Hemkop Molndal (11 units, threshold 20), and Hemkop Linnegatan (15 units, threshold 20). Hemkop Notfars at Ostermalm is above threshold but holds a limited buffer and warrants proactive monitoring. The majority of tracked SKUs are comfortably above their reorder thresholds and require no immediate action.
+
+========================================
+KEY METRICS
+========================================
+
+Stock Records Reviewed: 16
+  -- Across 7 stores for key SKUs, snapshot as of 28 December 2024.
+
+Products at or Below Reorder Threshold: 3 SKU-store combinations
+  -- All involve Laxfile Norsk 400g; Julmat promotion identified as primary cause.
+
+Highest Stock on Hand: Hemkop Ekologiska Tomater – Sundbyberg (195 units)
+  -- Well above reorder threshold of 60; no replenishment needed.
+
+Most At-Risk SKU: Laxfile Norsk 400g
+  -- Below threshold at 2 of 3 tracked stores; also near-threshold at the third.
+
+Near-Threshold SKU: Hemkop Notfars 500g – Ostermalm (38 units, threshold 30)
+  -- 8-unit buffer only; proactive restock recommended.
+
+Healthy Stock Positions: 11 of 16 records
+  -- No immediate replenishment action required for the majority of tracked SKUs.
+
+========================================
+SECTION 1: STOCK AT OR BELOW REORDER THRESHOLD
+========================================
+
+Three SKU-store combinations are at or below their reorder threshold as of 28 December 2024. Laxfile Norsk 400g is below threshold at Hemkop Sundbyberg (18 units vs threshold 20), Hemkop Molndal (11 units vs threshold 20), and Hemkop Linnegatan (15 units vs threshold 20). This pattern is a direct consequence of the Julmat Specialerbjudande promotion offering 18 percent off Meat & Fish from December 9 to 24, which drove elevated Laxfile sales across those stores. Replenishment orders should be triggered for all three locations at the start of the first trading week of January 2025.
+
+========================================
+SECTION 2: NEAR-THRESHOLD PRODUCTS REQUIRING MONITORING
+========================================
+
+Hemkop Notfars 500g at Hemkop Ostermalm holds 38 units against a reorder threshold of 30, providing a buffer of only 8 units. Given Ostermalm's above-average transaction frequency among Professional-segment shoppers and the continued strength of Meat & Fish sales through late December, this product is at risk of falling below threshold before the next scheduled replenishment. Proactive restocking is recommended. Hemkop Notfars at Linnegatan (44 units, threshold 35) is also in a manageable but tight position and should be monitored.
+
+========================================
+SECTION 3: PRODUCTS WITH HEALTHY STOCK LEVELS
+========================================
+
+The majority of tracked SKU-store combinations show strong inventory positions well above their reorder thresholds. Hemkop Ekologiska Tomater at Sundbyberg (195 units, threshold 60), Vasastan (89 units, threshold 40), and Ostermalm (142 units, threshold 50) are all in excellent shape. Hemkop Pasta Penne at Vasteras City holds 134 units against a threshold of 50. Hemkop Frysta Blandgrönsaker at Molndal holds 110 units against a threshold of 40. Hemkop Diskmedel Citron at Vasteras City holds 67 units against a threshold of 25. None of these require replenishment action.
+
+========================================
+SECTION 4: REPLENISHMENT PRIORITY SUMMARY
+========================================
+
+IMMEDIATE ACTION REQUIRED:
+- Laxfile Norsk 400g at Hemkop Sundbyberg (18 units, threshold 20)
+- Laxfile Norsk 400g at Hemkop Molndal (11 units, threshold 20)
+- Laxfile Norsk 400g at Hemkop Linnegatan (15 units, threshold 20)
+
+MONITOR WITH PROACTIVE RESTOCK:
+- Hemkop Notfars 500g at Hemkop Ostermalm (38 units, threshold 30)
+
+NO ACTION REQUIRED:
+- All remaining 11 SKU-store combinations are within acceptable stock holding ranges.
+
+The logistics team should coordinate replenishment for the three Laxfile shortage locations as a first priority before the post-holiday consumer demand period begins in early January 2025.
+
+========================================
+APPENDIX
+========================================
+
+ASSUMPTIONS
+- Stock levels reflect a snapshot as of 28 December 2024; no receipts or sales after this date are captured.
+- Reorder thresholds are as defined in the stock_levels.reorder_threshold field.
+- Units on hand are assumed to exclude damaged or quarantined stock.
+
+KNOWN LIMITATIONS
+- Only a subset of SKUs and stores are represented in stock_levels.
+- No supplier lead time data is available in the current schema.
+- No inbound delivery schedule data exists to refine replenishment timelines.
+
+RECOMMENDED NEXT ANALYSIS
+- Add a supplier lead time field to the products or stock_levels table for urgency scoring.
+- Build a stock velocity metric by linking stock_levels snapshots to transaction_items quantities sold.
+- Move from a single end-of-period snapshot to weekly stock tracking.
+- Model seasonal stock buffers for high-demand promotional periods such as Christmas and Midsommar.
+
+========================================
+END OF REPORT
+========================================

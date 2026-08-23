@@ -1,0 +1,56 @@
+# Q1 2025 Revenue, Gross Margin, and Billing Status Review (Deliveries & Invoicing)
+
+**Organisation:** NordVigil Aeronautics & Secure Systems (NVASS)  
+**Reporting period:** 2025-01-01 to 2025-03-31  
+
+## Executive Summary
+Q1 2025 delivery activity reflects a balanced portfolio of sustainment, spares, and capability-upgrade shipments across government customers and prime-contractor channels. Within the dataset, revenue is driven by delivered shipments and billing status indicates that Q1 invoices were consistently issued and marked as paid.
+
+The revenue profile is influenced by a small number of high-value hardware deliveries (radar/EW pods) alongside a broader base of communications and cryptographic components. This mix supports margin resilience: software/licensing contributes strong unit margin while complex hardware contributes larger absolute gross profit but increases quarter-to-quarter variability.
+
+Early Q2 data (April) introduces typical billing pipeline risk: invoices move to **Sent** and at least one large delivery is **Shipped** without invoicing. Maintaining strong acceptance documentation and customer sign-off processes is recommended to protect cash conversion.
+
+## Key Metrics (Q1)
+- **Total Delivered Revenue (Q1):** €7.10M
+- **Estimated Gross Profit (Q1):** €2.38M
+- **Estimated Gross Margin (Q1):** 33.5%
+- **Paid Invoice Rate (Q1 Deliveries):** 100%
+- **Delivery Count (Q1, Delivered):** 10
+- **Revenue Concentration (Top 2 Deliveries, Q1):** ≈31%
+- **Software/Licensing Revenue Share (Q1):** ≈7%
+- **Government vs Prime Revenue Mix (Q1):** Government-led
+
+## Main Sections
+### 1) Quarter Overview — Delivered Revenue and Billing Execution
+Q1 shipments occur across multiple active contracts with consistent invoicing on Delivered deliveries. The quarter establishes a strong baseline and highlights a transition point entering April where invoices shift to Sent and shipped-but-not-invoiced activity appears.
+
+### 2) Revenue by Contract Type
+Sustainment and spares contracts provide repeatable, lower-variance deliveries, while upgrade activity drives larger single deliveries. Subcontract deliveries from prime partners provide stable mid-sized contributions and diversify procurement timing.
+
+### 3) Revenue and Margin by Product Line Domain
+Aerospace/defence hardware drives the largest revenue contribution, while mission software/licensing lines deliver high margin per euro due to lower unit costs. The combined portfolio supports overall profitability but increases sensitivity to the timing of a few large shipments.
+
+### 4) Customer and Region Mix
+Revenue distribution across Nordics and Western Europe is complemented by program-specific activity in the North Atlantic and Baltic regions. From a finance perspective, the region mix can influence acceptance, logistics lead times, and documentation overhead, which in turn affects billing timing.
+
+### 5) Billing Pipeline Signals Heading into April
+Although Q1 is fully paid in the dataset, April shows invoices marked Sent and at least one high-value delivery still in Shipped status without invoicing fields populated. Managing acceptance packages, export documentation, and customer sign-off is essential to avoid revenue-to-cash slippage.
+
+### 6) Gross Profit Bridge — Price, Cost, and Mix Drivers
+Estimated profitability is explained by line-level unit price vs unit cost spreads. Software/licensing and communications hardware appear to provide reliable contribution, while high-end pods/radar provide large per-unit profit with higher exposure to cost growth.
+
+## Appendix / Notes
+**Assumptions**
+- Delivered shipments within the period are treated as quarter revenue.
+- Gross profit uses (unit_price − unit_cost) × quantity and excludes overhead, FX effects, and provisions.
+- EUR is used consistently across the dataset.
+
+**Known limitations**
+- No A/R aging or payment dates; cash conversion cycle cannot be computed.
+- No acceptance milestones explaining why some deliveries are Shipped vs Delivered.
+- No change orders, penalties, rebates, or warranty provisions are modeled.
+
+**Recommended next analysis**
+- Track shipped-to-billed cycle time with an acceptance milestone table.
+- Add planned delivery schedules and contract line plans to improve forecasting.
+- Review margin by customer type and product line to identify negotiation and cost-control priorities.

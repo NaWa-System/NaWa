@@ -1,0 +1,55 @@
+Q1 2026 Security Operations Performance Review (Service Delivery & Incident Trends)
+
+Organisation: AegisNorth Protective Services
+Reporting Period: 2026-01-01 to 2026-03-31
+
+EXECUTIVE SUMMARY
+During Q1 2026, AegisNorth delivered consistent contract coverage across core client sites, with steady completion of scheduled guard and patrol shifts and limited operational disruption. The quarter’s activity reflected a balanced mix of on-site guarding (higher-hour assignments) and mobile patrol (shorter, repeatable routes), supporting both fixed-site security and retail patrol needs.
+
+Incident reporting in Q1 was concentrated in higher-risk environments—particularly a logistics warehouse site and a high-risk parking/garage asset. The highest-severity incidents were primarily related to loss prevention and unauthorized access attempts, reinforcing the importance of nighttime coverage, access control adherence, and client-side controls (badges, sensors, trailer seal protocols).
+
+Overall, incident resolution rates were strong, with most events closed with documented actions and client notifications. One open, high-severity theft-related investigation at quarter-end highlights the need for tighter client coordination on evidence retention, chain-of-custody, and timely inventory reconciliation.
+
+Operationally, the data suggests two near-term opportunities: (1) targeted post-order updates and briefing materials at repeat-incident sites, and (2) preventative maintenance follow-up for alarm/sensor-related events to reduce false dispatch and avoid guard time being consumed by avoidable incidents.
+
+KEY METRICS
+- Total Shifts Completed (Q1): 23
+- Total Hours Delivered (Q1): 204.0
+- Incidents Logged (Q1): 11
+- High-Severity Incidents (Q1): 4
+- Incident Resolution Rate (Q1): 90.9%
+- Top Incident Type (by count): Trespass (2) and Theft (2)
+- Highest-Incident Site (by count): TriCounty - DC1 Warehouse (4)
+- Coverage Mix (hours): On-site guarding dominant; patrol steady
+
+MAIN SECTIONS
+1) Service Delivery Overview (Shifts and Hours)
+Q1 service delivery was consistent, with completed shifts spanning all active clients and a stable cadence of recurring coverage. On-site guarding roles contributed the majority of delivered hours due to longer shift duration and higher minimums, while mobile patrol coverage remained steady across retail locations. No cancelled or no-show statuses were recorded in the dataset for the quarter, which supports a positive coverage narrative; however, operational reality should still be monitored via scheduling and attendance systems if available.
+
+2) Incident Volume and Severity Trend
+Incident volume across the quarter was moderate, with meaningful variability by site risk profile. High-severity events were not evenly distributed: they were concentrated at higher-risk sites and primarily aligned to theft and access control incidents. Medium-severity events often involved safety hazards or trespass situations, which generally resolved quickly with documentation and client notification. The presence of one unresolved high-severity theft incident at quarter end suggests stronger end-to-end case management and escalation protocols would reduce closeout cycle time.
+
+3) Hotspot Analysis by Site and Risk Level
+The highest-incident location was the logistics warehouse site, which also carries a high risk designation. A second hotspot pattern emerged at a high-risk parking/garage asset associated with commercial real estate, with repeat trespass/disorderly events indicating the need for updated site briefing materials and potentially enhanced lighting/camera review with the client. Lower-risk retail sites produced fewer incidents, typically moderate or low severity, consistent with patrol-style deterrence and rapid documentation.
+
+4) Repeat Incident Patterns and Preventative Actions
+Repeat patterns are visible for trespass at the high-risk garage asset and for theft-related events at the warehouse site. The data also includes an alarm-related event attributed to a sensor issue, pointing to a preventable maintenance action. Recommended preventative actions include (1) formalizing repeat-incident advisories into weekly post briefings, (2) working with client stakeholders to validate badge deactivation and access logs after attempted breaches, and (3) ensuring facility maintenance tickets are documented and followed through when sensor or door hardware issues are suspected.
+
+5) Officer Reporting Participation
+Incident reporting involvement was distributed across multiple officers, indicating that reporting is not reliant on a single individual. This supports resilience in documentation practices; however, for high-severity incidents, consistent narrative quality and evidence handling should be reinforced through refresher training and standardized reporting templates. Where incidents occur during contracted coverage windows, the linkage between on-duty shifts and incident timestamps can be used to refine staffing decisions by daypart.
+
+APPENDIX / NOTES
+Assumptions
+- All recorded shifts in Q1 are representative of delivered coverage (no missing or unlogged shifts).
+- Incident severity is consistently applied across sites using the same internal criteria.
+- Resolved_flag reflects operational closure (actions completed and client notified), not necessarily legal case closure.
+
+Known Limitations
+- No scheduled-vs-actual comparison is available (there is no table for planned shifts or staffing roster).
+- Incident records do not include response time, time-to-close, or loss values; financial impact is qualitative.
+- Incidents are not explicitly linked to a specific shift_id, limiting attribution of events to coverage windows.
+
+Recommended Next Analysis
+- Add a planned_schedule table (or planned_hours) to quantify coverage compliance and variance.
+- Capture incident close timestamps and categorize corrective actions to measure cycle time and prevention effectiveness.
+- Introduce an SLA table per contract (e.g., patrol frequency, reporting timelines) to score performance formally.

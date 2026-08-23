@@ -1,0 +1,105 @@
+INSERT INTO policy_types (policy_type_id, type_code, type_name, line_of_business) VALUES
+(1, 'AUTO-STD', 'Standard Auto', 'Personal Lines'),
+(2, 'AUTO-COMP', 'Comprehensive Auto', 'Personal Lines'),
+(3, 'HOME-STD', 'Standard Homeowners', 'Personal Lines'),
+(4, 'HOME-PREM', 'Premium Homeowners', 'Personal Lines'),
+(5, 'BOP-SMB', 'Business Owners Policy', 'Commercial Lines'),
+(6, 'COMM-PROP', 'Commercial Property', 'Commercial Lines'),
+(7, 'GEN-LIAB', 'General Liability', 'Commercial Lines');
+
+INSERT INTO agents (agent_id, agent_name, channel, region, active) VALUES
+(1, 'Patricia Holloway', 'Broker', 'New York Metro', TRUE),
+(2, 'James Rutherford', 'Broker', 'New England', TRUE),
+(3, 'Sandra Kowalski', 'Direct Digital', 'New York Metro', TRUE),
+(4, 'Michael Tran', 'Broker', 'Mid-Atlantic', TRUE),
+(5, 'Laura Simmons', 'Direct Digital', 'New England', TRUE),
+(6, 'Robert Esquivel', 'Broker', 'Mid-Atlantic', TRUE);
+
+INSERT INTO customers (customer_id, full_name, email, state, customer_since, customer_segment) VALUES
+(1, 'David Harrington', 'dharrington@email.com', 'NY', '2019-03-15', 'Personal'),
+(2, 'Angela Morse', 'amorse@email.com', 'MA', '2020-07-22', 'Personal'),
+(3, 'Chen Wei Industries', 'info@chenwei.biz', 'NJ', '2018-11-01', 'Commercial'),
+(4, 'Sylvia Pemberton', 'spemberton@email.com', 'NY', '2021-01-10', 'Personal'),
+(5, 'Northgate Retail LLC', 'ops@northgateretail.com', 'CT', '2017-05-30', 'Commercial'),
+(6, 'Thomas Brecker', 'tbrecker@email.com', 'MA', '2022-04-18', 'Personal'),
+(7, 'Elaine Voss', 'evoss@email.com', 'NY', '2020-09-05', 'Personal'),
+(8, 'Harbor Point Services', 'admin@harborpoint.biz', 'NY', '2019-02-14', 'Commercial'),
+(9, 'Marcus Delgado', 'mdelgado@email.com', 'NJ', '2023-01-20', 'Personal'),
+(10, 'Sunrise Catering Co.', 'contact@sunrisecatering.com', 'MA', '2021-08-11', 'Commercial'),
+(11, 'Patricia Osei', 'posei@email.com', 'CT', '2022-11-30', 'Personal'),
+(12, 'Frank DiMaggio', 'fdimaggio@email.com', 'NJ', '2020-03-03', 'Personal');
+
+INSERT INTO policies (policy_id, customer_id, policy_type_id, agent_id, policy_number, effective_date, expiry_date, annual_premium, status) VALUES
+(1, 1, 1, 1, 'MSI-2024-00101', '2024-01-01', '2025-01-01', 1420.00, 'Active'),
+(2, 1, 3, 1, 'MSI-2024-00102', '2024-01-01', '2025-01-01', 2350.00, 'Active'),
+(3, 2, 2, 2, 'MSI-2024-00103', '2024-02-01', '2025-02-01', 1980.00, 'Active'),
+(4, 3, 5, 4, 'MSI-2024-00104', '2024-01-15', '2025-01-15', 5400.00, 'Active'),
+(5, 4, 1, 3, 'MSI-2024-00105', '2024-03-01', '2025-03-01', 1150.00, 'Active'),
+(6, 5, 6, 4, 'MSI-2024-00106', '2024-01-01', '2025-01-01', 8750.00, 'Active'),
+(7, 6, 1, 2, 'MSI-2024-00107', '2024-02-15', '2025-02-15', 1340.00, 'Active'),
+(8, 7, 4, 1, 'MSI-2024-00108', '2024-01-01', '2025-01-01', 3200.00, 'Active'),
+(9, 8, 7, 6, 'MSI-2024-00109', '2024-03-01', '2025-03-01', 4600.00, 'Active'),
+(10, 9, 1, 5, 'MSI-2024-00110', '2024-04-01', '2025-04-01', 1080.00, 'Active'),
+(11, 10, 5, 2, 'MSI-2024-00111', '2024-01-01', '2025-01-01', 4200.00, 'Active'),
+(12, 11, 3, 5, 'MSI-2024-00112', '2024-04-15', '2025-04-15', 1950.00, 'Active'),
+(13, 12, 2, 6, 'MSI-2024-00113', '2024-02-01', '2025-02-01', 2100.00, 'Active'),
+(14, 3, 7, 4, 'MSI-2024-00114', '2024-03-15', '2025-03-15', 3100.00, 'Active'),
+(15, 5, 5, 4, 'MSI-2024-00115', '2024-01-01', '2025-01-01', 6300.00, 'Active'),
+(16, 2, 3, 2, 'MSI-2023-00088', '2023-02-01', '2024-02-01', 2200.00, 'Expired'),
+(17, 6, 3, 2, 'MSI-2024-00116', '2024-04-01', '2025-04-01', 1870.00, 'Active'),
+(18, 7, 1, 1, 'MSI-2023-00091', '2023-01-01', '2024-01-01', 1200.00, 'Lapsed');
+
+INSERT INTO premiums_collected (payment_id, policy_id, payment_date, amount_paid, payment_method) VALUES
+(1, 1, '2024-01-05', 1420.00, 'ACH Transfer'),
+(2, 2, '2024-01-05', 2350.00, 'ACH Transfer'),
+(3, 3, '2024-02-03', 1980.00, 'Credit Card'),
+(4, 4, '2024-01-20', 2700.00, 'ACH Transfer'),
+(5, 4, '2024-07-20', 2700.00, 'ACH Transfer'),
+(6, 5, '2024-03-05', 1150.00, 'Credit Card'),
+(7, 6, '2024-01-08', 4375.00, 'Wire Transfer'),
+(8, 6, '2024-07-08', 4375.00, 'Wire Transfer'),
+(9, 7, '2024-02-18', 1340.00, 'ACH Transfer'),
+(10, 8, '2024-01-06', 3200.00, 'Credit Card'),
+(11, 9, '2024-03-04', 2300.00, 'Wire Transfer'),
+(12, 9, '2024-09-04', 2300.00, 'Wire Transfer'),
+(13, 10, '2024-04-03', 1080.00, 'Credit Card'),
+(14, 11, '2024-01-10', 2100.00, 'ACH Transfer'),
+(15, 11, '2024-07-10', 2100.00, 'ACH Transfer'),
+(16, 12, '2024-04-18', 1950.00, 'ACH Transfer'),
+(17, 13, '2024-02-05', 2100.00, 'Credit Card'),
+(18, 14, '2024-03-18', 1550.00, 'Wire Transfer'),
+(19, 14, '2024-09-18', 1550.00, 'Wire Transfer'),
+(20, 15, '2024-01-06', 3150.00, 'Wire Transfer'),
+(21, 15, '2024-07-06', 3150.00, 'Wire Transfer'),
+(22, 17, '2024-04-05', 1870.00, 'Credit Card'),
+(23, 3, '2024-08-05', 990.00, 'Credit Card'),
+(24, 5, '2024-09-05', 575.00, 'Credit Card');
+
+INSERT INTO claims (claim_id, policy_id, claim_date, incident_date, claim_type, claimed_amount, approved_amount, status, resolution_date) VALUES
+(1, 1, '2024-02-10', '2024-02-08', 'Collision', 3800.00, 3400.00, 'Closed', '2024-03-15'),
+(2, 3, '2024-03-05', '2024-03-03', 'Comprehensive', 1200.00, 1100.00, 'Closed', '2024-04-01'),
+(3, 2, '2024-04-12', '2024-04-10', 'Water Damage', 15000.00, 12500.00, 'Closed', '2024-06-20'),
+(4, 6, '2024-02-20', '2024-02-18', 'Fire Damage', 45000.00, 40000.00, 'Closed', '2024-05-10'),
+(5, 8, '2024-03-22', '2024-03-20', 'Theft', 8500.00, 7200.00, 'Closed', '2024-05-30'),
+(6, 4, '2024-05-14', '2024-05-12', 'Liability', 22000.00, 18000.00, 'Closed', '2024-07-25'),
+(7, 9, '2024-04-08', '2024-04-05', 'Property Damage', 11000.00, 9500.00, 'Closed', '2024-06-15'),
+(8, 5, '2024-06-01', '2024-05-30', 'Collision', 4200.00, NULL, 'Under Review', NULL),
+(9, 13, '2024-05-20', '2024-05-18', 'Comprehensive', 2800.00, 2500.00, 'Closed', '2024-07-10'),
+(10, 15, '2024-06-10', '2024-06-08', 'Liability', 30000.00, NULL, 'Under Review', NULL),
+(11, 11, '2024-07-03', '2024-07-01', 'Theft', 9000.00, 8100.00, 'Closed', '2024-08-20'),
+(12, 17, '2024-07-18', '2024-07-15', 'Water Damage', 6500.00, 5800.00, 'Closed', '2024-09-05'),
+(13, 10, '2024-08-05', '2024-08-03', 'Collision', 2100.00, NULL, 'Pending', NULL),
+(14, 14, '2024-08-22', '2024-08-20', 'Property Damage', 7800.00, 7000.00, 'Closed', '2024-10-01'),
+(15, 12, '2024-09-10', '2024-09-08', 'Wind/Hail', 4400.00, NULL, 'Pending', NULL);
+
+INSERT INTO renewals (renewal_id, policy_id, renewal_offer_date, renewal_decision, new_premium, decision_date) VALUES
+(1, 16, '2024-01-01', 'Renewed', 2310.00, '2024-01-25'),
+(2, 18, '2023-12-01', 'Lapsed', NULL, '2024-01-01'),
+(3, 1, '2024-11-01', 'Pending', 1490.00, NULL),
+(4, 2, '2024-11-01', 'Pending', 2420.00, NULL),
+(5, 4, '2024-11-15', 'Pending', 5650.00, NULL),
+(6, 6, '2024-11-01', 'Renewed', 9100.00, '2024-11-20'),
+(7, 8, '2024-11-01', 'Pending', 3350.00, NULL),
+(8, 11, '2024-11-01', 'Renewed', 4410.00, '2024-11-15'),
+(9, 15, '2024-11-01', 'Declined', NULL, '2024-11-10'),
+(10, 3, '2024-12-01', 'Pending', 2080.00, NULL);

@@ -1,0 +1,8 @@
+{
+  "source_json": "json/nordwave_radio_systems_ab.json",
+  "company_name": "Nordwave Radio Systems AB",
+  "database_file": "generated/nordwave_radio_systems_ab/nordwave_radio_systems_ab.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/nordwave_radio_systems_ab"
+}

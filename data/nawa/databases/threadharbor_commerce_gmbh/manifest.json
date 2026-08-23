@@ -1,0 +1,8 @@
+{
+  "source_json": "json/threadharbor_commerce_gmbh.json",
+  "company_name": "ThreadHarbor Commerce GmbH",
+  "database_file": "generated/threadharbor_commerce_gmbh/threadharbor_commerce_gmbh.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/threadharbor_commerce_gmbh"
+}

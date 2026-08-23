@@ -1,0 +1,8 @@
+{
+  "source_json": "json/echoharbor_audio_inc.json",
+  "company_name": "EchoHarbor Audio, Inc.",
+  "database_file": "generated/echoharbor_audio_inc/echoharbor_audio_inc.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/echoharbor_audio_inc"
+}

@@ -1,0 +1,8 @@
+{
+  "source_json": "json/svealagpris_ab.json",
+  "company_name": "SveaL\u00e5gpris AB",
+  "database_file": "generated/svealagpris_ab/svealagpris_ab.db",
+  "reports_exported": 1,
+  "pdf_reports_exported": 1,
+  "output_root": "generated/svealagpris_ab"
+}

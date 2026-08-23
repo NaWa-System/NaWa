@@ -1,0 +1,132 @@
+RENTAL REVENUE & CUSTOMER CHANNEL ANALYSIS REPORT — JANUARY TO APRIL 2024
+==========================================================================
+
+Organisation:     DriveEase Rentals
+Reporting Period: January 1, 2024 – April 30, 2024
+Report Type:      Sales
+Prepared by:      Sales Analytics & Revenue Management Team
+Date Issued:      May 2024
+
+
+EXECUTIVE SUMMARY
+-----------------
+
+This report provides a four-month revenue and customer channel analysis for DriveEase Rentals, covering the period from January through April 2024. Over this period, the company completed 25 paid rental transactions totalling approximately $10,413 in collected payments, with three additional rentals active at the end of April not yet reflected in closed revenue.
+
+Monthly revenue exhibited an upward trend from January through March, with April showing a strong start driven by increased corporate bookings and a notable insurance-channel renewal from a repeat customer. The corporate portal emerged as the highest-value booking channel on a revenue-per-transaction basis, while the online channel led in transaction volume.
+
+Customer segmentation analysis reveals that corporate and insurance-designated customers consistently produced longer rental durations and higher total payment values compared to leisure customers. Platinum-tier loyalty members disproportionately contributed to corporate revenue, confirming the strategic importance of account management for top-tier clients.
+
+Ancillary product performance reinforced the value of the CDW insurance programme across all customer types. Fuel Pre-Purchase adoption remained low and represents the clearest near-term upsell improvement opportunity. Heading into Q2, revenue trajectory and customer repeat rates position DriveEase Rentals well, though closing the gap between airport branch performance and inland branch performance should be a defined commercial priority.
+
+
+KEY METRICS
+-----------
+
+  Total Collected Revenue (Jan-Apr)  :  ~$10,413
+  Context: Aggregated from payments.total_amount across all 25 completed payment records.
+
+  Total Completed Transactions       :  25
+  Context: Rentals with payment status 'completed'; excludes 3 active April rentals.
+
+  Average Revenue Per Rental         :  ~$416
+  Context: Corporate bookings averaged significantly higher than leisure.
+
+  Corporate Channel Revenue Share    :  ~45%
+  Context: Highest revenue share despite lower transaction count than online channel.
+
+  Insurance Channel Revenue Share    :  ~12%
+  Context: Three completions; each characterised by 14-day durations.
+
+  Repeat Customer Rate               :  ~33%
+  Context: Multiple customers appear in 2+ rental records within the period.
+
+  Online Channel Transaction Share   :  ~44%
+  Context: Highest volume channel; primarily serving leisure and Gold-tier customers.
+
+  Total Ancillary Revenue (Jan-Apr)  :  ~$1,449
+  Context: Covers CDW, GPS Navigation, Additional Driver, and Fuel Pre-Purchase.
+
+  Top Performing Segment             :  Corporate / Platinum Tier
+  Context: Highest average revenue per booking and loyalty-driven repeat rate.
+
+  Month-over-Month Revenue Trend     :  Positive Jan-Apr
+  Context: Revenue grew sequentially; April tracking above January baseline.
+
+
+SECTION 1: MONTHLY REVENUE TREND
+----------------------------------
+
+Revenue from completed rentals showed positive sequential growth from January through March 2024. January was the lightest month, generating approximately $2,390 in collected payments across six completions. February produced approximately $2,726 across seven completions, driven by a 14-day insurance replacement rental and continued corporate portal activity. March was the strongest month at over $3,100, led by two high-value corporate bookings on Premium vehicles. April demonstrated continued momentum with five confirmed payment completions already recorded at the reporting date.
+
+Data fields used: payments.payment_date, payments.total_amount, payments.payment_status, rentals.pickup_date, rentals.status
+
+
+SECTION 2: REVENUE BY BOOKING CHANNEL
+---------------------------------------
+
+The online channel generated the highest number of transactions but at lower average values, consistent with shorter leisure booking durations and economy-to-mid-size vehicle preferences. The corporate portal produced approximately 45% of total collected revenue, reflecting longer durations, premium vehicle selections, and negotiated-rate volume relationships. The insurance portal contributed a stable, predictable share with 14-day economy bookings. Walk-in bookings accounted for three transactions, concentrated at Branch 5 (Spokane), with modest average revenue.
+
+Data fields used: rentals.booking_channel, rentals.base_rental_amount, rentals.rental_days, payments.total_amount, branches.branch_name
+
+
+SECTION 3: CUSTOMER TYPE & LOYALTY TIER ANALYSIS
+--------------------------------------------------
+
+Corporate customers drove a disproportionate share of total revenue through higher booking frequency and premium vehicle usage. Platinum-tier members Sophia Mendez, Noah Williams, and Charlotte Davis accounted for six completed rentals with an average payment per booking exceeding $750. Gold-tier leisure customers demonstrated meaningful repeat patterns. Standard-tier leisure customers were the most numerous by headcount but generated the lowest average revenue per rental. The insurance-replacement segment provided revenue predictability but limited ancillary upsell opportunity.
+
+Data fields used: customers.customer_type, customers.loyalty_tier, customers.customer_id, rentals.customer_id, rentals.base_rental_amount, payments.total_amount
+
+
+SECTION 4: ANCILLARY PRODUCT REVENUE BREAKDOWN
+------------------------------------------------
+
+Ancillary charges totalled approximately $1,449 across 38 charge records, representing roughly 14% of total collected revenue. CDW Insurance led by value and attachment rate, present on approximately 80% of all rentals. GPS Navigation was the second most adopted add-on. Additional Driver fees appeared on four corporate bookings at $35 each. Fuel Pre-Purchase was attached to only two rentals across four months — the weakest performing ancillary product and the strongest candidate for targeted attachment-rate improvement.
+
+Data fields used: ancillary_charges.charge_type, ancillary_charges.charge_amount, ancillary_charges.rental_id, rentals.booking_channel, rentals.rental_days
+
+
+SECTION 5: BRANCH-LEVEL SALES CONTRIBUTION
+--------------------------------------------
+
+Seattle-Tacoma Airport (Branch 1) led the network by total collected revenue across the four-month period. Portland Airport (Branch 3) ranked second, benefiting from leisure volume and a high-value Platinum corporate account. Downtown branches (2 and 4) showed moderate contributions, with Branch 2 anchored by insurance replacement rental activity. Spokane Central (Branch 5) and Eugene (Branch 6) each recorded only two to three completions, lagging significantly behind airport locations. Targeted commercial strategies for inland branches are recommended to improve network revenue balance.
+
+Data fields used: rentals.branch_id, branches.branch_name, branches.is_airport_location, payments.total_amount, rentals.pickup_date
+
+
+SECTION 6: PAYMENT METHOD & RECEIVABLES SUMMARY
+-------------------------------------------------
+
+Credit card was the most frequent payment method by transaction count. Corporate invoice represented the highest aggregate payment value. Insurance invoice payments were characterised by end-of-rental billing cycles. All 25 completed transactions recorded a payment status of 'completed', with no bad debt, chargebacks, or outstanding invoices identified within the reporting window. The clean receivables position reflects effective billing processes and low credit risk in the current customer mix.
+
+Data fields used: payments.payment_method, payments.payment_status, payments.total_amount, payments.payment_date, rentals.booking_channel
+
+
+APPENDIX & NOTES
+-----------------
+
+Assumptions:
+  - Total collected revenue is taken from payments.total_amount, inclusive of base rental and ancillary charges.
+  - Monthly revenue is attributed to payments.payment_date rather than rental pickup_date.
+  - Repeat customer rate is based on customer_id values appearing in more than one rental record.
+  - Active rentals (status = 'active') in April are excluded from all completed revenue totals.
+
+Known Limitations:
+  - Three late-April active rentals are excluded and will contribute to May revenue upon completion.
+  - No cancellation or no-show records exist in the schema; cancellation rate cannot be calculated.
+  - Customer acquisition cost data is not captured, preventing channel-level ROI analysis.
+  - Revenue forecasting cannot be built robustly without data beyond the current four-month window.
+  - Negotiated corporate contract terms are not stored, limiting detailed corporate pricing analysis.
+
+Recommended Next Analysis:
+  - Build a rolling 12-month revenue trend model to identify seasonal demand patterns.
+  - Develop a channel-level profitability model with acquisition and servicing cost estimates per channel.
+  - Implement Fuel Pre-Purchase conversion tracking to measure attachment-rate improvement impact.
+  - Conduct customer lifetime value analysis segmented by loyalty tier and customer type.
+  - Establish branch-level revenue targets for Spokane and Eugene and review against actuals quarterly.
+
+
+------------------------------------------------------------------
+Report prepared by the DriveEase Rentals Sales Analytics &
+Revenue Management Team. For internal use only.
+------------------------------------------------------------------

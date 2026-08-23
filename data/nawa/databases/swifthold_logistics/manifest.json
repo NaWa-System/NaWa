@@ -1,0 +1,8 @@
+{
+  "source_json": "json/swifthold_logistics.json",
+  "company_name": "SwiftHold Logistics",
+  "database_file": "generated/swifthold_logistics/swifthold_logistics.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/swifthold_logistics"
+}

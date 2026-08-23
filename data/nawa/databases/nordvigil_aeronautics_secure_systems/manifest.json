@@ -1,0 +1,8 @@
+{
+  "source_json": "json/nordvigil_aeronautics_secure_systems.json",
+  "company_name": "NordVigil Aeronautics & Secure Systems",
+  "database_file": "generated/nordvigil_aeronautics_secure_systems/nordvigil_aeronautics_secure_systems.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/nordvigil_aeronautics_secure_systems"
+}

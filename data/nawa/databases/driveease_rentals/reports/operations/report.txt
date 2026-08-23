@@ -1,0 +1,134 @@
+FLEET OPERATIONS & REVENUE PERFORMANCE REPORT — Q1 2024
+=========================================================
+
+Organisation:     DriveEase Rentals
+Reporting Period: January 1, 2024 – March 31, 2024
+Report Type:      Operations
+Prepared by:      Business Intelligence & Operations Team
+Date Issued:      April 2024
+
+
+EXECUTIVE SUMMARY
+-----------------
+
+This report presents a comprehensive review of DriveEase Rentals' fleet operations and revenue performance for the first quarter of 2024, spanning January through March across all six regional branches. The quarter saw sustained rental activity with healthy occupancy across key vehicle categories, led by strong demand for Premium and SUV segments, particularly at airport-adjacent locations in Seattle and Portland.
+
+Total base rental revenue from Q1 completed transactions reached approximately $7,638, with ancillary charges contributing an additional ~$1,117. Corporate and insurance-channel bookings accounted for a disproportionate share of revenue relative to volume, reflecting higher average rental durations typical of those customer segments.
+
+Fleet maintenance activity was elevated through February and March, with Vehicle 7 (Jeep Grand Cherokee, Downtown Seattle) requiring three separate interventions during the period — including a brake repair and a subsequent engine service in April — resulting in cumulative downtime that reduced that unit's revenue-generating availability. Operational leadership should monitor this vehicle's lifecycle position ahead of Q2 fleet planning.
+
+Looking ahead to Q2, the active rental pipeline and strong repeat engagement from Gold and Platinum loyalty tier clients suggest continued positive momentum. However, maintenance cost escalation for aging fleet units and branch-level utilization disparities between airport and inland locations present areas requiring management attention.
+
+
+KEY METRICS
+-----------
+
+  Total Completed Rentals (Q1)    :  20
+  Context: All completed; no material cancellations recorded in the period.
+
+  Total Base Rental Revenue (Q1)  :  ~$7,638
+  Context: Premium and SUV categories led by revenue value.
+
+  Total Ancillary Revenue (Q1)    :  ~$1,117
+  Context: CDW insurance was dominant; GPS navigation was second most popular.
+
+  Average Rental Duration (Q1)    :  4.5 days
+  Context: Corporate and insurance-channel rentals skewed the average higher than leisure.
+
+  Fleet Maintenance Cost (Q1)     :  ~$3,825
+  Context: 11 maintenance events recorded across 9 distinct vehicles.
+
+  Total Fleet Downtime Days (Q1)  :  17 days
+  Context: Vehicle 7 contributed 4 of those days within the quarter.
+
+  Top Revenue Branch (Q1)         :  Seattle-Tacoma Airport (Branch 1)
+  Context: Driven by Premium category demand and above-average corporate rental durations.
+
+  CDW Attachment Rate (Q1)        :  ~80%
+  Context: Strong upsell performance at point of booking across most channels.
+
+
+SECTION 1: RENTAL VOLUME BY BRANCH
+------------------------------------
+
+Seattle-Tacoma Airport (Branch 1) and Portland Airport (Branch 3) collectively accounted for the majority of Q1 rental transactions, consistent with the higher foot traffic typical of airport locations. Branch 1 recorded six completed rentals with a mix of economy, mid-size, and premium bookings, while Branch 3 contributed five completions. Inland branches — Spokane Central (Branch 5) and Eugene (Branch 6) — each recorded two completions, suggesting untapped demand in non-airport markets. Branch-level promotional investment may be warranted to grow rental activity at underperforming locations.
+
+Data fields used: rentals.branch_id, rentals.status, rentals.pickup_date, branches.branch_name, branches.is_airport_location
+
+
+SECTION 2: REVENUE BY VEHICLE CATEGORY
+----------------------------------------
+
+Premium vehicles generated the highest per-rental revenue during Q1, with two long-duration corporate bookings on BMW and Mercedes units each producing base rental amounts exceeding $769. SUV rentals were the second-highest aggregate contributor, with the Ford Explorer and Chevrolet Equinox generating solid mid-week leisure demand. Economy vehicles, while representing the highest count of individual rental events, contributed proportionally less base revenue but strongly supported ancillary CDW and GPS attachment. The Van category showed limited Q1 activity, with only a single corporate booking recorded out of Branch 4.
+
+Data fields used: rentals.base_rental_amount, rentals.daily_rate, vehicles.category_id, vehicle_categories.category_name, vehicle_categories.daily_base_rate
+
+
+SECTION 3: BOOKING CHANNEL BREAKDOWN
+--------------------------------------
+
+The online booking channel remained the primary acquisition source for leisure rentals in Q1, accounting for approximately half of all completed transactions. The corporate portal was the second most active channel and produced the highest average revenue per rental, driven by extended booking durations and Premium vehicle selections. Insurance portal bookings featured notably long rental durations — often 14 days — reflecting the insurance replacement use case. Walk-in bookings were minimal but consistent with the Branch 5 operating model where digital penetration is lower.
+
+Data fields used: rentals.booking_channel, rentals.rental_id, rentals.base_rental_amount, rentals.branch_id
+
+
+SECTION 4: ANCILLARY REVENUE ANALYSIS
+---------------------------------------
+
+Ancillary charges contributed approximately 15% of total collected revenue in Q1, with CDW insurance representing the largest component and appearing on approximately 80% of rental records. GPS Navigation was the most frequently purchased optional add-on following CDW. Fuel Pre-Purchase showed low adoption across only two rentals, suggesting an opportunity for bundling or targeted point-of-sale prompting. The highest single ancillary contribution came from a seven-day corporate Premium rental generating $140 in combined CDW and additional driver fees.
+
+Data fields used: ancillary_charges.charge_type, ancillary_charges.charge_amount, ancillary_charges.rental_id, rentals.pickup_date
+
+
+SECTION 5: FLEET MAINTENANCE SUMMARY
+--------------------------------------
+
+Eleven maintenance events were logged across the fleet in Q1 2024, covering routine servicing, tire replacements, brake repairs, AC repair, and a windshield replacement. Total direct maintenance expenditure for Q1 was approximately $3,825, with brake and AC repairs carrying the highest individual cost per event. Vehicle 7 (Jeep Grand Cherokee, Branch 2) was the most maintenance-intensive unit in the quarter, and its cumulative maintenance spend warrants a formal lifecycle review prior to Q2 fleet planning decisions.
+
+Data fields used: fleet_maintenance.vehicle_id, fleet_maintenance.maintenance_type, fleet_maintenance.cost, fleet_maintenance.days_out_of_service, vehicles.branch_id
+
+
+SECTION 6: CUSTOMER SEGMENT PERFORMANCE
+-----------------------------------------
+
+Corporate customers generated the highest total revenue in Q1 despite representing fewer unique individuals than the leisure segment. Platinum-tier customers were responsible for multiple high-value rentals, underscoring the outsized contribution of the loyalty programme's top tier. Insurance-channel customers demonstrated consistent demand for Economy vehicles over extended periods, providing predictable low-volatility revenue. Gold-tier leisure customers showed repeat engagement within the quarter, reinforcing the value of the loyalty programme in driving per-customer revenue.
+
+Data fields used: customers.customer_type, customers.loyalty_tier, rentals.customer_id, rentals.base_rental_amount, payments.total_amount
+
+
+SECTION 7: PAYMENT COLLECTION & METHOD DISTRIBUTION
+-----------------------------------------------------
+
+All 20 Q1 completed rental payments recorded a 'completed' status, with no outstanding receivables or payment failures within the quarter. Corporate invoice was the dominant payment method by revenue value. Credit card payments were the most frequent method by transaction count and covered the majority of leisure and walk-in bookings. Insurance invoice payments were characterised by longer billing cycles aligned to 14-day rental periods. The clean payment completion rate for Q1 reflects effective billing processes and low credit risk in the current customer mix.
+
+Data fields used: payments.payment_method, payments.payment_status, payments.total_amount, payments.payment_date, rentals.booking_channel
+
+
+APPENDIX & NOTES
+-----------------
+
+Assumptions:
+  - Base rental revenue is calculated as rental_days multiplied by daily_rate as recorded in the rentals table.
+  - Total collected revenue per rental is taken from payments.total_amount, inclusive of ancillary charges.
+  - Q1 figures include only rentals with a pickup_date between 2024-01-01 and 2024-03-31 with status 'completed'.
+  - Maintenance cost does not include indirect costs such as staff labour or vehicle opportunity cost during downtime.
+
+Known Limitations:
+  - Three April-initiated active rentals are excluded from Q1 revenue totals.
+  - Fleet utilization percentage cannot be precisely calculated without a daily fleet availability log table.
+  - No customer satisfaction or complaint data is captured in the current schema.
+  - No mileage or fuel consumption data is available, restricting cost-per-mile analysis.
+  - Branch-level operating costs are not included, preventing full branch profitability analysis.
+
+Recommended Next Analysis:
+  - Introduce a daily fleet availability tracking table to enable precise utilization rate calculation.
+  - Conduct a vehicle lifecycle cost analysis for Vehicle 7 to assess replacement versus repair economics.
+  - Develop a branch-level profitability model incorporating operating cost allocations.
+  - Analyse loyalty programme ROI across Standard, Gold, and Platinum tiers over a rolling 12-month period.
+  - Evaluate ancillary product attach rates by booking channel to identify highest-opportunity upsell interventions.
+
+
+------------------------------------------------------------------
+Report prepared by the DriveEase Rentals Business Intelligence &
+Operations Team. For internal use only.
+------------------------------------------------------------------

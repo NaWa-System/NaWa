@@ -1,0 +1,8 @@
+{
+  "source_json": "json/clearpath_health_partners.json",
+  "company_name": "ClearPath Health Partners",
+  "database_file": "generated/clearpath_health_partners/clearpath_health_partners.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/clearpath_health_partners"
+}

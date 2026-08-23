@@ -1,0 +1,8 @@
+{
+  "source_json": "json/meridian_cover_solutions_ltd.json",
+  "company_name": "Meridian Cover Solutions Ltd",
+  "database_file": "generated/meridian_cover_solutions_ltd/meridian_cover_solutions_ltd.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/meridian_cover_solutions_ltd"
+}

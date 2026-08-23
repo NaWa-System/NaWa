@@ -1,0 +1,8 @@
+{
+  "source_json": "json/balticum_bank_ag.json",
+  "company_name": "Balticum Bank AG",
+  "database_file": "generated/balticum_bank_ag/balticum_bank_ag.db",
+  "reports_exported": 2,
+  "pdf_reports_exported": 2,
+  "output_root": "generated/balticum_bank_ag"
+}

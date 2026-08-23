@@ -1,0 +1,242 @@
+Q1 2024 CLINICAL SERVICES & INVENTORY OPERATIONS REPORT
+MediPath Pharmacy Group
+
+Reporting Period: January 1, 2024 – March 31, 2024
+Report Type: Operations
+Prepared by: Pharmacy Operations & Analytics Team
+Date of Issue: April 2024
+
+================================================================================
+EXECUTIVE SUMMARY
+================================================================================
+
+MediPath Pharmacy Group's clinical services programme continued to expand its
+reach during Q1 2024, with 20 service appointments recorded across all six
+store locations. The programme delivered flu vaccinations, medication therapy
+reviews, blood pressure checks, diabetes management reviews, and asthma
+management consultations. The overall service completion rate was 95%, with only
+one appointment cancelled during the period, reflecting strong operational
+reliability across the clinical team.
+
+Medication Therapy Reviews and Diabetes Management Reviews represented the
+highest-fee clinical services, contributing meaningfully to supplementary revenue
+beyond the core dispensing business. Flu vaccination services demonstrated high
+volume throughput and served an important patient acquisition and community
+health function.
+
+From an inventory operations perspective, analysis of stock-on-hand levels
+relative to reorder thresholds identified several locations approaching alert
+status. The Spokane location's Atorvastatin 20mg inventory stood at 22 units
+against a reorder level of 20. The Portland Main location's specialty compounding
+product held only 18 units against a reorder threshold of 10, warranting close
+monitoring given the product's high margin contribution and low substitutability.
+
+Overall, the operational picture for Q1 2024 is positive, with clinical services
+performing above minimum service volume targets and inventory management broadly
+adequate. Proactive reorder processes should be initiated for at-risk products
+ahead of Q2, and clinical service scheduling capacity should be reviewed in
+preparation for anticipated spring demand increases.
+
+================================================================================
+KEY METRICS
+================================================================================
+
+Total Clinical Services Delivered:     20
+  Across all 6 store locations, January through March 2024.
+
+Clinical Service Completion Rate:      95%
+  19 of 20 services completed; 1 cancellation at MediPath Eugene.
+
+Total Clinical Service Revenue:        $750.00
+  Gross fees across all completed and cancelled appointments.
+
+Most Frequent Service Type:            Flu Vaccination
+  5 appointments; highest volume service type in the quarter.
+
+Highest-Fee Service Type:              Diabetes / Asthma Management Review
+  $55.00 per session.
+
+Store with Most Clinical Services:     MediPath Seattle Central
+  4 events during Q1 2024.
+
+Inventory Items Near Reorder Level:    3
+  Atorvastatin (Spokane), Compounding Product (Portland Main),
+  Blood Glucose Test Strips (Tacoma).
+
+Average Clinical Service Fee:          $37.50
+  Blended across all service types.
+
+Unique Patients Served (Clinical):     12
+  All registered customers accessed at least one service.
+
+Clinical Services per Store (avg.):    ~3.3
+  Even distribution of service activity across the network.
+
+================================================================================
+SECTION 1: CLINICAL SERVICE VOLUME AND COMPLETION RATES
+================================================================================
+
+A total of 20 clinical service appointments were recorded across all six MediPath
+locations during Q1 2024. Of these, 19 were completed successfully, yielding a
+95% completion rate. The single cancellation occurred at MediPath Eugene in late
+February and was recorded against a flu vaccination appointment. No no-show
+records were captured in the current dataset. Service delivery was broadly
+consistent across locations, with each store contributing between three and four
+appointments during the quarter. The high completion rate reflects well on the
+scheduling and clinical staffing model currently in operation.
+
+Data fields used: clinical_services.service_id, clinical_services.store_id,
+clinical_services.outcome_status, clinical_services.service_date,
+clinical_services.service_type
+
+================================================================================
+SECTION 2: CLINICAL SERVICE REVENUE BY TYPE
+================================================================================
+
+Medication Therapy Reviews and Management Reviews generated the highest revenue
+per appointment at $45.00 and $55.00 respectively, reflecting the specialist
+pharmacist time and clinical complexity involved. Flu vaccinations were the most
+frequently delivered service at $25.00 per appointment, contributing high volume
+at moderate unit revenue. Blood pressure checks, at $15.00 per session, were the
+lowest-fee service but provided a consistent and low-cost patient engagement
+touchpoint. Collectively, clinical services generated $750.00 in gross fee
+revenue during the quarter, representing a meaningful non-dispensing revenue
+stream that complements the core pharmacy business.
+
+Data fields used: clinical_services.service_type, clinical_services.service_fee,
+clinical_services.outcome_status, clinical_services.service_date,
+clinical_services.store_id
+
+================================================================================
+SECTION 3: CLINICAL SERVICE DISTRIBUTION BY STORE
+================================================================================
+
+MediPath Seattle Central conducted the highest number of clinical service events
+in Q1, with four appointments across flu vaccination, medication therapy review,
+and blood pressure check service types. MediPath Portland Main and MediPath
+Bellevue each delivered three events, including higher-fee management review
+services. MediPath Tacoma, Eugene, and Spokane each contributed three or four
+events, demonstrating an operationally even distribution across the network.
+Store-level variation in service type mix reflects local patient demographic
+differences, with chronic disease management reviews more prevalent at stores
+serving older patient populations.
+
+Data fields used: clinical_services.store_id, clinical_services.service_type,
+clinical_services.service_fee, clinical_services.service_date,
+stores.store_name, stores.region
+
+================================================================================
+SECTION 4: PHARMACIST WORKLOAD AND SERVICE ATTRIBUTION
+================================================================================
+
+Clinical services were administered across six named pharmacists during Q1 2024,
+with each pharmacist aligned to a primary store location. Pharmacist Chen at
+Seattle Central and Pharmacist Ruiz at Portland Main each delivered multiple
+service types, demonstrating versatility across the clinical service portfolio.
+Pharmacist Kim at Eugene recorded the only cancellation of the quarter. No
+pharmacist was recorded as delivering more than four services during the quarter,
+suggesting that clinical service load is currently within manageable capacity
+bounds. As service volumes grow, pharmacist scheduling and cross-location
+coverage protocols should be formalised.
+
+Data fields used: clinical_services.administered_by,
+clinical_services.service_type, clinical_services.outcome_status,
+clinical_services.store_id, clinical_services.service_date
+
+================================================================================
+SECTION 5: INVENTORY STOCK LEVEL ASSESSMENT
+================================================================================
+
+An assessment of current inventory levels relative to reorder thresholds across
+all stores identified three products at elevated replenishment risk. At MediPath
+Spokane, Atorvastatin 20mg 90ct had 22 units on hand against a reorder level of
+20, placing it within one dispensing cycle of triggering a reorder alert. At
+MediPath Portland Main, the Custom Compound Topical Pain Gel held 18 units
+against a reorder level of 10; the specialised nature of this product and its
+longer replenishment lead time warrant proactive ordering. At MediPath Tacoma,
+Blood Glucose Test Strips held 35 units against a reorder level of 20, providing
+a slightly more comfortable buffer. All other stocked products across the network
+were observed to be holding inventory comfortably above their respective reorder
+thresholds as of the most recent restock dates recorded.
+
+Data fields used: inventory.store_id, inventory.product_id,
+inventory.quantity_on_hand, inventory.reorder_level,
+inventory.last_restocked_date, stores.store_name, products.product_name
+
+================================================================================
+SECTION 6: PATIENT ENGAGEMENT THROUGH CLINICAL SERVICES
+================================================================================
+
+All 12 registered customers in the dataset received at least one clinical service
+appointment during Q1 2024, indicating that the clinical services programme
+effectively reached the full active patient population represented in this
+reporting period. Loyalty programme members were well-represented in clinical
+service activity, with customers managing chronic conditions accessing
+appointments aligned to their care needs. The intersection of clinical services
+and loyalty membership suggests an opportunity to use clinical appointment
+activity as a loyalty programme engagement mechanism, rewarding clinical
+participation alongside retail purchases.
+
+Data fields used: clinical_services.customer_id, clinical_services.service_type,
+clinical_services.service_date, customers.loyalty_member,
+customers.customer_id, customers.first_name, customers.last_name
+
+================================================================================
+SECTION 7: MONTHLY CLINICAL SERVICE ACTIVITY TREND
+================================================================================
+
+Clinical service activity was relatively evenly distributed across January,
+February, and March 2024, with six to seven appointments recorded in each month.
+January and March each recorded seven events, while February accounted for six,
+including the only cancellation. The consistency of monthly service volumes
+indicates stable operational delivery and predictable demand patterns. The March
+figure, inclusive of new diabetes management and medication therapy review
+appointments, suggests growing patient awareness of and confidence in MediPath's
+clinical service offering, a trend that should be actively encouraged through
+patient communication initiatives in Q2.
+
+Data fields used: clinical_services.service_date, clinical_services.service_type,
+clinical_services.outcome_status, clinical_services.service_fee,
+clinical_services.store_id
+
+================================================================================
+APPENDIX
+================================================================================
+
+ASSUMPTIONS
+- Clinical service fees are recorded as gross billed amounts; insurance rebates
+  or patient subsidies applicable to vaccination services are not captured.
+- 'Completed' outcome status indicates that the full service was delivered and
+  recorded by the administering pharmacist.
+- Inventory quantities represent physical stock on hand as of the
+  last_restocked_date and do not account for dispensing between restock date
+  and report generation date.
+- Each pharmacist is assumed to be the primary clinical services administrator
+  at their assigned store location during this period.
+
+KNOWN LIMITATIONS
+- The clinical_services table does not capture appointment booking lead time,
+  patient wait times, or pharmacist hours consumed per service, limiting full
+  workload analysis.
+- Inventory data does not include pending purchase orders, in-transit stock, or
+  historical consumption rates, which would be required for days-of-supply
+  calculations.
+- No data exists for supplier lead times or wholesale pricing, preventing full
+  procurement cost analysis.
+- The current dataset covers 12 customers across 6 stores and is illustrative
+  in scale; real-world reporting would reflect substantially higher volumes.
+
+RECOMMENDED NEXT ANALYSIS
+- Implement a clinical service appointment booking and wait-time tracking module
+  to enable capacity planning and patient experience reporting.
+- Develop an inventory consumption rate model using transaction_items dispensing
+  data joined to inventory to calculate days-of-supply by product and store.
+- Introduce a supplier and purchase order table to enable end-to-end procurement
+  cost and lead time analysis, supporting better reorder point calibration.
+- Analyse the correlation between clinical service participation and prescription
+  refill adherence rates to quantify the patient retention value of the clinical
+  programme.
+
+================================================================================
+End of Report
+================================================================================

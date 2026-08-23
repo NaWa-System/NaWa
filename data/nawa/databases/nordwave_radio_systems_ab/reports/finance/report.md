@@ -1,0 +1,55 @@
+# Q1 2026 Project Invoicing & Revenue Realization Summary
+
+**Organisation:** Nordwave Radio Systems AB  
+**Reporting period:** 2026-01-01 to 2026-03-31
+
+## Executive Summary
+Q1 2026 invoicing performance reflects a portfolio weighted toward milestone-billed delivery programs, supported by a stable monthly optimization retainer. Paid invoices were concentrated in early-to-mid quarter milestones (design approvals, partial completion gates, and monthly services), while several high-value acceptance invoices were sent late in Q1 and are expected to convert to cash collections in early Q2.
+
+Overall, the invoicing mix shows healthy progress on completed programs, with final acceptance milestones issued for both Skylink and IberWave close to project completion. For in-progress programs, RheinTel achieved early billing gates but carries an at-risk on-air milestone that has not been invoiced at quarter-end, which could shift revenue and cash timing if schedule recovery actions are not executed.
+
+From a revenue realization perspective, delivery line items indicate material equipment throughput through the quarter (radio units, baseband, antennas, and infrastructure kits), supplemented by service line items for integration and optimization. The presence of shipped-but-not-delivered records at quarter-end is an important operational-to-financial linkage, as it may delay acceptance completion and corresponding milestone billing.
+
+Finance leadership should focus on (1) accelerating conversion of “Sent” invoices to “Paid,” (2) aligning operations to close the remaining in-progress integration work, and (3) tightening milestone readiness criteria for at-risk gates to reduce quarter-to-quarter volatility in billed revenue and cash collections.
+
+## Key Metrics
+- **Total Milestone Invoice Amount (Q1 due dates):** $6.326M
+- **Paid Milestone Invoices (Count):** 8
+- **Sent but Unpaid Milestone Invoices (Count):** 5
+- **Not Sent Milestones (Count):** 2
+- **At-Risk Milestone Exposure (Invoice Amount):** $740K
+- **Delivery Value Recognized as Delivered/Shipped (Q1 records):** $4.803M
+- **Service Delivery Line Items (Q1):** 6
+- **Projects with Final Acceptance Milestones Sent in Q1:** 3 milestones
+
+## Main Sections
+### 1) Milestone Invoicing Overview (Paid vs Sent vs Not Sent)
+Milestone billing is the dominant invoicing mechanism across the portfolio. The quarter includes a solid base of paid invoices, indicating strong early-quarter collections, alongside multiple sent invoices that will shape early Q2 cash performance. Not-sent milestones highlight the primary schedule-to-cash risk area, particularly where operational gates are at risk or scheduled beyond quarter-end.
+
+### 2) Invoicing by Customer and Account Tier
+Strategic accounts contribute the largest share of milestone invoices and carry both the highest opportunity and the greatest timing sensitivity. Key accounts show reliable completion of modernization gates. Growth accounts are building pipeline through early design approvals and in-progress milestones, with collections expected to increase as Q2 operational gates are reached.
+
+### 3) Contract Value Coverage vs Invoicing Progress (Project-Level)
+Comparing project contract values with milestone billing provides a view of progress toward contracted revenue realization. Completed projects show final acceptance invoices issued, indicating healthy billing completion. In-progress projects show partial billing coverage, emphasizing the importance of closing on-air and readiness milestones to avoid revenue deferral into later periods.
+
+### 4) Delivered vs Shipped Deliveries and Financial Timing
+Delivery records translate operational throughput into financial readiness for acceptance and milestone billing. The quarter’s delivered records show substantial equipment and services executed, while shipped-but-not-delivered items introduce timing risk for integration and acceptance. Reducing the shipped backlog at quarter-end should directly support timely milestone completion and invoicing.
+
+### 5) Service Revenue Baseline (Optimization Retainer)
+Monthly optimization service deliveries and corresponding milestones create a predictable revenue baseline within the quarter. This improves stability and reduces reliance on large, one-time acceptance milestones. The service motion also supports post-deployment performance, which can expand into add-on optimization scopes following acceptance on completed programs.
+
+## Appendix / Notes
+### Assumptions
+- Milestone invoice amounts are treated as the primary invoicing mechanism and a proxy for billed revenue timing.
+- Delivery value (quantity * unit_price_usd) is an operational throughput indicator and is not assumed to equal GAAP revenue recognition.
+- The reporting period is aligned to `delivery_date` and milestone `due_date` within Q1 2026.
+
+### Known Limitations
+- No payment dates or AR aging fields exist beyond `invoice_status`.
+- No cost data is included, so margin analysis is not possible.
+- Milestone names are free-text, reducing comparability at scale.
+
+### Recommended Next Analysis
+- Add invoice tables with invoice_date, payment_date, payment_terms, and outstanding balance to support AR aging and DSO.
+- Add cost tracking to enable gross margin by project and product category.
+- Normalize milestone types (design, delivery, on-air, acceptance) to benchmark performance across customers and regions.

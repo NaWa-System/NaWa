@@ -1,0 +1,243 @@
+Q1 2024 DELIVERY OPERATIONS PERFORMANCE REPORT
+Parcela Swift Ltd.
+Reporting Period: January 2024 - March 2024
+Report Type: Logistics / Delivery Operations
+Prepared by: Operations Analytics Team
+Date of Issue: April 2024
+
+================================================================================
+EXECUTIVE SUMMARY
+================================================================================
+
+Parcela Swift Ltd. recorded a broadly positive first quarter in 2024, with total
+shipment volumes growing month-on-month across all five depots and overall
+on-time delivery performance remaining above the company's internal SLA benchmark
+for the majority of the period. The London Gateway Depot continued to lead the
+network in absolute shipment volumes, while the Dublin Express Depot demonstrated
+meaningful improvement in delivery reliability as the quarter progressed.
+
+The quarter was nonetheless marked by operational challenges that warrant
+management attention. Eight delivery exceptions were logged across the network,
+spanning causes including vehicle breakdown, sorting errors, recipient
+unavailability, and an ongoing cross-border customs delay. As of the reporting
+date, four exceptions remain unresolved, representing a residual risk requiring
+active case management from respective depot supervisors before Q2 commences.
+
+The Glasgow Hub recorded the weakest on-time delivery rate relative to its volume
+in January and February, with partial recovery observed in March. The Freight
+Pallet service category generated the highest revenue per consignment across all
+service tiers but also accounted for the two most commercially significant
+unresolved exception cases at quarter-end.
+
+Forward-looking, the month-on-month volume trajectory suggests that London
+Gateway and Manchester North may face capacity pressure during Q2 peak weeks. A
+structured capacity planning review is recommended ahead of the Easter and early
+summer peak periods to avoid service quality deterioration.
+
+================================================================================
+KEY METRICS
+================================================================================
+
+Total Network Shipments (Q1 2024)      908
+  Jan: 310  |  Feb: 338  |  Mar: 380. Consistent growth across all depots.
+
+Network On-Time Delivery Rate          88.6%
+  Above internal SLA minimum of 87%. Improving trend observed through the
+  quarter.
+
+Total Failed Deliveries                39
+  Across all depots and months. Glasgow Hub carried the highest failure rate
+  relative to volume in January.
+
+Open Delivery Exceptions               4
+  Four of eight logged exceptions remain unresolved as of 31 March 2024,
+  including a vehicle breakdown and a sorting error.
+
+Highest-Frequency Service Type         Next Day Express
+  Dominant by shipment count across B2B accounts throughout the quarter.
+
+Highest Revenue Per Shipment           Freight Pallet -- avg. approx. GBP 103
+  Driven by CrestMed Pharmaceuticals and Ferngrove Organics consignments.
+
+Shipment Volume Growth (Jan to Mar)    +22.6%
+  Network-wide growth from 310 shipments in January to 380 in March.
+
+Exception Resolution Rate              50%
+  4 of 8 exceptions resolved within Q1. 4 remain open with active exposure.
+
+================================================================================
+SECTION 1: MONTHLY SHIPMENT VOLUME TRENDS
+================================================================================
+
+Shipment volumes across the Parcela Swift network increased consistently
+throughout Q1 2024. London Gateway Depot processed the highest absolute volumes
+each month, benefitting from its proximity to major retail and e-commerce clients
+including Halsworth Retail Group. Birmingham Central and Manchester North depots
+recorded steady mid-tier volumes, reflecting their established B2B contract bases.
+Glasgow Hub and Dublin Express both demonstrated improving throughput as the
+quarter progressed.
+
+The network-wide increase from 310 shipments in January to 380 in March reflects
+both organic expansion of existing accounts and the ramping activity of Voltline
+Tech Solutions, onboarded at Birmingham Central in June 2023.
+
+Data fields used: depot_performance.total_shipments, depot_performance.report_month,
+depots.depot_name, shipments.shipment_date, customers.customer_name
+
+================================================================================
+SECTION 2: ON-TIME DELIVERY PERFORMANCE BY DEPOT
+================================================================================
+
+Network on-time delivery performance averaged 88.6% across Q1 2024, within
+Parcela Swift's contracted SLA minimum of 87% for standard service tiers. London
+Gateway maintained the strongest performance, sustaining an on-time rate above
+91% across all three months.
+
+The Glasgow Hub underperformed the network average in January at approximately
+85.7%, recovering to 91.7% in February and continuing to improve through March.
+The Dublin Express Depot achieved consistent on-time rates above 90% throughout
+the period. Manchester North showed a marginal dip in on-time performance in
+March, coinciding with the period in which two exception cases were logged at
+that location.
+
+Data fields used: depot_performance.on_time_deliveries,
+depot_performance.total_shipments, depot_performance.failed_deliveries,
+depots.depot_name, depot_performance.report_month
+
+================================================================================
+SECTION 3: DELIVERY EXCEPTION ANALYSIS
+================================================================================
+
+Eight delivery exceptions were recorded across the Parcela Swift network in Q1
+2024. Exception types were as follows:
+
+  - Missed Collection (resolved)
+  - Address Not Found (resolved)
+  - Recipient Unavailable (unresolved -- parcel held at depot)
+  - Damaged in Transit (resolved -- replacement dispatched at no charge)
+  - Customs Delay (unresolved -- awaiting clearance documentation)
+  - Driver Route Deviation (resolved -- apology issued)
+  - Vehicle Breakdown (unresolved -- ETA pending)
+  - Sorting Error (unresolved -- investigation underway)
+
+Highest-risk unresolved cases:
+  Shipment 1027: CrestMed Pharmaceuticals freight pallet. Vehicle breakdown at
+    Birmingham Central Depot on 14 March 2024. Customer notified. Resolution
+    pending; potential freight liability claim.
+  Shipment 1034: London Gateway sorting error logged 29 March 2024. Parcel
+    mislabelled. Investigation underway.
+
+The exception rate remains below 1% of total network shipments, within acceptable
+operational parameters. However, the concentration of open cases in March warrants
+close monitoring heading into Q2.
+
+Data fields used: delivery_exceptions.exception_type, delivery_exceptions.resolved,
+delivery_exceptions.resolution_notes, shipments.status, customers.customer_name
+
+================================================================================
+SECTION 4: SERVICE TYPE UTILISATION
+================================================================================
+
+Next Day Express was the most utilised service type by shipment count throughout
+Q1, driven by time-sensitive B2B accounts in retail and technology. Two Day
+Standard served as the preferred mid-tier option for clients where cost efficiency
+takes precedence over speed, including TinderBox Gifts Ltd. and Ferngrove
+Organics. Economy Parcel accounted for the majority of Consumer Direct Pool
+shipments, consistent with cost-conscious B2C behaviour.
+
+Freight Pallet, while lower in volume, generated approximately GBP 103 per
+consignment on average -- the highest yield of any service tier. Returns
+Management saw growing uptake from Halsworth Retail Group, suggesting that this
+supplementary service may warrant further commercial development in Q2.
+
+Data fields used: service_types.service_name, service_types.base_rate_gbp,
+shipments.service_id, shipments.revenue_gbp, shipments.shipment_date
+
+================================================================================
+SECTION 5: CUSTOMER SHIPMENT ACTIVITY
+================================================================================
+
+Halsworth Retail Group and CrestMed Pharmaceuticals were the two highest-volume
+B2B customers by both shipment count and revenue contribution across Q1 2024.
+Halsworth utilised a broad service mix including Next Day Express, Freight Pallet,
+and Returns Management, indicating strong account depth and dependency on Parcela
+Swift's full service range.
+
+CrestMed's freight pallet consignments carry the highest declared values of any
+customer in the dataset, underscoring the commercial sensitivity of this account
+and the importance of resolving the open exception case before Q2 billing.
+
+TinderBox Gifts Ltd. experienced late deliveries on two occasions, both routed
+through Manchester North Depot, which may indicate a collection scheduling
+misalignment at that location requiring depot-level investigation.
+
+Cairn Fine Foods maintained a low but consistent shipment profile with improving
+on-time delivery rates in February and March following a single failed delivery
+recorded in January.
+
+Data fields used: customers.customer_name, customers.customer_type,
+shipments.customer_id, shipments.status, shipments.revenue_gbp,
+shipments.service_id, shipments.depot_id
+
+================================================================================
+SECTION 6: FLEET AND DEPOT CAPACITY OVERVIEW
+================================================================================
+
+Parcela Swift operates ten registered vehicles across five depots, split between
+Transit Vans (800 kg capacity) and Heavy Goods Vehicles rated between 4,500 and
+5,000 kg. London Gateway holds the largest fleet at three owned vehicles,
+consistent with its role as the highest-throughput depot in the network.
+
+Three of the ten fleet vehicles are contracted rather than owned, concentrated at
+Birmingham Central, Manchester North, and across both Dublin Express positions.
+The vehicle breakdown recorded in March at Birmingham involving a contracted
+Transit Van highlights the operational risk inherent in contracted fleet
+dependency, where Parcela Swift has limited direct oversight of maintenance
+standards and scheduling.
+
+A formal contracted fleet reliability audit is recommended as a Q2 priority
+action, particularly given Birmingham Central's accelerating shipment volumes.
+
+Data fields used: vehicles.vehicle_type, vehicles.capacity_kg,
+vehicles.owned_or_contracted, vehicles.depot_id, depots.depot_name,
+delivery_exceptions.exception_type, delivery_exceptions.resolved
+
+================================================================================
+APPENDIX
+================================================================================
+
+ASSUMPTIONS
+  - depot_performance monthly figures are treated as authoritative aggregates for
+    network-level reporting purposes.
+  - On-time delivery is defined as actual_delivery_date <= promised_delivery_date.
+  - Shipments with status 'In Transit' are excluded from on-time rate calculations
+    but are included in total shipment volume counts.
+  - The Consumer Direct Pool (customer_id 5) represents aggregated B2C demand
+    and should not be interpreted as a single named commercial account.
+
+KNOWN LIMITATIONS
+  - The shipments table contains a transactional sample of 34 records; full
+    operational volume for the quarter is reflected in the depot_performance
+    aggregate table.
+  - Fuel, driver labour, and vehicle maintenance costs are not individually
+    captured; granular cost-per-delivery analysis is not possible from this data.
+  - Cross-border shipment compliance data for Dublin is insufficient to support a
+    full customs or regulatory performance review.
+  - Vehicle utilisation rates against capacity cannot be calculated as trip-level
+    load and mileage data are not currently recorded in the schema.
+
+RECOMMENDED NEXT ANALYSIS
+  - Root-cause investigation for late deliveries originating from Manchester
+    North Depot, with focus on TinderBox Gifts Ltd. collection scheduling.
+  - Capacity planning review for London Gateway and Manchester North ahead of Q2
+    peak trading weeks.
+  - Customer satisfaction and NPS scoring linked to shipment exception records.
+  - Contracted versus owned vehicle reliability benchmarking including breakdown
+    frequency, cost attribution, and SLA breach correlation.
+  - Service type profitability modelling incorporating variable cost per kilogram
+    once cost-per-shipment tracking is implemented across all depots.
+
+================================================================================
+Report prepared by the Parcela Swift Ltd. Operations Analytics Team.
+For internal use only. Not for external distribution.
+================================================================================
